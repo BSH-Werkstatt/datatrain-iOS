@@ -11,10 +11,10 @@
 
 #Update Variables for your Project
 
-APPID = "de.tum.in.www1.ios.ExampleApp"
-SCHEME = "ExampleApp"
-WORKSPACEPATH = "./ExampleApp.xcworkspace"
-PODFILE = "ExampleApp/Podfile"
+APPID = "de.tum.in.www1.ios19.bsh"
+SCHEME = "BSH"
+WORKSPACEPATH = "./BSH.xcworkspace"
+PODFILE = "BSH/Podfile"
 
 
 
