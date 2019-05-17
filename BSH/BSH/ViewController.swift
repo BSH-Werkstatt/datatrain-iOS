@@ -23,10 +23,9 @@ class ViewController: UIViewController {
         }
     }
     
-    
     @IBAction private func addLabel() {
         print("Label added")
-        //not implemented labeling yet
+        // not implemented labeling yet
         // Feature Crumb Name: "<adding Label>"
         // CUU.seed(name: "Step 1: Select Item")
     }
