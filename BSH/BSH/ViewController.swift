@@ -7,9 +7,10 @@
 //
 // MARK: Imports
 import UIKit
+import CUU
 
 // MARK: - ViewController
-class ViewController: UIViewController {
+class ViewController: CUUViewController {
     // MARK: IBOutlets
     @IBOutlet private weak var outputLabel: UILabel!
     
@@ -19,15 +20,17 @@ class ViewController: UIViewController {
             let pictureAmount = Int(pictureAmountString) {
             outputLabel.text = String(pictureAmount + 1)
             // Feature Crumb Name: "<Upload Picture>"
-            //CUU.seed(name: "Step 1: Select Item")
+            CUU.seed(name: "Upload Picture")
         }
     }
+    
+
     
     @IBAction private func addLabel() {
         print("Label added")
         // not implemented labeling yet
         // Feature Crumb Name: "<adding Label>"
-        // CUU.seed(name: "Step 1: Select Item")
+        CUU.seed(name: "adding Label")
     }
     
     
@@ -35,7 +38,7 @@ class ViewController: UIViewController {
     @IBAction private func leaderboardPressed() {
         print("Leaderboard Button pressed")
         // Feature Crumb Name: "<Go to Leaderboard>"
-        // CUU.seed(name: "Step 1: Select Item")
+        CUU.seed(name: "Go to Leaderboard")
     }
     
     

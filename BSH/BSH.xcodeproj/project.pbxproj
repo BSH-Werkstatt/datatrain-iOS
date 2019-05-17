@@ -13,6 +13,7 @@
 		3C709CC92282236400823586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CC72282236400823586 /* Main.storyboard */; };
 		3C709CCB2282236700823586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCA2282236700823586 /* Assets.xcassets */; };
 		3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCC2282236700823586 /* LaunchScreen.storyboard */; };
+		C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */ = {isa = PBXBuildFile; fileRef = C52E36C6228EB6F0005EDB93 /* CUU.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0527FCBA03923D0444BE452 /* Pods-BSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.release.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.release.xcconfig"; sourceTree = "<group>"; };
 		BA684E17AD61E905706390F9 /* Pods-BSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.debug.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.debug.xcconfig"; sourceTree = "<group>"; };
+		C52E36C6228EB6F0005EDB93 /* CUU.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CUU.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				3C709CC72282236400823586 /* Main.storyboard */,
 				3C709CCA2282236700823586 /* Assets.xcassets */,
 				3C709CCC2282236700823586 /* LaunchScreen.storyboard */,
+				C52E36C6228EB6F0005EDB93 /* CUU.plist */,
 				3C709CCF2282236700823586 /* Info.plist */,
 			);
 			path = BSH;
@@ -85,7 +88,6 @@
 				BA684E17AD61E905706390F9 /* Pods-BSH.debug.xcconfig */,
 				B0527FCBA03923D0444BE452 /* Pods-BSH.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */,
 				3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */,
 				3C709CCB2282236700823586 /* Assets.xcassets in Resources */,
 				3C709CC92282236400823586 /* Main.storyboard in Resources */,
@@ -372,7 +375,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
+				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -392,7 +395,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
+				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
