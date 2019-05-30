@@ -213,6 +213,7 @@
         <image name="bananas.jpg" width="72" height="47.759998321533203"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="sfA-Iz-vk4"/>
         <segue reference="Ol1-Sw-Stz"/>
     </inferredMetricsTieBreakers>
 </document>
