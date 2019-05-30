@@ -11,9 +11,9 @@ import Foundation
 
 public struct Annotation: Codable {
 
-    public var _id: Double
+    public var _id: Int
 
-    public init(_id: Double) {
+    public init(_id: Int) {
         self._id = _id
     }
 

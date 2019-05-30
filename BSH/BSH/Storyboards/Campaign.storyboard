@@ -97,21 +97,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-Ek-rXk">
-                                <rect key="frame" x="20" y="107.5" width="374" height="352.5"/>
+                                <rect key="frame" x="20" y="107.5" width="374" height="344.5"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt">
-                                <rect key="frame" x="97" y="508" width="238" height="30"/>
+                                <rect key="frame" x="80" y="500" width="254" height="30"/>
                                 <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Start Now">
+                                <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="v0t-GM-qTu"/>
-                                    <segue destination="lTk-Iz-YU1" kind="show" identifier="" id="c2m-sr-CQA"/>
+                                    <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="bvL-CD-qgc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoE-Bp-ObJ">
-                                <rect key="frame" x="97" y="584" width="238" height="30"/>
+                                <rect key="frame" x="80" y="584" width="254" height="30"/>
                                 <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Check Leaderboard">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,20 +119,33 @@
                                     <action selector="toLeaderboardButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="H1X-HS-wQo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEU-9E-Vcf">
+                                <rect key="frame" x="80" y="542" width="254" height="30"/>
+                                <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="lTk-Iz-YU1" kind="show" id="DUV-1L-ZWQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="LoE-Bp-ObJ" secondAttribute="trailing" constant="79" id="2dF-rZ-45Z"/>
+                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="LoE-Bp-ObJ" secondAttribute="trailing" constant="80" id="2dF-rZ-45Z"/>
                             <constraint firstItem="zcm-Mi-vQb" firstAttribute="bottom" secondItem="LoE-Bp-ObJ" secondAttribute="bottom" constant="199" id="HmX-Zq-HUE"/>
                             <constraint firstItem="u6e-lv-La9" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="20" id="LTZ-dl-3Kw"/>
                             <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="XFg-Ek-rXk" secondAttribute="trailing" constant="20" id="MBb-xe-51W"/>
+                            <constraint firstItem="LoE-Bp-ObJ" firstAttribute="top" secondItem="OEU-9E-Vcf" secondAttribute="bottom" constant="12" id="NGS-TL-ueK"/>
+                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="OEU-9E-Vcf" secondAttribute="trailing" constant="80" id="PmD-rj-7Lh"/>
+                            <constraint firstItem="OEU-9E-Vcf" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="80" id="Qom-5a-qsN"/>
                             <constraint firstItem="XFg-Ek-rXk" firstAttribute="top" secondItem="u6e-lv-La9" secondAttribute="bottom" constant="8" id="WkJ-K6-DLT"/>
-                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="fRh-t3-kzt" secondAttribute="trailing" constant="79" id="XDu-6A-hKh"/>
-                            <constraint firstItem="LoE-Bp-ObJ" firstAttribute="top" secondItem="fRh-t3-kzt" secondAttribute="bottom" constant="46" id="gDK-Fl-bnx"/>
-                            <constraint firstItem="LoE-Bp-ObJ" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="97" id="jT5-VV-xmU"/>
+                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="fRh-t3-kzt" secondAttribute="trailing" constant="80" id="XDu-6A-hKh"/>
+                            <constraint firstItem="LoE-Bp-ObJ" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="80" id="jT5-VV-xmU"/>
+                            <constraint firstItem="OEU-9E-Vcf" firstAttribute="top" secondItem="fRh-t3-kzt" secondAttribute="bottom" constant="12" id="lLV-se-v7z"/>
                             <constraint firstItem="u6e-lv-La9" firstAttribute="top" secondItem="zcm-Mi-vQb" secondAttribute="top" constant="29" id="pRs-Hv-DOx"/>
                             <constraint firstItem="fRh-t3-kzt" firstAttribute="top" secondItem="XFg-Ek-rXk" secondAttribute="bottom" constant="48" id="rmg-aD-3lK"/>
-                            <constraint firstItem="fRh-t3-kzt" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="97" id="sJv-LD-AtE"/>
+                            <constraint firstItem="fRh-t3-kzt" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="80" id="sJv-LD-AtE"/>
                             <constraint firstItem="XFg-Ek-rXk" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="20" id="yeu-Pe-i1E"/>
                             <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="u6e-lv-La9" secondAttribute="trailing" constant="20" id="z9s-IL-Hco"/>
                         </constraints>
@@ -157,39 +169,48 @@
             </objects>
             <point key="canvasLocation" x="690" y="-206"/>
         </scene>
-        <!--Upload Picture-->
+        <!--Capture Image View-->
         <scene sceneID="9gl-U8-fws">
             <objects>
-                <viewController id="lTk-Iz-YU1" userLabel="Upload Picture" customClass="UploadDataViewController" customModule="BSH" sceneMemberID="viewController">
+                <viewController id="lTk-Iz-YU1" userLabel="Capture Image View" customClass="CaptureImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZRd-fG-lV0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera should appear here " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-xM-Sra">
-                                <rect key="frame" x="94" y="305" width="227" height="239"/>
+                                <rect key="frame" x="94" y="305" width="227" height="190"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNn-6c-pof">
-                                <rect key="frame" x="19" y="831" width="108" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNn-6c-pof">
+                                <rect key="frame" x="20" y="760" width="108" height="33"/>
                                 <color key="backgroundColor" red="0.97214037180000001" green="0.6181282401" blue="0.20888295770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="9bc-By-hGO"/>
+                                    <constraint firstAttribute="height" constant="33" id="Ukg-ZD-eg7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Gallery">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="galleryClick:" destination="lTk-Iz-YU1" eventType="touchDown" id="RXy-q1-9Wh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="W3d-sg-AcL" firstAttribute="bottom" secondItem="FNn-6c-pof" secondAttribute="bottom" constant="20" id="MAy-uk-hQH"/>
                             <constraint firstItem="W3d-sg-AcL" firstAttribute="bottom" secondItem="6OT-xM-Sra" secondAttribute="bottom" constant="318" id="Q6d-zm-x5c"/>
                             <constraint firstItem="6OT-xM-Sra" firstAttribute="leading" secondItem="W3d-sg-AcL" secondAttribute="leading" constant="94" id="cHQ-09-TSf"/>
                             <constraint firstItem="W3d-sg-AcL" firstAttribute="trailing" secondItem="6OT-xM-Sra" secondAttribute="trailing" constant="93" id="e08-nR-b17"/>
+                            <constraint firstItem="FNn-6c-pof" firstAttribute="leading" secondItem="W3d-sg-AcL" secondAttribute="leading" constant="20" id="qPa-U6-7vE"/>
                             <constraint firstItem="6OT-xM-Sra" firstAttribute="top" secondItem="W3d-sg-AcL" secondAttribute="top" constant="261" id="wyx-aC-vWx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W3d-sg-AcL"/>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="0fk-Hn-5yq" kind="show" identifier="uploadImageSegue" id="wZX-Ri-D16"/>
                     </connections>
@@ -198,20 +219,55 @@
             </objects>
             <point key="canvasLocation" x="1892.753623188406" y="-206.25"/>
         </scene>
-        <!--Upload View Controller-->
+        <!--Upload Image View-->
         <scene sceneID="62n-9l-fz6">
             <objects>
-                <viewController id="0fk-Hn-5yq" userLabel="Upload View Controller" sceneMemberID="viewController">
+                <viewController id="0fk-Hn-5yq" userLabel="Upload Image View" customClass="UploadImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="muF-69-rtv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaZ-ZK-3Vg">
+                                <rect key="frame" x="153" y="760" width="108" height="33"/>
+                                <color key="backgroundColor" red="0.97214037180000001" green="0.6181282401" blue="0.20888295770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="VQ4-zy-uLJ"/>
+                                    <constraint firstAttribute="height" constant="33" id="Wws-r6-LZU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" eventType="touchDown" id="VSc-0m-1dC"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-jF-jcj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="696"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZaZ-ZK-3Vg" firstAttribute="top" secondItem="fgm-jF-jcj" secondAttribute="bottom" constant="20" id="2se-a3-8e7"/>
+                            <constraint firstItem="fgm-jF-jcj" firstAttribute="top" secondItem="Gvf-It-Jxl" secondAttribute="top" id="3zb-tE-xm6"/>
+                            <constraint firstItem="ZaZ-ZK-3Vg" firstAttribute="bottom" secondItem="Gvf-It-Jxl" secondAttribute="bottom" constant="-20" id="51g-yh-a3Z"/>
+                            <constraint firstItem="fgm-jF-jcj" firstAttribute="leading" secondItem="Gvf-It-Jxl" secondAttribute="leading" id="9m0-c4-c1e"/>
+                            <constraint firstItem="fgm-jF-jcj" firstAttribute="trailing" secondItem="Gvf-It-Jxl" secondAttribute="trailing" id="H76-rP-mOs"/>
+                            <constraint firstItem="ZaZ-ZK-3Vg" firstAttribute="leading" secondItem="Gvf-It-Jxl" secondAttribute="leading" constant="153" id="aXx-PM-9fN"/>
+                            <constraint firstItem="Gvf-It-Jxl" firstAttribute="trailing" secondItem="ZaZ-ZK-3Vg" secondAttribute="trailing" constant="153" id="psk-33-tMi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Gvf-It-Jxl"/>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="uploadButton" destination="ZaZ-ZK-3Vg" id="NVd-4f-Ozm"/>
+                        <outlet property="uploadedImageView" destination="fgm-jF-jcj" id="6aV-iL-Krb"/>
+                        <segue destination="5uW-Nq-kUZ" kind="show" identifier="uploadToCampaignSegue" id="7Ib-2b-ZNB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW7-0x-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3046" y="-206"/>
+            <point key="canvasLocation" x="3044.9275362318845" y="-206.25"/>
         </scene>
         <!--Campaigns-->
         <scene sceneID="fAV-Pd-7EX">
@@ -240,6 +296,7 @@
         <image name="bananas.jpg" width="72" height="47.759998321533203"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7Ib-2b-ZNB"/>
         <segue reference="Ol1-Sw-Stz"/>
     </inferredMetricsTieBreakers>
 </document>
