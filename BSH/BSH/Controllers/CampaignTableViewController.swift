@@ -24,7 +24,6 @@ class CampaignTableViewController: CUUTableViewController {
     @IBOutlet private weak var campaignTable: UITableView!
     
     private var campaigns: [Campaign] = []
-    private var activeCampaign: Campaign?
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
@@ -32,11 +31,6 @@ class CampaignTableViewController: CUUTableViewController {
         // Do any additional setup after loading the view.
         
         loadCampaigns()
-    }
-    
-    /// Gets the currently active campaign, which was selected in the CampaignView
-    public func getActiveCampaign() -> Campaign? {
-        return activeCampaign
     }
     
     /// Loads all existing campaigns from the database and stores them in the campaigns property
@@ -81,5 +75,13 @@ class CampaignTableViewController: CUUTableViewController {
         cell.nameLabel?.text = campaign.name
         cell.descriptionLabel?.text = campaign._description
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let destination = segue.destination as? CampaignInfoViewController,
+            let campaignCellIndex = campaignTable.indexPathForSelectedRow?.row {
+            destination.setCampaign(campaigns[campaignCellIndex])
+        }
     }
 }

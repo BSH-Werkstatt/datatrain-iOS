@@ -62,7 +62,7 @@
                                     <outlet property="campaignImageView" destination="E8M-To-csN" id="OT3-YF-G6g"/>
                                     <outlet property="descriptionLabel" destination="ida-aM-zld" id="ANL-PV-GeJ"/>
                                     <outlet property="nameLabel" destination="MTw-1u-3OY" id="vlW-k1-ied"/>
-                                    <segue destination="5uW-Nq-kUZ" kind="show" id="CNm-LO-qvJ"/>
+                                    <segue destination="5uW-Nq-kUZ" kind="show" id="sfA-Iz-vk4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,13 +91,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, I am the XY Campaign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6e-lv-La9">
-                                <rect key="frame" x="20" y="169" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="73" width="374" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-Ek-rXk">
-                                <rect key="frame" x="20" y="203.5" width="374" height="256.5"/>
+                                <rect key="frame" x="20" y="107.5" width="374" height="352.5"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt">
                                 <rect key="frame" x="97" y="508" width="238" height="30"/>
@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera should appear here " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-xM-Sra">
-                                <rect key="frame" x="94" y="401" width="227" height="94"/>
+                                <rect key="frame" x="94" y="305" width="227" height="239"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -213,6 +213,6 @@
         <image name="bananas.jpg" width="72" height="47.759998321533203"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wzo-85-2tk"/>
+        <segue reference="Ol1-Sw-Stz"/>
     </inferredMetricsTieBreakers>
 </document>
