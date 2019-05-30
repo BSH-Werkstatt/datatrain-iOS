@@ -15,7 +15,7 @@
   "source_files": "SwaggerClient/Classes/**/*.swift",
   "dependencies": {
     "Alamofire": [
-      "~> 5.0.0-beta.5"
+      "~> 4.8.0"
     ]
   },
   "homepage": "ios19bsh.ase.in.tum.de",

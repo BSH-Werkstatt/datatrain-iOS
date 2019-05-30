@@ -11,9 +11,9 @@ import Foundation
 public struct Campaign: Codable {
 
 
-    public var _id: Double
+    public var _id: Int
 
-    public var ownerId: Double
+    public var ownerId: Int
 
     public var type: CampaignType
 
@@ -24,7 +24,7 @@ public struct Campaign: Codable {
     public var vocabulary: [String]
 
     public var userIds: [Double]
-    public init(_id: Double, ownerId: Double, type: CampaignType, name: String, _description: String, vocabulary: [String], userIds: [Double]) { 
+    public init(_id: Int, ownerId: Int, type: CampaignType, name: String, _description: String, vocabulary: [String], userIds: [Double]) { 
         self._id = _id
         self.ownerId = ownerId
         self.type = type
