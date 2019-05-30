@@ -10,11 +10,12 @@
 import Foundation
 import UIKit
 import CUU
+import SwaggerClient
 
 // MARK: - CampaignTableControll
 class CampaignInfoViewController: CUUViewController {
-    // !! Why is there a connection with the Table??
-   
+    private static var campaign: Campaign?
+    
     // MARK: IBOutlets
     @IBOutlet weak var campaignName: UILabel!
     @IBOutlet weak var campaignInfoScrollView: UIScrollView!
@@ -32,7 +33,16 @@ class CampaignInfoViewController: CUUViewController {
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if let campaign = CampaignInfoViewController.campaign {
+            campaignName.text = campaign.name
+        }
     }
     
+    public func setCampaign(_ campaign: Campaign) {
+        CampaignInfoViewController.campaign = campaign
+    }
+    
+    public func getCampaign(_ campaign: Campaign) -> Campaign? {
+        return CampaignInfoViewController.campaign
+    }
 }
