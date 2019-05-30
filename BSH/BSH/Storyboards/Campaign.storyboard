@@ -13,40 +13,55 @@
         <!--Campaign Tables-->
         <scene sceneID="UNP-HF-eAc">
             <objects>
-                <tableViewController id="fza-05-WiW" userLabel="Campaign Tables" customClass="CampaignViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="fza-05-WiW" userLabel="Campaign Tables" customClass="CampaignTableViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="wuS-P5-6mc" userLabel="Campaign Table View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="campaignCell" textLabel="Y8y-Uh-uEL" detailTextLabel="Ykh-GX-n4B" imageView="2Jt-Ln-nr2" style="IBUITableViewCellStyleValue1" id="aPf-SN-xMt">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="campaignCell" rowHeight="70" id="aPf-SN-xMt" customClass="CampaignTableViewCell" customModule="BSH" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPf-SN-xMt" id="zFf-a5-EML">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPf-SN-xMt" id="zFf-a5-EML">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y8y-Uh-uEL">
-                                            <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ykh-GX-n4B">
-                                            <rect key="frame" x="332" y="12" width="44" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Jt-Ln-nr2">
-                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bananas.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="E8M-To-csN">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="70.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="125" id="3qy-oy-kLB"/>
+                                                <constraint firstAttribute="height" constant="70" id="Jyr-Fi-96A"/>
+                                            </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ida-aM-zld">
+                                            <rect key="frame" x="133" y="40.5" width="243" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTw-1u-3OY">
+                                            <rect key="frame" x="133" y="15.5" width="239" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="E8M-To-csN" secondAttribute="bottom" id="0HO-IA-3Mx"/>
+                                        <constraint firstItem="ida-aM-zld" firstAttribute="top" secondItem="MTw-1u-3OY" secondAttribute="bottom" constant="4" id="Csn-CQ-nXB"/>
+                                        <constraint firstItem="MTw-1u-3OY" firstAttribute="leading" secondItem="E8M-To-csN" secondAttribute="trailing" constant="8" id="FVP-BW-yZO"/>
+                                        <constraint firstItem="ida-aM-zld" firstAttribute="leading" secondItem="E8M-To-csN" secondAttribute="trailing" constant="8" id="IOK-fA-oZq"/>
+                                        <constraint firstItem="MTw-1u-3OY" firstAttribute="top" secondItem="zFf-a5-EML" secondAttribute="topMargin" constant="4" id="Kx2-FL-hHz"/>
+                                        <constraint firstItem="ida-aM-zld" firstAttribute="trailing" secondItem="zFf-a5-EML" secondAttribute="trailingMargin" constant="8" id="Uxj-dY-scF"/>
+                                        <constraint firstItem="E8M-To-csN" firstAttribute="top" secondItem="zFf-a5-EML" secondAttribute="top" id="nvz-eo-kIc"/>
+                                        <constraint firstItem="MTw-1u-3OY" firstAttribute="trailing" secondItem="zFf-a5-EML" secondAttribute="trailingMargin" constant="4" id="tSH-Df-a87"/>
+                                        <constraint firstItem="E8M-To-csN" firstAttribute="leading" secondItem="zFf-a5-EML" secondAttribute="leading" id="trZ-B6-YlC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="campaignImageView" destination="E8M-To-csN" id="OT3-YF-G6g"/>
+                                    <outlet property="descriptionLabel" destination="ida-aM-zld" id="ANL-PV-GeJ"/>
+                                    <outlet property="nameLabel" destination="MTw-1u-3OY" id="vlW-k1-ied"/>
                                     <segue destination="5uW-Nq-kUZ" kind="show" id="CNm-LO-qvJ"/>
                                 </connections>
                             </tableViewCell>
@@ -65,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="162-Ve-ZV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-443" y="-200"/>
+            <point key="canvasLocation" x="-443.47826086956525" y="-200.22321428571428"/>
         </scene>
         <!--Campaign Info-->
         <scene sceneID="SEJ-eh-ONZ">
@@ -125,8 +140,11 @@
                         <viewLayoutGuide key="safeArea" id="zcm-Mi-vQb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Campaign Info" id="kmo-fv-mgM">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="iPT-2Y-9K2">
+                        <barButtonItem key="leftBarButtonItem" title="Change Campaign" style="plain" id="iPT-2Y-9K2">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="fza-05-WiW" kind="show" id="Ol1-Sw-Stz"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -191,4 +209,10 @@
             <point key="canvasLocation" x="-1636" y="-200"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bananas.jpg" width="72" height="47.759998321533203"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wzo-85-2tk"/>
+    </inferredMetricsTieBreakers>
 </document>
