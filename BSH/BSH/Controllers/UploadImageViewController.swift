@@ -30,15 +30,29 @@ class UploadImageViewController: CUUViewController {
         self.image = image
     }
     
+    private func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
     @IBAction func uploadButtonClick(_ sender: Any) {
-        guard let image = UploadImageViewController.image, let imageData = image.jpegData(compressionQuality: 1) else {
+        /*guard let image = UploadImageViewController.image, let imageData = image.jpegData(compressionQuality: 1) else {
             return
-        }
+        }*/
         
-        DefaultAPI.postImage(_id: 1, imageFile: imageData, completion: { (image, error) in
-            // TODO: finish
-            print(image, error)
-            self.performSegue(withIdentifier: "uploadToCampaignSegue", sender: nil)
-        })
+        
+        if let image = uploadedImageView.image {
+            // TODO: increase upload size limit at the server
+            if let data = image.jpegData(compressionQuality: 0.1) {
+                let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
+                try? data.write(to: filename)
+                
+                DefaultAPI.postImage(_id: 1, imageFile: filename, completion: { (image, error) in
+                    // TODO: finish handling
+                    print(image, error)
+                    self.performSegue(withIdentifier: "uploadToCampaignSegue", sender: nil)
+                })
+            }
+        }
     }
 }

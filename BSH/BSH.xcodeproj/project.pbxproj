@@ -86,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				50CE499F229FD9EE000E15E8 /* Assets */,
-				3C709CC32282236400823586 /* AppDelegate.swift */,
 				C5F1FA24229ED0A6000F3FAC /* Storyboards */,
 				C5F1FA22229ED082000F3FAC /* Controllers */,
 				3C709CCA2282236700823586 /* Assets.xcassets */,
@@ -117,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				3C709CC52282236400823586 /* ViewController.swift */,
+				3C709CC32282236400823586 /* AppDelegate.swift */,
 				C5C0D82A229EBB6800148B1A /* CampaignTableViewController.swift */,
 				C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */,
 				C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */,

@@ -149,7 +149,7 @@ open class DefaultAPI {
      - parameter imageFile: (form)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postImage(_id: Int, imageFile: Any, completion: @escaping ((_ data: ImageData?,_ error: Error?) -> Void)) {
+    open class func postImage(_id: Int, imageFile: URL, completion: @escaping ((_ data: ImageData?,_ error: Error?) -> Void)) {
         postImageWithRequestBuilder(_id: _id, imageFile: imageFile).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -174,7 +174,7 @@ open class DefaultAPI {
      
      - returns: RequestBuilder<ImageData>
      */
-    open class func postImageWithRequestBuilder(_id: Int, imageFile: Any) -> RequestBuilder<ImageData> {
+    open class func postImageWithRequestBuilder(_id: Int, imageFile: URL) -> RequestBuilder<ImageData> {
         var path = "/campaigns/{id}/images"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
