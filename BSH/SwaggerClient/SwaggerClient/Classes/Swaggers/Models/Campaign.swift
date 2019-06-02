@@ -8,23 +8,18 @@
 import Foundation
 
 
+
 public struct Campaign: Codable {
 
-
     public var _id: Int
-
     public var ownerId: Int
-
     public var type: CampaignType
-
     public var name: String
-
     public var _description: String
-
     public var vocabulary: [String]
+    public var userIds: [Int]
 
-    public var userIds: [Double]
-    public init(_id: Int, ownerId: Int, type: CampaignType, name: String, _description: String, vocabulary: [String], userIds: [Double]) { 
+    public init(_id: Int, ownerId: Int, type: CampaignType, name: String, _description: String, vocabulary: [String], userIds: [Int]) {
         self._id = _id
         self.ownerId = ownerId
         self.type = type
@@ -33,6 +28,7 @@ public struct Campaign: Codable {
         self.vocabulary = vocabulary
         self.userIds = userIds
     }
+
     public enum CodingKeys: String, CodingKey { 
         case _id = "id"
         case ownerId
@@ -43,4 +39,6 @@ public struct Campaign: Codable {
         case userIds
     }
 
+
 }
+

@@ -14,8 +14,9 @@
 		3C709CCB2282236700823586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCA2282236700823586 /* Assets.xcassets */; };
 		3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCC2282236700823586 /* LaunchScreen.storyboard */; };
 		508C6606229FF12100FABC76 /* bananas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508C6605229FF12100FABC76 /* bananas.jpg */; };
+		50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */; };
 		C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */ = {isa = PBXBuildFile; fileRef = C52E36C6228EB6F0005EDB93 /* CUU.plist */; };
-		C58045F3229ED5CB00AE4775 /* UploadDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58045F2229ED5CB00AE4775 /* UploadDataViewController.swift */; };
+		C58045F3229ED5CB00AE4775 /* CaptureImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58045F2229ED5CB00AE4775 /* CaptureImageViewController.swift */; };
 		C58045F5229ED9B400AE4775 /* Campaign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58045F4229ED9B400AE4775 /* Campaign.storyboard */; };
 		C5C0D82B229EBB6800148B1A /* CampaignTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C0D82A229EBB6800148B1A /* CampaignTableViewController.swift */; };
 		C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */; };
@@ -32,10 +33,11 @@
 		3C709CCF2282236700823586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		508C6605229FF12100FABC76 /* bananas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bananas.jpg; sourceTree = "<group>"; };
+		50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		B0527FCBA03923D0444BE452 /* Pods-BSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.release.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.release.xcconfig"; sourceTree = "<group>"; };
 		BA684E17AD61E905706390F9 /* Pods-BSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.debug.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.debug.xcconfig"; sourceTree = "<group>"; };
 		C52E36C6228EB6F0005EDB93 /* CUU.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CUU.plist; sourceTree = "<group>"; };
-		C58045F2229ED5CB00AE4775 /* UploadDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataViewController.swift; sourceTree = "<group>"; };
+		C58045F2229ED5CB00AE4775 /* CaptureImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureImageViewController.swift; sourceTree = "<group>"; };
 		C58045F4229ED9B400AE4775 /* Campaign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Campaign.storyboard; sourceTree = "<group>"; };
 		C5C0D82A229EBB6800148B1A /* CampaignTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignTableViewController.swift; sourceTree = "<group>"; };
 		C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignInfoViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				50CE499F229FD9EE000E15E8 /* Assets */,
-				3C709CC32282236400823586 /* AppDelegate.swift */,
 				C5F1FA24229ED0A6000F3FAC /* Storyboards */,
 				C5F1FA22229ED082000F3FAC /* Controllers */,
 				3C709CCA2282236700823586 /* Assets.xcassets */,
@@ -115,10 +116,12 @@
 			isa = PBXGroup;
 			children = (
 				3C709CC52282236400823586 /* ViewController.swift */,
+				3C709CC32282236400823586 /* AppDelegate.swift */,
 				C5C0D82A229EBB6800148B1A /* CampaignTableViewController.swift */,
 				C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */,
 				C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */,
-				C58045F2229ED5CB00AE4775 /* UploadDataViewController.swift */,
+				C58045F2229ED5CB00AE4775 /* CaptureImageViewController.swift */,
+				50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -266,8 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
 				C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */,
-				C58045F3229ED5CB00AE4775 /* UploadDataViewController.swift in Sources */,
+				C58045F3229ED5CB00AE4775 /* CaptureImageViewController.swift in Sources */,
 				C5C0D82B229EBB6800148B1A /* CampaignTableViewController.swift in Sources */,
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
 				3C709CC62282236400823586 /* ViewController.swift in Sources */,
