@@ -1,0 +1,17 @@
+//
+//  Annotation.swift
+//  BSH
+//
+//  Created by Lei, Taylor on 02.06.19.
+//  Copyright © 2019 Tum LS1. All rights reserved.
+//
+
+import Foundation
+
+protocol Annotation {
+    var points: [Point] { get set }
+    var imageId: Int { get set }
+    var userId: Int { get set }
+    var campaignId: Int { get set }
+    var label: String { get set }
+}

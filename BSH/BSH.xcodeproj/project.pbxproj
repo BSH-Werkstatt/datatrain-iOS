@@ -14,6 +14,11 @@
 		3C709CCB2282236700823586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCA2282236700823586 /* Assets.xcassets */; };
 		3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCC2282236700823586 /* LaunchScreen.storyboard */; };
 		508C6606229FF12100FABC76 /* bananas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 508C6605229FF12100FABC76 /* bananas.jpg */; };
+		50AB753D22A4015800BEB84B /* rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 50AB753C22A4015800BEB84B /* rectangle.png */; };
+		50AB753F22A4026C00BEB84B /* AnnotateImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */; };
+		50AB754222A40EF000BEB84B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB754122A40EF000BEB84B /* Annotation.swift */; };
+		50AB754422A40FC300BEB84B /* RectangularAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB754322A40FC300BEB84B /* RectangularAnnotation.swift */; };
+		50AB754622A40FEF00BEB84B /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB754522A40FEF00BEB84B /* Point.swift */; };
 		50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */; };
 		C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */ = {isa = PBXBuildFile; fileRef = C52E36C6228EB6F0005EDB93 /* CUU.plist */; };
 		C58045F3229ED5CB00AE4775 /* CaptureImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58045F2229ED5CB00AE4775 /* CaptureImageViewController.swift */; };
@@ -33,6 +38,11 @@
 		3C709CCF2282236700823586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		508C6605229FF12100FABC76 /* bananas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bananas.jpg; sourceTree = "<group>"; };
+		50AB753C22A4015800BEB84B /* rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangle.png; sourceTree = "<group>"; };
+		50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotateImageViewController.swift; sourceTree = "<group>"; };
+		50AB754122A40EF000BEB84B /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Annotation.swift; path = BSH/Controllers/Annotation.swift; sourceTree = SOURCE_ROOT; };
+		50AB754322A40FC300BEB84B /* RectangularAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularAnnotation.swift; sourceTree = "<group>"; };
+		50AB754522A40FEF00BEB84B /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		B0527FCBA03923D0444BE452 /* Pods-BSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.release.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.release.xcconfig"; sourceTree = "<group>"; };
 		BA684E17AD61E905706390F9 /* Pods-BSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.debug.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +95,7 @@
 		3C709CC22282236400823586 /* BSH */ = {
 			isa = PBXGroup;
 			children = (
+				50AB754022A40EE300BEB84B /* Models */,
 				50CE499F229FD9EE000E15E8 /* Assets */,
 				C5F1FA24229ED0A6000F3FAC /* Storyboards */,
 				C5F1FA22229ED082000F3FAC /* Controllers */,
@@ -95,9 +106,20 @@
 			path = BSH;
 			sourceTree = "<group>";
 		};
+		50AB754022A40EE300BEB84B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50AB754122A40EF000BEB84B /* Annotation.swift */,
+				50AB754322A40FC300BEB84B /* RectangularAnnotation.swift */,
+				50AB754522A40FEF00BEB84B /* Point.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		50CE499F229FD9EE000E15E8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				50AB753C22A4015800BEB84B /* rectangle.png */,
 				508C6605229FF12100FABC76 /* bananas.jpg */,
 			);
 			path = Assets;
@@ -122,6 +144,7 @@
 				C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */,
 				C58045F2229ED5CB00AE4775 /* CaptureImageViewController.swift */,
 				50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */,
+				50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +224,7 @@
 				508C6606229FF12100FABC76 /* bananas.jpg in Resources */,
 				3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */,
 				3C709CCB2282236700823586 /* Assets.xcassets in Resources */,
+				50AB753D22A4015800BEB84B /* rectangle.png in Resources */,
 				3C709CC92282236400823586 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,12 +293,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50AB753F22A4026C00BEB84B /* AnnotateImageViewController.swift in Sources */,
 				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
 				C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */,
 				C58045F3229ED5CB00AE4775 /* CaptureImageViewController.swift in Sources */,
 				C5C0D82B229EBB6800148B1A /* CampaignTableViewController.swift in Sources */,
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
 				3C709CC62282236400823586 /* ViewController.swift in Sources */,
+				50AB754622A40FEF00BEB84B /* Point.swift in Sources */,
+				50AB754422A40FC300BEB84B /* RectangularAnnotation.swift in Sources */,
+				50AB754222A40EF000BEB84B /* Annotation.swift in Sources */,
 				3C709CC42282236400823586 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

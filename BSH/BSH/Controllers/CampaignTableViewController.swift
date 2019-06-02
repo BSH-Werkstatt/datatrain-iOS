@@ -79,9 +79,9 @@ class CampaignTableViewController: CUUTableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let destination = segue.destination as? CampaignInfoViewController,
+        if segue.destination is CampaignInfoViewController,
             let campaignCellIndex = campaignTable.indexPathForSelectedRow?.row {
-            destination.setCampaign(campaigns[campaignCellIndex])
+            CampaignInfoViewController.setCampaign(campaigns[campaignCellIndex])
         }
     }
 }
