@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol Annotation {
     var points: [Point] { get set }
@@ -14,4 +15,6 @@ protocol Annotation {
     var userId: Int { get set }
     var campaignId: Int { get set }
     var label: String { get set }
+    
+    func draw(image: UIImage, view: UIImageView)
 }

@@ -80,13 +80,14 @@ class AnnotateImageViewController: CUUViewController {
     }
     
     @IBAction func annotationButtonClick(_ sender: Any) {
-        guard let activeCampaign = activeCampaign, let imageData = imageData else {
+        guard let activeCampaign = activeCampaign, let imageData = imageData, let image = annotatedImageView.image else {
             return
         }
         
         if annotationStage == 0 {
             annotationStage = 1
             currentAnnotation = RectangularAnnotation(topLeft: Point(x: 50, y: 50), bottomRight: Point(x: 150, y: 150), userId: 1, campaignId: activeCampaign._id, imageId: imageData._id)
+            currentAnnotation?.draw(image: image, view: annotatedImageView)
         } else {
             annotationStage = 0
             currentAnnotation = nil
