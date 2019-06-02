@@ -30,6 +30,19 @@ class AnnotateImageViewController: CUUViewController {
         
         loadActiveCampaign()
         loadImage()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        annotatedImageView.isUserInteractionEnabled = true
+        annotatedImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        let point = tapGestureRecognizer.location(in: tappedImage)
+        print(point)
+        
+        // TODO: 2 taps to create the rectangle, later using dragging
     }
     
     /// Gets the currently selected campaign from CampaignInfoViewController
