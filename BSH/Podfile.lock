@@ -1,28 +1,39 @@
 PODS:
+  - Alamofire (4.8.2)
   - CUU (2.3.1)
   - KeychainSwift (13.0.0)
   - Prototype (0.3.3)
   - Prototyper (1.1):
     - KeychainSwift (= 13.0.0)
     - Prototype (= 0.3.3)
+  - SwaggerClient (0.0.1):
+    - Alamofire (~> 4.8.0)
 
 DEPENDENCIES:
   - CUU
   - Prototyper
+  - SwaggerClient (from `./SwaggerClient`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - CUU
     - KeychainSwift
     - Prototype
     - Prototyper
 
+EXTERNAL SOURCES:
+  SwaggerClient:
+    :path: "./SwaggerClient"
+
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   CUU: 7d73213ce50811817612f7079a23274d037e4fc4
   KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
   Prototype: 2009eb25fccdcbe5339d1cbe4f116eb6e68466aa
   Prototyper: 09bf1e15d619a7cd6ae358beaa58dc2e0955fa16
+  SwaggerClient: 98b9a9a4e81b637f266d3961295bbaf76171aec3
 
-PODFILE CHECKSUM: 3faad21c1ce7343d216c4d12b5dc88be038046e1
+PODFILE CHECKSUM: 4bc1c5a30829df0fc18bfb1d630f07f70f7638aa
 
 COCOAPODS: 1.6.1

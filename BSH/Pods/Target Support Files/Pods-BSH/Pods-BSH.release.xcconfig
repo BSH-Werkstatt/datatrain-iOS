@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CUU" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift" "${PODS_CONFIGURATION_BUILD_DIR}/Prototype" "${PODS_CONFIGURATION_BUILD_DIR}/Prototyper"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/CUU" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift" "${PODS_CONFIGURATION_BUILD_DIR}/Prototype" "${PODS_CONFIGURATION_BUILD_DIR}/Prototyper" "${PODS_CONFIGURATION_BUILD_DIR}/SwaggerClient"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CUU/CUU.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift/KeychainSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Prototype/Prototype.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Prototyper/Prototyper.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/CUU/CUU.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift/KeychainSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Prototype/Prototype.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Prototyper/Prototyper.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwaggerClient/SwaggerClient.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "CUU" -framework "KeychainSwift" -framework "Prototype" -framework "Prototyper"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "CUU" -framework "KeychainSwift" -framework "Prototype" -framework "Prototyper" -framework "SwaggerClient"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
