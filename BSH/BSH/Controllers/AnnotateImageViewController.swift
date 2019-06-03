@@ -23,6 +23,7 @@ class AnnotateImageViewController: CUUViewController {
     private var annotationStage: Int = 0
     private var currentAnnotation: Annotation?
     private var imageData: ImageData?
+    private var originalImage: UIImage?
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class AnnotateImageViewController: CUUViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        // TODO: implement annotation using a click and a drag
         guard let annotatedImageView = annotatedImageView, let image = annotatedImageView.image else {
             return
         }
@@ -126,6 +128,7 @@ class AnnotateImageViewController: CUUViewController {
             }
             
             self.annotatedImageView.image = UIImage(data: data)
+            self.originalImage = self.annotatedImageView.image
         })
     }
     
@@ -154,7 +157,25 @@ class AnnotateImageViewController: CUUViewController {
             annotationStage = 0
             annotateRectangleButton.backgroundColor = UIColor.white.withAlphaComponent(0.0)
             currentAnnotation = nil
+            self.resetImage()
         }
+    }
+    
+    private func resetImage() {
+        guard let view = annotatedImageView, let image = originalImage else {
+            return
+        }
+        
+        let imageSize = image.size
+        let scale: CGFloat = 0
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, scale)
+        
+        image.draw(at: CGPoint.zero)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        view.image = newImage
     }
     
     @IBAction func submitButtonClick(_ sender: Any) {
