@@ -371,7 +371,6 @@
         <image name="rectangle.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k7m-0g-nR7"/>
         <segue reference="bfr-tX-pld"/>
         <segue reference="Ol1-Sw-Stz"/>
     </inferredMetricsTieBreakers>

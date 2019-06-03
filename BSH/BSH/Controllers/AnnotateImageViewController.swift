@@ -179,6 +179,18 @@ class AnnotateImageViewController: CUUViewController {
     }
     
     @IBAction func submitButtonClick(_ sender: Any) {
+        guard let label = annotationNameTextField.text else {
+            return
+        }
         
+        if annotationNameTextField.text?.count == 0 || currentAnnotation == nil {
+            return
+        }
+        
+        // TODO: transform to SwagerClient.Annotaion and call API method
+        
+        // END TODO
+        
+        self.performSegue(withIdentifier: "annotateToCampaignInfo", sender: nil)
     }
 }
