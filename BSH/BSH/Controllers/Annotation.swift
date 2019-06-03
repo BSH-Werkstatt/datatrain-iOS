@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Annotation {
-    var points: [Point] { get set }
+    var points: [Point] { get }
     var imageId: Int { get set }
     var userId: Int { get set }
     var campaignId: Int { get set }

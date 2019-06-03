@@ -38,11 +38,52 @@ class AnnotateImageViewController: CUUViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        guard let annotatedImageView = annotatedImageView, let image = annotatedImageView.image else {
+            return
+        }
+        
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         let point = tapGestureRecognizer.location(in: tappedImage)
-        print(point)
         
-        // TODO: 2 taps to create the rectangle, later using dragging
+        var offsetX = CGFloat(0.0)
+        var offsetY = CGFloat(0.0)
+        let frameRatio = annotatedImageView.frame.size.width / annotatedImageView.frame.size.height
+        let imageRatio = image.size.width / image.size.height
+        
+        if frameRatio < imageRatio {
+            // image is wider
+            offsetY = (annotatedImageView.frame.size.height - annotatedImageView.frame.size.width / image.size.width * image.size.height) / CGFloat(2)
+        } else {
+            // image is narrower
+            offsetX = (annotatedImageView.frame.size.width - annotatedImageView.frame.size.height / image.size.height * image.size.width) / CGFloat(2)
+        }
+        
+        var x = (-offsetX + point.x) / (annotatedImageView.frame.size.width - 2 * offsetX) * image.size.width
+        if x < CGFloat(0) {
+            x = CGFloat(0)
+        } else if x > image.size.width {
+            x = image.size.width
+        }
+        
+        var y = (-offsetY + point.y) / (annotatedImageView.frame.size.height - 2 * offsetY) * image.size.height
+        if y < CGFloat(0) {
+            y = CGFloat(0)
+        } else if y > image.size.height {
+            y = image.size.height
+        }
+
+        // first tap to define the top left corner
+        if let currentAnnotation = self.currentAnnotation as? RectangularAnnotation {
+            if annotationStage == 1 {
+                currentAnnotation.setTopLeft(point: Point(x: x, y: y))
+                annotationStage = 2
+            } else if annotationStage == 2 {
+                currentAnnotation.setBottomRight(point: Point(x: x, y: y))
+                currentAnnotation.draw(image: image, view: annotatedImageView)
+                annotationStage = 3
+            }
+        }
+        
     }
     
     /// Gets the currently selected campaign from CampaignInfoViewController
@@ -97,12 +138,21 @@ class AnnotateImageViewController: CUUViewController {
             return
         }
         
+        let size = image.size
         if annotationStage == 0 {
             annotationStage = 1
-            currentAnnotation = RectangularAnnotation(topLeft: Point(x: 50, y: 50), bottomRight: Point(x: 150, y: 150), userId: 1, campaignId: activeCampaign._id, imageId: imageData._id)
-            currentAnnotation?.draw(image: image, view: annotatedImageView)
+            annotateRectangleButton.backgroundColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(0.5))
+
+            currentAnnotation = RectangularAnnotation(
+                topLeft: Point(x: 0.0, y: 0.0),
+                bottomRight: Point(x: size.width, y: size.height),
+                userId: 1,
+                campaignId: activeCampaign._id,
+                imageId: imageData._id
+            )
         } else {
             annotationStage = 0
+            annotateRectangleButton.backgroundColor = UIColor.white.withAlphaComponent(0.0)
             currentAnnotation = nil
         }
     }

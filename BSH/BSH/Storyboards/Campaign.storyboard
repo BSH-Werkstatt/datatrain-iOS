@@ -101,13 +101,13 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt">
                                 <rect key="frame" x="80" y="500" width="254" height="30"/>
-                                <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.61960784313725492" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Annotate">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="bvL-CD-qgc"/>
-                                    <segue destination="Hgt-na-wWW" kind="show" id="yeV-xf-qLQ"/>
+                                    <segue destination="Hgt-na-wWW" kind="show" id="k7m-0g-nR7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoE-Bp-ObJ">
@@ -371,6 +371,7 @@
         <image name="rectangle.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="k7m-0g-nR7"/>
         <segue reference="bfr-tX-pld"/>
         <segue reference="Ol1-Sw-Stz"/>
     </inferredMetricsTieBreakers>

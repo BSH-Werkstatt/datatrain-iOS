@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class Point {
-    public var x: Int
-    public var y: Int
+    public var x: CGFloat
+    public var y: CGFloat
     
-    init(x: Int, y: Int) {
+    init(x: CGFloat, y: CGFloat) {
         self.x = x
         self.y = y
     }
