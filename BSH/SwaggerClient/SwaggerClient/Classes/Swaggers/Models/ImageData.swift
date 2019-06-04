@@ -10,26 +10,26 @@ import Foundation
 
 
 public struct ImageData: Codable {
-
+    
     public var _id: Int
     public var campaignId: Int
     public var userId: Int
     public var annotations: [Annotation]
-
+    
     public init(_id: Int, campaignId: Int, userId: Int, annotations: [Annotation]) {
         self._id = _id
         self.campaignId = campaignId
         self.userId = userId
         self.annotations = annotations
     }
-
-    public enum CodingKeys: String, CodingKey { 
+    
+    public enum CodingKeys: String, CodingKey {
         case _id = "id"
         case campaignId
         case userId
         case annotations
     }
-
-
+    
+    
 }
 

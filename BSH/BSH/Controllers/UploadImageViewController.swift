@@ -37,8 +37,8 @@ class UploadImageViewController: CUUViewController {
     
     @IBAction func uploadButtonClick(_ sender: Any) {
         /*guard let image = UploadImageViewController.image, let imageData = image.jpegData(compressionQuality: 1) else {
-            return
-        }*/
+         return
+         }*/
         
         
         if let image = uploadedImageView.image {
@@ -47,7 +47,7 @@ class UploadImageViewController: CUUViewController {
                 let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                 try? data.write(to: filename)
                 
-                DefaultAPI.postImage(_id: 1, imageFile: filename, completion: { (image, error) in
+                DefaultAPI.postImage(imageFile: filename, campaignId: 1, completion: { (image, error) in
                     // TODO: finish handling
                     print(image, error)
                     self.performSegue(withIdentifier: "uploadToCampaignSegue", sender: nil)
@@ -56,3 +56,4 @@ class UploadImageViewController: CUUViewController {
         }
     }
 }
+

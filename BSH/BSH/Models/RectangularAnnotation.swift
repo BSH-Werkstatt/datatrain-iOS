@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwaggerClient
 
 class RectangularAnnotation : Annotation {
     var topLeft: Point
@@ -81,5 +82,15 @@ class RectangularAnnotation : Annotation {
         
         topLeft = Point(x: minX, y: minY)
         bottomRight = Point(x: maxX, y: maxY)
+    }
+    
+    public func getAPIPoints() -> [SwaggerClient.Point] {
+        var apiPoints: [SwaggerClient.Point] = []
+        
+        for point in points {
+            apiPoints.append(SwaggerClient.Point(x: Double(point.x), y: Double(point.y)))
+        }
+        
+        return apiPoints
     }
 }

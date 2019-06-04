@@ -73,7 +73,7 @@ class AnnotateImageViewController: CUUViewController {
         } else if y > image.size.height {
             y = image.size.height
         }
-
+        
         // first tap to define the top left corner
         if let currentAnnotation = self.currentAnnotation as? RectangularAnnotation {
             if annotationStage == 1 {
@@ -122,9 +122,9 @@ class AnnotateImageViewController: CUUViewController {
             
             guard let url = URL(string: imageURL),
                 let data = try? Data(contentsOf: url)else {
-                // TODO: show an alert that url does not exist
-                self.returnToCampaignInfo()
-                return
+                    // TODO: show an alert that url does not exist
+                    self.returnToCampaignInfo()
+                    return
             }
             
             self.annotatedImageView.image = UIImage(data: data)
@@ -145,7 +145,7 @@ class AnnotateImageViewController: CUUViewController {
         if annotationStage == 0 {
             annotationStage = 1
             annotateRectangleButton.backgroundColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(0.5))
-
+            
             currentAnnotation = RectangularAnnotation(
                 topLeft: Point(x: 0.0, y: 0.0),
                 bottomRight: Point(x: size.width, y: size.height),
@@ -179,7 +179,10 @@ class AnnotateImageViewController: CUUViewController {
     }
     
     @IBAction func submitButtonClick(_ sender: Any) {
-        guard let label = annotationNameTextField.text else {
+        guard let label = annotationNameTextField.text,
+            let imageData = imageData,
+            let currentAnnotation = currentAnnotation,
+            let activeCampaign = activeCampaign else {
             return
         }
         
@@ -187,10 +190,14 @@ class AnnotateImageViewController: CUUViewController {
             return
         }
         
-        // TODO: transform to SwagerClient.Annotaion and call API method
+        var type = "polygon"
         
-        // END TODO
+        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userId: 1)
+        DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
+            print(annotation, error)
+        })
         
         self.performSegue(withIdentifier: "annotateToCampaignInfo", sender: nil)
     }
 }
+

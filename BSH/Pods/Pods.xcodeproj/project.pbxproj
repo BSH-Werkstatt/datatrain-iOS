@@ -116,8 +116,10 @@
 		4F9F613445735663CCB110EE1166F9E6 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D381CB1C87A8BF22F67143EF16F25A6A /* DispatchQueue+Alamofire.swift */; };
 		4FBBDB10585A1B99DC590CAD0088B2B1 /* ThinkingAloudStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE2284AD899E0D917545FBD9C384431 /* ThinkingAloudStartViewController.swift */; };
 		507EFE4B4C6A4E622F00DBAD247FFF7B /* BKPredictionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6979647A6D4D8B730C420D041EF0E9A4 /* BKPredictionDelegate.swift */; };
-		50C5CA0322A0105500A72DB8 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5CA0222A0105500A72DB8 /* ImageData.swift */; };
-		50C5CA0522A0106000A72DB8 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5CA0422A0106000A72DB8 /* Annotation.swift */; };
+		50BEC78C22A69834000107DF /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BEC78B22A69834000107DF /* ImageData.swift */; };
+		50BEC78E22A69855000107DF /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BEC78D22A69855000107DF /* Point.swift */; };
+		50BEC79022A698A2000107DF /* AnnotationCreationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BEC78F22A698A2000107DF /* AnnotationCreationRequest.swift */; };
+		50D888D022A697A7007E689D /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D888C922A693AE007E689D /* Annotation.swift */; };
 		5187D71BDA5B808B3F178AF2658CA3FE /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAEF8268E78C8BB3064504893053E8 /* ResponseSerialization.swift */; };
 		51CFC03B349393A8A0AC86E8A0E8AA62 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F641C31700B5DF12344071FBCB70C089 /* ShareViewController.swift */; };
 		5484E6681BF03D1C929D2173B4702C0F /* BKContextWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C90C5E8C64E00BF7E6CC5CD2B22960 /* BKContextWrapper.swift */; };
@@ -556,9 +558,11 @@
 		4D68FF7263EA8C69F560941C7A06E752 /* annotation_overlay.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = annotation_overlay.png; path = Prototyper/Assets/annotation_overlay.png; sourceTree = "<group>"; };
 		4E19C8CCD8209AFB1C5991863991530C /* CUUCharacteristics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUCharacteristics.swift; path = CUU/Classes/CUUCore/CUUCharacteristics.swift; sourceTree = "<group>"; };
 		4E86436AD6FF4767FFC042D83512ABEF /* Prototyper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Prototyper.modulemap; sourceTree = "<group>"; };
+		50BEC78B22A69834000107DF /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		50BEC78D22A69855000107DF /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		50BEC78F22A698A2000107DF /* AnnotationCreationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationCreationRequest.swift; sourceTree = "<group>"; };
 		50C4064565551008B2A571B3811090AB /* CUUCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUCollectionViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUCollectionViewController.swift; sourceTree = "<group>"; };
-		50C5CA0222A0105500A72DB8 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
-		50C5CA0422A0106000A72DB8 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		50D888C922A693AE007E689D /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		51BAE7B258E57B323E537079AC50C678 /* CUUFeature.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUFeature.swift; path = CUU/Classes/CUUCore/CUUFeature.swift; sourceTree = "<group>"; };
 		521B8F46DDDF58F5A10D873C34EC57AB /* CUUStartOptionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUStartOptionView.swift; path = CUU/Classes/CUUCore/CUUStartOptionView.swift; sourceTree = "<group>"; };
 		526DFBE54F16D58BAA5CF4BD4AE1B706 /* EKFaceStateManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKFaceStateManager.swift; path = CUU/Classes/EmotionKit/FaceDetector/EKFaceStateManager.swift; sourceTree = "<group>"; };
@@ -1447,10 +1451,12 @@
 		D89114B1EE901B9EDE5E7EBD2924B22E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				50C5CA0422A0106000A72DB8 /* Annotation.swift */,
-				50C5CA0222A0105500A72DB8 /* ImageData.swift */,
 				CFD1F0D31CEC4F55A6786D4246DFF29A /* Campaign.swift */,
 				F51277C212B3CB961148CECBDD2EA609 /* CampaignType.swift */,
+				50D888C922A693AE007E689D /* Annotation.swift */,
+				50BEC78B22A69834000107DF /* ImageData.swift */,
+				50BEC78D22A69855000107DF /* Point.swift */,
+				50BEC78F22A698A2000107DF /* AnnotationCreationRequest.swift */,
 			);
 			name = Models;
 			path = SwaggerClient/Classes/Swaggers/Models;
@@ -1952,21 +1958,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BEC78E22A69855000107DF /* Point.swift in Sources */,
 				9EA1FB7758B59D3EEE1F6BF7EB37DB54 /* AlamofireImplementations.swift in Sources */,
-				50C5CA0522A0106000A72DB8 /* Annotation.swift in Sources */,
 				6C464E2FC344AF07A98DD08A415E4188 /* APIHelper.swift in Sources */,
+				50BEC79022A698A2000107DF /* AnnotationCreationRequest.swift in Sources */,
 				FD3AFF3BD7EC0E60D553C90A493B13C6 /* APIs.swift in Sources */,
 				EAABF40BB70559B1424F00A1D6EE573E /* Campaign.swift in Sources */,
 				7262B382F142D847026F776CA736195F /* CampaignType.swift in Sources */,
 				3A48BD1A6931885A567CC7E88A9D6D7B /* CodableHelper.swift in Sources */,
+				50D888D022A697A7007E689D /* Annotation.swift in Sources */,
 				624898EAB417127158894E25FAF4ADCC /* Configuration.swift in Sources */,
+				50BEC78C22A69834000107DF /* ImageData.swift in Sources */,
 				2ECE81240F7E4FCA842309E0E4A6502B /* DefaultAPI.swift in Sources */,
 				C754AFD96A2D414E74FFB42060845CCD /* Extensions.swift in Sources */,
 				A4D998AAF33EDF4090DE51CFD8498BDD /* JSONEncodableEncoding.swift in Sources */,
 				1737E3E1A75F416B26AD7E5148971986 /* JSONEncodingHelper.swift in Sources */,
 				AFA9920914C3BC26B5D1A4D12FF849F8 /* Models.swift in Sources */,
 				4C1A7D79BC86123662F5B1FBA88B68D2 /* SwaggerClient-dummy.m in Sources */,
-				50C5CA0322A0105500A72DB8 /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

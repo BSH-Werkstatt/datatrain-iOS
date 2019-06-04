@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwaggerClient
 
 protocol Annotation {
     var points: [Point] { get }
@@ -17,4 +18,6 @@ protocol Annotation {
     var label: String { get set }
     
     func draw(image: UIImage, view: UIImageView)
+    
+    func getAPIPoints() -> [SwaggerClient.Point]
 }
