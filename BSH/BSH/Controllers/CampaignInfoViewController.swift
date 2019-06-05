@@ -38,11 +38,11 @@ class CampaignInfoViewController: CUUViewController {
         }
     }
     
-    public func setCampaign(_ campaign: Campaign) {
+    public static func setCampaign(_ campaign: Campaign) {
         CampaignInfoViewController.campaign = campaign
     }
     
-    public func getCampaign(_ campaign: Campaign) -> Campaign? {
+    public static func getCampaign() -> Campaign? {
         return CampaignInfoViewController.campaign
     }
 }

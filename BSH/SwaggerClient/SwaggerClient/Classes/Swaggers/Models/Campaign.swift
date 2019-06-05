@@ -17,16 +17,14 @@ public struct Campaign: Codable {
     public var name: String
     public var _description: String
     public var vocabulary: [String]
-    public var userIds: [Int]
 
-    public init(_id: Int, ownerId: Int, type: CampaignType, name: String, _description: String, vocabulary: [String], userIds: [Int]) {
+    public init(_id: Int, ownerId: Int, type: CampaignType, name: String, _description: String, vocabulary: [String]) {
         self._id = _id
         self.ownerId = ownerId
         self.type = type
         self.name = name
         self._description = _description
         self.vocabulary = vocabulary
-        self.userIds = userIds
     }
 
     public enum CodingKeys: String, CodingKey { 
@@ -36,7 +34,6 @@ public struct Campaign: Codable {
         case name
         case _description = "description"
         case vocabulary
-        case userIds
     }
 
 

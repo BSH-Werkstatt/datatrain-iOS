@@ -101,12 +101,13 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt">
                                 <rect key="frame" x="80" y="500" width="254" height="30"/>
-                                <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Start">
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.61960784313725492" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Annotate">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="bvL-CD-qgc"/>
+                                    <segue destination="Hgt-na-wWW" kind="show" id="k7m-0g-nR7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoE-Bp-ObJ">
@@ -169,6 +170,79 @@
             </objects>
             <point key="canvasLocation" x="690" y="-206"/>
         </scene>
+        <!--Annotate Image View Controller-->
+        <scene sceneID="mvp-vE-wmw">
+            <objects>
+                <viewController id="Hgt-na-wWW" customClass="AnnotateImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8oh-dQ-NR4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Jaa-hv-Vhw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="699"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mh-HR-deh">
+                                <rect key="frame" x="308" y="763" width="86" height="24"/>
+                                <color key="backgroundColor" red="0.97214037180000001" green="0.6181282401" blue="0.20888295770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="MdP-PZ-kPE"/>
+                                </constraints>
+                                <state key="normal" title="Annotate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="U3m-Vh-3CF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywE-h7-pAA">
+                                <rect key="frame" x="109" y="763" width="191" height="24"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU7-8O-ary">
+                                <rect key="frame" x="20" y="758" width="49" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="2CL-qK-aJe"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="rectangle.png"/>
+                                <connections>
+                                    <action selector="annotationButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="4El-Au-T4P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ywE-h7-pAA" firstAttribute="top" secondItem="Jaa-hv-Vhw" secondAttribute="bottom" constant="20" id="3ks-tA-CsE"/>
+                            <constraint firstItem="zU7-8O-ary" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" constant="20" id="3oO-jc-rEk"/>
+                            <constraint firstItem="Jaa-hv-Vhw" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="AUq-tK-Qqs"/>
+                            <constraint firstItem="ywE-h7-pAA" firstAttribute="leading" secondItem="zU7-8O-ary" secondAttribute="trailing" constant="40" id="CJR-nI-oVI"/>
+                            <constraint firstItem="zU7-8O-ary" firstAttribute="top" secondItem="Jaa-hv-Vhw" secondAttribute="bottom" constant="15" id="J88-GH-uUh"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="bottom" secondItem="zU7-8O-ary" secondAttribute="bottom" constant="15" id="KFQ-g6-Kpf"/>
+                            <constraint firstItem="4mh-HR-deh" firstAttribute="leading" secondItem="ywE-h7-pAA" secondAttribute="trailing" constant="8" id="Lie-u2-izD"/>
+                            <constraint firstItem="4mh-HR-deh" firstAttribute="top" secondItem="Jaa-hv-Vhw" secondAttribute="bottom" constant="20" id="V2W-ip-HiJ"/>
+                            <constraint firstItem="Jaa-hv-Vhw" firstAttribute="top" secondItem="spO-dt-YnY" secondAttribute="top" id="b5S-0x-EcV"/>
+                            <constraint firstItem="Jaa-hv-Vhw" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="oV9-L7-mX3"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="trailing" secondItem="4mh-HR-deh" secondAttribute="trailing" constant="20" id="rTu-Cl-veN"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="bottom" secondItem="Jaa-hv-Vhw" secondAttribute="bottom" constant="70" id="wBM-Pa-jLK"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="bottom" secondItem="ywE-h7-pAA" secondAttribute="bottom" constant="26" id="yDl-wO-qB7"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="bottom" secondItem="4mh-HR-deh" secondAttribute="bottom" constant="26" id="yR7-ME-DmV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="annotateRectangleButton" destination="zU7-8O-ary" id="jXJ-4X-a6h"/>
+                        <outlet property="annotatedImageView" destination="Jaa-hv-Vhw" id="L2K-uy-TCP"/>
+                        <outlet property="annotationNameTextField" destination="ywE-h7-pAA" id="SRU-8M-cSC"/>
+                        <outlet property="submitButton" destination="4mh-HR-deh" id="p20-7b-NPz"/>
+                        <segue destination="5uW-Nq-kUZ" kind="show" identifier="annotateToCampaignInfo" id="bfr-tX-pld"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905.7971014492755" y="186.83035714285714"/>
+        </scene>
         <!--Capture Image View-->
         <scene sceneID="9gl-U8-fws">
             <objects>
@@ -217,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRJ-H3-QQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892.753623188406" y="-206.25"/>
+            <point key="canvasLocation" x="1907" y="-612"/>
         </scene>
         <!--Upload Image View-->
         <scene sceneID="62n-9l-fz6">
@@ -267,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW7-0x-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3044.9275362318845" y="-206.25"/>
+            <point key="canvasLocation" x="3059" y="-612"/>
         </scene>
         <!--Campaigns-->
         <scene sceneID="fAV-Pd-7EX">
@@ -294,9 +368,10 @@
     </scenes>
     <resources>
         <image name="bananas.jpg" width="72" height="47.759998321533203"/>
+        <image name="rectangle.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Ib-2b-ZNB"/>
+        <segue reference="bfr-tX-pld"/>
         <segue reference="Ol1-Sw-Stz"/>
     </inferredMetricsTieBreakers>
 </document>
