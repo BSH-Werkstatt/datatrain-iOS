@@ -133,7 +133,7 @@ class AnnotateImageViewController: CUUViewController {
     }
     
     private func returnToCampaignInfo() {
-        self.performSegue(withIdentifier: "annotateToCampaignInfo", sender: nil)
+        // TODO: Handle errors
     }
     
     @IBAction func annotationButtonClick(_ sender: Any) {
@@ -202,7 +202,6 @@ class AnnotateImageViewController: CUUViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         })
-        self.performSegue(withIdentifier: "annotateToCampaignInfo", sender: nil)
     }
 }
 
