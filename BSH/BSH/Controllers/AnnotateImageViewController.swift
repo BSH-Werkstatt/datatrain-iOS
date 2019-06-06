@@ -195,14 +195,14 @@ class AnnotateImageViewController: CUUViewController {
         let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userId: 1)
         DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
             //print(annotation, error)
+            if error == nil {
+                // Show notification for succesful upload
+                let alertController = UIAlertController(title: "Annotation successful", message: "the annotation was saved.", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
         })
-        
         self.performSegue(withIdentifier: "annotateToCampaignInfo", sender: nil)
-        // Show notification for successful annotation
-        let alertController = UIAlertController(title: "Annotation successful", message: "Annotation was saved.", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-        
     }
 }
 

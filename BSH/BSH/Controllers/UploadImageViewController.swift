@@ -50,13 +50,15 @@ class UploadImageViewController: CUUViewController {
                 DefaultAPI.postImage(imageFile: filename, campaignId: 1, completion: { (image, error) in
                     // TODO: finish handling
                     print(image, error)
-                    //self.performSegue(withIdentifier: "uploadToCampaignSegue", sender: nil)
+                    if error == nil {
+                        // Show notification for succesful upload
+                        let alertController = UIAlertController(title: "Upload successful", message: "Image was sent to campaign database.", preferredStyle: UIAlertController.Style.alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 })
                 self.performSegue(withIdentifier: "uploadToCampaignSegue", sender: nil)
-                // Show notification for succesful upload
-                let alertController = UIAlertController(title: "Upload successful", message: "Image was sent to campaign database.", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+
             }
         }
     }
