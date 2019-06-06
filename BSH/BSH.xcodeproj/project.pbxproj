@@ -269,6 +269,7 @@
 				"${BUILT_PRODUCTS_DIR}/Prototype/Prototype.framework",
 				"${BUILT_PRODUCTS_DIR}/Prototyper/Prototyper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwaggerClient/SwaggerClient.framework",
+				"${BUILT_PRODUCTS_DIR}/TouchVisualizer/TouchVisualizer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -280,6 +281,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prototype.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prototyper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwaggerClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TouchVisualizer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -459,7 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
+				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -479,7 +481,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
+				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
