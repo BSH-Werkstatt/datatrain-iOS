@@ -26,7 +26,6 @@ open class DefaultAPI {
      - GET /campaigns
      - examples: [{contentType=application/json, example=[ {
      "vocabulary" : [ "vocabulary", "vocabulary" ],
-     "userIds" : [ 1, 1 ],
      "name" : "name",
      "description" : "description",
      "id" : 0,
@@ -34,7 +33,6 @@ open class DefaultAPI {
      "type" : { }
      }, {
      "vocabulary" : [ "vocabulary", "vocabulary" ],
-     "userIds" : [ 1, 1 ],
      "name" : "name",
      "description" : "description",
      "id" : 0,
@@ -58,21 +56,20 @@ open class DefaultAPI {
     
     /**
      
-     - parameter _id: (path)
+     - parameter campaignId: (path)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getCampaign(_id: Int, completion: @escaping ((_ data: Campaign?,_ error: Error?) -> Void)) {
-        getCampaignWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+    open class func getCampaign(campaignId: Int, completion: @escaping ((_ data: Campaign?,_ error: Error?) -> Void)) {
+        getCampaignWithRequestBuilder(campaignId: campaignId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
     
     
     /**
-     - GET /campaigns/{id}
+     - GET /campaigns/{campaignId}
      - examples: [{contentType=application/json, example={
      "vocabulary" : [ "vocabulary", "vocabulary" ],
-     "userIds" : [ 1, 1 ],
      "name" : "name",
      "description" : "description",
      "id" : 0,
@@ -80,15 +77,15 @@ open class DefaultAPI {
      "type" : { }
      }}]
      
-     - parameter _id: (path)
+     - parameter campaignId: (path)
      
      - returns: RequestBuilder<Campaign>
      */
-    open class func getCampaignWithRequestBuilder(_id: Int) -> RequestBuilder<Campaign> {
-        var path = "/campaigns/{id}"
-        let _idPreEscape = "\(_id)"
-        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+    open class func getCampaignWithRequestBuilder(campaignId: Int) -> RequestBuilder<Campaign> {
+        var path = "/campaigns/{campaignId}"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -116,9 +113,33 @@ open class DefaultAPI {
      - examples: [{contentType=application/json, example={
      "campaignId" : 6,
      "annotations" : [ {
-     "id" : 5
+     "imageId" : 3,
+     "campaignId" : 9,
+     "id" : 5,
+     "label" : "label",
+     "type" : "type",
+     "userId" : 7,
+     "points" : [ {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
      }, {
-     "id" : 5
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     } ]
+     }, {
+     "imageId" : 3,
+     "campaignId" : 9,
+     "id" : 5,
+     "label" : "label",
+     "type" : "type",
+     "userId" : 7,
+     "points" : [ {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     }, {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     } ]
      } ],
      "id" : 0,
      "userId" : 1
@@ -145,40 +166,64 @@ open class DefaultAPI {
     
     /**
      
-     - parameter _id: (path)
      - parameter imageFile: (form)
+     - parameter campaignId: (path)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postImage(_id: Int, imageFile: URL, completion: @escaping ((_ data: ImageData?,_ error: Error?) -> Void)) {
-        postImageWithRequestBuilder(_id: _id, imageFile: imageFile).execute { (response, error) -> Void in
+    open class func postImage(imageFile: URL, campaignId: Int, completion: @escaping ((_ data: ImageData?,_ error: Error?) -> Void)) {
+        postImageWithRequestBuilder(imageFile: imageFile, campaignId: campaignId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
     
     
     /**
-     - POST /campaigns/{id}/images
+     - POST /campaigns/{campaignId}/images
      - examples: [{contentType=application/json, example={
      "campaignId" : 6,
      "annotations" : [ {
-     "id" : 5
+     "imageId" : 3,
+     "campaignId" : 9,
+     "id" : 5,
+     "label" : "label",
+     "type" : "type",
+     "userId" : 7,
+     "points" : [ {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
      }, {
-     "id" : 5
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     } ]
+     }, {
+     "imageId" : 3,
+     "campaignId" : 9,
+     "id" : 5,
+     "label" : "label",
+     "type" : "type",
+     "userId" : 7,
+     "points" : [ {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     }, {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     } ]
      } ],
      "id" : 0,
      "userId" : 1
      }}]
      
-     - parameter _id: (path)
      - parameter imageFile: (form)
+     - parameter campaignId: (path)
      
      - returns: RequestBuilder<ImageData>
      */
-    open class func postImageWithRequestBuilder(_id: Int, imageFile: URL) -> RequestBuilder<ImageData> {
-        var path = "/campaigns/{id}/images"
-        let _idPreEscape = "\(_id)"
-        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+    open class func postImageWithRequestBuilder(imageFile: URL, campaignId: Int) -> RequestBuilder<ImageData> {
+        var path = "/campaigns/{campaignId}/images"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
         let URLString = SwaggerClientAPI.basePath + path
         let formParams: [String:Any?] = [
             "imageFile": imageFile
@@ -192,6 +237,62 @@ open class DefaultAPI {
         let requestBuilder: RequestBuilder<ImageData>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
         
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
+    /**
+     
+     - parameter campaignId: (path)
+     - parameter imageId: (path)
+     - parameter request: (body)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postImageAnnotation(campaignId: Int, imageId: Int, request: AnnotationCreationRequest, completion: @escaping ((_ data: Annotation?,_ error: Error?) -> Void)) {
+        postImageAnnotationWithRequestBuilder(campaignId: campaignId, imageId: imageId, request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     - POST /campaigns/{campaignId}/images/{imageId}/annotations
+     - examples: [{contentType=application/json, example={
+     "imageId" : 3,
+     "campaignId" : 9,
+     "id" : 5,
+     "label" : "label",
+     "type" : "type",
+     "userId" : 7,
+     "points" : [ {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     }, {
+     "x" : 5.637376656633329,
+     "y" : 2.3021358869347655
+     } ]
+     }}]
+     
+     - parameter campaignId: (path)
+     - parameter imageId: (path)
+     - parameter request: (body)
+     
+     - returns: RequestBuilder<Annotation>
+     */
+    open class func postImageAnnotationWithRequestBuilder(campaignId: Int, imageId: Int, request: AnnotationCreationRequest) -> RequestBuilder<Annotation> {
+        var path = "/campaigns/{campaignId}/images/{imageId}/annotations"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let imageIdPreEscape = "\(imageId)"
+        let imageIdPostEscape = imageIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageId}", with: imageIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+        
+        let url = URLComponents(string: URLString)
+        
+        let requestBuilder: RequestBuilder<Annotation>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
 }
