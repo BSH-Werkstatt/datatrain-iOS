@@ -52,7 +52,11 @@ class UploadImageViewController: CUUViewController {
                     print(image, error)
                     if error == nil {
                         // Show notification for succesful upload
-                        let alertController = UIAlertController(title: "Upload successful", message: "Image was sent to campaign database.", preferredStyle: UIAlertController.Style.alert)
+                        let alertController = UIAlertController(title: "Upload successful", message: "Image was sent to the campaign database.", preferredStyle: UIAlertController.Style.alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    } else {
+                        let alertController = UIAlertController(title: "Upload failed", message: "Image couldn't be sent to the campaign database. Please make sure you have an internet connection.", preferredStyle: UIAlertController.Style.alert)
                         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alertController, animated: true, completion: nil)
                     }
