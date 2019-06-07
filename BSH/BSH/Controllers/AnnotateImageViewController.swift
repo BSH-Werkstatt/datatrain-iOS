@@ -12,12 +12,13 @@ import CUU
 import SwaggerClient
 
 // MARK: - AnnotateImageViewController
-class AnnotateImageViewController: CUUViewController {
+class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     // MARK: Overriden IBOutlets
     @IBOutlet private weak var annotatedImageView: UIImageView!
     @IBOutlet private weak var annotateRectangleButton: UIButton!
     @IBOutlet private weak var annotationNameTextField: UITextField!
     @IBOutlet private weak var submitButton: UIButton!
+    @IBOutlet private var mainView: UIView!
     
     private var activeCampaign: Campaign?
     private var annotationStage: Int = 0
@@ -25,16 +26,43 @@ class AnnotateImageViewController: CUUViewController {
     private var imageData: ImageData?
     private var originalImage: UIImage?
     
+    private var mainViewInitialY: CGFloat!
+    
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // intialize main view offsets because of the keyboard
+        mainViewInitialY = mainView.frame.origin.y
+        
+        // load data
         loadActiveCampaign()
         loadImage()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         annotatedImageView.isUserInteractionEnabled = true
         annotatedImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        annotationNameTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) in
+            
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                
+                // +70 is accounting for the tab bar
+                self.mainView.frame.origin.y = self.mainViewInitialY - keyboardHeight + 80
+            } else {
+                self.mainView.frame.origin.y = self.mainViewInitialY - 150 // base case
+                // TODO: remove later
+                print("Did not detect keyboard height, moving by default value")
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) in
+            self.mainView.frame.origin.y = self.mainViewInitialY
+        }
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -178,6 +206,11 @@ class AnnotateImageViewController: CUUViewController {
         view.image = newImage
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     @IBAction func submitButtonClick(_ sender: Any) {
         guard let label = annotationNameTextField.text,
             let imageData = imageData,
@@ -186,11 +219,12 @@ class AnnotateImageViewController: CUUViewController {
             return
         }
         
-        if annotationNameTextField.text?.count == 0 || currentAnnotation == nil {
+        if annotationNameTextField.text?.count == 0 {
             return
         }
         
-        var type = "polygon"
+        // this is the mask RCNN type
+        let type = "polygon"
         
         let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userId: 1)
         DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in

@@ -74,6 +74,14 @@ class CampaignTableViewController: CUUTableViewController {
         
         cell.nameLabel?.text = campaign.name
         cell.descriptionLabel?.text = campaign._description
+        
+        if let imageURL = campaign.image,
+            let url = URL(string: imageURL),
+            let data = try? Data(contentsOf: url) {
+            cell.campaignImageView.image = UIImage(data: data)
+        }
+        
+        
         return cell
     }
     

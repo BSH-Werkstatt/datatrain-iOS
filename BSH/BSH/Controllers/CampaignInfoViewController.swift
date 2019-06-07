@@ -17,8 +17,9 @@ class CampaignInfoViewController: CUUViewController {
     private static var campaign: Campaign?
     
     // MARK: IBOutlets
-    @IBOutlet weak var campaignName: UILabel!
-    @IBOutlet weak var campaignInfoScrollView: UIScrollView!
+    @IBOutlet private weak var campaignName: UILabel!
+    @IBOutlet private weak var campaignInfoText: UITextView!
+    @IBOutlet weak var campaignImageView: UIImageView!
     
     // MARK: IBActions
     @IBAction func startCampaignButton() {
@@ -35,6 +36,14 @@ class CampaignInfoViewController: CUUViewController {
         super.viewDidLoad()
         if let campaign = CampaignInfoViewController.campaign {
             campaignName.text = campaign.name
+            campaignInfoText.text = campaign._description
+            
+            // TODO: do not load image twice, instead pass it from the campaign table view
+            if let imageURL = campaign.image,
+                let url = URL(string: imageURL),
+                let data = try? Data(contentsOf: url) {
+                self.campaignImageView.image = UIImage(data: data)
+            }
         }
     }
     
