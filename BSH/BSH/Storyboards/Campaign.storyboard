@@ -129,7 +129,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHH-Pa-Twv">
-                                <rect key="frame" x="20" y="469.5" width="374" height="185.5"/>
+                                <rect key="frame" x="16" y="469.5" width="378" height="185.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -148,7 +148,7 @@
                             <constraint firstItem="LoE-Bp-ObJ" firstAttribute="top" secondItem="OEU-9E-Vcf" secondAttribute="bottom" constant="12" id="1uy-lF-nCZ"/>
                             <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="LoE-Bp-ObJ" secondAttribute="trailing" constant="80" id="2dF-rZ-45Z"/>
                             <constraint firstItem="PSt-bR-YeI" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" id="3rS-2C-Sss"/>
-                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="20" id="6ID-go-xcl"/>
+                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="16" id="6ID-go-xcl"/>
                             <constraint firstItem="fRh-t3-kzt" firstAttribute="top" secondItem="eHH-Pa-Twv" secondAttribute="bottom" constant="8" id="7Qd-PG-cVb"/>
                             <constraint firstItem="eHH-Pa-Twv" firstAttribute="top" secondItem="u6e-lv-La9" secondAttribute="bottom" constant="8" id="C3Y-cJ-nlL"/>
                             <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="eHH-Pa-Twv" secondAttribute="trailing" constant="20" id="CaF-rM-ByH"/>
