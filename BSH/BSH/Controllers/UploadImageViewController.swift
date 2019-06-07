@@ -57,8 +57,6 @@ class UploadImageViewController: CUUViewController {
                         self.present(alertController, animated: true, completion: nil)
                     }
                 })
-                self.performSegue(withIdentifier: "uploadToCampaignSegue", sender: nil)
-
             }
         }
     }

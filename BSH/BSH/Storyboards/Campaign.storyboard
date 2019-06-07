@@ -91,13 +91,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, I am the XY Campaign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6e-lv-La9">
-                                <rect key="frame" x="20" y="73" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="169" width="374" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-Ek-rXk">
-                                <rect key="frame" x="20" y="107.5" width="374" height="344.5"/>
+                                <rect key="frame" x="20" y="203.5" width="374" height="248.5"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt">
                                 <rect key="frame" x="80" y="500" width="254" height="30"/>
@@ -155,9 +155,6 @@
                     <navigationItem key="navigationItem" title="Campaign Info" id="kmo-fv-mgM">
                         <barButtonItem key="leftBarButtonItem" title="Change Campaign" style="plain" id="iPT-2Y-9K2">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="fza-05-WiW" kind="show" id="Ol1-Sw-Stz"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -170,7 +167,7 @@
             </objects>
             <point key="canvasLocation" x="690" y="-206"/>
         </scene>
-        <!--Annotate Image View Controller-->
+        <!--Annotate Image-->
         <scene sceneID="mvp-vE-wmw">
             <objects>
                 <viewController id="Hgt-na-wWW" customClass="AnnotateImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Jaa-hv-Vhw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="699"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mh-HR-deh">
                                 <rect key="frame" x="308" y="763" width="86" height="24"/>
@@ -192,6 +189,7 @@
                                 </state>
                                 <connections>
                                     <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="U3m-Vh-3CF"/>
+                                    <segue destination="15C-tZ-zRV" kind="unwind" unwindAction="unwindToCampainInfoView:" id="asZ-X2-WwL"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywE-h7-pAA">
@@ -230,16 +228,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Annotate Image" id="rSy-2x-ocX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="annotateRectangleButton" destination="zU7-8O-ary" id="jXJ-4X-a6h"/>
                         <outlet property="annotatedImageView" destination="Jaa-hv-Vhw" id="L2K-uy-TCP"/>
                         <outlet property="annotationNameTextField" destination="ywE-h7-pAA" id="SRU-8M-cSC"/>
                         <outlet property="submitButton" destination="4mh-HR-deh" id="p20-7b-NPz"/>
-                        <segue destination="5uW-Nq-kUZ" kind="show" identifier="annotateToCampaignInfo" id="bfr-tX-pld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="15C-tZ-zRV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1905.7971014492755" y="186.83035714285714"/>
         </scene>
@@ -252,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera should appear here " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-xM-Sra">
-                                <rect key="frame" x="94" y="305" width="227" height="190"/>
+                                <rect key="frame" x="94" y="401" width="227" height="94"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -284,6 +283,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W3d-sg-AcL"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Upload Image" id="DRF-Dj-7PG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="0fk-Hn-5yq" kind="show" identifier="uploadImageSegue" id="wZX-Ri-D16"/>
@@ -314,10 +314,11 @@
                                 </state>
                                 <connections>
                                     <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" eventType="touchDown" id="VSc-0m-1dC"/>
+                                    <segue destination="hZO-4X-AYN" kind="unwind" unwindAction="unwindToUploadView:" id="C0y-rp-YsR"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-jF-jcj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="696"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -336,10 +337,10 @@
                     <connections>
                         <outlet property="uploadButton" destination="ZaZ-ZK-3Vg" id="NVd-4f-Ozm"/>
                         <outlet property="uploadedImageView" destination="fgm-jF-jcj" id="6aV-iL-Krb"/>
-                        <segue destination="5uW-Nq-kUZ" kind="show" identifier="uploadToCampaignSegue" id="7Ib-2b-ZNB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW7-0x-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hZO-4X-AYN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3059" y="-612"/>
         </scene>
@@ -370,8 +371,4 @@
         <image name="bananas.jpg" width="72" height="47.759998321533203"/>
         <image name="rectangle.png" width="512" height="512"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="bfr-tX-pld"/>
-        <segue reference="Ol1-Sw-Stz"/>
-    </inferredMetricsTieBreakers>
 </document>
