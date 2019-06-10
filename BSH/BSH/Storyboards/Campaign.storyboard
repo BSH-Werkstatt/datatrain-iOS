@@ -97,7 +97,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-t3-kzt" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
                                 <rect key="frame" x="80" y="663" width="254" height="30"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.61960784313725492" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Annotate">
@@ -108,7 +108,7 @@
                                     <segue destination="Hgt-na-wWW" kind="show" id="k7m-0g-nR7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoE-Bp-ObJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoE-Bp-ObJ" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
                                 <rect key="frame" x="80" y="747" width="254" height="30"/>
                                 <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Leaderboard">
@@ -118,14 +118,14 @@
                                     <action selector="toLeaderboardButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="H1X-HS-wQo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEU-9E-Vcf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEU-9E-Vcf" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
                                 <rect key="frame" x="80" y="705" width="254" height="30"/>
                                 <color key="backgroundColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Upload">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lTk-Iz-YU1" kind="show" id="DUV-1L-ZWQ"/>
+                                    <action selector="selectImageAction:" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="r40-hl-WOe"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHH-Pa-Twv">
@@ -175,6 +175,7 @@
                         <outlet property="campaignImageView" destination="PSt-bR-YeI" id="eqW-rd-bvo"/>
                         <outlet property="campaignInfoText" destination="eHH-Pa-Twv" id="4Hi-h6-zG9"/>
                         <outlet property="campaignName" destination="u6e-lv-La9" id="eKT-sN-Gnb"/>
+                        <segue destination="0fk-Hn-5yq" kind="show" identifier="uploadImageSegue" id="Kw0-32-Uq8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rTP-Wx-Y67" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,57 +257,6 @@
                 <exit id="15C-tZ-zRV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1905.7971014492755" y="186.83035714285714"/>
-        </scene>
-        <!--Capture Image View-->
-        <scene sceneID="9gl-U8-fws">
-            <objects>
-                <viewController id="lTk-Iz-YU1" userLabel="Capture Image View" customClass="CaptureImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZRd-fG-lV0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera should appear here " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-xM-Sra">
-                                <rect key="frame" x="94" y="401" width="227" height="94"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNn-6c-pof">
-                                <rect key="frame" x="20" y="760" width="108" height="33"/>
-                                <color key="backgroundColor" red="0.97214037180000001" green="0.6181282401" blue="0.20888295770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="108" id="9bc-By-hGO"/>
-                                    <constraint firstAttribute="height" constant="33" id="Ukg-ZD-eg7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Gallery">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="galleryClick:" destination="lTk-Iz-YU1" eventType="touchDown" id="RXy-q1-9Wh"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="W3d-sg-AcL" firstAttribute="bottom" secondItem="FNn-6c-pof" secondAttribute="bottom" constant="20" id="MAy-uk-hQH"/>
-                            <constraint firstItem="W3d-sg-AcL" firstAttribute="bottom" secondItem="6OT-xM-Sra" secondAttribute="bottom" constant="318" id="Q6d-zm-x5c"/>
-                            <constraint firstItem="6OT-xM-Sra" firstAttribute="leading" secondItem="W3d-sg-AcL" secondAttribute="leading" constant="94" id="cHQ-09-TSf"/>
-                            <constraint firstItem="W3d-sg-AcL" firstAttribute="trailing" secondItem="6OT-xM-Sra" secondAttribute="trailing" constant="93" id="e08-nR-b17"/>
-                            <constraint firstItem="FNn-6c-pof" firstAttribute="leading" secondItem="W3d-sg-AcL" secondAttribute="leading" constant="20" id="qPa-U6-7vE"/>
-                            <constraint firstItem="6OT-xM-Sra" firstAttribute="top" secondItem="W3d-sg-AcL" secondAttribute="top" constant="261" id="wyx-aC-vWx"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="W3d-sg-AcL"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Upload Image" id="DRF-Dj-7PG"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="0fk-Hn-5yq" kind="show" identifier="uploadImageSegue" id="wZX-Ri-D16"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LRJ-H3-QQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1907" y="-612"/>
         </scene>
         <!--Upload Image View-->
         <scene sceneID="62n-9l-fz6">
