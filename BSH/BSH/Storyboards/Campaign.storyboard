@@ -256,7 +256,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="15C-tZ-zRV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1905.7971014492755" y="186.83035714285714"/>
+            <point key="canvasLocation" x="2804" y="-200"/>
         </scene>
         <!--Upload Image View-->
         <scene sceneID="62n-9l-fz6">
@@ -279,7 +279,7 @@
                                 </state>
                                 <connections>
                                     <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" eventType="touchDown" id="VSc-0m-1dC"/>
-                                    <segue destination="hZO-4X-AYN" kind="unwind" unwindAction="unwindToUploadView:" id="C0y-rp-YsR"/>
+                                    <segue destination="Hgt-na-wWW" kind="show" id="uW0-JY-Krt"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-jF-jcj">
@@ -305,9 +305,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW7-0x-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="hZO-4X-AYN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3059" y="-612"/>
+            <point key="canvasLocation" x="1787" y="-585"/>
         </scene>
         <!--Campaigns-->
         <scene sceneID="fAV-Pd-7EX">
@@ -335,4 +334,7 @@
     <resources>
         <image name="rectangle.png" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="k7m-0g-nR7"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -52,8 +52,9 @@ class UploadImageViewController: CUUViewController {
                     print(image, error)
                     if error == nil {
                         // Show notification for succesful upload
-                        let alertController = UIAlertController(title: "Upload successful", message: "Image was sent to the campaign database.", preferredStyle: UIAlertController.Style.alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true)}
+                        let alertController = UIAlertController(title: "Upload successful", message: "Your image is uploaded. Please annotate the image.", preferredStyle: UIAlertController.Style.alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in // self.navigationController?.popViewController(animated: true)
+                        }
                         ))
                         self.present(alertController, animated: true, completion: nil)
                     } else {
@@ -63,6 +64,15 @@ class UploadImageViewController: CUUViewController {
                     }
                 })
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.destination {
+        case let annotateViewController as AnnotateImageViewController:
+            annotateViewController.getImageFromUploadViewController(image: UploadImageViewController.image)
+        default:
+            print("Unknown Destination View Controller")
         }
     }
 }
