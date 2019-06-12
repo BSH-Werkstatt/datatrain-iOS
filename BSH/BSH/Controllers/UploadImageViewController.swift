@@ -14,7 +14,7 @@ import SwaggerClient
 // MARK: - UploadImageViewController
 class UploadImageViewController: CUUViewController {
     private static var image: UIImage?
-    
+    private var imageId: Int?;
     // MARK: IBOutlets
     @IBOutlet private weak var uploadedImageView: UIImageView!
     @IBOutlet private weak var uploadButton: UIButton!
@@ -49,19 +49,20 @@ class UploadImageViewController: CUUViewController {
                 
                 DefaultAPI.postImage(imageFile: filename, campaignId: 1, completion: { (image, error) in
                     // TODO: finish handling
-                    print(image, error)
-                    if error == nil {
-                        // Show notification for succesful upload
-                        let alertController = UIAlertController(title: "Upload successful", message: "Your image is uploaded. Please annotate the image.", preferredStyle: UIAlertController.Style.alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in // self.navigationController?.popViewController(animated: true)
-                        }
-                        ))
-                        self.present(alertController, animated: true, completion: nil)
-                    } else {
+                    guard error == nil, let image = image else {
                         let alertController = UIAlertController(title: "Upload failed", message: "Image couldn't be sent to the campaign database. Please make sure you have an internet connection.", preferredStyle: UIAlertController.Style.alert)
                         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alertController, animated: true, completion: nil)
+                        return
                     }
+                    // Set image Id
+                    self.imageId = image._id
+                    // Show notification for succesful upload
+                    let alertController = UIAlertController(title: "Upload successful", message: "Your image is uploaded. Please annotate the image.", preferredStyle: UIAlertController.Style.alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in // self.navigationController?.popViewController(animated: true)
+                    }
+                    ))
+                    self.present(alertController, animated: true, completion: nil)
                 })
             }
         }
@@ -70,7 +71,7 @@ class UploadImageViewController: CUUViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case let annotateViewController as AnnotateImageViewController:
-            annotateViewController.getImageFromUploadViewController(image: UploadImageViewController.image)
+            annotateViewController.imageId = self.imageId
         default:
             print("Unknown Destination View Controller")
         }
