@@ -25,6 +25,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     private var currentAnnotation: Annotation?
     private var imageData: ImageData?
     private var originalImage: UIImage?
+    private var fromUploadImage: Bool = false
     
     private var mainViewInitialY: CGFloat!
     
@@ -127,41 +128,54 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             self.returnToCampaignInfo()
             return
         }
-        
-        DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: {iData, error in
-            if let error = error {
-                // TODO: show an alert that an error has occured
-                print(error)
-                self.returnToCampaignInfo()
-                return
-            }
-            
-            guard let iData = iData else {
-                // TODO: show an alert that no data was received
-                self.returnToCampaignInfo()
-                return
-            }
-            
-            self.imageData = iData
-            
-            // Proceed with getting the image
-            
-            let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
-            
-            guard let url = URL(string: imageURL),
-                let data = try? Data(contentsOf: url)else {
-                    // TODO: show an alert that url does not exist
+        if (fromUploadImage) {
+            self.annotatedImageView.image = originalImage
+        } else {
+            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: {iData, error in
+                if let error = error {
+                    // TODO: show an alert that an error has occured
+                    print(error)
                     self.returnToCampaignInfo()
                     return
-            }
-            
-            self.annotatedImageView.image = UIImage(data: data)
-            self.originalImage = self.annotatedImageView.image
-        })
+                }
+                
+                guard let iData = iData else {
+                    // TODO: show an alert that no data was received
+                    self.returnToCampaignInfo()
+                    return
+                }
+                
+                self.imageData = iData
+                
+                // Proceed with getting the image
+                
+                let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
+                
+                guard let url = URL(string: imageURL),
+                    let data = try? Data(contentsOf: url)else {
+                        // TODO: show an alert that url does not exist
+                        self.returnToCampaignInfo()
+                        return
+                }
+                
+                self.annotatedImageView.image = UIImage(data: data)
+                self.originalImage = self.annotatedImageView.image
+            })
+        }
     }
     
     private func returnToCampaignInfo() {
         // TODO: Handle errors
+    }
+    
+    public func getImageFromUploadViewController(image: UIImage?) {
+        if let image = image {
+            fromUploadImage = true
+            originalImage = image
+            imageData = ImageData(_id: 1, campaignId: 1, userId: 1, annotations: [])
+        } else {
+            print("Image cannot be uploaded.")
+        }
     }
     
     @IBAction func annotationButtonClick(_ sender: Any) {
