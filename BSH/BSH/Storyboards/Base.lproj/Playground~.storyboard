@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="DjX-8l-gsE">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P7e-0o-NIj" customClass="MainTabBarController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P7e-0o-NIj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cOD-FJ-oOJ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -26,7 +26,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="OCr-Re-hIq" kind="relationship" relationship="viewControllers" id="v7R-ZX-1wY"/>
-                        <segue destination="o4B-5J-cVT" kind="relationship" relationship="viewControllers" id="0AJ-Fl-IfI"/>
+                        <segue destination="FaR-f1-QUG" kind="relationship" relationship="viewControllers" id="0AJ-Fl-IfI"/>
                         <segue destination="swE-Yn-0PW" kind="relationship" relationship="viewControllers" id="wcy-s0-c6w"/>
                         <segue destination="LiS-Sc-U00" kind="relationship" relationship="viewControllers" id="xWD-UZ-5qO"/>
                     </connections>
@@ -43,7 +43,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbd-U2-cL9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="611" y="847"/>
+            <point key="canvasLocation" x="612" y="-54"/>
+        </scene>
+        <!--Playground-->
+        <scene sceneID="2xH-Zo-l7q">
+            <objects>
+                <navigationController title="Playground" automaticallyAdjustsScrollViewInsets="NO" id="FaR-f1-QUG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="Playground" image="camera.png" id="Rf9-li-9uC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="t7r-5L-zVP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.92442519430000003" green="0.63702824199999997" blue="0.3003245839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MLz-7t-uFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="575"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="iuJ-Vy-nu3">
@@ -53,7 +73,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJ6-u0-3TQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="622" y="1002"/>
+            <point key="canvasLocation" x="893" y="1276"/>
         </scene>
         <!--Profile-->
         <scene sceneID="iun-C2-2bj">
@@ -63,17 +83,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rAb-yU-Usf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="1075"/>
-        </scene>
-        <!--Playground-->
-        <scene sceneID="d6A-ff-qDK">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Playground" id="o4B-5J-cVT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="8Y0-CJ-cnq"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V9J-Rz-j3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="615" y="925"/>
+            <point key="canvasLocation" x="893" y="2101"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera.png" width="102.85713958740234" height="102.85713958740234"/>
+    </resources>
 </document>

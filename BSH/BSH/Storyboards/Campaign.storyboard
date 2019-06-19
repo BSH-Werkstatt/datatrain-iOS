@@ -72,7 +72,7 @@
                             <outlet property="delegate" destination="fza-05-WiW" id="eLU-bY-vCj"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Mn2-qK-AtD"/>
+                    <tabBarItem key="tabBarItem" title="Campaigns" image="stack.png" id="Mn2-qK-AtD"/>
                     <navigationItem key="navigationItem" title="Campaign List" id="N9k-Si-wgs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -384,5 +384,6 @@
     </scenes>
     <resources>
         <image name="rectangle.png" width="512" height="512"/>
+        <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
     </resources>
 </document>

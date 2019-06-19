@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		2E2E7889F3B19B91D4EB2436 /* Pods_BSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */; };
+		3C22770B22BA8D8500EB677B /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770322BA8D8400EB677B /* profile@2x.png */; };
+		3C22770C22BA8D8500EB677B /* leaderboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770422BA8D8400EB677B /* leaderboard@3x.png */; };
+		3C22770D22BA8D8500EB677B /* stack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770522BA8D8400EB677B /* stack@2x.png */; };
+		3C22770E22BA8D8500EB677B /* stack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770622BA8D8400EB677B /* stack@3x.png */; };
+		3C22770F22BA8D8500EB677B /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770722BA8D8500EB677B /* profile@3x.png */; };
+		3C22771022BA8D8500EB677B /* leaderboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770822BA8D8500EB677B /* leaderboard@2x.png */; };
+		3C22771122BA8D8500EB677B /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770922BA8D8500EB677B /* camera@2x.png */; };
+		3C22771222BA8D8500EB677B /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770A22BA8D8500EB677B /* camera@3x.png */; };
+		3C22772222BA909C00EB677B /* Playground.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22771F22BA909B00EB677B /* Playground.storyboard */; };
+		3C22772322BA909C00EB677B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22772022BA909B00EB677B /* Profile.storyboard */; };
+		3C22772422BA909C00EB677B /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22772122BA909B00EB677B /* Leaderboard.storyboard */; };
+		3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C22772522BA918C00EB677B /* MainTabBarController.swift */; };
 		3C709CC42282236400823586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C709CC32282236400823586 /* AppDelegate.swift */; };
 		3C709CC62282236400823586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C709CC52282236400823586 /* ViewController.swift */; };
 		3C709CC92282236400823586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CC72282236400823586 /* Main.storyboard */; };
@@ -29,6 +41,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C22770322BA8D8400EB677B /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
+		3C22770422BA8D8400EB677B /* leaderboard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaderboard@3x.png"; sourceTree = "<group>"; };
+		3C22770522BA8D8400EB677B /* stack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stack@2x.png"; sourceTree = "<group>"; };
+		3C22770622BA8D8400EB677B /* stack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stack@3x.png"; sourceTree = "<group>"; };
+		3C22770722BA8D8500EB677B /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@3x.png"; sourceTree = "<group>"; };
+		3C22770822BA8D8500EB677B /* leaderboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaderboard@2x.png"; sourceTree = "<group>"; };
+		3C22770922BA8D8500EB677B /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		3C22770A22BA8D8500EB677B /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
+		3C22771F22BA909B00EB677B /* Playground.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Playground.storyboard; sourceTree = "<group>"; };
+		3C22772022BA909B00EB677B /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		3C22772122BA909B00EB677B /* Leaderboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
+		3C22772522BA918C00EB677B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3C709CC02282236400823586 /* BSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C709CC32282236400823586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C709CC52282236400823586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +143,14 @@
 		50CE499F229FD9EE000E15E8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3C22770322BA8D8400EB677B /* profile@2x.png */,
+				3C22770722BA8D8500EB677B /* profile@3x.png */,
+				3C22770822BA8D8500EB677B /* leaderboard@2x.png */,
+				3C22770422BA8D8400EB677B /* leaderboard@3x.png */,
+				3C22770922BA8D8500EB677B /* camera@2x.png */,
+				3C22770A22BA8D8500EB677B /* camera@3x.png */,
+				3C22770522BA8D8400EB677B /* stack@2x.png */,
+				3C22770622BA8D8400EB677B /* stack@3x.png */,
 				50AB753C22A4015800BEB84B /* rectangle.png */,
 				508C6605229FF12100FABC76 /* bananas.jpg */,
 			);
@@ -145,6 +177,7 @@
 				50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */,
 				50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */,
 				50BEC79122A69952000107DF /* CampaignTableViewController.swift */,
+				3C22772522BA918C00EB677B /* MainTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +185,9 @@
 		C5F1FA24229ED0A6000F3FAC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				3C22772122BA909B00EB677B /* Leaderboard.storyboard */,
+				3C22771F22BA909B00EB677B /* Playground.storyboard */,
+				3C22772022BA909B00EB677B /* Profile.storyboard */,
 				3C709CCC2282236700823586 /* LaunchScreen.storyboard */,
 				3C709CC72282236400823586 /* Main.storyboard */,
 				C58045F4229ED9B400AE4775 /* Campaign.storyboard */,
@@ -219,11 +255,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C22772422BA909C00EB677B /* Leaderboard.storyboard in Resources */,
 				C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */,
+				3C22772222BA909C00EB677B /* Playground.storyboard in Resources */,
 				C58045F5229ED9B400AE4775 /* Campaign.storyboard in Resources */,
+				3C22771222BA8D8500EB677B /* camera@3x.png in Resources */,
 				508C6606229FF12100FABC76 /* bananas.jpg in Resources */,
+				3C22770C22BA8D8500EB677B /* leaderboard@3x.png in Resources */,
 				3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */,
+				3C22770E22BA8D8500EB677B /* stack@3x.png in Resources */,
 				3C709CCB2282236700823586 /* Assets.xcassets in Resources */,
+				3C22770B22BA8D8500EB677B /* profile@2x.png in Resources */,
+				3C22771122BA8D8500EB677B /* camera@2x.png in Resources */,
+				3C22770D22BA8D8500EB677B /* stack@2x.png in Resources */,
+				3C22770F22BA8D8500EB677B /* profile@3x.png in Resources */,
+				3C22772322BA909C00EB677B /* Profile.storyboard in Resources */,
+				3C22771022BA8D8500EB677B /* leaderboard@2x.png in Resources */,
 				50AB753D22A4015800BEB84B /* rectangle.png in Resources */,
 				3C709CC92282236400823586 /* Main.storyboard in Resources */,
 			);
@@ -297,6 +344,7 @@
 			files = (
 				50AB753F22A4026C00BEB84B /* AnnotateImageViewController.swift in Sources */,
 				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
+				3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */,
 				C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */,
 				C58045F3229ED5CB00AE4775 /* CaptureImageViewController.swift in Sources */,
 				50BEC79222A69952000107DF /* CampaignTableViewController.swift in Sources */,
@@ -461,7 +509,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
+				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -481,7 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
+				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
