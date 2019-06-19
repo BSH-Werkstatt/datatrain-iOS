@@ -47,7 +47,7 @@ class UploadImageViewController: CUUViewController {
                 let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                 try? data.write(to: filename)
                 
-                DefaultAPI.postImage(imageFile: filename, campaignId: 1, completion: { (image, error) in
+                DefaultAPI.postImage(imageFile: filename, userToken: "5d0a6fe5a9edbb9d5cc29e10", campaignId: 1, completion: { (image, error) in
                     // TODO: finish handling
                     guard error == nil, let image = image else {
                         let alertController = UIAlertController(title: "Upload failed", message: "Image couldn't be sent to the campaign database. Please make sure you have an internet connection.", preferredStyle: UIAlertController.Style.alert)
@@ -56,7 +56,11 @@ class UploadImageViewController: CUUViewController {
                         return
                     }
                     // Set image Id
-                    self.imageId = image._id
+                    if let imageID = Int(image._id, radix: 16) {
+                        self.imageId = imageID
+                    } else {
+                        print("Invalid image id.")
+                    }
                     // Show notification for succesful upload
                     let alertController = UIAlertController(title: "Upload successful", message: "Your image is uploaded. Please annotate the image.", preferredStyle: UIAlertController.Style.alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in // self.navigationController?.popViewController(animated: true)

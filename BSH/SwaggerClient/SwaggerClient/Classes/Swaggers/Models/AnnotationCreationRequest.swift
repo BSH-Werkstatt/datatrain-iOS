@@ -10,19 +10,19 @@ import Foundation
 
 
 public struct AnnotationCreationRequest: Codable {
-    
+
     public var points: [Point]
     public var type: String
     public var label: String
-    public var userId: Int
-    
-    public init(points: [Point], type: String, label: String, userId: Int) {
+    public var userToken: String
+
+    public init(points: [Point], type: String, label: String, userToken: String) {
         self.points = points
         self.type = type
         self.label = label
-        self.userId = userId
+        self.userToken = userToken
     }
-    
-    
+
+
 }
 
