@@ -11,25 +11,22 @@ import Foundation
 
 public struct Campaign: Codable {
 
-    public var _id: Int
-    public var ownerId: Int
+    public var _id: String
+    public var ownerId: String
     public var type: CampaignType
     public var name: String
     public var _description: String
-    public var vocabulary: [String]
+    public var taxonomy: [String]
     public var image: String?
 
-    public init(_id: Int, ownerId: Int, type: CampaignType, name: String, _description: String, vocabulary: [String], image: String?) {
+    public init(_id: String, ownerId: String, type: CampaignType, name: String, _description: String, taxonomy: [String], image: String?) {
         self._id = _id
         self.ownerId = ownerId
         self.type = type
         self.name = name
         self._description = _description
-        self.vocabulary = vocabulary
-        
-        if image != nil {
-            self.image = image
-        }
+        self.taxonomy = taxonomy
+        self.image = image
     }
 
     public enum CodingKeys: String, CodingKey { 
@@ -38,7 +35,7 @@ public struct Campaign: Codable {
         case type
         case name
         case _description = "description"
-        case vocabulary
+        case taxonomy
         case image
     }
 

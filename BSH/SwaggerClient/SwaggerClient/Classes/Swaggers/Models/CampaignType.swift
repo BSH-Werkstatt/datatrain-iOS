@@ -8,7 +8,7 @@
 import Foundation
 
 
-public enum CampaignType: Int, Codable {
-    case _0 = 0
+public enum CampaignType: String, Codable {
+    case _0 = "0"
 
 }
