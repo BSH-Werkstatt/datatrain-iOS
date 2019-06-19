@@ -70,7 +70,7 @@ class CampaignTableViewController: CUUTableViewController {
         
         // get the current cell from campaigns sorted by ids
         let campaign = campaigns.sorted(by: { $0._id < $1._id })[indexPath.row]
-        if let campaignId = Int(campaign._id, radix: 26) {
+        if let campaignId = Int(campaign._id, radix: 16) {
             cell.tag = campaignId
         } else {
             print("Invalid campaign id")
