@@ -68,4 +68,12 @@ class AnnotationView: UIView {
         completed = [false]
         self.setNeedsDisplay()
     }
+    
+    func getPoints() -> [Point] {
+        var points: [Point] = []
+        for point in pointArrays[0] {
+            points.append(Point(x: point.x, y: point.y))
+        }
+        return points
+    }
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import CUU
-import TouchVisualizer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
@@ -19,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CUU.start()
-        Visualizer.start()
         return true
     }
 
@@ -44,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         CUU.stop()
-        Visualizer.stop()
     }
 
 

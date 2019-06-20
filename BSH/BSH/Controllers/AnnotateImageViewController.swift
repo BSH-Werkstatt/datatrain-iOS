@@ -44,29 +44,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     }
 }
 
-// Draw Shape Functionality
-extension AnnotateImageViewController {
-    func drawShape() {
-
-        let shape = CAShapeLayer()
-        self.imageLayerContainer.layer.addSublayer(shape)
-        shape.opacity = 0.5
-        shape.lineWidth = 2
-        shape.lineJoin = CAShapeLayerLineJoin.miter
-        shape.strokeColor = UIColor(hue: 0.786, saturation: 0.79, brightness: 0.53, alpha: 1.0).cgColor
-        shape.fillColor = UIColor(hue: 0.786, saturation: 0.15, brightness: 0.89, alpha: 1.0).cgColor
-
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x:120, y:20))
-        path.addLine(to: CGPoint(x:230, y:90))
-        path.addLine(to: CGPoint(x:240, y:250))
-        path.addLine(to: CGPoint(x:40, y:280))
-        path.addLine(to: CGPoint(x:100, y:150))
-        path.close()
-        shape.path = path.cgPath
-    }
-}
-
 // Load Data Functionality
 extension AnnotateImageViewController {
     /// Gets the currently selected campaign from CampaignInfoViewController
@@ -118,10 +95,10 @@ extension AnnotateImageViewController {
             print("Cannot initialize image view.")
             return
         }
-        imageView.frame = view.bounds
+        imageView.frame = imageLayerContainer.bounds
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
-//        self.drawShape()
     }
 }
 
@@ -195,32 +172,32 @@ extension AnnotateImageViewController{
         }
         let point = tapGestureRecognizer.location(in: imageView)
         
-        var offsetX = CGFloat(0.0)
-        var offsetY = CGFloat(0.0)
-        let frameRatio = imageView.frame.size.width / imageView.frame.size.height
-        let imageRatio = image.size.width / image.size.height
-        
-        if frameRatio < imageRatio {
-            // image is wider
-            offsetY = (imageView.frame.size.height - imageView.frame.size.width / image.size.width * image.size.height) / CGFloat(2)
-        } else {
-            // image is narrower
-            offsetX = (imageView.frame.size.width - imageView.frame.size.height / image.size.height * image.size.width) / CGFloat(2)
-        }
-        
-        var x = (-offsetX + point.x) / (imageView.frame.size.width - 2 * offsetX) * image.size.width
-        if x < CGFloat(0) {
-            x = CGFloat(0)
-        } else if x > image.size.width {
-            x = image.size.width
-        }
-        
-        var y = (-offsetY + point.y) / (imageView.frame.size.height - 2 * offsetY) * image.size.height
-        if y < CGFloat(0) {
-            y = CGFloat(0)
-        } else if y > image.size.height {
-            y = image.size.height
-        }
+//        var offsetX = CGFloat(0.0)
+//        var offsetY = CGFloat(0.0)
+//        let frameRatio = imageView.frame.size.width / imageView.frame.size.height
+//        let imageRatio = image.size.width / image.size.height
+//
+//        if frameRatio < imageRatio {
+//            // image is wider
+//            offsetY = (imageView.frame.size.height - imageView.frame.size.width / image.size.width * image.size.height) / CGFloat(2)
+//        } else {
+//            // image is narrower
+//            offsetX = (imageView.frame.size.width - imageView.frame.size.height / image.size.height * image.size.width) / CGFloat(2)
+//        }
+//
+//        var x = (-offsetX + point.x) / (imageView.frame.size.width - 2 * offsetX) * image.size.width
+//        if x < CGFloat(0) {
+//            x = CGFloat(0)
+//        } else if x > image.size.width {
+//            x = image.size.width
+//        }
+//
+//        var y = (-offsetY + point.y) / (imageView.frame.size.height - 2 * offsetY) * image.size.height
+//        if y < CGFloat(0) {
+//            y = CGFloat(0)
+//        } else if y > image.size.height {
+//            y = image.size.height
+//        }
         
         self.annotationView.add(point: CGPoint(x: point.x, y: point.y), to: 0)
     }
@@ -242,12 +219,11 @@ extension AnnotateImageViewController{
         }
 
         // TODO: replace with real current annotation
-        let currentAnnotation = RectangularAnnotation(
-            topLeft: Point(x: 0.0, y: 0.0),
-            bottomRight: Point(x: 100, y: 100),
+        let currentAnnotation = PolygonAnnotation (
             userId: "5d0a6fe5a9edbb9d5cc29e10",
             campaignId: activeCampaign._id,
-            imageId: imageData._id
+            imageId: imageData._id,
+            points: annotationView.getPoints()
         )
         
         if annotationNameTextField.text?.count == 0 {

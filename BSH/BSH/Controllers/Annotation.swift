@@ -16,8 +16,6 @@ protocol Annotation {
     var userId: String { get set }
     var campaignId: String { get set }
     var label: String { get set }
-    
-    func draw(image: UIImage, view: UIImageView)
-    
+        
     func getAPIPoints() -> [SwaggerClient.Point]
 }
