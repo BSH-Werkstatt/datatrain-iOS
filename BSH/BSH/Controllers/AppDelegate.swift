@@ -8,6 +8,7 @@
 
 import UIKit
 import CUU
+import Prototyper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CUU.start()
+        PrototyperController.showFeedbackButton = true
         return true
     }
 
