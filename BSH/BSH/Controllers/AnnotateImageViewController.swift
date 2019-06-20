@@ -137,14 +137,49 @@ extension AnnotateImageViewController{
         self.view.endEditing(true)
         return true
     }
+    
+    func calculateOffsetOfImage() -> (CGFloat, CGFloat, CGFloat, CGFloat) {
+        guard let image = imageView.image else {
+            print("Image should not be null at this point")
+            return (CGFloat(0.0), CGFloat(0.0), CGFloat(0.0), CGFloat(0.0))
+        }
+        var offsetX = CGFloat(0.0)
+        var offsetY = CGFloat(0.0)
+        var imageSizeX = CGFloat(0.0)
+        var imageSizeY = CGFloat(0.0)
+
+        let frameRatio = imageView.frame.size.width / imageView.frame.size.height
+        let imageRatio = image.size.width / image.size.height
+        
+        if frameRatio < imageRatio {
+            // image is wider
+            offsetY = (imageView.frame.size.height - imageView.frame.size.width / image.size.width * image.size.height) / CGFloat(2)
+            imageSizeX = imageView.frame.size.width
+            imageSizeY = imageSizeX / image.size.width * image.size.height
+        } else {
+            // image is narrower
+            offsetX = (imageView.frame.size.width - imageView.frame.size.height / image.size.height * image.size.width) / CGFloat(2)
+            imageSizeY = imageView.frame.size.height
+            imageSizeX = imageSizeY * image.size.width / image.size.height
+        }
+        return (offsetX, offsetY, imageSizeX, imageSizeY)
+    }
 
     @IBAction func annotationButtonClick(_ sender: Any) {
         annotateRectangleButton.isEnabled = false
         annotationView = AnnotationView()
+        let (offsetX, offsetY, imageSizeX, imageSizeY) = calculateOffsetOfImage()
+        annotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
+        guard let image = imageView.image else {
+            print("Image should not be null at this point")
+            return
+        }
+        annotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
         guard let annotationView = annotationView else {
             print("Cannot initialize annotation view.")
             return
         }
+        
         annotationView.frame = view.bounds
         annotationView.backgroundColor = UIColor.clear
         annotationView.isOpaque = false
@@ -167,24 +202,8 @@ extension AnnotateImageViewController{
             return
         }
         // User tapped on the image. A new point to the Annotation View should be added.
-        guard let image = imageView.image else {
-            return
-        }
         let point = tapGestureRecognizer.location(in: imageView)
-        
-//        var offsetX = CGFloat(0.0)
-//        var offsetY = CGFloat(0.0)
-//        let frameRatio = imageView.frame.size.width / imageView.frame.size.height
-//        let imageRatio = image.size.width / image.size.height
-//
-//        if frameRatio < imageRatio {
-//            // image is wider
-//            offsetY = (imageView.frame.size.height - imageView.frame.size.width / image.size.width * image.size.height) / CGFloat(2)
-//        } else {
-//            // image is narrower
-//            offsetX = (imageView.frame.size.width - imageView.frame.size.height / image.size.height * image.size.width) / CGFloat(2)
-//        }
-//
+
 //        var x = (-offsetX + point.x) / (imageView.frame.size.width - 2 * offsetX) * image.size.width
 //        if x < CGFloat(0) {
 //            x = CGFloat(0)

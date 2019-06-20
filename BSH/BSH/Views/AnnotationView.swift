@@ -12,6 +12,10 @@ class AnnotationView: UIView {
     
     private var pointArrays: [[CGPoint]] = [[]]
     private var completed: [Bool] = [false]
+    private var offsetX: CGFloat?
+    private var offsetY: CGFloat?
+    private var imageSizeX: CGFloat?
+    private var imageSizeY: CGFloat?
     
     private var fillColor: UIColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(0.5))
     
@@ -51,10 +55,28 @@ class AnnotationView: UIView {
         }
     }
     
+    func setOffsetVariables(offsetX: CGFloat, offsetY: CGFloat) {
+        self.offsetX = offsetX
+        self.offsetY = offsetY
+    }
+    
+    func setImageSize(imageSizeX: CGFloat, imageSizeY: CGFloat) {
+        self.imageSizeX = imageSizeX
+        self.imageSizeY = imageSizeY
+    }
+    
     func add(point: CGPoint, to annotation: Int) {
         // TODO: Index check
-        pointArrays[annotation].append(point)
-        self.setNeedsDisplay()
+        guard let offsetX = offsetX, let offsetY = offsetY,
+            let imageSizeX = imageSizeX, let imageSizeY = imageSizeY else {
+            return
+        }
+        
+        if (point.x > offsetX && point.y > offsetY &&
+            point.x < offsetX + imageSizeX && point.y < offsetY + imageSizeY) {
+            pointArrays[annotation].append(point)
+            self.setNeedsDisplay()
+        }
     }
     
     func complete(annotation: Int) {
@@ -70,9 +92,13 @@ class AnnotationView: UIView {
     }
     
     func getPoints() -> [Point] {
+        guard let offsetX = offsetX, let offsetY = offsetY else {
+            print("There is no views")
+            return []
+        }
         var points: [Point] = []
         for point in pointArrays[0] {
-            points.append(Point(x: point.x, y: point.y))
+            points.append(Point(x: point.x - offsetX, y: point.y - offsetY))
         }
         return points
     }
