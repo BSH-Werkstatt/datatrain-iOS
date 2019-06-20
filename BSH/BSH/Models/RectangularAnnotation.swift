@@ -24,12 +24,12 @@ class RectangularAnnotation : Annotation {
             return p
         }
     }
-    var imageId: Int
-    var userId: Int
-    var campaignId: Int
+    var imageId: String
+    var userId: String
+    var campaignId: String
     var label: String = ""
     
-    init(topLeft: Point, bottomRight: Point, userId: Int, campaignId: Int, imageId: Int) {
+    init(topLeft: Point, bottomRight: Point, userId: String, campaignId: String, imageId: String) {
         self.userId = userId
         self.campaignId = campaignId
         self.imageId = imageId

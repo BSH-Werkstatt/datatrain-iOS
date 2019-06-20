@@ -23,9 +23,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     
     private var activeCampaign: Campaign?
     private var currentAnnotation: Annotation?
-    private var imageData: ImageData?
+    var imageData: ImageData?
     private var originalImage: UIImage?
-    var imageId: Int?
     
     private var mainViewInitialY: CGFloat!
 
@@ -84,14 +83,12 @@ extension AnnotateImageViewController {
             self.returnToCampaignInfo()
             return
         }
-        if self.imageId != nil {
-//            [TODO]
-//            DefaultAPI.getImage()
-        } else {
+        
+        if self.imageData == nil {
             DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadImage)
+        } else {
+            downloadImage(self.imageData, nil)
         }
-
-
     }
 
     private func downloadImage(_ iData: ImageData?, _ error: Error?) {
@@ -107,13 +104,13 @@ extension AnnotateImageViewController {
             self.returnToCampaignInfo()
             return
         }
-
+        
+        
         self.imageData = iData
+        print(self.imageData!._id)
 
         // Proceed with getting the image
-
         let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
-
         guard let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url)else {
                 // TODO: show an alert that url does not exist
@@ -121,7 +118,6 @@ extension AnnotateImageViewController {
                 return
         }
 
-//        self.annotatedImageView.image = UIImage(data: data)
         let imageView = UIImageView(image: UIImage(data: data))
         imageView.frame = view.bounds
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
@@ -170,13 +166,22 @@ extension AnnotateImageViewController{
     }
 
     @IBAction func submitButtonClick(_ sender: Any) {
-        //        guard let label = annotationNameTextField.text,
-        //            let imageData = imageData,
-        //            let currentAnnotation = currentAnnotation,
-        //            let activeCampaign = activeCampaign else {
-        //            return
-        //        }
+        guard let label = annotationNameTextField.text,
+            let imageData = imageData,
+            let activeCampaign = activeCampaign else {
+                
+            return
+        }
 
+        // TODO: replace with real current annotation
+        let currentAnnotation = RectangularAnnotation(
+            topLeft: Point(x: 0.0, y: 0.0),
+            bottomRight: Point(x: 100, y: 100),
+            userId: "5d0a6fe5a9edbb9d5cc29e10",
+            campaignId: activeCampaign._id,
+            imageId: imageData._id
+        )
+        
         if annotationNameTextField.text?.count == 0 {
             return
         }
@@ -184,16 +189,16 @@ extension AnnotateImageViewController{
         // this is the mask RCNN type
         let type = "polygon"
 
-        //        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userId: 1)
-        //        DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
-        //            //print(annotation, error)
-        //            if error == nil {
-        //                // Show notification for succesful upload
-        //                let alertController = UIAlertController(title: "Annotation successful", message: "the annotation was saved.", preferredStyle: UIAlertController.Style.alert)
-        //                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        //                self.present(alertController, animated: true, completion: nil)
-        //            }
-        //        })
+        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userToken: "5d0a6fe5a9edbb9d5cc29e10")
+        DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
+            print("annotaion result", annotation, error)
+            if error == nil {
+                // Show notification for succesful upload
+                let alertController = UIAlertController(title: "Annotation successful", message: "the annotation was saved.", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
 }
 
