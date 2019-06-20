@@ -16,6 +16,7 @@ class CampaignTableViewCell: UITableViewCell {
     @IBOutlet weak var campaignImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    var campaignId: String?
 }
 
 // MARK: - CampaignViewTableControll
@@ -70,13 +71,11 @@ class CampaignTableViewController: CUUTableViewController {
         
         // get the current cell from campaigns sorted by ids
         let campaign = campaigns.sorted(by: { $0._id < $1._id })[indexPath.row]
-        if let campaignId = Int(campaign._id, radix: 16) {
-            cell.tag = campaignId
-        } else {
-            print("Invalid campaign id")
-        }
+
+        cell.tag = indexPath.row
         cell.nameLabel?.text = campaign.name
         cell.descriptionLabel?.text = campaign._description
+        cell.campaignId = campaign._id;
         
         if let imageURL = campaign.image,
             let url = URL(string: imageURL),

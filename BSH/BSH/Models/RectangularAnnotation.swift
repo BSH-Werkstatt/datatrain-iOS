@@ -24,12 +24,12 @@ class RectangularAnnotation : Annotation {
             return p
         }
     }
-    var imageId: Int
-    var userId: Int
-    var campaignId: Int
+    var imageId: String
+    var userId: String
+    var campaignId: String
     var label: String = ""
     
-    init(topLeft: Point, bottomRight: Point, userId: Int, campaignId: Int, imageId: Int) {
+    init(topLeft: Point, bottomRight: Point, userId: String, campaignId: String, imageId: String) {
         self.userId = userId
         self.campaignId = campaignId
         self.imageId = imageId
@@ -37,31 +37,6 @@ class RectangularAnnotation : Annotation {
         self.bottomRight = bottomRight
         
         checkAndFixCorners()
-    }
-    
-    public func draw(image: UIImage, view: UIImageView) {
-        let imageSize = image.size
-        let scale: CGFloat = 0
-        UIGraphicsBeginImageContextWithOptions(imageSize, false, scale)
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        
-        image.draw(at: CGPoint.zero)
-        
-        let rectangle = CGRect(x: points[0].x, y: points[0].y, width: points[2].x - points[0].x, height: points[2].y - points[0].y)
-        let fillColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(0.5)).cgColor
-        let strokeColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(1.0)).cgColor
-        
-        context.setStrokeColor(strokeColor)
-        context.stroke(rectangle, width: image.size.width / CGFloat(100.0))
-        context.setFillColor(fillColor)
-        context.fill(rectangle)
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        view.image = newImage
     }
     
     public func setTopLeft(point: Point) {

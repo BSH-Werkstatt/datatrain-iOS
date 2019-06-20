@@ -12,12 +12,10 @@ import SwaggerClient
 
 protocol Annotation {
     var points: [Point] { get }
-    var imageId: Int { get set }
-    var userId: Int { get set }
-    var campaignId: Int { get set }
+    var imageId: String { get set }
+    var userId: String { get set }
+    var campaignId: String { get set }
     var label: String { get set }
-    
-    func draw(image: UIImage, view: UIImageView)
-    
+        
     func getAPIPoints() -> [SwaggerClient.Point]
 }

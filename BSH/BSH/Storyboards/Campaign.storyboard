@@ -205,7 +205,6 @@
                                         </state>
                                         <connections>
                                             <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="U3m-Vh-3CF"/>
-                                            <segue destination="15C-tZ-zRV" kind="unwind" unwindAction="unwindToCampainInfoView:" id="asZ-X2-WwL"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywE-h7-pAA">
@@ -262,7 +261,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="15C-tZ-zRV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2802.898550724638" y="-200.22321428571428"/>
         </scene>
@@ -287,7 +285,6 @@
                                 </state>
                                 <connections>
                                     <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" eventType="touchDown" id="VSc-0m-1dC"/>
-                                    <segue destination="Hgt-na-wWW" kind="show" id="uW0-JY-Krt"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-jF-jcj">
@@ -310,6 +307,7 @@
                     <connections>
                         <outlet property="uploadButton" destination="ZaZ-ZK-3Vg" id="NVd-4f-Ozm"/>
                         <outlet property="uploadedImageView" destination="fgm-jF-jcj" id="6aV-iL-Krb"/>
+                        <segue destination="Hgt-na-wWW" kind="show" identifier="uploadToAnnotateSegue" id="OCg-Ul-LPq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW7-0x-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,19 +335,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPa-Ja-w1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1636" y="-200"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="0Rn-xh-vEP">
-            <objects>
-                <viewController id="3yu-79-1we" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CvZ-zA-Bo6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6uv-fO-zag" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
