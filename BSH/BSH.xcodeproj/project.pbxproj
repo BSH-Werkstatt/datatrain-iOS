@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E2E7889F3B19B91D4EB2436 /* Pods_BSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */; };
+		3C21828822BB097C006373F5 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C21828722BB097C006373F5 /* ProfileController.swift */; };
 		3C22770B22BA8D8500EB677B /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770322BA8D8400EB677B /* profile@2x.png */; };
 		3C22770C22BA8D8500EB677B /* leaderboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770422BA8D8400EB677B /* leaderboard@3x.png */; };
 		3C22770D22BA8D8500EB677B /* stack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C22770522BA8D8400EB677B /* stack@2x.png */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C21828722BB097C006373F5 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		3C22770322BA8D8400EB677B /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		3C22770422BA8D8400EB677B /* leaderboard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leaderboard@3x.png"; sourceTree = "<group>"; };
 		3C22770522BA8D8400EB677B /* stack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stack@2x.png"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */,
 				50BEC79122A69952000107DF /* CampaignTableViewController.swift */,
 				3C22772522BA918C00EB677B /* MainTabBarController.swift */,
+				3C21828722BB097C006373F5 /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
 				3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */,
 				C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */,
+				3C21828822BB097C006373F5 /* ProfileController.swift in Sources */,
 				50BEC79222A69952000107DF /* CampaignTableViewController.swift in Sources */,
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
 				3C709CC62282236400823586 /* ViewController.swift in Sources */,
