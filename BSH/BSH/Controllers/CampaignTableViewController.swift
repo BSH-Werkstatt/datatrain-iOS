@@ -16,6 +16,7 @@ class CampaignTableViewCell: UITableViewCell {
     @IBOutlet weak var campaignImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    var campaignId: String?
 }
 
 // MARK: - CampaignViewTableControll
@@ -70,18 +71,27 @@ class CampaignTableViewController: CUUTableViewController {
         
         // get the current cell from campaigns sorted by ids
         let campaign = campaigns.sorted(by: { $0._id < $1._id })[indexPath.row]
-        cell.tag = campaign._id
-        
+
+        cell.tag = indexPath.row
         cell.nameLabel?.text = campaign.name
         cell.descriptionLabel?.text = campaign._description
+        cell.campaignId = campaign._id;
+        
+        if let imageURL = campaign.image,
+            let url = URL(string: imageURL),
+            let data = try? Data(contentsOf: url) {
+            cell.campaignImageView.image = UIImage(data: data)
+        }
+        
+        
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let destination = segue.destination as? CampaignInfoViewController,
+        if segue.destination is CampaignInfoViewController,
             let campaignCellIndex = campaignTable.indexPathForSelectedRow?.row {
-            destination.setCampaign(campaigns[campaignCellIndex])
+            CampaignInfoViewController.setCampaign(campaigns[campaignCellIndex])
         }
     }
 }

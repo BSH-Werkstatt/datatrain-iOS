@@ -11,12 +11,12 @@ import Foundation
 
 public struct ImageData: Codable {
 
-    public var _id: Int
-    public var campaignId: Int
-    public var userId: Int
+    public var _id: String
+    public var campaignId: String
+    public var userId: String
     public var annotations: [Annotation]
 
-    public init(_id: Int, campaignId: Int, userId: Int, annotations: [Annotation]) {
+    public init(_id: String, campaignId: String, userId: String, annotations: [Annotation]) {
         self._id = _id
         self.campaignId = campaignId
         self.userId = userId

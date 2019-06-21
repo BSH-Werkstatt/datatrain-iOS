@@ -8,11 +8,13 @@ PODS:
     - Prototype (= 0.3.3)
   - SwaggerClient (0.0.1):
     - Alamofire (~> 4.8.0)
+  - TouchVisualizer (3.1.0)
 
 DEPENDENCIES:
   - CUU
   - Prototyper
   - SwaggerClient (from `./SwaggerClient`)
+  - TouchVisualizer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - KeychainSwift
     - Prototype
     - Prototyper
+    - TouchVisualizer
 
 EXTERNAL SOURCES:
   SwaggerClient:
@@ -33,7 +36,8 @@ SPEC CHECKSUMS:
   Prototype: 2009eb25fccdcbe5339d1cbe4f116eb6e68466aa
   Prototyper: 09bf1e15d619a7cd6ae358beaa58dc2e0955fa16
   SwaggerClient: 98b9a9a4e81b637f266d3961295bbaf76171aec3
+  TouchVisualizer: b97b1efb0f25d1408bb4557e6f493eae454425e7
 
-PODFILE CHECKSUM: 4bc1c5a30829df0fc18bfb1d630f07f70f7638aa
+PODFILE CHECKSUM: 354c0abf07956278161ecaca31e9e60bc68ff1ec
 
 COCOAPODS: 1.6.1

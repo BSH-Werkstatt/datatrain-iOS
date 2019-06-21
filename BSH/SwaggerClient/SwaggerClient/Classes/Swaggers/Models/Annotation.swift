@@ -11,14 +11,32 @@ import Foundation
 
 public struct Annotation: Codable {
 
-    public var _id: Int
+    public var _id: String
+    public var points: [Point]
+    public var type: String
+    public var label: String
+    public var userId: String
+    public var campaignId: String
+    public var imageId: String
 
-    public init(_id: Int) {
+    public init(_id: String, points: [Point], type: String, label: String, userId: String, campaignId: String, imageId: String) {
         self._id = _id
+        self.points = points
+        self.type = type
+        self.label = label
+        self.userId = userId
+        self.campaignId = campaignId
+        self.imageId = imageId
     }
 
     public enum CodingKeys: String, CodingKey { 
         case _id = "id"
+        case points
+        case type
+        case label
+        case userId
+        case campaignId
+        case imageId
     }
 
 
