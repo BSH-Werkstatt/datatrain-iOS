@@ -22,12 +22,13 @@ class LeaderboardCellController: UITableViewCell {
 class LeaderboardViewController: CUUTableViewController {
 
     var leaderboard: Leaderboard?
-    var id:String = "5d0a6fe5a9edbb9d5cc29e11"
+    var campaign:Campaign?
     
     // MARK: IBOutlets
     
     @IBOutlet private weak var leaderboardTable: UITableView!
-    
+    @IBOutlet weak var campaingLabel: UILabel!
+
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +55,19 @@ class LeaderboardViewController: CUUTableViewController {
     }
 
     func getLeaderboard(){
-        DefaultAPI.getLeaderboard(campaignId: self.id, completion: {
+
+        guard let campaign = CampaignInfoViewController.getCampaign() else {
+            self.campaingLabel?.text = "No campaign has been chosen. Please select a campaign in the campaigns tab!"
+            return
+        }
+        DefaultAPI.getLeaderboard(campaignId: campaign._id, completion: {
             leaderboard, error in
             guard let leaderboard = leaderboard else {
                 print(error ?? "whatever")
+                self.campaingLabel?.text = "There was en error loading the leaderboard data."
                 return
             }
+            self.campaingLabel?.text = campaign.name
             self.leaderboard = leaderboard
             self.leaderboardTable.reloadData()
 
