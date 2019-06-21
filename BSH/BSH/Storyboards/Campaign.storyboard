@@ -116,6 +116,7 @@
                                 </state>
                                 <connections>
                                     <action selector="toLeaderboardButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="H1X-HS-wQo"/>
+                                    <segue destination="AsJ-RK-CPf" kind="show" id="nDd-6i-Jpp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEU-9E-Vcf" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
@@ -181,6 +182,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rTP-Wx-Y67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="688.40579710144937" y="-206.25"/>
+        </scene>
+        <!--Leaderboard-->
+        <scene sceneID="exb-Ou-9me">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Leaderboard" id="AsJ-RK-CPf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qzy-S5-gJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="185"/>
         </scene>
         <!--Annotate Image-->
         <scene sceneID="mvp-vE-wmw">
