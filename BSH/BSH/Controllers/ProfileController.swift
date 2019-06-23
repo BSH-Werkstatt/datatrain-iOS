@@ -18,6 +18,7 @@ class ProfileViewController: CUUTableViewController {
     var user: User?
     // MARK: IBOutlets
 
+
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet var profileTableView: UITableView!
@@ -30,7 +31,10 @@ class ProfileViewController: CUUTableViewController {
     }
 
     func getProfile() {
-        DefaultAPI.getUserByEmail(email: "example@website.org", completion: {
+        guard let email = UserDefaults.standard.string(forKey: "user-email") else {
+            return
+        }
+        DefaultAPI.getUserByEmail(email: email, completion: {
             user, error in
             guard let user = user else {
                 print (error ?? "whatever")
@@ -56,6 +60,16 @@ class ProfileViewController: CUUTableViewController {
         DispatchQueue.main.async {
             self.profileTableView.refreshControl?.endRefreshing()
         }
+    }
+
+    @IBAction func dismissProfile(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+
+    }
+
+    @IBAction func logout(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "loggedIn")
+        Switcher.updateRootVC()
     }
     
 }

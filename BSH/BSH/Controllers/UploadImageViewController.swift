@@ -37,7 +37,7 @@ class UploadImageViewController: CUUViewController {
     }
     
     @IBAction func uploadButtonClick(_ sender: Any) {
-        guard let campaign = CampaignInfoViewController.getCampaign() else {
+        guard let campaign = MainTabBarController.getCampaign() else {
             return
         }
         

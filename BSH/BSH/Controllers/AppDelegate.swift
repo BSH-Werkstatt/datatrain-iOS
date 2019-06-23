@@ -9,6 +9,7 @@
 import UIKit
 import CUU
 import Prototyper
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
         // Override point for customization after application launch.
         CUU.start()
         PrototyperController.showFeedbackButton = true
+        Switcher.updateRootVC()
         return true
     }
 
