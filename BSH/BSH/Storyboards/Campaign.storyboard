@@ -95,7 +95,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zcm-Mi-vQb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Campaigns" image="stack.png" id="Mn2-qK-AtD"/>
+                    <tabBarItem key="tabBarItem" title="Campaign" image="stack.png" id="Mn2-qK-AtD"/>
                     <navigationItem key="navigationItem" title="Campaign Info" leftItemsSupplementBackButton="YES" id="kmo-fv-mgM">
                         <barButtonItem key="backBarButtonItem" title="Back" id="kof-eK-tcj"/>
                     </navigationItem>
