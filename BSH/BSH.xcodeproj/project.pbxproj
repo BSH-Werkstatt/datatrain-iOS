@@ -23,9 +23,9 @@
 		3C22772322BA909C00EB677B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22772022BA909B00EB677B /* Profile.storyboard */; };
 		3C22772422BA909C00EB677B /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22772122BA909B00EB677B /* Leaderboard.storyboard */; };
 		3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C22772522BA918C00EB677B /* MainTabBarController.swift */; };
+		3C22F26A22BF8DA400305FA0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C22F26922BF8DA400305FA0 /* LoginController.swift */; };
 		3C65814F22AD3BA50073E78A /* BshCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C65814E22AD3BA50073E78A /* BshCustomButton.swift */; };
 		3C709CC42282236400823586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C709CC32282236400823586 /* AppDelegate.swift */; };
-		3C709CC62282236400823586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C709CC52282236400823586 /* ViewController.swift */; };
 		3C709CC92282236400823586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CC72282236400823586 /* Main.storyboard */; };
 		3C709CCB2282236700823586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCA2282236700823586 /* Assets.xcassets */; };
 		3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCC2282236700823586 /* LaunchScreen.storyboard */; };
@@ -59,10 +59,10 @@
 		3C22772022BA909B00EB677B /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3C22772122BA909B00EB677B /* Leaderboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
 		3C22772522BA918C00EB677B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		3C22F26922BF8DA400305FA0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3C65814E22AD3BA50073E78A /* BshCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BshCustomButton.swift; sourceTree = "<group>"; };
 		3C709CC02282236400823586 /* BSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C709CC32282236400823586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C709CC52282236400823586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3C709CC82282236400823586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C709CCA2282236700823586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C709CCD2282236700823586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 		C5F1FA22229ED082000F3FAC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3C709CC52282236400823586 /* ViewController.swift */,
 				3C709CC32282236400823586 /* AppDelegate.swift */,
+				3C22F26922BF8DA400305FA0 /* LoginController.swift */,
 				50BEC79122A69952000107DF /* CampaignTableViewController.swift */,
 				3C22772522BA918C00EB677B /* MainTabBarController.swift */,
 				C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */,
@@ -368,10 +368,10 @@
 				50BEC79222A69952000107DF /* CampaignTableViewController.swift in Sources */,
 				2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */,
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
-				3C709CC62282236400823586 /* ViewController.swift in Sources */,
 				50AB754622A40FEF00BEB84B /* Point.swift in Sources */,
 				50AB754422A40FC300BEB84B /* RectangularAnnotation.swift in Sources */,
 				50AB754222A40EF000BEB84B /* Annotation.swift in Sources */,
+				3C22F26A22BF8DA400305FA0 /* LoginController.swift in Sources */,
 				3C709CC42282236400823586 /* AppDelegate.swift in Sources */,
 				2D3AA64E22BBD8AD00B94193 /* PolygonAnnotation.swift in Sources */,
 			);

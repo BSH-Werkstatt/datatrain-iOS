@@ -25,10 +25,14 @@ class CampaignTableViewController: CUUTableViewController {
     @IBOutlet private weak var campaignTable: UITableView!
     
     private var campaigns: [Campaign] = []
+
+    private static var user: User?
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
         // Do any additional setup after loading the view.
         configureRefreshControl ()
         self.campaignTable.refreshControl?.beginRefreshing()
@@ -51,6 +55,7 @@ class CampaignTableViewController: CUUTableViewController {
             self.fillCampaignTable()
         })
     }
+
 
     func configureRefreshControl () {
         // Add the refresh control to your UIScrollView object.
