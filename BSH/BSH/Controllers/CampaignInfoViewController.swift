@@ -14,7 +14,6 @@ import SwaggerClient
 
 // MARK: - CampaignTableControll
 class CampaignInfoViewController: CUUViewController {
-    private static var campaign: Campaign?
     var image: UIImage?
     
     // MARK: IBOutlets
@@ -39,26 +38,18 @@ class CampaignInfoViewController: CUUViewController {
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let campaign = CampaignInfoViewController.campaign {
+        if let campaign = MainTabBarController.getCampaign() {
             campaignName.text = campaign.name
             campaignInfoText.text = campaign._description
-            
-            // TODO: do not load image twice, instead pass it from the campaign table view
-            if let imageURL = campaign.image,
-                let url = URL(string: imageURL),
-                let data = try? Data(contentsOf: url) {
-                self.campaignImageView.image = UIImage(data: data)
-            }
+        }
+
+        if let image = MainTabBarController.getImage() {
+            self.campaignImageView.image = image
         }
     }
 
-    public static func setCampaign(_ campaign: Campaign) {
-        CampaignInfoViewController.campaign = campaign
-    }
-    
-    public static func getCampaign() -> Campaign? {
-        return CampaignInfoViewController.campaign
-    }
+
+
     
     @IBAction func unwindToCampainInfoView(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source

@@ -48,7 +48,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
 extension AnnotateImageViewController {
     /// Gets the currently selected campaign from CampaignInfoViewController
     private func loadActiveCampaign() {
-        activeCampaign = CampaignInfoViewController.getCampaign()
+        activeCampaign = MainTabBarController.getCampaign()
     }
 
     private func getImage() {

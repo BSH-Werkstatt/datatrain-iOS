@@ -187,12 +187,12 @@
 			children = (
 				3C709CC52282236400823586 /* ViewController.swift */,
 				3C709CC32282236400823586 /* AppDelegate.swift */,
+				50BEC79122A69952000107DF /* CampaignTableViewController.swift */,
+				3C22772522BA918C00EB677B /* MainTabBarController.swift */,
 				C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */,
 				C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */,
 				50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */,
 				50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */,
-				50BEC79122A69952000107DF /* CampaignTableViewController.swift */,
-				3C22772522BA918C00EB677B /* MainTabBarController.swift */,
 				3C21828722BB097C006373F5 /* ProfileController.swift */,
 			);
 			path = Controllers;

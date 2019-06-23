@@ -34,7 +34,6 @@ class LeaderboardViewController: CUUTableViewController {
         super.viewDidLoad()
         configureRefreshControl()
         getLeaderboard()
-
         //refreshing controls
 
     }
@@ -56,7 +55,7 @@ class LeaderboardViewController: CUUTableViewController {
 
     func getLeaderboard(){
 
-        guard let campaign = CampaignInfoViewController.getCampaign() else {
+        guard let campaign = MainTabBarController.getCampaign() else {
             self.campaingLabel?.text = "No campaign has been chosen. Please select a campaign in the campaigns tab!"
             return
         }

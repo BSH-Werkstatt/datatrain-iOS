@@ -18,6 +18,7 @@ class ProfileViewController: CUUTableViewController {
     var user: User?
     // MARK: IBOutlets
 
+
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet var profileTableView: UITableView!
@@ -56,6 +57,11 @@ class ProfileViewController: CUUTableViewController {
         DispatchQueue.main.async {
             self.profileTableView.refreshControl?.endRefreshing()
         }
+    }
+
+    @IBAction func dismissProfile(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+
     }
     
 }

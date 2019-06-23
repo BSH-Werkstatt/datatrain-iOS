@@ -13,7 +13,7 @@ import CUU
 import SwaggerClient
 
 class CampaignTableViewCell: UITableViewCell {
-    @IBOutlet weak var campaignImageView: UIImageView!
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     var campaignId: String?
@@ -30,8 +30,10 @@ class CampaignTableViewController: CUUTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        configureRefreshControl ()
+        self.campaignTable.refreshControl?.beginRefreshing()
         loadCampaigns()
+        self.campaignTable.refreshControl?.endRefreshing()
     }
     
     /// Loads all existing campaigns from the database and stores them in the campaigns property
@@ -48,6 +50,18 @@ class CampaignTableViewController: CUUTableViewController {
             self.campaigns = campaigns
             self.fillCampaignTable()
         })
+    }
+
+    func configureRefreshControl () {
+        // Add the refresh control to your UIScrollView object.
+        campaignTable.refreshControl = UIRefreshControl()
+        campaignTable.refreshControl?.addTarget(self, action:
+            #selector(refreshData(sender:)), for: .valueChanged)
+    }
+
+    @objc func refreshData(sender: UIRefreshControl) {
+        loadCampaigns()
+        self.campaignTable.refreshControl?.endRefreshing()
     }
     
     /// fills campaignTable with cells corresponding to self.campaigns, with the campaign name and description as detail
@@ -80,18 +94,34 @@ class CampaignTableViewController: CUUTableViewController {
         if let imageURL = campaign.image,
             let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url) {
-            cell.campaignImageView.image = UIImage(data: data)
+            cell.imageView?.image = UIImage(data: data)
         }
         
         
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is CampaignInfoViewController,
-            let campaignCellIndex = campaignTable.indexPathForSelectedRow?.row {
-            CampaignInfoViewController.setCampaign(campaigns[campaignCellIndex])
-        }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        var campaign: Campaign
+        campaign=campaigns[indexPath.row]
+        MainTabBarController.setCampaign(campaign)
+        guard let cell = campaignTable.cellForRow(at: indexPath),
+            let imageView = cell.imageView,
+            let image = imageView.image
+            else { return }
+        MainTabBarController.setImage(image: image)
+        performSegue(withIdentifier: "showCampaign", sender: nil)
+    }
+
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let vc = segue.destination as? DetailViewController, let detailToSend = sender as? SingleRepository {
+//            vc.detail = detailToSend
+//        }
+//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+
     }
 }
