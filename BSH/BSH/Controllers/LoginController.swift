@@ -22,8 +22,16 @@ class LoginController: UIViewController {
         emailField.text = email
     }
 
-    @IBAction func loginButtonPressed(_ sender: Any) {
 
+    @IBAction func loginPrimaryAction(_ sender: Any) {
+        self.login()
+    }
+
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        self.login()
+    }
+
+    private func login(){
         guard let email = emailField.text else {
             showLoginError("Please fill in a correct e-mail address.")
             return
@@ -33,9 +41,9 @@ class LoginController: UIViewController {
         } else {
             showLoginError("The e-mail address format is invalid.")
         }
-
-
     }
+
+
     public func userLogin(email: String) {
         DefaultAPI.getUserByEmail(email: email, completion: { (user, error) in
         guard let user = user else {
