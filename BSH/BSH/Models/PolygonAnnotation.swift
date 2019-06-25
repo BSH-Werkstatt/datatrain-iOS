@@ -11,19 +11,24 @@ import UIKit
 import SwaggerClient
 
 class PolygonAnnotation : Annotation {
-    
-    var points: [Point]
-    
+
+    var points: [CGPoint] = []
+    var completed: Bool = false
+    var label: String = ""
     var imageId: String
     var userId: String
     var campaignId: String
-    var label: String = ""
+    var temporaryPoint: CGPoint?
 
-    init(userId: String, campaignId: String, imageId: String, points: [Point]) {
+
+    init(userId: String, campaignId: String, imageId: String) {
         self.userId = userId
         self.campaignId = campaignId
         self.imageId = imageId
-        self.points = points
+    }
+    
+    func addPoint(point: CGPoint) {
+        points.append(point)
     }
 
     public func getAPIPoints() -> [SwaggerClient.Point] {
@@ -32,7 +37,9 @@ class PolygonAnnotation : Annotation {
         for point in points {
             apiPoints.append(SwaggerClient.Point(x: Double(point.x), y: Double(point.y)))
         }
-        
+
         return apiPoints
     }
+    
+
 }

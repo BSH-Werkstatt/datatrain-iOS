@@ -20,7 +20,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private var mainView: UIView!
     
-    private var annotationView: AnnotationView!
+    private var annotationViews: [AnnotationView] = []
+    private var currentAnnotationView: AnnotationView?
     private var imageView: UIImageView!
     
     private var activeCampaign: Campaign?
@@ -59,13 +60,13 @@ extension AnnotateImageViewController {
         }
         
         if self.imageData == nil {
-            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadImage)
+            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadAndDisplayImage)
         } else {
-            downloadImage(self.imageData, nil)
+            downloadAndDisplayImage(self.imageData, nil)
         }
     }
 
-    private func downloadImage(_ iData: ImageData?, _ error: Error?) {
+    private func downloadAndDisplayImage(_ iData: ImageData?, _ error: Error?) {
         if let error = error {
             // TODO: show an alert that an error has occured
             print(error)
@@ -91,6 +92,7 @@ extension AnnotateImageViewController {
                 return
         }
         imageView = UIImageView(image: UIImage(data: data))
+        imageView.isUserInteractionEnabled = true
         guard let imageView = imageView else {
             print("Cannot initialize image view.")
             return
@@ -99,6 +101,10 @@ extension AnnotateImageViewController {
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
+        
+        let (offsetX, offsetY, imageSizeX, imageSizeY) = calculateOffsetOfImage()
+        AnnotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
+        AnnotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
     }
 }
 
@@ -126,9 +132,72 @@ extension AnnotateImageViewController {
         }
     }
 }
+// MARK: Touch overrides
+extension AnnotateImageViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TouchesBegan")
+        guard let imageData = imageData, let activeCampaign = activeCampaign else {
+            print("Cannot get image data or active campaign")
+            return
+        }
+        let annotationView = AnnotationView()
+        annotationView.frame = view.bounds
+        annotationView.backgroundColor = UIColor.clear
+        annotationView.isOpaque = false
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: annotationView, action: #selector(annotationView.selectAnnotation(tapGestureRecognizer:)))
+        annotationView.isUserInteractionEnabled = true
+        annotationView.addGestureRecognizer(tapGestureRecognizer)
+        
+        imageLayerContainer.addSubview(annotationView)
+        let annotation = PolygonAnnotation(userId: "5d0a6fe5a9edbb9d5cc29e10", campaignId: activeCampaign._id, imageId: imageData._id)
+        annotationView.annotation = annotation
+        
+        super.touchesBegan(touches, with: event)
+        let touch = touches.first as! UITouch
+        let point = touch.location(in: imageView)
+        annotationView.annotation?.addPoint(point: point)
 
-// Save Annotation Functionality
-extension AnnotateImageViewController{
+        annotationViews.append(annotationView)
+        currentAnnotationView = annotationView
+        currentAnnotationView?.setNeedsDisplay()
+        print("Annotation has the first point")
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        let touch = touches.first as! UITouch
+        let point = touch.location(in: imageView)
+        if let lastPoint = currentAnnotationView?.annotation?.points.last {
+            if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
+                (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
+                currentAnnotationView?.annotation?.addPoint(point: point)
+            }
+        }
+        currentAnnotationView?.annotation?.temporaryPoint = point
+        currentAnnotationView?.setNeedsDisplay()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TouchesEnded")
+        super.touchesBegan(touches, with: event)
+        
+        if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
+            print("Annotation is being deleted because the is only one point")
+            currentAnnotationView?.annotation = nil
+            currentAnnotationView?.removeFromSuperview()
+            return
+        }
+        let touch = touches.first as! UITouch
+        let point = touch.location(in: imageView)
+        currentAnnotationView?.annotation?.addPoint(point: point)
+        currentAnnotationView?.annotation?.completed = true
+        currentAnnotationView?.setNeedsDisplay()
+    }
+}
+
+// MARK: Save Annotation Functionality
+extension AnnotateImageViewController {
     private func returnToCampaignInfo() {
         // TODO: Handle errors
     }
@@ -165,103 +234,30 @@ extension AnnotateImageViewController{
         return (offsetX, offsetY, imageSizeX, imageSizeY)
     }
 
-    @IBAction func annotationButtonClick(_ sender: Any) {
-        annotateRectangleButton.isEnabled = false
-        annotationView = AnnotationView()
-        let (offsetX, offsetY, imageSizeX, imageSizeY) = calculateOffsetOfImage()
-        annotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
-        guard let image = imageView.image else {
-            print("Image should not be null at this point")
-            return
-        }
-        annotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
-        guard let annotationView = annotationView else {
-            print("Cannot initialize annotation view.")
-            return
-        }
-        
-        annotationView.frame = view.bounds
-        annotationView.backgroundColor = UIColor.clear
-        annotationView.isOpaque = false
-        self.imageLayerContainer.addSubview(annotationView)
-        
-        let alertController = UIAlertController(title: "Start Annotation", message: "Please annotate the image with polygons by touching on the edges of the polygon that surrounds the object.", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-        annotationEnabled = true
-        
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        annotationView.isUserInteractionEnabled = true
-        annotationView.addGestureRecognizer(tapGestureRecognizer)
-        submitButton.setTitle("Complete Annotation", for: .normal)
-    }
-    
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        if !annotationEnabled {
-            return
-        }
-        // User tapped on the image. A new point to the Annotation View should be added.
-        let point = tapGestureRecognizer.location(in: imageView)
-
-//        var x = (-offsetX + point.x) / (imageView.frame.size.width - 2 * offsetX) * image.size.width
-//        if x < CGFloat(0) {
-//            x = CGFloat(0)
-//        } else if x > image.size.width {
-//            x = image.size.width
+    @IBAction func submitButtonClick(_ sender: Any) {
+//        guard let label = annotationNameTextField.text,
+//            let imageData = imageData,
+//            let activeCampaign = activeCampaign else {
+//            return
 //        }
 //
-//        var y = (-offsetY + point.y) / (imageView.frame.size.height - 2 * offsetY) * image.size.height
-//        if y < CGFloat(0) {
-//            y = CGFloat(0)
-//        } else if y > image.size.height {
-//            y = image.size.height
+//        if annotationNameTextField.text?.count == 0 {
+//            return
 //        }
-        
-        self.annotationView.add(point: CGPoint(x: point.x, y: point.y), to: 0)
-    }
-
-    @IBAction func submitButtonClick(_ sender: Any) {
-        if let submitButtonTitle = submitButton.title(for: .normal),
-            submitButtonTitle == "Complete Annotation" {
-            submitButton.setTitle("Send Annotation", for: .normal)
-            annotationEnabled = false
-            annotationView.complete(annotation: 0)
-            annotationView.setNeedsDisplay()
-            return
-        }
-        
-        guard let label = annotationNameTextField.text,
-            let imageData = imageData,
-            let activeCampaign = activeCampaign else {
-            return
-        }
-
-        // TODO: replace with real current annotation
-        let currentAnnotation = PolygonAnnotation (
-            userId: "5d0a6fe5a9edbb9d5cc29e10",
-            campaignId: activeCampaign._id,
-            imageId: imageData._id,
-            points: annotationView.getPoints()
-        )
-        
-        if annotationNameTextField.text?.count == 0 {
-            return
-        }
-
-        // this is the mask RCNN type
-        let type = "polygon"
-
-        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userToken: "5d0a6fe5a9edbb9d5cc29e10")
-        DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
-            print("Annotation result", annotation, error)
-            if error == nil {
-                // Show notification for succesful upload
-                let alertController = UIAlertController(title: "Annotation successful", message: "The annotation was saved.", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
+//
+//        // this is the mask RCNN type
+//        let type = "polygon"
+//
+//        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userToken: "5d0a6fe5a9edbb9d5cc29e10")
+//        DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
+//            print("Annotation result", annotation, error)
+//            if error == nil {
+//                // Show notification for succesful upload
+//                let alertController = UIAlertController(title: "Annotation successful", message: "The annotation was saved.", preferredStyle: UIAlertController.Style.alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.present(alertController, animated: true, completion: nil)
+//            }
+//        })
         if let navController = self.navigationController {
             navController.popViewController(animated: true)
         }
