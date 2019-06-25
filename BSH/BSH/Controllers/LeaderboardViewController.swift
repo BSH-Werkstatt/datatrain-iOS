@@ -69,7 +69,6 @@ class LeaderboardViewController: CUUTableViewController {
             self.campaingLabel?.text = campaign.name
             self.leaderboard = leaderboard
             self.leaderboardTable.reloadData()
-
         })
     }
 
@@ -82,8 +81,8 @@ class LeaderboardViewController: CUUTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaderboardCell", for: indexPath) as! LeaderboardCellController
 
-        // get the current cell from campaigns sorted by ids
-        let score = leaderboard?.scores.sorted(by: { $0.score < $1.score })[indexPath.row]
+        // get the current cell from campaigns sorted by score
+        let score = leaderboard?.scores.sorted(by: { $0.score > $1.score })[indexPath.row]
 
         let ordinalFormatter = NumberFormatter()
         ordinalFormatter.numberStyle = .ordinal
