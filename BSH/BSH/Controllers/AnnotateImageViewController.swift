@@ -251,8 +251,9 @@ extension AnnotateImageViewController{
 
         // this is the mask RCNN type
         let type = "polygon"
-
-        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userToken: "5d0a6fe5a9edbb9d5cc29e10")
+        
+        let annotationItem = AnnotationCreationRequestItem(points: currentAnnotation.getAPIPoints(), type: type, label: label)
+        let request = AnnotationCreationRequest(items: [annotationItem], userToken: "5d0a6fe5a9edbb9d5cc29e10")
         DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
             print("Annotation result", annotation, error)
             if error == nil {
