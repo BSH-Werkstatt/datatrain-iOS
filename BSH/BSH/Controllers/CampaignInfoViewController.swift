@@ -17,7 +17,6 @@ class CampaignInfoViewController: CUUViewController {
     var image: UIImage?
     
     // MARK: IBOutlets
-    @IBOutlet private weak var campaignName: UILabel!
     @IBOutlet private weak var campaignInfoText: UITextView!
     @IBOutlet weak var campaignImageView: UIImageView!
     
@@ -30,16 +29,12 @@ class CampaignInfoViewController: CUUViewController {
     @IBAction func selectImageAction(_ sender: Any) {
         showImageAlert()
     }
-
-    @IBAction func toLeaderboardButton() {
-        // Go to Campaign Leaderboard
-    }
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         if let campaign = MainTabBarController.getCampaign() {
-            campaignName.text = campaign.name
+//            campaignName.text = campaign.name
             campaignInfoText.text = campaign._description
         }
 
