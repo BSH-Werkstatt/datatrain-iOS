@@ -20,6 +20,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private var mainView: UIView!
     
+   
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
     private var selectedAnnotationView: AnnotationView?
@@ -264,6 +265,13 @@ extension AnnotateImageViewController {
         return (offsetX, offsetY, imageSizeX, imageSizeY)
     }
 
+    @IBAction func annotationButtonClick(_ sender: Any) {
+        selectedAnnotationView?.annotation = nil
+        selectedAnnotationView?.selected = false
+        selectedAnnotationView?.removeFromSuperview()
+        selectedAnnotationView = nil
+    }
+    
     @IBAction func submitButtonClick(_ sender: Any) {
 //        if let submitButtonTitle = submitButton.title(for: .normal),
 //            submitButtonTitle == "Complete Annotation" {
