@@ -19,7 +19,7 @@ class PolygonAnnotation : Annotation {
     var userId: String
     var campaignId: String
     var temporaryPoint: CGPoint?
-
+    var annotationView: AnnotationView?
 
     init(userId: String, campaignId: String, imageId: String) {
         self.userId = userId
@@ -33,13 +33,10 @@ class PolygonAnnotation : Annotation {
 
     public func getAPIPoints() -> [SwaggerClient.Point] {
         var apiPoints: [SwaggerClient.Point] = []
-        
-        for point in points {
+        let rescaledPoints = annotationView!.getPoints()
+        for point in rescaledPoints {
             apiPoints.append(SwaggerClient.Point(x: Double(point.x), y: Double(point.y)))
         }
-
         return apiPoints
     }
-    
-
 }

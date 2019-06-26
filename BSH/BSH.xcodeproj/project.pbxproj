@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D39965122C2D8BE007F38E8 /* AnnotationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39965022C2D8BE007F38E8 /* AnnotationContainerView.swift */; };
 		2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */; };
 		2D3AA64E22BBD8AD00B94193 /* PolygonAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64D22BBD8AD00B94193 /* PolygonAnnotation.swift */; };
 		2E2E7889F3B19B91D4EB2436 /* Pods_BSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */; };
@@ -45,7 +44,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D39965022C2D8BE007F38E8 /* AnnotationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationContainerView.swift; sourceTree = "<group>"; };
 		2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		2D3AA64D22BBD8AD00B94193 /* PolygonAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonAnnotation.swift; sourceTree = "<group>"; };
 		3C21828722BB097C006373F5 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */,
-				2D39965022C2D8BE007F38E8 /* AnnotationContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,7 +360,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				50AB753F22A4026C00BEB84B /* AnnotateImageViewController.swift in Sources */,
-				2D39965122C2D8BE007F38E8 /* AnnotationContainerView.swift in Sources */,
 				3C65814F22AD3BA50073E78A /* BshCustomButton.swift in Sources */,
 				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
 				3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */,

@@ -100,6 +100,7 @@ class AnnotationView: UIView {
             print("There is no views")
             return []
         }
+
         var points: [Point] = []
         var counter = 0
         for point in annotation.points {
