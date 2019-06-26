@@ -473,7 +473,7 @@ open class DefaultAPI {
      - parameter request: (body)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postImageAnnotation(campaignId: String, imageId: String, request: AnnotationCreationRequest, completion: @escaping ((_ data: Annotation?,_ error: Error?) -> Void)) {
+    open class func postImageAnnotation(campaignId: String, imageId: String, request: AnnotationCreationRequest, completion: @escaping ((_ data: [Annotation]?,_ error: Error?) -> Void)) {
         postImageAnnotationWithRequestBuilder(campaignId: campaignId, imageId: imageId, request: request).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -482,7 +482,7 @@ open class DefaultAPI {
     
     /**
      - POST /campaigns/{campaignId}/images/{imageId}/annotations
-     - examples: [{contentType=application/json, example={
+     - examples: [{contentType=application/json, example=[ {
      "imageId" : "imageId",
      "campaignId" : "campaignId",
      "id" : "id",
@@ -496,15 +496,29 @@ open class DefaultAPI {
      "x" : 0.8008281904610115,
      "y" : 6.027456183070403
      } ]
-     }}]
+     }, {
+     "imageId" : "imageId",
+     "campaignId" : "campaignId",
+     "id" : "id",
+     "label" : "label",
+     "type" : "type",
+     "userId" : "userId",
+     "points" : [ {
+     "x" : 0.8008281904610115,
+     "y" : 6.027456183070403
+     }, {
+     "x" : 0.8008281904610115,
+     "y" : 6.027456183070403
+     } ]
+     } ]}]
      
      - parameter campaignId: (path)
      - parameter imageId: (path)
      - parameter request: (body)
      
-     - returns: RequestBuilder<Annotation>
+     - returns: RequestBuilder<[Annotation]>
      */
-    open class func postImageAnnotationWithRequestBuilder(campaignId: String, imageId: String, request: AnnotationCreationRequest) -> RequestBuilder<Annotation> {
+    open class func postImageAnnotationWithRequestBuilder(campaignId: String, imageId: String, request: AnnotationCreationRequest) -> RequestBuilder<[Annotation]> {
         var path = "/campaigns/{campaignId}/images/{imageId}/annotations"
         let campaignIdPreEscape = "\(campaignId)"
         let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -517,9 +531,46 @@ open class DefaultAPI {
         
         let url = URLComponents(string: URLString)
         
-        let requestBuilder: RequestBuilder<Annotation>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[Annotation]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
         
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    /**
+     
+     - parameter campaignId: (path)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func requestPrediction(campaignId: String, completion: @escaping ((_ data: PredictionResult?,_ error: Error?) -> Void)) {
+        requestPredictionWithRequestBuilder(campaignId: campaignId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     - POST /campaigns/{campaignId}/predictions
+     - examples: [{contentType=application/json, example={
+     "predictionURL" : "predictionURL"
+     }}]
+     
+     - parameter campaignId: (path)
+     
+     - returns: RequestBuilder<PredictionResult>
+     */
+    open class func requestPredictionWithRequestBuilder(campaignId: String) -> RequestBuilder<PredictionResult> {
+        var path = "/campaigns/{campaignId}/predictions"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+        
+        let requestBuilder: RequestBuilder<PredictionResult>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
 }
