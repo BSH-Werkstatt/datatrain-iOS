@@ -11,8 +11,7 @@ import UIKit
 class AnnotationView: UIView {
     
     var annotation: Annotation?
-    
-    private var selected = false
+    var selected = false
     
     private static var offsetX: CGFloat?
     private static var offsetY: CGFloat?
@@ -27,6 +26,8 @@ class AnnotationView: UIView {
     private static var pointColor: UIColor = UIColor(displayP3Red: CGFloat(200.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(1.0))
     
     private static var selectedStrokeColor: UIColor = UIColor(displayP3Red: CGFloat(100.0/255.0), green: CGFloat(200.0/255.0), blue: CGFloat(100.0/255.0), alpha: CGFloat(1.0))
+    
+    private static var selectedFillColor: UIColor = UIColor(displayP3Red: CGFloat(100.0/255.0), green: CGFloat(200.0/255.0), blue: CGFloat(100.0/255.0), alpha: CGFloat(0.5))
 
     override func draw(_ rect: CGRect) {
         if let annotation = annotation {
@@ -41,12 +42,14 @@ class AnnotationView: UIView {
                     }
                 }
                 path.close()
-                if (selected) {
+                if selected {
                     AnnotationView.selectedStrokeColor.setStroke()
+                    AnnotationView.selectedFillColor.setFill()
+
                 } else {
                     AnnotationView.strokeColor.setStroke()
+                    AnnotationView.fillColor.setFill()
                 }
-                AnnotationView.fillColor.setFill()
                 path.fill()
                 path.stroke()
             } else if annotation.points.count >= 1 && !annotation.completed {
@@ -60,18 +63,20 @@ class AnnotationView: UIView {
                 if let temporaryPoint = annotation.temporaryPoint {
                     path.addLine(to: temporaryPoint)
                 }
-                if (selected) {
-                    AnnotationView.selectedStrokeColor.setStroke()
-                } else {
-                    AnnotationView.strokeColor.setStroke()
-                }
+                AnnotationView.strokeColor.setStroke()
                 path.stroke()
             }
-            annotation.points.forEach({ (x: CGPoint) -> Void in
-                let path = UIBezierPath(ovalIn: CGRect(x: x.x - 2.5, y: x.y - 2.5, width: 5.0, height: 5.0))
-                AnnotationView.pointColor.setFill()
-                path.fill()
-            })
+            if annotation.points.count > 1 {
+                annotation.points.forEach({ (x: CGPoint) -> Void in
+                    let path = UIBezierPath(ovalIn: CGRect(x: x.x - 2.5, y: x.y - 2.5, width: 5.0, height: 5.0))
+                    if selected {
+                        AnnotationView.selectedStrokeColor.setFill()
+                    } else {
+                        AnnotationView.pointColor.setFill()
+                    }
+                    path.fill()
+                })
+            }
         }
     }
     
@@ -104,15 +109,8 @@ class AnnotationView: UIView {
         return points
     }
     
-    @objc func selectAnnotation(tapGestureRecognizer: UITapGestureRecognizer) {
-        print("I am selected")
-        selected = !selected
-        setNeedsDisplay()
-    }
-    
     func isPointInsideAnnotation(point: CGPoint) -> Bool {
-        print("You are at the right point.")
-        guard let annotation = annotation, annotation.points.count < 3 else {
+        guard let annotation = annotation, annotation.points.count > 2 else {
             return false
         }
         let path = UIBezierPath()

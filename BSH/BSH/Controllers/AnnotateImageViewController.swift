@@ -22,6 +22,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
+    private var selectedAnnotationView: AnnotationView?
+
     private var imageView: UIImageView!
     
     private var activeCampaign: Campaign?
@@ -92,7 +94,7 @@ extension AnnotateImageViewController {
                 return
         }
         imageView = UIImageView(image: UIImage(data: data))
-        imageView.isUserInteractionEnabled = true
+//        imageView.isUserInteractionEnabled = true
         guard let imageView = imageView else {
             print("Cannot initialize image view.")
             return
@@ -105,6 +107,10 @@ extension AnnotateImageViewController {
         let (offsetX, offsetY, imageSizeX, imageSizeY) = calculateOffsetOfImage()
         AnnotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
         AnnotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectAnnotation(tapGestureRecognizer:)))
+        imageLayerContainer.isUserInteractionEnabled = true
+        imageLayerContainer.addGestureRecognizer(tapGestureRecognizer)
     }
 }
 
@@ -145,10 +151,6 @@ extension AnnotateImageViewController {
         annotationView.backgroundColor = UIColor.clear
         annotationView.isOpaque = false
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: annotationView, action: #selector(annotationView.selectAnnotation(tapGestureRecognizer:)))
-        annotationView.isUserInteractionEnabled = true
-        annotationView.addGestureRecognizer(tapGestureRecognizer)
-        
         imageLayerContainer.addSubview(annotationView)
         let annotation = PolygonAnnotation(userId: "5d0a6fe5a9edbb9d5cc29e10", campaignId: activeCampaign._id, imageId: imageData._id)
         annotationView.annotation = annotation
@@ -161,10 +163,11 @@ extension AnnotateImageViewController {
         annotationViews.append(annotationView)
         currentAnnotationView = annotationView
         currentAnnotationView?.setNeedsDisplay()
-        print("Annotation has the first point")
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TouchesMoved")
         super.touchesBegan(touches, with: event)
         let touch = touches.first as! UITouch
         let point = touch.location(in: imageView)
@@ -181,18 +184,45 @@ extension AnnotateImageViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchesEnded")
         super.touchesBegan(touches, with: event)
-        
-        if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
-            print("Annotation is being deleted because the is only one point")
-            currentAnnotationView?.annotation = nil
-            currentAnnotationView?.removeFromSuperview()
-            return
-        }
         let touch = touches.first as! UITouch
         let point = touch.location(in: imageView)
         currentAnnotationView?.annotation?.addPoint(point: point)
         currentAnnotationView?.annotation?.completed = true
         currentAnnotationView?.setNeedsDisplay()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
+            print("Annotation is being deleted because the is only one point")
+            currentAnnotationView?.annotation = nil
+            currentAnnotationView?.removeFromSuperview()
+            return
+        }    }
+    
+    @objc func selectAnnotation(tapGestureRecognizer: UITapGestureRecognizer) {
+        if imageLayerContainer.subviews.count == 0 {
+            return
+        }
+        // If there is already a selected annotation, then we cannot select new ones, only deselect this one
+        if let selectedAnnotation = selectedAnnotationView, selectedAnnotation.selected {
+            if selectedAnnotation.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                selectedAnnotation.selected = false
+                selectedAnnotation.setNeedsDisplay()
+                selectedAnnotationView = nil
+            }
+            return
+        }
+        for index in 0...imageLayerContainer.subviews.count - 1 {
+            if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
+                let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
+                if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                    subview.selected = true
+                    subview.setNeedsDisplay()
+                    selectedAnnotationView = subview
+                    return
+                }
+            }
+        }
     }
 }
 
