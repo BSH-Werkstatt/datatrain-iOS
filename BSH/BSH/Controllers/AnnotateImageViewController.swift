@@ -13,30 +13,46 @@ import SwaggerClient
 
 // MARK: - AnnotateImageViewController
 class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
-    // MARK: Overriden IBOutlets
+    // MARK: - Overriden IBOutlets
     @IBOutlet private weak var imageLayerContainer: UIView!
     @IBOutlet private weak var annotateRectangleButton: UIButton!
     @IBOutlet private weak var annotationNameTextField: UITextField!
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private var mainView: UIView!
-    
-    private var annotationView: AnnotationView!
+   
+    private var annotationViews: [AnnotationView] = []
+    private var currentAnnotationView: AnnotationView?
+    private var selectedAnnotationView: AnnotationView?
     private var imageView: UIImageView!
-    
     private var activeCampaign: Campaign?
     var imageData: ImageData?
     private var originalImage: UIImage?
     private var mainViewInitialY: CGFloat!
     private var annotationEnabled: Bool = false
     
+    private var offsetX: CGFloat = -1.0
+    private var offsetY: CGFloat = -1.0
+    private var sizeImageX: CGFloat = -1.0
+    private var sizeImageY: CGFloat = -1.0
 
-    // MARK: Overriden Methods
+    
+    // TODO: This should be refactored as deleteButtonClick
+    @IBAction func annotationButtonClick(_ sender: Any) {
+        selectedAnnotationView?.annotation = nil
+        selectedAnnotationView?.selected = false
+        selectedAnnotationView?.removeFromSuperview()
+        selectedAnnotationView = nil
+    }
+
+    // MARK: - Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // intialize main view offsets because of the keyboard
         mainViewInitialY = mainView.frame.origin.y
         // load data
+        // Disable moving back by swipe - They conflict with annotation gestures
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         loadActiveCampaign()
         getImage()
         addKeyboardShiftListner()
@@ -44,7 +60,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     }
 }
 
-// Load Data Functionality
+// MARK: - Load Data Functionality
 extension AnnotateImageViewController {
     /// Gets the currently selected campaign from CampaignInfoViewController
     private func loadActiveCampaign() {
@@ -59,13 +75,13 @@ extension AnnotateImageViewController {
         }
         
         if self.imageData == nil {
-            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadImage)
+            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadAndDisplayImage)
         } else {
-            downloadImage(self.imageData, nil)
+            downloadAndDisplayImage(self.imageData, nil)
         }
     }
 
-    private func downloadImage(_ iData: ImageData?, _ error: Error?) {
+    private func downloadAndDisplayImage(_ iData: ImageData?, _ error: Error?) {
         if let error = error {
             // TODO: show an alert that an error has occured
             print(error)
@@ -99,11 +115,20 @@ extension AnnotateImageViewController {
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
+        
+        let (offsetX, offsetY, imageSizeX, imageSizeY, imageScale) = calculateImageLayoutParameters()
+        AnnotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
+        AnnotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
+        AnnotationView.setImageScale(imageScale: imageScale)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectAnnotation(tapGestureRecognizer:)))
+        imageLayerContainer.isUserInteractionEnabled = true
+        imageLayerContainer.addGestureRecognizer(tapGestureRecognizer)
     }
 }
 
 
-// Basic Layout Functionality
+// MARK: - Basic Layout Functionality
 extension AnnotateImageViewController {
     private func addKeyboardShiftListner() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) in
@@ -126,28 +151,125 @@ extension AnnotateImageViewController {
         }
     }
 }
+// MARK: - Touch overrides
+extension AnnotateImageViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isPointInsideImage(point: touches.first!.location(in: imageView)) {
+            return
+        }
+        guard let imageData = imageData, let activeCampaign = activeCampaign else {
+            print("Cannot get image data or active campaign")
+            return
+        }
+        let annotationView = AnnotationView()
+        annotationView.frame = view.bounds
+        annotationView.backgroundColor = UIColor.clear
+        annotationView.isOpaque = false
+        
+        imageLayerContainer.addSubview(annotationView)
+        let annotation = PolygonAnnotation(userId: "5d0a6fe5a9edbb9d5cc29e10", campaignId: activeCampaign._id, imageId: imageData._id)
+        annotationView.annotation = annotation
+        annotation.annotationView = annotationView // Set the delegate view
+        
+        super.touchesBegan(touches, with: event)
+        let touch = touches.first! as UITouch
+        let point = touch.location(in: imageView)
+        annotationView.annotation?.addPoint(point: point)
 
-// Save Annotation Functionality
-extension AnnotateImageViewController{
-    private func returnToCampaignInfo() {
-        // TODO: Handle errors
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
+        annotationViews.append(annotationView)
+        currentAnnotationView = annotationView
+        currentAnnotationView?.setNeedsDisplay()
     }
     
-    func calculateOffsetOfImage() -> (CGFloat, CGFloat, CGFloat, CGFloat) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // If there is no uncompleted annotation, return
+        guard let completed = currentAnnotationView?.annotation?.completed else {
+            return
+        }
+        if completed {
+            return
+        }
+        super.touchesBegan(touches, with: event)
+        let touch = touches.first! as UITouch
+        var point = touch.location(in: imageView)
+        point = bringPointInsideImageBounds(point: point)
+        if let lastPoint = currentAnnotationView?.annotation?.points.last {
+            if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
+                (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
+                currentAnnotationView?.annotation?.addPoint(point: point)
+            }
+        }
+        currentAnnotationView?.annotation?.temporaryPoint = point
+        currentAnnotationView?.setNeedsDisplay()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // If there is no uncompleted annotation, return
+        guard let completed = currentAnnotationView?.annotation?.completed else {
+            return
+        }
+        if completed {
+            return
+        }
+        super.touchesBegan(touches, with: event)
+        currentAnnotationView?.annotation?.completed = true
+        currentAnnotationView?.setNeedsDisplay()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // If there is no uncompleted annotation, return
+        guard let completed = currentAnnotationView?.annotation?.completed else {
+            return
+        }
+        if completed {
+            return
+        }
+        if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
+            currentAnnotationView?.annotation = nil
+            currentAnnotationView?.removeFromSuperview()
+            return
+        }    }
+    
+    @objc func selectAnnotation(tapGestureRecognizer: UITapGestureRecognizer) {
+        if imageLayerContainer.subviews.count == 0 {
+            return
+        }
+        // If there is already a selected annotation, then we cannot select new ones, only deselect this one
+        if let selectedAnnotation = selectedAnnotationView, selectedAnnotation.selected {
+            if selectedAnnotation.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                selectedAnnotation.selected = false
+                selectedAnnotation.setNeedsDisplay()
+                selectedAnnotationView = nil
+            }
+            return
+        }
+        for index in 0...imageLayerContainer.subviews.count - 1 {
+            if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
+                let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
+                if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                    subview.selected = true
+                    subview.setNeedsDisplay()
+                    selectedAnnotationView = subview
+                    return
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Helper functions
+extension AnnotateImageViewController {
+    func calculateImageLayoutParameters() -> (CGFloat, CGFloat, CGFloat, CGFloat, CGFloat) {
         guard let image = imageView.image else {
             print("Image should not be null at this point")
-            return (CGFloat(0.0), CGFloat(0.0), CGFloat(0.0), CGFloat(0.0))
+            return (CGFloat(0.0), CGFloat(0.0), CGFloat(0.0), CGFloat(0.0), CGFloat(0.0))
         }
         var offsetX = CGFloat(0.0)
         var offsetY = CGFloat(0.0)
         var imageSizeX = CGFloat(0.0)
         var imageSizeY = CGFloat(0.0)
-
+        var imageScaleRatio = CGFloat(0.0)
+        
         let frameRatio = imageView.frame.size.width / imageView.frame.size.height
         let imageRatio = image.size.width / image.size.height
         
@@ -162,97 +284,82 @@ extension AnnotateImageViewController{
             imageSizeY = imageView.frame.size.height
             imageSizeX = imageSizeY * image.size.width / image.size.height
         }
-        return (offsetX, offsetY, imageSizeX, imageSizeY)
-    }
-
-    @IBAction func annotationButtonClick(_ sender: Any) {
-        annotateRectangleButton.isEnabled = false
-        annotationView = AnnotationView()
-        let (offsetX, offsetY, imageSizeX, imageSizeY) = calculateOffsetOfImage()
-        annotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
-        guard let image = imageView.image else {
-            print("Image should not be null at this point")
-            return
-        }
-        annotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
-        guard let annotationView = annotationView else {
-            print("Cannot initialize annotation view.")
-            return
-        }
         
-        annotationView.frame = view.bounds
-        annotationView.backgroundColor = UIColor.clear
-        annotationView.isOpaque = false
-        self.imageLayerContainer.addSubview(annotationView)
-        
-        let alertController = UIAlertController(title: "Start Annotation", message: "Please annotate the image with polygons by touching on the edges of the polygon that surrounds the object.", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-        annotationEnabled = true
-        
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        annotationView.isUserInteractionEnabled = true
-        annotationView.addGestureRecognizer(tapGestureRecognizer)
-        submitButton.setTitle("Complete Annotation", for: .normal)
+        imageScaleRatio = imageSizeX / image.size.width
+        return (offsetX, offsetY, imageSizeX, imageSizeY, imageScaleRatio)
     }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        if !annotationEnabled {
-            return
+    func isPointInsideImage(point: CGPoint) -> Bool {
+        if offsetX == -1 {
+            (offsetX, offsetY, sizeImageX, sizeImageY, _) = calculateImageLayoutParameters()
         }
-        // User tapped on the image. A new point to the Annotation View should be added.
-        let point = tapGestureRecognizer.location(in: imageView)
+        if point.x < offsetX || point.y < offsetY || point.x > offsetX + sizeImageX || point.y > offsetY + sizeImageY {
+            return false
+        }
+        return true
+    }
+    
+    func bringPointInsideImageBounds(point: CGPoint) -> CGPoint {
+        if offsetX == -1 {
+            (offsetX, offsetY, sizeImageX, sizeImageY, _) = calculateImageLayoutParameters()
+        }
+        var x = point.x
+        var y = point.y
 
-//        var x = (-offsetX + point.x) / (imageView.frame.size.width - 2 * offsetX) * image.size.width
-//        if x < CGFloat(0) {
-//            x = CGFloat(0)
-//        } else if x > image.size.width {
-//            x = image.size.width
-//        }
-//
-//        var y = (-offsetY + point.y) / (imageView.frame.size.height - 2 * offsetY) * image.size.height
-//        if y < CGFloat(0) {
-//            y = CGFloat(0)
-//        } else if y > image.size.height {
-//            y = image.size.height
-//        }
-        
-        self.annotationView.add(point: CGPoint(x: point.x, y: point.y), to: 0)
+        if point.x < offsetX {
+            x = offsetX
+        }
+        if point.y < offsetY {
+            y = offsetY
+        }
+        if point.x > offsetX + sizeImageX {
+            x = offsetX + sizeImageX
+        }
+        if point.y > offsetY + sizeImageY {
+            y = offsetY + sizeImageY
+        }
+        return CGPoint(x: x, y: y)
+    }
+}
+
+// MARK: - Save Annotation Functionality
+extension AnnotateImageViewController {
+    private func returnToCampaignInfo() {
+        // TODO: Handle errors
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     @IBAction func submitButtonClick(_ sender: Any) {
-        if let submitButtonTitle = submitButton.title(for: .normal),
-            submitButtonTitle == "Complete Annotation" {
-            submitButton.setTitle("Send Annotation", for: .normal)
-            annotationEnabled = false
-            annotationView.complete(annotation: 0)
-            annotationView.setNeedsDisplay()
-            return
-        }
-        
         guard let label = annotationNameTextField.text,
             let imageData = imageData,
             let activeCampaign = activeCampaign else {
             return
         }
 
-        // TODO: replace with real current annotation
-        let currentAnnotation = PolygonAnnotation (
-            userId: "5d0a6fe5a9edbb9d5cc29e10",
-            campaignId: activeCampaign._id,
-            imageId: imageData._id,
-            points: annotationView.getPoints()
-        )
-        
         if annotationNameTextField.text?.count == 0 {
             return
         }
 
         // this is the mask RCNN type
         let type = "polygon"
-
-        let request = AnnotationCreationRequest(points: currentAnnotation.getAPIPoints(), type: type, label: label, userToken: "5d0a6fe5a9edbb9d5cc29e10")
+        var annotationItems: [AnnotationCreationRequestItem] = []
+        imageLayerContainer.subviews.forEach({ (view: UIView) -> Void in
+            if !(view is AnnotationView) {
+                return
+            }
+            let view = view as! AnnotationView
+            guard let annotation = view.annotation else {
+                return
+            }
+            let annotationItem = AnnotationCreationRequestItem(points: annotation.getAPIPoints(), type: type, label: annotation.label)
+            annotationItems.append(annotationItem)
+        })
+        
+        let request = AnnotationCreationRequest(items: annotationItems, userToken: "5d0a6fe5a9edbb9d5cc29e10")
         DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
             print("Annotation result", annotation, error)
             if error == nil {
