@@ -193,7 +193,7 @@ extension AnnotateImageViewController {
             return
         }
         
-        super.touchesBegan(touches, with: event)
+        super.touchesMoved(touches, with: event)
         let touch = touches.first! as UITouch
         var point = touch.location(in: imageView)
         point = bringPointInsideImageBounds(point: point)
@@ -215,7 +215,7 @@ extension AnnotateImageViewController {
         if completed {
             return
         }
-        super.touchesBegan(touches, with: event)
+        super.touchesEnded(touches, with: event)
         currentAnnotationView?.annotation?.completed = true
         currentAnnotationView?.setNeedsDisplay()
         labelButton.setTitle("Select Label", for: .normal)
