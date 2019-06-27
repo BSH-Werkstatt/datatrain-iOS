@@ -363,7 +363,7 @@ extension AnnotateImageViewController {
             return
         }
         
-        let controller = ArrayChoiceTableViewController(activeCampaign.taxonomy) { (label) in
+        let controller = ArrayChoiceTableViewController(activeCampaign.taxonomy.sorted()) { (label) in
             self.labelButton.setTitle(label, for: .normal)
             self.selectedAnnotationView?.annotation?.label = label
         }
