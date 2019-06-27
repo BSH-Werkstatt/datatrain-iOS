@@ -63,7 +63,7 @@ class LeaderboardViewController: CUUTableViewController {
             leaderboard, error in
             guard let leaderboard = leaderboard else {
                 print(error ?? "whatever")
-                self.campaingLabel?.text = "There was en error loading the leaderboard data."
+                self.campaingLabel?.text = "A loading error occured. \nThere is no data for this leaderboard yet."
                 return
             }
             self.campaingLabel?.text = campaign.name
