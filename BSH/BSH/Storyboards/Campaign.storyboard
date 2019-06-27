@@ -88,50 +88,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="zBt-GO-mR9">
-                                <rect key="frame" x="0.0" y="20" width="320" height="361"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qd8-ez-CiN">
-                                <rect key="frame" x="0.0" y="381" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="391" width="320" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mh-HR-deh" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
-                                        <rect key="frame" x="242" y="15" width="63" height="30"/>
-                                        <color key="backgroundColor" red="0.97214037180000001" green="0.6181282401" blue="0.20888295770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Annotate">
+                                        <rect key="frame" x="272" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="TTb-Ep-jk8"/>
+                                            <constraint firstAttribute="width" constant="40" id="jbE-R9-wqm"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="icons8-checkmark-100.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="U3m-Vh-3CF"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywE-h7-pAA">
-                                        <rect key="frame" x="90" y="15" width="137" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU7-8O-ary">
-                                        <rect key="frame" x="15" y="10" width="60" height="40"/>
+                                        <rect key="frame" x="8" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="2CL-qK-aJe"/>
-                                            <constraint firstAttribute="height" constant="40" id="oyA-e5-ZAT"/>
+                                            <constraint firstAttribute="height" constant="40" id="DZd-i7-gIU"/>
+                                            <constraint firstAttribute="width" constant="40" id="q5k-ir-g9R"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="rectangle.png"/>
+                                        <state key="normal" backgroundImage="icons8-trash-can-100.png"/>
                                         <connections>
                                             <action selector="annotationButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="4El-Au-T4P"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFT-Jx-rPT">
+                                        <rect key="frame" x="56" y="5" width="208" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Select Label">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showLabelPopup:" destination="Hgt-na-wWW" eventType="touchUpInside" id="icg-ck-XqC"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4mh-HR-deh" secondAttribute="trailing" constant="15" id="36V-9Q-7c4"/>
-                                    <constraint firstAttribute="height" constant="50" id="8qM-jT-UED"/>
-                                    <constraint firstItem="zU7-8O-ary" firstAttribute="leading" secondItem="qd8-ez-CiN" secondAttribute="leading" constant="15" id="AiX-yq-RlL"/>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="top" secondItem="qd8-ez-CiN" secondAttribute="top" constant="15" id="N6Y-5a-Aqq"/>
-                                    <constraint firstItem="ywE-h7-pAA" firstAttribute="leading" secondItem="zU7-8O-ary" secondAttribute="trailing" constant="15" id="WFX-yh-k7k"/>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="leading" secondItem="ywE-h7-pAA" secondAttribute="trailing" constant="15" id="smk-aQ-BFh"/>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="centerY" secondItem="ywE-h7-pAA" secondAttribute="centerY" id="tAL-TR-0Zt"/>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="centerY" secondItem="zU7-8O-ary" secondAttribute="centerY" id="yHX-Q7-jhT"/>
+                                    <constraint firstItem="4mh-HR-deh" firstAttribute="centerY" secondItem="qd8-ez-CiN" secondAttribute="centerY" id="8Ib-NF-AzD"/>
+                                    <constraint firstItem="IFT-Jx-rPT" firstAttribute="centerX" secondItem="qd8-ez-CiN" secondAttribute="centerX" id="T88-MS-DHh"/>
+                                    <constraint firstItem="IFT-Jx-rPT" firstAttribute="leading" secondItem="zU7-8O-ary" secondAttribute="trailing" constant="8" id="bJh-Nh-OH2"/>
+                                    <constraint firstItem="zU7-8O-ary" firstAttribute="leading" secondItem="qd8-ez-CiN" secondAttribute="leading" constant="8" id="d7D-TZ-fTs"/>
+                                    <constraint firstItem="4mh-HR-deh" firstAttribute="baseline" secondItem="zU7-8O-ary" secondAttribute="baseline" id="hxZ-nG-7ID"/>
+                                    <constraint firstItem="4mh-HR-deh" firstAttribute="leading" secondItem="IFT-Jx-rPT" secondAttribute="trailing" constant="8" id="ptF-gb-Pvf"/>
+                                    <constraint firstItem="zU7-8O-ary" firstAttribute="top" secondItem="qd8-ez-CiN" secondAttribute="top" id="sia-8D-Hfz"/>
+                                    <constraint firstAttribute="trailing" secondItem="4mh-HR-deh" secondAttribute="trailing" constant="8" id="tZG-eq-PNm"/>
+                                    <constraint firstItem="zU7-8O-ary" firstAttribute="firstBaseline" secondItem="4mh-HR-deh" secondAttribute="firstBaseline" id="wqa-sA-xjS"/>
+                                    <constraint firstItem="zU7-8O-ary" firstAttribute="centerY" secondItem="qd8-ez-CiN" secondAttribute="centerY" id="xfv-7n-YzP"/>
+                                    <constraint firstItem="IFT-Jx-rPT" firstAttribute="centerY" secondItem="qd8-ez-CiN" secondAttribute="centerY" id="z15-wR-xm1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -151,15 +161,15 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="annotateRectangleButton" destination="zU7-8O-ary" id="jXJ-4X-a6h"/>
-                        <outlet property="annotationNameTextField" destination="ywE-h7-pAA" id="SRU-8M-cSC"/>
                         <outlet property="imageLayerContainer" destination="zBt-GO-mR9" id="YrT-eg-DbU"/>
+                        <outlet property="labelButton" destination="IFT-Jx-rPT" id="OdY-SW-yGm"/>
                         <outlet property="mainView" destination="8oh-dQ-NR4" id="oIz-V9-Iv2"/>
                         <outlet property="submitButton" destination="4mh-HR-deh" id="p20-7b-NPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2802.898550724638" y="-200.22321428571428"/>
+            <point key="canvasLocation" x="2801.25" y="-201.25"/>
         </scene>
         <!--Upload Image View-->
         <scene sceneID="62n-9l-fz6">
@@ -204,7 +214,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rectangle.png" width="512" height="512"/>
+        <image name="icons8-checkmark-100.png" width="75" height="75"/>
+        <image name="icons8-trash-can-100.png" width="75" height="75"/>
         <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
     </resources>
     <inferredMetricsTieBreakers>

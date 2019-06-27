@@ -16,10 +16,11 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     // MARK: - Overriden IBOutlets
     @IBOutlet private weak var imageLayerContainer: UIView!
     @IBOutlet private weak var annotateRectangleButton: UIButton!
-    @IBOutlet private weak var annotationNameTextField: UITextField!
     @IBOutlet private weak var submitButton: UIButton!
-    @IBOutlet private var mainView: UIView!
-   
+    @IBOutlet private weak var mainView: UIView!
+    @IBOutlet private weak var labelButton: UIButton!
+    
+    private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
     private var selectedAnnotationView: AnnotationView?
@@ -42,6 +43,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         selectedAnnotationView?.selected = false
         selectedAnnotationView?.removeFromSuperview()
         selectedAnnotationView = nil
+        labelButton.setTitle("Select Label", for: .normal)
     }
 
     // MARK: - Overriden Methods
@@ -56,7 +58,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         loadActiveCampaign()
         getImage()
         addKeyboardShiftListner()
-        annotationNameTextField.delegate = self
     }
 }
 
@@ -106,13 +107,14 @@ extension AnnotateImageViewController {
                 self.returnToCampaignInfo()
                 return
         }
-        imageView = UIImageView(image: UIImage(data: data))
+        imageView = UIImageView()
         guard let imageView = imageView else {
             print("Cannot initialize image view.")
             return
         }
         imageView.frame = imageLayerContainer.bounds
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        imageView.image = UIImage(data: data)
         imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
         
@@ -161,6 +163,7 @@ extension AnnotateImageViewController {
             print("Cannot get image data or active campaign")
             return
         }
+        
         let annotationView = AnnotationView()
         annotationView.frame = view.bounds
         annotationView.backgroundColor = UIColor.clear
@@ -170,6 +173,7 @@ extension AnnotateImageViewController {
         let annotation = PolygonAnnotation(userId: "5d0a6fe5a9edbb9d5cc29e10", campaignId: activeCampaign._id, imageId: imageData._id)
         annotationView.annotation = annotation
         annotation.annotationView = annotationView // Set the delegate view
+        
         
         super.touchesBegan(touches, with: event)
         let touch = touches.first! as UITouch
@@ -189,16 +193,28 @@ extension AnnotateImageViewController {
         if completed {
             return
         }
-        super.touchesBegan(touches, with: event)
+        
+        super.touchesMoved(touches, with: event)
         let touch = touches.first! as UITouch
         var point = touch.location(in: imageView)
         point = bringPointInsideImageBounds(point: point)
+        
         if let lastPoint = currentAnnotationView?.annotation?.points.last {
             if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
                 (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
                 currentAnnotationView?.annotation?.addPoint(point: point)
+                if magnifyView == nil {
+                    magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                    magnifyView!.viewToMagnify = self.view.superview
+                    magnifyView!.setTouchPoint(pt: touch.location(in: self.view.superview))
+                    self.view.superview?.addSubview(magnifyView!)
+                }
             }
         }
+        
+        magnifyView?.setTouchPoint(pt: touch.location(in: self.view.superview))
+        magnifyView?.setNeedsDisplay()
+        
         currentAnnotationView?.annotation?.temporaryPoint = point
         currentAnnotationView?.setNeedsDisplay()
     }
@@ -211,12 +227,28 @@ extension AnnotateImageViewController {
         if completed {
             return
         }
-        super.touchesBegan(touches, with: event)
+        super.touchesEnded(touches, with: event)
+        
+        if magnifyView != nil {
+            magnifyView!.removeFromSuperview()
+            magnifyView = nil
+        }
+        
         currentAnnotationView?.annotation?.completed = true
         currentAnnotationView?.setNeedsDisplay()
+        labelButton.setTitle("Select Label", for: .normal)
+        selectedAnnotationView?.selected = false
+        selectedAnnotationView?.setNeedsDisplay()
+        selectedAnnotationView = currentAnnotationView
+        currentAnnotationView?.selected = true
+        currentAnnotationView = nil
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if magnifyView != nil {
+            magnifyView!.removeFromSuperview()
+            magnifyView = nil
+        }
         // If there is no uncompleted annotation, return
         guard let completed = currentAnnotationView?.annotation?.completed else {
             return
@@ -234,22 +266,17 @@ extension AnnotateImageViewController {
         if imageLayerContainer.subviews.count == 0 {
             return
         }
-        // If there is already a selected annotation, then we cannot select new ones, only deselect this one
-        if let selectedAnnotation = selectedAnnotationView, selectedAnnotation.selected {
-            if selectedAnnotation.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
-                selectedAnnotation.selected = false
-                selectedAnnotation.setNeedsDisplay()
-                selectedAnnotationView = nil
-            }
-            return
-        }
         for index in 0...imageLayerContainer.subviews.count - 1 {
             if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
                 let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
                 if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                    selectedAnnotationView?.selected = false
+                    selectedAnnotationView?.setNeedsDisplay()
+                    
                     subview.selected = true
                     subview.setNeedsDisplay()
                     selectedAnnotationView = subview
+                    labelButton.setTitle(subview.annotation!.label == "" ? "Select Label" : subview.annotation!.label, for: .normal)
                     return
                 }
             }
@@ -322,6 +349,37 @@ extension AnnotateImageViewController {
     }
 }
 
+// MARK: - Choose Label Functionality
+extension AnnotateImageViewController {
+    @IBAction func showLabelPopup(_ sender: Any) {
+        guard let activeCampaign = activeCampaign else {
+            return
+        }
+        
+        if selectedAnnotationView == nil {
+            let alertController = UIAlertController(title: "Select an annotation", message: "Please select an annotation for to label.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        let controller = ArrayChoiceTableViewController(activeCampaign.taxonomy.sorted()) { (label) in
+            self.labelButton.setTitle(label, for: .normal)
+            self.selectedAnnotationView?.annotation?.label = label
+        }
+        controller.preferredContentSize = CGSize(width: 300, height: 200)
+        showPopup(controller, sourceView: sender as! UIView)
+    }
+    
+    private func showPopup(_ controller: UIViewController, sourceView: UIView) {
+        let presentationController = AlwaysPresentAsPopover.configurePresentation(forController: controller)
+        presentationController.sourceView = sourceView
+        presentationController.sourceRect = sourceView.bounds
+        presentationController.permittedArrowDirections = [.down, .up]
+        self.present(controller, animated: true)
+    }
+}
+
 // MARK: - Save Annotation Functionality
 extension AnnotateImageViewController {
     private func returnToCampaignInfo() {
@@ -334,14 +392,29 @@ extension AnnotateImageViewController {
     }
     
     @IBAction func submitButtonClick(_ sender: Any) {
-        guard let label = annotationNameTextField.text,
-            let imageData = imageData,
+        guard let imageData = imageData,
             let activeCampaign = activeCampaign else {
             return
         }
-
-        if annotationNameTextField.text?.count == 0 {
-            return
+        
+        // Make sure that all annotations have labels.
+        for subview in imageLayerContainer.subviews {
+            if !(subview is AnnotationView) {
+                continue
+            }
+            let subview = subview as! AnnotationView
+            guard let label = subview.annotation?.label else {
+                let alertController = UIAlertController(title: "Annotations missing", message: "Please make sure that all annotations have labels.", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            if label == "" {
+                let alertController = UIAlertController(title: "Annotations missing", message: "Please make sure that all annotations have labels.", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
         }
 
         // this is the mask RCNN type
@@ -358,7 +431,12 @@ extension AnnotateImageViewController {
             let annotationItem = AnnotationCreationRequestItem(points: annotation.getAPIPoints(), type: type, label: annotation.label)
             annotationItems.append(annotationItem)
         })
-        
+        if annotationItems.count == 0 {
+            let alertController = UIAlertController(title: "No annotations", message: "Please make sure that there is at least one annotation.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
         let request = AnnotationCreationRequest(items: annotationItems, userToken: "5d0a6fe5a9edbb9d5cc29e10")
         DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
             print("Annotation result", annotation, error)
