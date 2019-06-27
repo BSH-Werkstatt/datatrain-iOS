@@ -106,13 +106,14 @@ extension AnnotateImageViewController {
                 self.returnToCampaignInfo()
                 return
         }
-        imageView = UIImageView(image: UIImage(data: data))
+        imageView = UIImageView()
         guard let imageView = imageView else {
             print("Cannot initialize image view.")
             return
         }
         imageView.frame = imageLayerContainer.bounds
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        imageView.image = UIImage(data: data)
         imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
         
