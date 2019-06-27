@@ -355,6 +355,14 @@ extension AnnotateImageViewController {
         guard let activeCampaign = activeCampaign else {
             return
         }
+        
+        if selectedAnnotationView == nil {
+            let alertController = UIAlertController(title: "Select an annotation", message: "Please select an annotation for to label.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
         let controller = ArrayChoiceTableViewController(activeCampaign.taxonomy) { (label) in
             self.labelButton.setTitle(label, for: .normal)
             self.selectedAnnotationView?.annotation?.label = label
