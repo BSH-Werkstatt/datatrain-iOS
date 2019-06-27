@@ -20,7 +20,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var labelButton: UIButton!
     
-    
+    private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
     private var selectedAnnotationView: AnnotationView?
@@ -174,6 +174,7 @@ extension AnnotateImageViewController {
         annotationView.annotation = annotation
         annotation.annotationView = annotationView // Set the delegate view
         
+        
         super.touchesBegan(touches, with: event)
         let touch = touches.first! as UITouch
         let point = touch.location(in: imageView)
@@ -197,12 +198,23 @@ extension AnnotateImageViewController {
         let touch = touches.first! as UITouch
         var point = touch.location(in: imageView)
         point = bringPointInsideImageBounds(point: point)
+        
         if let lastPoint = currentAnnotationView?.annotation?.points.last {
             if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
                 (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
                 currentAnnotationView?.annotation?.addPoint(point: point)
+                if magnifyView == nil {
+                    magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                    magnifyView!.viewToMagnify = self.view.superview
+                    magnifyView!.setTouchPoint(pt: touch.location(in: self.view.superview))
+                    self.view.superview?.addSubview(magnifyView!)
+                }
             }
         }
+        
+        magnifyView?.setTouchPoint(pt: touch.location(in: self.view.superview))
+        magnifyView?.setNeedsDisplay()
+        
         currentAnnotationView?.annotation?.temporaryPoint = point
         currentAnnotationView?.setNeedsDisplay()
     }
@@ -216,6 +228,12 @@ extension AnnotateImageViewController {
             return
         }
         super.touchesEnded(touches, with: event)
+        
+        if magnifyView != nil {
+            magnifyView!.removeFromSuperview()
+            magnifyView = nil
+        }
+        
         currentAnnotationView?.annotation?.completed = true
         currentAnnotationView?.setNeedsDisplay()
         labelButton.setTitle("Select Label", for: .normal)
@@ -227,6 +245,10 @@ extension AnnotateImageViewController {
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if magnifyView != nil {
+            magnifyView!.removeFromSuperview()
+            magnifyView = nil
+        }
         // If there is no uncompleted annotation, return
         guard let completed = currentAnnotationView?.annotation?.completed else {
             return
@@ -244,16 +266,6 @@ extension AnnotateImageViewController {
         if imageLayerContainer.subviews.count == 0 {
             return
         }
-        // If there is already a selected annotation, then we cannot select new ones, only deselect this one
-//        if let selectedAnnotation = selectedAnnotationView, selectedAnnotation.selected {
-//            if selectedAnnotation.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
-//                selectedAnnotation.selected = false
-//                selectedAnnotation.setNeedsDisplay()
-//                selectedAnnotationView = nil
-//                labelButton.setTitle("Select Label", for: .normal)
-//            }
-//            return
-//        }
         for index in 0...imageLayerContainer.subviews.count - 1 {
             if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
                 let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
@@ -264,7 +276,7 @@ extension AnnotateImageViewController {
                     subview.selected = true
                     subview.setNeedsDisplay()
                     selectedAnnotationView = subview
-                    labelButton.setTitle(subview.annotation?.label ?? "Select Label", for: .normal)
+                    labelButton.setTitle(subview.annotation!.label == "" ? "Select Label" : subview.annotation!.label, for: .normal)
                     return
                 }
             }

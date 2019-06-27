@@ -11,6 +11,7 @@
 		2D39966022C4EA2D007F38E8 /* icons8-trash-can-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D39965E22C4EA2D007F38E8 /* icons8-trash-can-100.png */; };
 		2D39966322C4EFD7007F38E8 /* AlwaysShowPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966122C4EFD7007F38E8 /* AlwaysShowPopup.swift */; };
 		2D39966422C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966222C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift */; };
+		2D39966722C4FAE8007F38E8 /* MagnifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966622C4FAE8007F38E8 /* MagnifyView.swift */; };
 		2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */; };
 		2D3AA64E22BBD8AD00B94193 /* PolygonAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64D22BBD8AD00B94193 /* PolygonAnnotation.swift */; };
 		2E2E7889F3B19B91D4EB2436 /* Pods_BSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */; };
@@ -60,6 +61,7 @@
 		2D39965E22C4EA2D007F38E8 /* icons8-trash-can-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-trash-can-100.png"; sourceTree = "<group>"; };
 		2D39966122C4EFD7007F38E8 /* AlwaysShowPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysShowPopup.swift; sourceTree = "<group>"; };
 		2D39966222C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayChoiceTableViewController.swift; sourceTree = "<group>"; };
+		2D39966622C4FAE8007F38E8 /* MagnifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyView.swift; sourceTree = "<group>"; };
 		2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		2D3AA64D22BBD8AD00B94193 /* PolygonAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonAnnotation.swift; sourceTree = "<group>"; };
 		3C21828722BB097C006373F5 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */,
+				2D39966622C4FAE8007F38E8 /* MagnifyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */,
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
 				50AB754622A40FEF00BEB84B /* Point.swift in Sources */,
+				2D39966722C4FAE8007F38E8 /* MagnifyView.swift in Sources */,
 				50AB754422A40FC300BEB84B /* RectangularAnnotation.swift in Sources */,
 				50AB754222A40EF000BEB84B /* Annotation.swift in Sources */,
 				3C22F26A22BF8DA400305FA0 /* LoginController.swift in Sources */,
