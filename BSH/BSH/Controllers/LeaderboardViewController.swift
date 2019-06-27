@@ -89,7 +89,7 @@ class LeaderboardViewController: CUUTableViewController {
 
         cell.positionLabel?.text = ordinalFormatter.string(from: NSNumber(value: indexPath.row + 1))
 
-        cell.usernameLabel?.text = score?.userId
+        cell.usernameLabel?.text = score?.email
 
         let decimalFormatter = NumberFormatter()
         decimalFormatter.numberStyle = .decimal

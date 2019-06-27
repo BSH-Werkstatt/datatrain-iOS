@@ -13,10 +13,14 @@ public struct LeaderboardScore: Codable {
 
     public var userId: String
     public var score: Double
+    public var email: String
+    public var name: String
 
-    public init(userId: String, score: Double) {
+    public init(userId: String, score: Double, email: String, name: String) {
         self.userId = userId
         self.score = score
+        self.email = email
+        self.name = name
     }
 
 
