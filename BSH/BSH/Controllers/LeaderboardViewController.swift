@@ -63,7 +63,7 @@ class LeaderboardViewController: CUUTableViewController {
             leaderboard, error in
             guard let leaderboard = leaderboard else {
                 print(error ?? "whatever")
-                self.campaingLabel?.text = "There was en error loading the leaderboard data."
+                self.campaingLabel?.text = "There is no data for this leaderboard yet. \nStart annotattong or uploading now!"
                 return
             }
             self.campaingLabel?.text = campaign.name
@@ -89,7 +89,7 @@ class LeaderboardViewController: CUUTableViewController {
 
         cell.positionLabel?.text = ordinalFormatter.string(from: NSNumber(value: indexPath.row + 1))
 
-        cell.usernameLabel?.text = score?.userId
+        cell.usernameLabel?.text = score?.email
 
         let decimalFormatter = NumberFormatter()
         decimalFormatter.numberStyle = .decimal
