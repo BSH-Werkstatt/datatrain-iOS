@@ -185,7 +185,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWu-CG-l3C">
                                 <rect key="frame" x="0.0" y="387" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Upload" id="zmC-rC-H1x"/>
+                                    <barButtonItem title="Upload" id="zmC-rC-H1x">
+                                        <connections>
+                                            <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" id="noY-bw-8vv"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
