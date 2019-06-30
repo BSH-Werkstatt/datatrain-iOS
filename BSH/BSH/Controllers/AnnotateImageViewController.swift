@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CUU
 import SwaggerClient
+import NotificationBannerSwift
 
 // MARK: - AnnotateImageViewController
 class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
@@ -442,9 +443,8 @@ extension AnnotateImageViewController {
             print("Annotation result", annotation, error)
             if error == nil {
                 // Show notification for succesful upload
-//                let alertController = UIAlertController(title: "Annotation successful", message: "The annotation was saved.", preferredStyle: UIAlertController.Style.alert)
-//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                self.present(alertController, animated: true, completion: nil)
+                let banner = NotificationBanner(title: "Success", subtitle: "Annotation is successfully submitted.", style: .success)
+                banner.show()
             }
         })
         for view in imageLayerContainer.subviews {
