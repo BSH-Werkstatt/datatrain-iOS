@@ -442,14 +442,26 @@ extension AnnotateImageViewController {
             print("Annotation result", annotation, error)
             if error == nil {
                 // Show notification for succesful upload
-                let alertController = UIAlertController(title: "Annotation successful", message: "The annotation was saved.", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+//                let alertController = UIAlertController(title: "Annotation successful", message: "The annotation was saved.", preferredStyle: UIAlertController.Style.alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.present(alertController, animated: true, completion: nil)
             }
         })
-        if let navController = self.navigationController {
-            navController.popViewController(animated: true)
+        for view in imageLayerContainer.subviews {
+            view.removeFromSuperview()
         }
+        selectedAnnotationView = nil
+        self.magnifyView = nil
+        self.annotationViews = []
+        self.imageView = nil
+        self.imageData = nil
+        self.originalImage = nil
+        self.annotationEnabled = false
+        self.offsetX = -1.0
+        self.offsetY = -1.0
+        self.sizeImageX = -1.0
+        self.sizeImageY = -1.0
+        getImage()
     }
 }
 
