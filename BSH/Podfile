@@ -13,6 +13,8 @@ pod 'Prototyper'
 pod 'CUU'
 pod 'SwaggerClient', :path => './SwaggerClient'
 pod "TouchVisualizer"
+pod 'Firebase/Core'
+
 
 end
 

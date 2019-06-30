@@ -26,6 +26,7 @@
 		3C709CC92282236400823586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CC72282236400823586 /* Main.storyboard */; };
 		3C709CCB2282236700823586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCA2282236700823586 /* Assets.xcassets */; };
 		3C709CCE2282236700823586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C709CCC2282236700823586 /* LaunchScreen.storyboard */; };
+		3CA2319122C7EEF500F7226E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CA2319022C7EEF500F7226E /* GoogleService-Info.plist */; };
 		3CF77F2922C259D1000A9C8C /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF77F1722C259C9000A9C8C /* upload.png */; };
 		3CF77F2A22C259D1000A9C8C /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF77F1822C259CA000A9C8C /* profile@2x.png */; };
 		3CF77F2B22C259D1000A9C8C /* hand.draw.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF77F1922C259CA000A9C8C /* hand.draw.png */; };
@@ -77,6 +78,7 @@
 		3C709CCA2282236700823586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C709CCD2282236700823586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C709CCF2282236700823586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CA2319022C7EEF500F7226E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CF77F1722C259C9000A9C8C /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		3CF77F1822C259CA000A9C8C /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		3CF77F1922C259CA000A9C8C /* hand.draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.draw.png; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				C5F1FA22229ED082000F3FAC /* Controllers */,
 				3C709CCA2282236700823586 /* Assets.xcassets */,
 				C52E36C6228EB6F0005EDB93 /* CUU.plist */,
+				3CA2319022C7EEF500F7226E /* GoogleService-Info.plist */,
 				3C709CCF2282236700823586 /* Info.plist */,
 			);
 			path = BSH;
@@ -323,6 +326,7 @@
 				3CF77F3A22C259D1000A9C8C /* upload@2x.png in Resources */,
 				3CF77F2B22C259D1000A9C8C /* hand.draw.png in Resources */,
 				3CF77F2D22C259D1000A9C8C /* hand.draw@2x.png in Resources */,
+				3CA2319122C7EEF500F7226E /* GoogleService-Info.plist in Resources */,
 				3CF77F3422C259D1000A9C8C /* profile.png in Resources */,
 				3CF77F3722C259D1000A9C8C /* stack@2x.png in Resources */,
 				3CF77F2E22C259D1000A9C8C /* camera@3x.png in Resources */,
@@ -386,11 +390,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-BSH/Pods-BSH-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CUU/CUU.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Prototype/Prototype.framework",
 				"${BUILT_PRODUCTS_DIR}/Prototyper/Prototyper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwaggerClient/SwaggerClient.framework",
 				"${BUILT_PRODUCTS_DIR}/TouchVisualizer/TouchVisualizer.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -398,11 +404,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CUU.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prototype.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prototyper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwaggerClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TouchVisualizer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -589,7 +597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
+				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -609,7 +617,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.in.www1.ios19.bsh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = $SIGH_NAME;
+				PROVISIONING_PROFILE_SPECIFIER = "$SIGH_NAME";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
