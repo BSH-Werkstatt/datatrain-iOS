@@ -47,15 +47,20 @@ PODS:
   - GoogleUtilities/UserDefaults (6.2.0):
     - GoogleUtilities/Logger
   - KeychainSwift (13.0.0)
+  - MarqueeLabel (4.0.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NotificationBannerSwift (2.3.0):
+    - MarqueeLabel (~> 4.0.0)
+    - SnapKit (~> 5.0.0)
   - Prototype (0.3.3)
   - Prototyper (1.1):
     - KeychainSwift (= 13.0.0)
     - Prototype (= 0.3.3)
+  - SnapKit (5.0.0)
   - SwaggerClient (0.0.1):
     - Alamofire (~> 4.8.0)
   - TouchVisualizer (3.1.0)
@@ -63,6 +68,7 @@ PODS:
 DEPENDENCIES:
   - CUU
   - Firebase/Core
+  - NotificationBannerSwift
   - Prototyper
   - SwaggerClient (from `./SwaggerClient`)
   - TouchVisualizer
@@ -78,9 +84,12 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - KeychainSwift
+    - MarqueeLabel
     - nanopb
+    - NotificationBannerSwift
     - Prototype
     - Prototyper
+    - SnapKit
     - TouchVisualizer
 
 EXTERNAL SOURCES:
@@ -97,12 +106,15 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: a35a645835bae31b6bdc0576396bc23908f12a22
   GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
   KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+  MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NotificationBannerSwift: fdc44b934be7a8175f7a7170a75a11c672990e70
   Prototype: 2009eb25fccdcbe5339d1cbe4f116eb6e68466aa
   Prototyper: 09bf1e15d619a7cd6ae358beaa58dc2e0955fa16
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwaggerClient: 98b9a9a4e81b637f266d3961295bbaf76171aec3
   TouchVisualizer: b97b1efb0f25d1408bb4557e6f493eae454425e7
 
-PODFILE CHECKSUM: 8916b17f9a12dec87d39aaa3fdb42f454351b03d
+PODFILE CHECKSUM: f6eef65e446b0d580c08cd564574337bb1528c22
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.3
