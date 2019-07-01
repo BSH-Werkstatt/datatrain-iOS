@@ -166,6 +166,11 @@ extension AnnotateImageViewController {
             print("Cannot get image data or active campaign")
             return
         }
+        guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+            let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+            banner.show()
+            return
+        }
         
         let annotationView = AnnotationView()
         annotationView.frame = view.bounds
@@ -173,7 +178,7 @@ extension AnnotateImageViewController {
         annotationView.isOpaque = false
         
         imageLayerContainer.addSubview(annotationView)
-        let annotation = PolygonAnnotation(userId: "5d0a6fe5a9edbb9d5cc29e10", campaignId: activeCampaign._id, imageId: imageData._id)
+        let annotation = PolygonAnnotation(userId: userId, campaignId: activeCampaign._id, imageId: imageData._id)
         annotationView.annotation = annotation
         annotation.annotationView = annotationView // Set the delegate view
         
@@ -401,6 +406,12 @@ extension AnnotateImageViewController {
             return
         }
         
+        guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+            let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+            banner.show()
+            return
+        }
+        
         // Make sure that all annotations have labels.
         for subview in imageLayerContainer.subviews {
             if !(subview is AnnotationView) {
@@ -441,7 +452,7 @@ extension AnnotateImageViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        let request = AnnotationCreationRequest(items: annotationItems, userToken: "5d0a6fe5a9edbb9d5cc29e10")
+        let request = AnnotationCreationRequest(items: annotationItems, userToken: userId)
         DefaultAPI.postImageAnnotation(campaignId: activeCampaign._id, imageId: imageData._id, request: request, completion: { (annotation, error) in
             print("Annotation result", annotation, error)
             if error == nil {
