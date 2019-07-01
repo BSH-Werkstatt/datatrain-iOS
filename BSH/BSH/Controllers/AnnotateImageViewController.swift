@@ -48,9 +48,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     }
 
     // MARK: - Overriden Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         // intialize main view offsets because of the keyboard
         mainViewInitialY = mainView.frame.origin.y
         // load data

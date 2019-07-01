@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CUU
 import SwaggerClient
+import NotificationBannerSwift
 
 // MARK: - UploadImageViewController
 class UploadImageViewController: CUUViewController {
@@ -59,13 +60,9 @@ class UploadImageViewController: CUUViewController {
                     // Set image Id
                     self.imageData = image
                     // Show notification for succesful upload
-                    let alertController = UIAlertController(title: "Upload successful", message: "Your image is uploaded. Please annotate the image.", preferredStyle: UIAlertController.Style.alert)
-                    alertController.addAction(
-                        UIAlertAction(title: "OK", style: .default, handler: {_ in
-                            self.performSegue(withIdentifier: "uploadToAnnotateSegue", sender: nil)
-                        })
-                    )
-                    self.present(alertController, animated: true, completion: nil)
+                    let banner = NotificationBanner(title: "Success", subtitle: "The image is successfully uploaded. Please annotate the image.", style: .success)
+                    banner.show()
+                    self.performSegue(withIdentifier: "uploadToAnnotateSegue", sender: nil)
                 })
             }
         }
