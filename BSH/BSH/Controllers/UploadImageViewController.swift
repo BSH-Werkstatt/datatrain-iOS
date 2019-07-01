@@ -41,6 +41,11 @@ class UploadImageViewController: CUUViewController {
         guard let campaign = MainTabBarController.getCampaign() else {
             return
         }
+        guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+            let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+            banner.show()
+            return
+        }
         
         if let image = uploadedImageView.image {
             // TODO: increase upload size limit at the server
@@ -48,7 +53,7 @@ class UploadImageViewController: CUUViewController {
                 let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                 try? data.write(to: filename)
                 
-                DefaultAPI.postImage(imageFile: filename, userToken: "5d0a6fe5a9edbb9d5cc29e10", campaignId: campaign._id, completion: { (image, error) in
+                DefaultAPI.postImage(imageFile: filename, userToken: userId, campaignId: campaign._id, completion: { (image, error) in
                     
                     // TODO: finish handling
                     guard error == nil, let image = image else {
