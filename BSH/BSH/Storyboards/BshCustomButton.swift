@@ -22,6 +22,22 @@ class BshCustomButton : UIButton {
     }
 }
 
+class BshCustomLabelButton : UIButton {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.titleEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        self.layer.cornerRadius = 10.0
+        //        self.layer.borderColor = UIColor.red.cgColor
+        //        self.layer.borderWidth = 1.5
+//        self.backgroundColor = UIColor(red: 0.973, green: 0.62, blue: 0.208, alpha: 1) // #f89e35
+        self.layer.borderWidth = 1
+
+        self.layer.borderColor = self.tintColor.cgColor
+//        self.tintColor = UIColor.white
+    }
+}
+
+
 @IBDesignable
 class BshCustomTextField: UITextField {
 

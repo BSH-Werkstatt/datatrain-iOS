@@ -88,83 +88,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="zBt-GO-mR9">
-                                <rect key="frame" x="0.0" y="20" width="320" height="371"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qd8-ez-CiN">
-                                <rect key="frame" x="0.0" y="391" width="320" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mh-HR-deh" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
-                                        <rect key="frame" x="272" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="TTb-Ep-jk8"/>
-                                            <constraint firstAttribute="width" constant="40" id="jbE-R9-wqm"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="icons8-checkmark-100.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USA-e1-nHq">
+                                <rect key="frame" x="0.0" y="387" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" image="delete.png" id="5hj-DQ-jjB">
                                         <connections>
-                                            <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="U3m-Vh-3CF"/>
+                                            <action selector="deleteButtonClick:" destination="Hgt-na-wWW" id="BaS-fq-rec"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU7-8O-ary">
-                                        <rect key="frame" x="8" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="DZd-i7-gIU"/>
-                                            <constraint firstAttribute="width" constant="40" id="q5k-ir-g9R"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="icons8-trash-can-100.png"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="22f-zW-lvT">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IFT-Jx-rPT" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
+                                            <rect key="frame" x="26" y="7" width="273" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Select Label">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showLabelPopup:" destination="Hgt-na-wWW" eventType="touchUpInside" id="icg-ck-XqC"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" image="upload.png" id="Gxb-13-gBS">
                                         <connections>
-                                            <action selector="annotationButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="4El-Au-T4P"/>
+                                            <action selector="submitButtonClick:" destination="Hgt-na-wWW" id="UHF-gN-2cd"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFT-Jx-rPT">
-                                        <rect key="frame" x="56" y="5" width="208" height="30"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Select Label">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showLabelPopup:" destination="Hgt-na-wWW" eventType="touchUpInside" id="icg-ck-XqC"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="centerY" secondItem="qd8-ez-CiN" secondAttribute="centerY" id="8Ib-NF-AzD"/>
-                                    <constraint firstItem="IFT-Jx-rPT" firstAttribute="centerX" secondItem="qd8-ez-CiN" secondAttribute="centerX" id="T88-MS-DHh"/>
-                                    <constraint firstItem="IFT-Jx-rPT" firstAttribute="leading" secondItem="zU7-8O-ary" secondAttribute="trailing" constant="8" id="bJh-Nh-OH2"/>
-                                    <constraint firstItem="zU7-8O-ary" firstAttribute="leading" secondItem="qd8-ez-CiN" secondAttribute="leading" constant="8" id="d7D-TZ-fTs"/>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="baseline" secondItem="zU7-8O-ary" secondAttribute="baseline" id="hxZ-nG-7ID"/>
-                                    <constraint firstItem="4mh-HR-deh" firstAttribute="leading" secondItem="IFT-Jx-rPT" secondAttribute="trailing" constant="8" id="ptF-gb-Pvf"/>
-                                    <constraint firstItem="zU7-8O-ary" firstAttribute="top" secondItem="qd8-ez-CiN" secondAttribute="top" id="sia-8D-Hfz"/>
-                                    <constraint firstAttribute="trailing" secondItem="4mh-HR-deh" secondAttribute="trailing" constant="8" id="tZG-eq-PNm"/>
-                                    <constraint firstItem="zU7-8O-ary" firstAttribute="firstBaseline" secondItem="4mh-HR-deh" secondAttribute="firstBaseline" id="wqa-sA-xjS"/>
-                                    <constraint firstItem="zU7-8O-ary" firstAttribute="centerY" secondItem="qd8-ez-CiN" secondAttribute="centerY" id="xfv-7n-YzP"/>
-                                    <constraint firstItem="IFT-Jx-rPT" firstAttribute="centerY" secondItem="qd8-ez-CiN" secondAttribute="centerY" id="z15-wR-xm1"/>
-                                </constraints>
-                            </view>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qd8-ez-CiN" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="5gT-py-D05"/>
-                            <constraint firstItem="zBt-GO-mR9" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="6fQ-zq-WWS"/>
-                            <constraint firstItem="zBt-GO-mR9" firstAttribute="top" secondItem="spO-dt-YnY" secondAttribute="top" id="DBX-cu-WQE"/>
-                            <constraint firstItem="qd8-ez-CiN" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="Uqj-Tf-l9M"/>
-                            <constraint firstItem="zBt-GO-mR9" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="V1f-pP-V1l"/>
-                            <constraint firstItem="qd8-ez-CiN" firstAttribute="top" secondItem="zBt-GO-mR9" secondAttribute="bottom" id="rUf-h2-P4C"/>
-                            <constraint firstItem="qd8-ez-CiN" firstAttribute="bottom" secondItem="spO-dt-YnY" secondAttribute="bottom" id="xHS-oQ-rFd"/>
+                            <constraint firstItem="zBt-GO-mR9" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="01K-6S-fhQ"/>
+                            <constraint firstItem="USA-e1-nHq" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="0AO-EX-546"/>
+                            <constraint firstItem="USA-e1-nHq" firstAttribute="bottom" secondItem="spO-dt-YnY" secondAttribute="bottom" id="JqD-L0-MdA"/>
+                            <constraint firstItem="zBt-GO-mR9" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="OWC-0n-CMb"/>
+                            <constraint firstItem="USA-e1-nHq" firstAttribute="top" secondItem="zBt-GO-mR9" secondAttribute="bottom" id="a3D-eO-nsh"/>
+                            <constraint firstItem="USA-e1-nHq" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="ezb-7N-Z1t"/>
+                            <constraint firstItem="zBt-GO-mR9" firstAttribute="top" secondItem="spO-dt-YnY" secondAttribute="top" id="kTR-pj-MBa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Annotate Image" id="rSy-2x-ocX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="annotateRectangleButton" destination="zU7-8O-ary" id="jXJ-4X-a6h"/>
+                        <outlet property="annotateRectangleButton" destination="22f-zW-lvT" id="rZJ-1e-7vd"/>
                         <outlet property="imageLayerContainer" destination="zBt-GO-mR9" id="YrT-eg-DbU"/>
                         <outlet property="labelButton" destination="IFT-Jx-rPT" id="OdY-SW-yGm"/>
                         <outlet property="mainView" destination="8oh-dQ-NR4" id="oIz-V9-Iv2"/>
-                        <outlet property="submitButton" destination="4mh-HR-deh" id="p20-7b-NPz"/>
+                        <outlet property="removeButton" destination="5hj-DQ-jjB" id="7od-kP-ETz"/>
+                        <outlet property="submitButton" destination="Gxb-13-gBS" id="YMf-9c-MhS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,11 +193,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-checkmark-100.png" width="75" height="75"/>
-        <image name="icons8-trash-can-100.png" width="75" height="75"/>
+        <image name="delete.png" width="104.72727203369141" height="104.72727203369141"/>
         <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
+        <image name="upload.png" width="104.72727203369141" height="104.72727203369141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OCg-Ul-LPq"/>
+        <segue reference="8CZ-S7-hKK"/>
     </inferredMetricsTieBreakers>
 </document>
