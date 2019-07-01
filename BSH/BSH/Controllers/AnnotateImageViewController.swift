@@ -16,11 +16,12 @@ import NotificationBannerSwift
 class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     // MARK: - Overriden IBOutlets
     @IBOutlet private weak var imageLayerContainer: UIView!
-    @IBOutlet private weak var annotateRectangleButton: UIButton!
-    @IBOutlet private weak var submitButton: UIButton!
+    @IBOutlet private weak var annotateRectangleButton: UIBarButtonItem!
+    @IBOutlet private weak var submitButton: UIBarButtonItem!
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var labelButton: UIButton!
-    
+    @IBOutlet weak var removeButton: UIBarButtonItem!
+
     private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
@@ -39,12 +40,13 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
 
     
     // TODO: This should be refactored as deleteButtonClick
-    @IBAction func annotationButtonClick(_ sender: Any) {
+    @IBAction func deleteButtonClick(_ sender: Any) {
         selectedAnnotationView?.annotation = nil
         selectedAnnotationView?.selected = false
         selectedAnnotationView?.removeFromSuperview()
         selectedAnnotationView = nil
         labelButton.setTitle("Select Label", for: .normal)
+        removeButton.isEnabled = false
     }
 
     // MARK: - Overriden Methods
@@ -56,6 +58,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         // Disable moving back by swipe - They conflict with annotation gestures
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         loadActiveCampaign()
+        removeButton.isEnabled = false
         getImage()
         addKeyboardShiftListner()
     }
@@ -242,6 +245,7 @@ extension AnnotateImageViewController {
         selectedAnnotationView = currentAnnotationView
         currentAnnotationView?.selected = true
         currentAnnotationView = nil
+        removeButton.isEnabled = true
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -272,7 +276,7 @@ extension AnnotateImageViewController {
                 if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
                     selectedAnnotationView?.selected = false
                     selectedAnnotationView?.setNeedsDisplay()
-                    
+                    removeButton.isEnabled = true
                     subview.selected = true
                     subview.setNeedsDisplay()
                     selectedAnnotationView = subview
