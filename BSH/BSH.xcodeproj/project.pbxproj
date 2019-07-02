@@ -47,8 +47,6 @@
 		3CF77F3722C259D1000A9C8C /* stack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF77F2522C259CF000A9C8C /* stack@2x.png */; };
 		3CF77F3922C259D1000A9C8C /* hand.draw@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF77F2722C259D0000A9C8C /* hand.draw@3x.png */; };
 		50AB753F22A4026C00BEB84B /* AnnotateImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */; };
-		50AB754222A40EF000BEB84B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB754122A40EF000BEB84B /* Annotation.swift */; };
-		50AB754422A40FC300BEB84B /* RectangularAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB754322A40FC300BEB84B /* RectangularAnnotation.swift */; };
 		50AB754622A40FEF00BEB84B /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB754522A40FEF00BEB84B /* Point.swift */; };
 		50BEC79222A69952000107DF /* CampaignTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BEC79122A69952000107DF /* CampaignTableViewController.swift */; };
 		50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */; };
@@ -101,8 +99,6 @@
 		3CF77F2722C259D0000A9C8C /* hand.draw@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hand.draw@3x.png"; sourceTree = "<group>"; };
 		415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotateImageViewController.swift; sourceTree = "<group>"; };
-		50AB754122A40EF000BEB84B /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Annotation.swift; path = BSH/Controllers/Annotation.swift; sourceTree = SOURCE_ROOT; };
-		50AB754322A40FC300BEB84B /* RectangularAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularAnnotation.swift; sourceTree = "<group>"; };
 		50AB754522A40FEF00BEB84B /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		50BEC79122A69952000107DF /* CampaignTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignTableViewController.swift; sourceTree = "<group>"; };
 		50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
@@ -189,8 +185,6 @@
 		50AB754022A40EE300BEB84B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				50AB754122A40EF000BEB84B /* Annotation.swift */,
-				50AB754322A40FC300BEB84B /* RectangularAnnotation.swift */,
 				2D3AA64D22BBD8AD00B94193 /* PolygonAnnotation.swift */,
 				50AB754522A40FEF00BEB84B /* Point.swift */,
 			);
@@ -420,8 +414,6 @@
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
 				50AB754622A40FEF00BEB84B /* Point.swift in Sources */,
 				2D39966722C4FAE8007F38E8 /* MagnifyView.swift in Sources */,
-				50AB754422A40FC300BEB84B /* RectangularAnnotation.swift in Sources */,
-				50AB754222A40EF000BEB84B /* Annotation.swift in Sources */,
 				3C22F26A22BF8DA400305FA0 /* LoginController.swift in Sources */,
 				3C709CC42282236400823586 /* AppDelegate.swift in Sources */,
 				2D3AA64E22BBD8AD00B94193 /* PolygonAnnotation.swift in Sources */,

@@ -178,7 +178,7 @@ extension AnnotateImageViewController {
         annotationView.isOpaque = false
         
         imageLayerContainer.addSubview(annotationView)
-        let annotation = PolygonAnnotation(userId: userId, campaignId: activeCampaign._id, imageId: imageData._id)
+        let annotation = Annotation(userId: userId, campaignId: activeCampaign._id, imageId: imageData._id)
         annotationView.annotation = annotation
         annotation.annotationView = annotationView // Set the delegate view
         

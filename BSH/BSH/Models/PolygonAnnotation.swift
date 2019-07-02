@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwaggerClient
 
-class PolygonAnnotation : Annotation {
+class Annotation {
 
     var points: [CGPoint] = []
     var completed: Bool = false
