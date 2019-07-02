@@ -48,7 +48,187 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         labelButton.setTitle("Select Label", for: .normal)
         removeButton.isEnabled = false
     }
+    
+    @IBAction func handlePanGesturesWithOneFinger(panGestureRecognizer: UIPanGestureRecognizer) {
+        switch panGestureRecognizer.state {
+        case .began:
+            if !isPointInsideImage(point: panGestureRecognizer.location(in: imageView)) {
+                return
+            }
+            guard let imageData = imageData, let activeCampaign = activeCampaign else {
+                print("Cannot get image data or active campaign")
+                return
+            }
+            guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+                let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+                banner.show()
+                return
+            }
+            
+            let annotationView = AnnotationView()
+            annotationView.frame = view.bounds
+            annotationView.backgroundColor = UIColor.clear
+            annotationView.isOpaque = false
+            
+            imageLayerContainer.addSubview(annotationView)
+            let annotation = Annotation(userId: userId, campaignId: activeCampaign._id, imageId: imageData._id)
+            annotationView.annotation = annotation
+            annotation.annotationView = annotationView // Set the delegate view
+            
+            let point = panGestureRecognizer.location(in: imageView)
+            annotationView.annotation?.addPoint(point: point)
+            
+            annotationViews.append(annotationView)
+            currentAnnotationView = annotationView
+            currentAnnotationView?.setNeedsDisplay()
+        case .changed:
+            // If there is no uncompleted annotation, return
+            guard let completed = currentAnnotationView?.annotation?.completed else {
+                return
+            }
+            if completed {
+                return
+            }
+            var point = panGestureRecognizer.location(in: imageView)
+            point = bringPointInsideImageBounds(point: point)
+            
+            if let lastPoint = currentAnnotationView?.annotation?.points.last {
+                if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
+                    (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
+                    currentAnnotationView?.annotation?.addPoint(point: point)
+                    if magnifyView == nil {
+                        magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                        magnifyView!.viewToMagnify = self.view.superview
+                        magnifyView!.setTouchPoint(pt: panGestureRecognizer.location(in: self.view.superview))
+                        self.view.superview?.addSubview(magnifyView!)
+                    }
+                }
+            }
+            
+            magnifyView?.setTouchPoint(pt: panGestureRecognizer.location(in: self.view.superview))
+            magnifyView?.setNeedsDisplay()
+            
+            currentAnnotationView?.annotation?.temporaryPoint = point
+            currentAnnotationView?.setNeedsDisplay()
+        case .ended:
+            // If there is no uncompleted annotation, return
+            guard let completed = currentAnnotationView?.annotation?.completed else {
+                return
+            }
+            if completed {
+                return
+            }
+            if magnifyView != nil {
+                magnifyView!.removeFromSuperview()
+                magnifyView = nil
+            }
+            
+            currentAnnotationView?.annotation?.completed = true
+            currentAnnotationView?.setNeedsDisplay()
+            labelButton.setTitle("Select Label", for: .normal)
+            selectedAnnotationView?.selected = false
+            selectedAnnotationView?.setNeedsDisplay()
+            selectedAnnotationView = currentAnnotationView
+            currentAnnotationView?.selected = true
+            currentAnnotationView = nil
+            removeButton.isEnabled = true
+        case .cancelled:
+            if magnifyView != nil {
+                magnifyView!.removeFromSuperview()
+                magnifyView = nil
+            }
+            // If there is no uncompleted annotation, return
+            guard let completed = currentAnnotationView?.annotation?.completed else {
+                return
+            }
+            if completed {
+                return
+            }
+            if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
+                currentAnnotationView?.annotation = nil
+                currentAnnotationView?.removeFromSuperview()
+                return
+            }
+        default:
+            return
+        }
+        
+    }
+    
+    @IBAction func handlePanGesturesWithTwoFingers(panGestureRecognizer: UIPanGestureRecognizer) {
+        let translation = panGestureRecognizer.translation(in: self.view)
+        if let view = panGestureRecognizer.view {
+            view.center = CGPoint(x:view.center.x + translation.x,
+                                  y:view.center.y + translation.y)
+        }
+        panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+        
+        if panGestureRecognizer.state == UIGestureRecognizer.State.ended {
+            // 1
+            let velocity = panGestureRecognizer.velocity(in: self.view)
+            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+            let slideMultiplier = magnitude / 200
+            print("magnitude: \(magnitude), slideMultiplier: \(slideMultiplier)")
+            
+            // 2
+            let slideFactor = 0.1 * slideMultiplier     //Increase for more of a slide
+            // 3
+            var finalPoint = CGPoint(x:panGestureRecognizer.view!.center.x + (velocity.x * slideFactor),
+                                     y:panGestureRecognizer.view!.center.y + (velocity.y * slideFactor))
+            // 4
+            finalPoint.x = min(max(finalPoint.x, 0), self.view.bounds.size.width)
+            finalPoint.y = min(max(finalPoint.y, 0), self.view.bounds.size.height)
+            
+            // 5
+            UIView.animate(withDuration: Double(slideFactor * 2),
+                           delay: 0,
+                           // 6
+                options: UIView.AnimationOptions.curveEaseOut,
+                animations: {panGestureRecognizer.view!.center = finalPoint },
+                completion: nil)
+        }
+    }
+    
+    @IBAction func handlePinchGestures(pinchGestureRecognizer: UIPinchGestureRecognizer) {
+        if let view = pinchGestureRecognizer.view {
+            view.transform = view.transform.scaledBy(x: pinchGestureRecognizer.scale, y: pinchGestureRecognizer.scale)
+            pinchGestureRecognizer.scale = 1
+        }
+    }
+    
+    @IBAction func handleLongPressGestures(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+    }
+    
+    @IBAction func handleRotationGestures(rotationGestureRecognizer: UIRotationGestureRecognizer) {
+        if let view = rotationGestureRecognizer.view {
+            view.transform = view.transform.rotated(by: rotationGestureRecognizer.rotation)
+            rotationGestureRecognizer.rotation = 0
+        }
+    }
 
+    
+    @IBAction func handleTapGestures(tapGestureRecognizer: UITapGestureRecognizer) {
+        if imageLayerContainer.subviews.count == 0 {
+            return
+        }
+        for index in 0...imageLayerContainer.subviews.count - 1 {
+            if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
+                let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
+                if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                    selectedAnnotationView?.selected = false
+                    selectedAnnotationView?.setNeedsDisplay()
+                    removeButton.isEnabled = true
+                    subview.selected = true
+                    subview.setNeedsDisplay()
+                    selectedAnnotationView = subview
+                    labelButton.setTitle(subview.annotation!.label == "" ? "Select Label" : subview.annotation!.label, for: .normal)
+                    return
+                }
+            }
+        }
+    }
+    
     // MARK: - Overriden Methods
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -126,7 +306,7 @@ extension AnnotateImageViewController {
         AnnotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
         AnnotationView.setImageScale(imageScale: imageScale)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectAnnotation(tapGestureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGestures(tapGestureRecognizer:)))
         imageLayerContainer.isUserInteractionEnabled = true
         imageLayerContainer.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -158,139 +338,119 @@ extension AnnotateImageViewController {
 }
 // MARK: - Touch overrides
 extension AnnotateImageViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !isPointInsideImage(point: touches.first!.location(in: imageView)) {
-            return
-        }
-        guard let imageData = imageData, let activeCampaign = activeCampaign else {
-            print("Cannot get image data or active campaign")
-            return
-        }
-        guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
-            let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
-            banner.show()
-            return
-        }
-        
-        let annotationView = AnnotationView()
-        annotationView.frame = view.bounds
-        annotationView.backgroundColor = UIColor.clear
-        annotationView.isOpaque = false
-        
-        imageLayerContainer.addSubview(annotationView)
-        let annotation = Annotation(userId: userId, campaignId: activeCampaign._id, imageId: imageData._id)
-        annotationView.annotation = annotation
-        annotation.annotationView = annotationView // Set the delegate view
-        
-        
-        super.touchesBegan(touches, with: event)
-        let touch = touches.first! as UITouch
-        let point = touch.location(in: imageView)
-        annotationView.annotation?.addPoint(point: point)
-
-        annotationViews.append(annotationView)
-        currentAnnotationView = annotationView
-        currentAnnotationView?.setNeedsDisplay()
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // If there is no uncompleted annotation, return
-        guard let completed = currentAnnotationView?.annotation?.completed else {
-            return
-        }
-        if completed {
-            return
-        }
-        
-        super.touchesMoved(touches, with: event)
-        let touch = touches.first! as UITouch
-        var point = touch.location(in: imageView)
-        point = bringPointInsideImageBounds(point: point)
-        
-        if let lastPoint = currentAnnotationView?.annotation?.points.last {
-            if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
-                (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
-                currentAnnotationView?.annotation?.addPoint(point: point)
-                if magnifyView == nil {
-                    magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-                    magnifyView!.viewToMagnify = self.view.superview
-                    magnifyView!.setTouchPoint(pt: touch.location(in: self.view.superview))
-                    self.view.superview?.addSubview(magnifyView!)
-                }
-            }
-        }
-        
-        magnifyView?.setTouchPoint(pt: touch.location(in: self.view.superview))
-        magnifyView?.setNeedsDisplay()
-        
-        currentAnnotationView?.annotation?.temporaryPoint = point
-        currentAnnotationView?.setNeedsDisplay()
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // If there is no uncompleted annotation, return
-        guard let completed = currentAnnotationView?.annotation?.completed else {
-            return
-        }
-        if completed {
-            return
-        }
-        super.touchesEnded(touches, with: event)
-        
-        if magnifyView != nil {
-            magnifyView!.removeFromSuperview()
-            magnifyView = nil
-        }
-        
-        currentAnnotationView?.annotation?.completed = true
-        currentAnnotationView?.setNeedsDisplay()
-        labelButton.setTitle("Select Label", for: .normal)
-        selectedAnnotationView?.selected = false
-        selectedAnnotationView?.setNeedsDisplay()
-        selectedAnnotationView = currentAnnotationView
-        currentAnnotationView?.selected = true
-        currentAnnotationView = nil
-        removeButton.isEnabled = true
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if magnifyView != nil {
-            magnifyView!.removeFromSuperview()
-            magnifyView = nil
-        }
-        // If there is no uncompleted annotation, return
-        guard let completed = currentAnnotationView?.annotation?.completed else {
-            return
-        }
-        if completed {
-            return
-        }
-        if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
-            currentAnnotationView?.annotation = nil
-            currentAnnotationView?.removeFromSuperview()
-            return
-        }    }
-    
-    @objc func selectAnnotation(tapGestureRecognizer: UITapGestureRecognizer) {
-        if imageLayerContainer.subviews.count == 0 {
-            return
-        }
-        for index in 0...imageLayerContainer.subviews.count - 1 {
-            if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
-                let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
-                if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
-                    selectedAnnotationView?.selected = false
-                    selectedAnnotationView?.setNeedsDisplay()
-                    removeButton.isEnabled = true
-                    subview.selected = true
-                    subview.setNeedsDisplay()
-                    selectedAnnotationView = subview
-                    labelButton.setTitle(subview.annotation!.label == "" ? "Select Label" : subview.annotation!.label, for: .normal)
-                    return
-                }
-            }
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if !isPointInsideImage(point: touches.first!.location(in: imageView)) {
+//            return
+//        }
+//        guard let imageData = imageData, let activeCampaign = activeCampaign else {
+//            print("Cannot get image data or active campaign")
+//            return
+//        }
+//        guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+//            let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+//            banner.show()
+//            return
+//        }
+//
+//        let annotationView = AnnotationView()
+//        annotationView.frame = view.bounds
+//        annotationView.backgroundColor = UIColor.clear
+//        annotationView.isOpaque = false
+//
+//        imageLayerContainer.addSubview(annotationView)
+//        let annotation = Annotation(userId: userId, campaignId: activeCampaign._id, imageId: imageData._id)
+//        annotationView.annotation = annotation
+//        annotation.annotationView = annotationView // Set the delegate view
+//
+//
+//        super.touchesBegan(touches, with: event)
+//        let touch = touches.first! as UITouch
+//        let point = touch.location(in: imageView)
+//        annotationView.annotation?.addPoint(point: point)
+//
+//        annotationViews.append(annotationView)
+//        currentAnnotationView = annotationView
+//        currentAnnotationView?.setNeedsDisplay()
+//    }
+//
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        // If there is no uncompleted annotation, return
+//        guard let completed = currentAnnotationView?.annotation?.completed else {
+//            return
+//        }
+//        if completed {
+//            return
+//        }
+//
+//        super.touchesMoved(touches, with: event)
+//        let touch = touches.first! as UITouch
+//        var point = touch.location(in: imageView)
+//        point = bringPointInsideImageBounds(point: point)
+//
+//        if let lastPoint = currentAnnotationView?.annotation?.points.last {
+//            if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
+//                (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
+//                currentAnnotationView?.annotation?.addPoint(point: point)
+//                if magnifyView == nil {
+//                    magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+//                    magnifyView!.viewToMagnify = self.view.superview
+//                    magnifyView!.setTouchPoint(pt: touch.location(in: self.view.superview))
+//                    self.view.superview?.addSubview(magnifyView!)
+//                }
+//            }
+//        }
+//
+//        magnifyView?.setTouchPoint(pt: touch.location(in: self.view.superview))
+//        magnifyView?.setNeedsDisplay()
+//
+//        currentAnnotationView?.annotation?.temporaryPoint = point
+//        currentAnnotationView?.setNeedsDisplay()
+//    }
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        // If there is no uncompleted annotation, return
+//        guard let completed = currentAnnotationView?.annotation?.completed else {
+//            return
+//        }
+//        if completed {
+//            return
+//        }
+//        super.touchesEnded(touches, with: event)
+//
+//        if magnifyView != nil {
+//            magnifyView!.removeFromSuperview()
+//            magnifyView = nil
+//        }
+//
+//        currentAnnotationView?.annotation?.completed = true
+//        currentAnnotationView?.setNeedsDisplay()
+//        labelButton.setTitle("Select Label", for: .normal)
+//        selectedAnnotationView?.selected = false
+//        selectedAnnotationView?.setNeedsDisplay()
+//        selectedAnnotationView = currentAnnotationView
+//        currentAnnotationView?.selected = true
+//        currentAnnotationView = nil
+//        removeButton.isEnabled = true
+//    }
+//
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if magnifyView != nil {
+//            magnifyView!.removeFromSuperview()
+//            magnifyView = nil
+//        }
+//        // If there is no uncompleted annotation, return
+//        guard let completed = currentAnnotationView?.annotation?.completed else {
+//            return
+//        }
+//        if completed {
+//            return
+//        }
+//        if let count = currentAnnotationView?.annotation?.points.count, count <= 1 {
+//            currentAnnotationView?.annotation = nil
+//            currentAnnotationView?.removeFromSuperview()
+//            return
+//        }
+//    }
 }
 
 // MARK: - Helper functions
