@@ -22,6 +22,7 @@ class ProfileViewController: CUUTableViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet var profileTableView: UITableView!
+    @IBOutlet weak var buildVersionLabel: UILabel!
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
@@ -43,6 +44,7 @@ class ProfileViewController: CUUTableViewController {
             self.user = user
             self.emailLabel.text = user.email
             self.idLabel.text = user._id
+            self.buildVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "No build number found"
         })
     }
 
