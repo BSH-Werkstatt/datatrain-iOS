@@ -97,6 +97,7 @@
                                     <outletCollection property="gestureRecognizers" destination="Dms-PA-TRT" appends="YES" id="bMa-AQ-PNZ"/>
                                     <outletCollection property="gestureRecognizers" destination="g7t-Ix-GvQ" appends="YES" id="SRB-9f-KHL"/>
                                     <outletCollection property="gestureRecognizers" destination="vNv-vP-8CH" appends="YES" id="hYe-RO-YH7"/>
+                                    <outletCollection property="gestureRecognizers" destination="wf9-9z-uoy" appends="YES" id="TZe-qI-vnE"/>
                                 </connections>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USA-e1-nHq">
@@ -151,34 +152,40 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="gp1-62-zR8" userLabel="Pan Gesture Recognizer for Drawing">
-                    <connections>
-                        <action selector="handlePanGesturesWithOneFingerWithPanGestureRecognizer:" destination="Hgt-na-wWW" id="jsp-XO-wcT"/>
-                    </connections>
-                </panGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="RZX-W6-HS9">
                     <connections>
                         <action selector="handleLongPressGesturesWithLongPressGestureRecognizer:" destination="Hgt-na-wWW" id="fuc-es-ud6"/>
+                        <outlet property="delegate" destination="Hgt-na-wWW" id="1XZ-yM-FxZ"/>
                     </connections>
                 </pongPressGestureRecognizer>
                 <pinchGestureRecognizer id="Dms-PA-TRT">
                     <connections>
                         <action selector="handlePinchGesturesWithPinchGestureRecognizer:" destination="Hgt-na-wWW" id="rdh-ex-DCU"/>
+                        <outlet property="delegate" destination="Hgt-na-wWW" id="TVT-of-hZX"/>
                     </connections>
                 </pinchGestureRecognizer>
                 <tapGestureRecognizer id="g7t-Ix-GvQ">
                     <connections>
                         <action selector="handleTapGesturesWithTapGestureRecognizer:" destination="Hgt-na-wWW" id="H2L-nl-shs"/>
+                        <outlet property="delegate" destination="Hgt-na-wWW" id="oWO-RO-CJX"/>
                     </connections>
                 </tapGestureRecognizer>
                 <rotationGestureRecognizer id="vNv-vP-8CH">
                     <connections>
                         <action selector="handleRotationGesturesWithRotationGestureRecognizer:" destination="Hgt-na-wWW" id="4Oq-P7-Nch"/>
+                        <outlet property="delegate" destination="Hgt-na-wWW" id="7bs-bj-1eO"/>
                     </connections>
                 </rotationGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="2" maximumNumberOfTouches="2" id="4JS-YS-gZh" userLabel="Pan Gesture Recognizer for Moving">
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="gp1-62-zR8" userLabel="Pan Gesture Recognizer for Drawing">
                     <connections>
-                        <action selector="handlePanGesturesWithTwoFingersWithPanGestureRecognizer:" destination="Hgt-na-wWW" id="U2w-gk-TC6"/>
+                        <action selector="handlePanGesturesWithOneFingerWithPanGestureRecognizer:" destination="Hgt-na-wWW" id="jsp-XO-wcT"/>
+                        <outlet property="delegate" destination="Hgt-na-wWW" id="Dev-F4-zLx"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="2" maximumNumberOfTouches="2" id="wf9-9z-uoy" userLabel="Pan Gesture Recognizer for Moving">
+                    <connections>
+                        <action selector="handlePanGesturesWithTwoFingersWithPanGestureRecognizer:" destination="Hgt-na-wWW" id="6Ts-0l-CB9"/>
+                        <outlet property="delegate" destination="Hgt-na-wWW" id="oH0-fv-xpo"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

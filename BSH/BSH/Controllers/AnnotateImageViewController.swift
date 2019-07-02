@@ -163,36 +163,46 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         }
         panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
         
-        if panGestureRecognizer.state == UIGestureRecognizer.State.ended {
-            // 1
-            let velocity = panGestureRecognizer.velocity(in: self.view)
-            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
-            let slideMultiplier = magnitude / 200
-            print("magnitude: \(magnitude), slideMultiplier: \(slideMultiplier)")
-            
-            // 2
-            let slideFactor = 0.1 * slideMultiplier     //Increase for more of a slide
-            // 3
-            var finalPoint = CGPoint(x:panGestureRecognizer.view!.center.x + (velocity.x * slideFactor),
-                                     y:panGestureRecognizer.view!.center.y + (velocity.y * slideFactor))
-            // 4
-            finalPoint.x = min(max(finalPoint.x, 0), self.view.bounds.size.width)
-            finalPoint.y = min(max(finalPoint.y, 0), self.view.bounds.size.height)
-            
-            // 5
-            UIView.animate(withDuration: Double(slideFactor * 2),
-                           delay: 0,
-                           // 6
-                options: UIView.AnimationOptions.curveEaseOut,
-                animations: {panGestureRecognizer.view!.center = finalPoint },
-                completion: nil)
-        }
+//        if panGestureRecognizer.state == UIGestureRecognizer.State.ended {
+//            // 1
+//            let velocity = panGestureRecognizer.velocity(in: self.view)
+//            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+//            let slideMultiplier = magnitude / 200
+//            print("magnitude: \(magnitude), slideMultiplier: \(slideMultiplier)")
+//
+//            // 2
+//            let slideFactor = 0.1 * slideMultiplier     //Increase for more of a slide
+//            // 3
+//            var finalPoint = CGPoint(x:panGestureRecognizer.view!.center.x + (velocity.x * slideFactor),
+//                                     y:panGestureRecognizer.view!.center.y + (velocity.y * slideFactor))
+//            // 4
+//            finalPoint.x = min(max(finalPoint.x, 0), self.view.bounds.size.width)
+//            finalPoint.y = min(max(finalPoint.y, 0), self.view.bounds.size.height)
+//
+//            // 5
+//            UIView.animate(withDuration: Double(slideFactor * 2),
+//                           delay: 0,
+//                           // 6
+//                options: UIView.AnimationOptions.curveEaseOut,
+//                animations: {panGestureRecognizer.view!.center = finalPoint },
+//                completion: nil)
+//        }
     }
     
     @IBAction func handlePinchGestures(pinchGestureRecognizer: UIPinchGestureRecognizer) {
         if let view = pinchGestureRecognizer.view {
-            view.transform = view.transform.scaledBy(x: pinchGestureRecognizer.scale, y: pinchGestureRecognizer.scale)
-            pinchGestureRecognizer.scale = 1
+            switch pinchGestureRecognizer.state {
+            case .changed:
+                let pinchCenter = CGPoint(x: pinchGestureRecognizer.location(in: view).x - view.bounds.midX,
+                                          y: pinchGestureRecognizer.location(in: view).y - view.bounds.midY)
+                let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                    .scaledBy(x: pinchGestureRecognizer.scale, y: pinchGestureRecognizer.scale)
+                    .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+                view.transform = transform
+                pinchGestureRecognizer.scale = 1
+            default:
+                return
+            }
         }
     }
     
@@ -241,6 +251,19 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         removeButton.isEnabled = false
         getImage()
         addKeyboardShiftListner()
+    }
+}
+
+extension AnnotateImageViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if otherGestureRecognizer is UIRotationGestureRecognizer, gestureRecognizer is UIPinchGestureRecognizer {
+//            return true
+//        }
+//        if otherGestureRecognizer is UIPinchGestureRecognizer, gestureRecognizer is UIRotationGestureRecognizer {
+//            return true
+//        }
+//        return false
+        return true
     }
 }
 
