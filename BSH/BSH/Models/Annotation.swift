@@ -20,6 +20,17 @@ class Annotation {
     var campaignId: String
     var temporaryPoint: CGPoint?
     var annotationView: AnnotationView?
+    
+    var startPoint: CGPoint? {
+        get {
+            return points.first
+        }
+    }
+    var endPoint: CGPoint? {
+        get {
+            return points.last
+        }
+    }
 
     init(userId: String, campaignId: String, imageId: String) {
         self.userId = userId
