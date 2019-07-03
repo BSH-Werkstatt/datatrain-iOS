@@ -25,13 +25,13 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
+    private(set) var drawingEnabled: Bool = false
     private var selectedAnnotationView: AnnotationView?
     private var imageView: UIImageView!
     private var activeCampaign: Campaign?
     var imageData: ImageData?
     private var originalImage: UIImage?
     private var mainViewInitialY: CGFloat!
-    private var annotationEnabled: Bool = false
     
     private var offsetX: CGFloat = -1.0
     private var offsetY: CGFloat = -1.0
@@ -41,10 +41,17 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     
     // TODO: This should be refactored as deleteButtonClick
     @IBAction func deleteButtonClick(_ sender: Any) {
-        selectedAnnotationView?.annotation = nil
-        selectedAnnotationView?.selected = false
-        selectedAnnotationView?.removeFromSuperview()
-        selectedAnnotationView = nil
+        if let selectedAnnotationView = selectedAnnotationView {
+            selectedAnnotationView.annotation = nil
+            selectedAnnotationView.selected = false
+            selectedAnnotationView.removeFromSuperview()
+            self.selectedAnnotationView = nil
+        } else if let currentAnnotationView = currentAnnotationView {
+            currentAnnotationView.annotation = nil
+            currentAnnotationView.selected = false
+            currentAnnotationView.removeFromSuperview()
+            self.currentAnnotationView = nil
+        }
         labelButton.setTitle("Select Label", for: .normal)
         removeButton.isEnabled = false
     }
@@ -64,8 +71,21 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                 banner.show()
                 return
             }
+
+            // If there is already a current annotation view, we have to check if we touched in the endPoint
+            if let currentAnnotationView = currentAnnotationView, let endPoint = currentAnnotationView.annotation?.endPoint,
+                currentAnnotationView.annotation?.getLargePointRect(point: endPoint)?.contains(panGestureRecognizer.location(in: imageView)) ?? false  {
+                drawingEnabled = true
+                return
+            }
             
+            // There is no current annotation view, we will create a new one
+            if currentAnnotationView != nil {
+                return
+            }
+            drawingEnabled = true
             let annotationView = AnnotationView()
+            annotationView.delegate = self
             annotationView.frame = view.bounds
             annotationView.backgroundColor = UIColor.clear
             annotationView.isOpaque = false
@@ -81,12 +101,19 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             annotationViews.append(annotationView)
             currentAnnotationView = annotationView
             currentAnnotationView?.setNeedsDisplay()
+            
+            selectedAnnotationView?.selected = false
+            selectedAnnotationView?.setNeedsDisplay()
+            selectedAnnotationView = nil
         case .changed:
             // If there is no uncompleted annotation, return
             guard let completed = currentAnnotationView?.annotation?.completed else {
                 return
             }
             if completed {
+                return
+            }
+            if !drawingEnabled {
                 return
             }
             var point = panGestureRecognizer.location(in: imageView)
@@ -111,6 +138,9 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             currentAnnotationView?.annotation?.temporaryPoint = point
             currentAnnotationView?.setNeedsDisplay()
         case .ended:
+            print("Ended")
+            drawingEnabled = false
+            currentAnnotationView?.setNeedsDisplay()
             // If there is no uncompleted annotation, return
             guard let completed = currentAnnotationView?.annotation?.completed else {
                 return
@@ -123,16 +153,28 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                 magnifyView = nil
             }
             
-            currentAnnotationView?.annotation?.completed = true
-            currentAnnotationView?.setNeedsDisplay()
-            labelButton.setTitle("Select Label", for: .normal)
-            selectedAnnotationView?.selected = false
-            selectedAnnotationView?.setNeedsDisplay()
-            selectedAnnotationView = currentAnnotationView
-            currentAnnotationView?.selected = true
-            currentAnnotationView = nil
-            removeButton.isEnabled = true
+            // If the end point collides with the start point, then complete the annotation,
+            // else just disable drawing and wait for the user to start a new drawing from the current end point
+            
+            if let endPoint = currentAnnotationView?.annotation?.endPoint, let startPoint = currentAnnotationView?.annotation?.startPoint,
+                let endPointRect = currentAnnotationView?.annotation?.getPointRect(point: endPoint),
+                let startPointRect = currentAnnotationView?.annotation?.getPointRect(point: startPoint),
+                endPointRect.intersects(startPointRect)  {
+                currentAnnotationView?.annotation?.completed = true
+                currentAnnotationView?.setNeedsDisplay()
+                labelButton.setTitle("Select Label", for: .normal)
+                if currentAnnotationView?.annotation?.completed ?? false {
+                    selectedAnnotationView?.selected = false
+                    selectedAnnotationView?.setNeedsDisplay()
+                    selectedAnnotationView = currentAnnotationView
+                    currentAnnotationView?.selected = true
+                }
+                currentAnnotationView = nil
+                removeButton.isEnabled = true
+                return
+            }
         case .cancelled:
+            drawingEnabled = false
             if magnifyView != nil {
                 magnifyView!.removeFromSuperview()
                 magnifyView = nil
@@ -149,6 +191,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                 currentAnnotationView?.removeFromSuperview()
                 return
             }
+            currentAnnotationView = nil
         default:
             return
         }
@@ -193,6 +236,11 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         if let view = pinchGestureRecognizer.view {
             switch pinchGestureRecognizer.state {
             case .changed:
+                if 1.0 / (AnnotationView.viewScale / pinchGestureRecognizer.scale) > 5 ||
+                    1.0 / (AnnotationView.viewScale / pinchGestureRecognizer.scale) < 1 {
+                    return
+                }
+                AnnotationView.viewScale /= pinchGestureRecognizer.scale
                 let pinchCenter = CGPoint(x: pinchGestureRecognizer.location(in: view).x - view.bounds.midX,
                                           y: pinchGestureRecognizer.location(in: view).y - view.bounds.midY)
                 let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
@@ -200,6 +248,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                     .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
                 view.transform = transform
                 pinchGestureRecognizer.scale = 1
+                imageLayerContainer.subviews.forEach({ (subview: UIView) -> Void in subview.setNeedsDisplay() })
             default:
                 return
             }
@@ -207,7 +256,14 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleLongPressGestures(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        
+        if longPressGestureRecognizer.state == .began {
+            if magnifyView == nil {
+                magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                magnifyView!.viewToMagnify = self.view.superview
+                magnifyView!.setTouchPoint(pt: longPressGestureRecognizer.location(in: self.view.superview))
+                self.view.superview?.addSubview(magnifyView!)
+            }
+        }
     }
     
     @IBAction func handleRotationGestures(rotationGestureRecognizer: UIRotationGestureRecognizer) {
@@ -219,13 +275,16 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
 
     
     @IBAction func handleTapGestures(tapGestureRecognizer: UITapGestureRecognizer) {
+        if let _ = currentAnnotationView {
+            return
+        }
         if imageLayerContainer.subviews.count == 0 {
             return
         }
         for index in 0...imageLayerContainer.subviews.count - 1 {
             if imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] is AnnotationView {
                 let subview = imageLayerContainer.subviews[imageLayerContainer.subviews.count - 1 - index] as! AnnotationView
-                if subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
+                if (subview.annotation?.completed ?? false) && subview.isPointInsideAnnotation(point: tapGestureRecognizer.location(in: imageLayerContainer)) {
                     selectedAnnotationView?.selected = false
                     selectedAnnotationView?.setNeedsDisplay()
                     removeButton.isEnabled = true
@@ -653,7 +712,7 @@ extension AnnotateImageViewController {
         self.imageView = nil
         self.imageData = nil
         self.originalImage = nil
-        self.annotationEnabled = false
+        self.drawingEnabled = false
         self.offsetX = -1.0
         self.offsetY = -1.0
         self.sizeImageX = -1.0

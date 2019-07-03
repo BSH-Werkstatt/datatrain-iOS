@@ -42,6 +42,10 @@ class MagnifyView: UIView {
         context!.scaleBy(x: 2, y: 2) // 1.5 is the zoom scale
         context!.translateBy(x: -1 * (touchPoint.x), y: -1 * (touchPoint.y))
         self.viewToMagnify.layer.render(in: context!)
+        
+        let path = UIBezierPath(ovalIn: CGRect(x: touchPoint.x - 5, y: touchPoint.y - 5, width: 10, height: 10))
+        #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1).setFill()
+        path.fill()
     }
 
 }
