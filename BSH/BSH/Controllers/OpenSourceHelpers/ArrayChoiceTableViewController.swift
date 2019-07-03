@@ -74,6 +74,7 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchActive = false
+            self.tableView.reloadData()
             return
         }
         filtered = values.filter({ (text) -> Bool in
