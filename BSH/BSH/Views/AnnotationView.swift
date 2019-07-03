@@ -13,6 +13,20 @@ class AnnotationView: UIView {
     var annotation: Annotation?
     var selected = false
     var delegate: AnnotateImageViewController?
+    var labelView: UILabel?
+    
+    var surroundingRect: UIBezierPath {
+        let path = UIBezierPath()
+        if let annotation = annotation {
+            path.move(to: annotation.points[0])
+            if annotation.points.count > 1 {
+                for i in 1...annotation.points.count - 1 {
+                    path.addLine(to: annotation.points[i])
+                }
+            }
+        }
+        return UIBezierPath(rect: path.bounds)
+    }
     
     private static var offsetX: CGFloat?
     private static var offsetY: CGFloat?
@@ -87,16 +101,8 @@ class AnnotationView: UIView {
                     path.fill()
                 })
                 if !annotation.completed {
-                    print("Drawing endPoint")
                     let temporaryPointPath = UIBezierPath(ovalIn: CGRect(x: annotation.endPoint!.x - scale(10), y: annotation.endPoint!.y - scale(10), width: scale(20.0), height: scale(20.0)))
-                    if let _ = delegate?.drawingEnabled {
-                        print("Delegate exists")
-                    }
-                    if let drawingEnabled = delegate?.drawingEnabled, drawingEnabled {
-                        print("Drawing enabled")
-                    }
                     if let drawingEnabled = delegate?.drawingEnabled, !drawingEnabled {
-                        print("Drawing is disabled, stroking")
                         temporaryPointPath.lineWidth = scale(8)
                         AnnotationView.selectedStrokeColor.setStroke()
                         temporaryPointPath.stroke()
@@ -104,6 +110,13 @@ class AnnotationView: UIView {
                     AnnotationView.lastPointColor.setFill()
                     temporaryPointPath.fill()
                 }
+            }
+            if annotation.completed {
+                let surroundingRect = UIBezierPath(rect: path.bounds)
+                surroundingRect.setLineDash([32.0, 16.0], count: 2, phase: 0.0)
+                surroundingRect.lineWidth = scale(3)
+                #colorLiteral(red: 0.05728202313, green: 0, blue: 0.1899692416, alpha: 0.7460402397).setStroke()
+                surroundingRect.stroke()
             }
         }
     }
