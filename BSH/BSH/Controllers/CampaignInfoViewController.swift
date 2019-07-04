@@ -24,10 +24,15 @@ class CampaignInfoViewController: CUUViewController {
     @IBAction func startCampaignButton() {
         // what to do when Campaign starts
         // select which campaign + and Segue!
+        //CUU Seed
+         CUU.seed(name: "Start Annotate")
     }
 
     @IBAction func selectImageAction(_ sender: Any) {
         showImageAlert()
+        //CUU Seed
+        CUU.seed(name: "Start Upload")
+        
     }
     
     // MARK: Overriden Methods

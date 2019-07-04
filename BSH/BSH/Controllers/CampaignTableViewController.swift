@@ -117,6 +117,9 @@ class CampaignTableViewController: CUUTableViewController {
             else { return }
         MainTabBarController.setImage(image: image)
         performSegue(withIdentifier: "showCampaign", sender: nil)
+       
+        //CUU Seeds
+        CUU.seed(name: "Campaign List clicked")
     }
 
 

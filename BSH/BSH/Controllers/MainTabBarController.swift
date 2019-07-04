@@ -11,7 +11,7 @@ import UIKit
 import CUU
 import SwaggerClient
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: CUUTabBarController {
 
     private static var campaign: Campaign?
     private static var image: UIImage?
