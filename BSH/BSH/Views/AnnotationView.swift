@@ -12,6 +12,7 @@ class AnnotationView: UIView {
     
     var annotation: Annotation?
     var selected = false
+    var delegate: AnnotateImageViewController?
     
     private static var offsetX: CGFloat?
     private static var offsetY: CGFloat?
@@ -19,20 +20,23 @@ class AnnotationView: UIView {
     private static var imageSizeY: CGFloat?
     private static var imageScale: CGFloat?
     
-    private static var fillColor: UIColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(0.5))
+    private static var fillColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 0.5)
+    private static var strokeColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+    private static var selectedStrokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    private static var selectedFillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 0.5)
+    private static var firstPointColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+    private static var lastPointColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
     
-    private static var strokeColor: UIColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(1.0))
+    static var viewScale: CGFloat = 1.0
     
-    private static var pointColor: UIColor = UIColor(displayP3Red: CGFloat(200.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(1.0))
-    
-    private static var selectedStrokeColor: UIColor = UIColor(displayP3Red: CGFloat(100.0/255.0), green: CGFloat(200.0/255.0), blue: CGFloat(100.0/255.0), alpha: CGFloat(1.0))
-    
-    private static var selectedFillColor: UIColor = UIColor(displayP3Red: CGFloat(100.0/255.0), green: CGFloat(200.0/255.0), blue: CGFloat(100.0/255.0), alpha: CGFloat(0.5))
+    func scale(_ value: CGFloat) -> CGFloat {
+        return value * AnnotationView.viewScale
+    }
 
     override func draw(_ rect: CGRect) {
         if let annotation = annotation {
             let path = UIBezierPath()
-            path.lineWidth = 3.0
+            path.lineWidth = scale(3.0)
             if annotation.points.count >= 1 && annotation.completed {
                 // There is a compeleted path
                 path.move(to: annotation.points[0])
@@ -68,14 +72,38 @@ class AnnotationView: UIView {
             }
             if annotation.points.count > 1 {
                 annotation.points.forEach({ (x: CGPoint) -> Void in
-                    let path = UIBezierPath(ovalIn: CGRect(x: x.x - 2.5, y: x.y - 2.5, width: 5.0, height: 5.0))
-                    if selected {
-                        AnnotationView.selectedStrokeColor.setFill()
+                    var path: UIBezierPath
+                    if !annotation.completed, annotation.startPoint == x {
+                        path = UIBezierPath(ovalIn: CGRect(x: x.x - scale(10), y: x.y - scale(10), width: scale(20.0), height: scale(20.0)))
+                        AnnotationView.firstPointColor.setFill()
                     } else {
-                        AnnotationView.pointColor.setFill()
+                        path = UIBezierPath(ovalIn: CGRect(x: x.x - scale(2.5), y: x.y - scale(2.5), width: scale(5.0), height: scale(5.0)))
+                        if selected {
+                            AnnotationView.selectedStrokeColor.setFill()
+                        } else {
+                            AnnotationView.strokeColor.setFill()
+                        }
                     }
                     path.fill()
                 })
+                if !annotation.completed {
+                    print("Drawing endPoint")
+                    let temporaryPointPath = UIBezierPath(ovalIn: CGRect(x: annotation.endPoint!.x - scale(10), y: annotation.endPoint!.y - scale(10), width: scale(20.0), height: scale(20.0)))
+                    if let _ = delegate?.drawingEnabled {
+                        print("Delegate exists")
+                    }
+                    if let drawingEnabled = delegate?.drawingEnabled, drawingEnabled {
+                        print("Drawing enabled")
+                    }
+                    if let drawingEnabled = delegate?.drawingEnabled, !drawingEnabled {
+                        print("Drawing is disabled, stroking")
+                        temporaryPointPath.lineWidth = scale(8)
+                        AnnotationView.selectedStrokeColor.setStroke()
+                        temporaryPointPath.stroke()
+                    }
+                    AnnotationView.lastPointColor.setFill()
+                    temporaryPointPath.fill()
+                }
             }
         }
     }

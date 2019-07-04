@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Point {
+    
     public var x: CGFloat
     public var y: CGFloat
     
