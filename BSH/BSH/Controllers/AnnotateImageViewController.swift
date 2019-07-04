@@ -310,6 +310,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         removeButton.isEnabled = false
         getImage()
         addKeyboardShiftListner()
+        AnnotationView.viewScale = 1.0
     }
 }
 
@@ -615,8 +616,34 @@ extension AnnotateImageViewController {
         }
         
         let controller = ArrayChoiceTableViewController(activeCampaign.taxonomy.sorted()) { (label) in
+            if let selectedAnnotationView = self.selectedAnnotationView, let annotation = selectedAnnotationView.annotation {
+                selectedAnnotationView.annotation?.label = label
+                if selectedAnnotationView.labelView == nil {
+                    let label = UILabel()
+                    label.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 0.7964201627)
+                    label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                    label.text = annotation.label == "" ? "Select Label" : annotation.label
+                    label.textAlignment = .center
+                    label.font = UIFont.systemFont(ofSize: 14)
+                    label.frame = CGRect(x: selectedAnnotationView.surroundingRect.bounds.minX,
+                                         y: selectedAnnotationView.surroundingRect.bounds.maxY,
+                                         width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
+                    selectedAnnotationView.addSubview(label)
+                    selectedAnnotationView.labelView = label
+                    label.setNeedsDisplay()
+                } else {
+                    if let label = selectedAnnotationView.labelView {
+                        label.text = annotation.label == "" ? "Select Label" : annotation.label
+                        label.frame = CGRect(x: selectedAnnotationView.surroundingRect.bounds.minX,
+                                                                         y: selectedAnnotationView.surroundingRect.bounds.maxY,
+                                                                         width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.width)
+                        label.setNeedsDisplay()
+                    }
+                }
+                
+            }
+            
             self.labelButton.setTitle(label, for: .normal)
-            self.selectedAnnotationView?.annotation?.label = label
         }
         controller.preferredContentSize = CGSize(width: 300, height: 200)
         showPopup(controller, sourceView: sender as! UIView)
