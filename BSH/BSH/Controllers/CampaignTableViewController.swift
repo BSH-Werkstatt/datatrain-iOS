@@ -96,6 +96,7 @@ class CampaignTableViewController: CUUTableViewController {
         cell.descriptionLabel?.text = campaign._description
         cell.campaignId = campaign._id;
         
+        // get campaign image
         if let imageURL = campaign.image,
             let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url) {
@@ -109,7 +110,7 @@ class CampaignTableViewController: CUUTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         var campaign: Campaign
-        campaign=campaigns[indexPath.row]
+        campaign = campaigns[indexPath.row]
         MainTabBarController.setCampaign(campaign)
         guard let cell = campaignTable.cellForRow(at: indexPath),
             let imageView = cell.imageView,
@@ -118,7 +119,7 @@ class CampaignTableViewController: CUUTableViewController {
         MainTabBarController.setImage(image: image)
         performSegue(withIdentifier: "showCampaign", sender: nil)
        
-        //CUU Seeds
+        //CUU Seeds 
         CUU.seed(name: "Campaign List clicked")
     }
 

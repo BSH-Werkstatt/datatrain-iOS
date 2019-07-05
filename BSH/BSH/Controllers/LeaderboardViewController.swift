@@ -35,10 +35,13 @@ class LeaderboardViewController: CUUTableViewController {
         configureRefreshControl()
         getLeaderboard()
         //refreshing controls
+        
+        //CUU Seed for tracking leaderboard checks
+        CUU.seed(name: "Leaderboard checked")
 
     }
 
-    func configureRefreshControl () {
+    func configureRefreshControl() {
         // Add the refresh control to your UIScrollView object.
         leaderboardTable.refreshControl = UIRefreshControl()
         leaderboardTable.refreshControl?.addTarget(self, action:
@@ -53,7 +56,7 @@ class LeaderboardViewController: CUUTableViewController {
         }
     }
 
-    func getLeaderboard(){
+    func getLeaderboard() {
 
         guard let campaign = MainTabBarController.getCampaign() else {
             self.campaingLabel?.text = "No campaign has been chosen. Please select a campaign in the campaigns tab!"

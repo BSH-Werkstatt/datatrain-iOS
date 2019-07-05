@@ -67,6 +67,10 @@ class UploadImageViewController: CUUViewController {
                     // Show notification for succesful upload
                     let banner = NotificationBanner(title: "Success", subtitle: "The image is successfully uploaded. Please annotate the image.", style: .success)
                     banner.show()
+                    
+                    //CUU Seed for tracking successful uploading
+                    CUU.seed(name: "Uploaded picture sucessfully")
+                    
                     self.performSegue(withIdentifier: "uploadToAnnotateSegue", sender: nil)
                 })
             }
