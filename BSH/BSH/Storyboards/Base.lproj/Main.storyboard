@@ -172,7 +172,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="188" width="250" height="42"/>
-                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.92549019610000005" green="0.63529411759999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                         <userDefinedRuntimeAttributes>
@@ -182,12 +182,12 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="E-Mail"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="B/S/H E-Mail"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -207,10 +207,10 @@
                                             <action selector="loginButtonPressed:" destination="90H-4L-dYP" eventType="touchUpInside" id="HU9-3P-53O"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DataTrain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH9-ed-EHW">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="39.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="33"/>
-                                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH9-ed-EHW">
+                                        <rect key="frame" x="0.0" y="108" width="250" height="39.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -220,20 +220,27 @@
                                     <constraint firstItem="gJb-x2-YYO" firstAttribute="centerY" secondItem="kcb-8h-Dom" secondAttribute="centerY" id="GCd-e9-pvs"/>
                                     <constraint firstAttribute="trailing" secondItem="5op-zv-cpa" secondAttribute="trailing" id="UsX-gN-WU8"/>
                                     <constraint firstItem="gJb-x2-YYO" firstAttribute="leading" secondItem="kcb-8h-Dom" secondAttribute="leading" id="XfF-Ny-dmF"/>
-                                    <constraint firstItem="nH9-ed-EHW" firstAttribute="top" secondItem="kcb-8h-Dom" secondAttribute="top" id="bzl-lQ-vO9"/>
+                                    <constraint firstItem="nH9-ed-EHW" firstAttribute="top" secondItem="kcb-8h-Dom" secondAttribute="top" constant="108" id="bzl-lQ-vO9"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="iMc-Pw-f3g"/>
                                     <constraint firstItem="gJb-x2-YYO" firstAttribute="centerX" secondItem="kcb-8h-Dom" secondAttribute="centerX" id="mhj-uH-Elq"/>
                                     <constraint firstItem="5op-zv-cpa" firstAttribute="top" secondItem="gJb-x2-YYO" secondAttribute="bottom" constant="15" id="tDg-Q0-JNm"/>
                                     <constraint firstAttribute="trailing" secondItem="nH9-ed-EHW" secondAttribute="trailing" id="wcc-tf-ijr"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fvl-pr-8Nn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.13333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kcb-8h-Dom" firstAttribute="centerY" secondItem="Bu8-nb-wZQ" secondAttribute="centerY" id="03N-U9-BQL"/>
                             <constraint firstItem="kcb-8h-Dom" firstAttribute="top" secondItem="Bu8-nb-wZQ" secondAttribute="top" constant="200" id="CT9-yN-gnW"/>
+                            <constraint firstItem="fvl-pr-8Nn" firstAttribute="leading" secondItem="Bu8-nb-wZQ" secondAttribute="leading" id="SdF-hd-tSE"/>
                             <constraint firstItem="kcb-8h-Dom" firstAttribute="centerX" secondItem="Bu8-nb-wZQ" secondAttribute="centerX" id="b8A-gx-2d4"/>
+                            <constraint firstItem="fvl-pr-8Nn" firstAttribute="top" secondItem="Bu8-nb-wZQ" secondAttribute="top" id="bap-Ym-jmB"/>
+                            <constraint firstItem="fvl-pr-8Nn" firstAttribute="trailing" secondItem="Bu8-nb-wZQ" secondAttribute="trailing" id="gvt-e5-GYG"/>
                             <constraint firstItem="Bu8-nb-wZQ" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="kcb-8h-Dom" secondAttribute="bottom" constant="200" id="rY1-47-a4A"/>
+                            <constraint firstItem="fvl-pr-8Nn" firstAttribute="bottom" secondItem="Bu8-nb-wZQ" secondAttribute="bottom" id="yXo-1c-Ham"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bu8-nb-wZQ"/>
                     </view>
@@ -275,6 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SJk-tX-Jxj"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDf-ER-OLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,6 +296,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vfB-M6-LLk"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUC-YU-fO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
