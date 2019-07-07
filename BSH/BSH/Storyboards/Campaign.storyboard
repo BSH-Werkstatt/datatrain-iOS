@@ -19,11 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PSt-bR-YeI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="250"/>
+                                <rect key="frame" x="20" y="44" width="378" height="250"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="9dn-Hj-vcy"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQV-F5-Xba">
                                 <rect key="frame" x="0.0" y="294" width="414" height="44"/>
@@ -42,25 +47,45 @@
                                 </items>
                             </toolbar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHH-Pa-Twv">
-                                <rect key="frame" x="16" y="354" width="382" height="459"/>
+                                <rect key="frame" x="20" y="440" width="374" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                        <point key="value" x="0.0" y="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PSt-bR-YeI" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" id="1Zl-wu-pXB"/>
+                            <constraint firstItem="PSt-bR-YeI" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="20" id="1Zl-wu-pXB"/>
                             <constraint firstItem="PSt-bR-YeI" firstAttribute="top" secondItem="zcm-Mi-vQb" secondAttribute="top" id="8Py-FS-UI6"/>
                             <constraint firstItem="xQV-F5-Xba" firstAttribute="trailing" secondItem="zcm-Mi-vQb" secondAttribute="trailing" id="OAP-Lt-3br"/>
-                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="top" secondItem="xQV-F5-Xba" secondAttribute="bottom" constant="16" id="dnG-yE-D9V"/>
-                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="bottom" secondItem="zcm-Mi-vQb" secondAttribute="bottom" id="gvx-yK-b9G"/>
+                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="top" secondItem="xQV-F5-Xba" secondAttribute="bottom" constant="102" id="dnG-yE-D9V"/>
+                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="bottom" secondItem="zcm-Mi-vQb" secondAttribute="bottom" constant="-148" id="gvx-yK-b9G"/>
                             <constraint firstItem="xQV-F5-Xba" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" id="pKR-eh-44A"/>
                             <constraint firstItem="xQV-F5-Xba" firstAttribute="top" secondItem="PSt-bR-YeI" secondAttribute="bottom" id="rKw-rO-PMz"/>
-                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="eHH-Pa-Twv" secondAttribute="trailing" constant="16" id="yfC-VG-e1r"/>
-                            <constraint firstItem="PSt-bR-YeI" firstAttribute="trailing" secondItem="zcm-Mi-vQb" secondAttribute="trailing" id="zBG-ex-Sk8"/>
-                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="16" id="zhq-0Q-ekP"/>
+                            <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="eHH-Pa-Twv" secondAttribute="trailing" constant="20" id="yfC-VG-e1r"/>
+                            <constraint firstItem="PSt-bR-YeI" firstAttribute="trailing" secondItem="zcm-Mi-vQb" secondAttribute="trailing" constant="-16" id="zBG-ex-Sk8"/>
+                            <constraint firstItem="eHH-Pa-Twv" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="20" id="zhq-0Q-ekP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zcm-Mi-vQb"/>
                     </view>
@@ -110,7 +135,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="22f-zW-lvT">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IFT-Jx-rPT" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
-                                            <rect key="frame" x="41" y="37.5" width="273" height="30"/>
+                                            <rect key="frame" x="116" y="37.5" width="273" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Select Label">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -243,6 +268,6 @@
         <image name="upload.png" width="104.72727203369141" height="104.72727203369141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OCg-Ul-LPq"/>
+        <segue reference="8CZ-S7-hKK"/>
     </inferredMetricsTieBreakers>
 </document>
