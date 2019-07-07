@@ -32,7 +32,6 @@ class CampaignTableViewController: CUUTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         // Do any additional setup after loading the view.
         configureRefreshControl ()
         self.campaignTable.refreshControl?.beginRefreshing()
