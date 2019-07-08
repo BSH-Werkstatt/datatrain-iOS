@@ -43,7 +43,7 @@ class ProfileViewController: CUUTableViewController {
             }
             self.user = user
             self.emailLabel.text = user.email
-            self.idLabel.text = user._id
+            self.idLabel.text = user.name
             self.buildVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "No build number found"
         })
     }
