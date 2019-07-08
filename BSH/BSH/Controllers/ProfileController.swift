@@ -29,6 +29,9 @@ class ProfileViewController: CUUTableViewController {
         super.viewDidLoad()
         configureRefreshControl ()
         getProfile()
+        
+        //CUU Seed for checking Profil
+        CUU.seed(name: "Profile viewed")
     }
 
     func getProfile() {
@@ -72,6 +75,9 @@ class ProfileViewController: CUUTableViewController {
     @IBAction func logout(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
         Switcher.updateRootVC()
+        
+        //CUU Seed for tracking logout
+        CUU.seed(name: "Logged out")
     }
     
 }
