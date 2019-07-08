@@ -173,7 +173,7 @@
                                 <rect key="frame" x="82" y="244" width="250" height="418"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="250" height="42"/>
+                                        <rect key="frame" x="0.0" y="194" width="250" height="30"/>
                                         <color key="textColor" red="0.92549019610000005" green="0.63529411759999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES" textContentType="email"/>
