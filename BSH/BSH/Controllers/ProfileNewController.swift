@@ -28,11 +28,6 @@ class ProfileNewController: CUUViewController {
         getProfile()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setToolbarHidden(true, animated: false)
-    }
-    
     func getProfile() {
         guard let email = UserDefaults.standard.string(forKey: "user-email") else {
             return
@@ -76,11 +71,6 @@ class ProfileNewController: CUUViewController {
     @IBAction func logout(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
         Switcher.updateRootVC()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.setToolbarHidden(false, animated: false)
     }
     
 }
