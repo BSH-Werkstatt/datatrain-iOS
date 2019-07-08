@@ -16,6 +16,7 @@ class CampaignTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var campaignImage: UIImageView!
     var campaignId: String?
 }
 
@@ -31,7 +32,6 @@ class CampaignTableViewController: CUUTableViewController {
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         // Do any additional setup after loading the view.
         configureRefreshControl ()
@@ -100,9 +100,8 @@ class CampaignTableViewController: CUUTableViewController {
         if let imageURL = campaign.image,
             let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url) {
-            cell.imageView?.image = UIImage(data: data)
+            cell.campaignImage?.image = UIImage(data: data)
         }
-        
         
         return cell
     }
@@ -112,8 +111,8 @@ class CampaignTableViewController: CUUTableViewController {
         var campaign: Campaign
         campaign = campaigns[indexPath.row]
         MainTabBarController.setCampaign(campaign)
-        guard let cell = campaignTable.cellForRow(at: indexPath),
-            let imageView = cell.imageView,
+        guard let cell = campaignTable.cellForRow(at: indexPath) as! CampaignTableViewCell?,
+            let imageView = cell.campaignImage,
             let image = imageView.image
             else { return }
         MainTabBarController.setImage(image: image)

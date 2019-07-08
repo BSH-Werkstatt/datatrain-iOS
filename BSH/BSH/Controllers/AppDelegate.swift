@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
         // Override point for customization after application launch.
         CUU.start()
         FirebaseApp.configure()
-        PrototyperController.showFeedbackButton = true
+        //PrototyperController.showFeedbackButton = true
         Switcher.updateRootVC()
         return true
     }

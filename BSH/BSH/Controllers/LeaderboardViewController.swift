@@ -69,7 +69,7 @@ class LeaderboardViewController: CUUTableViewController {
                 self.campaingLabel?.text = "There is no data for this leaderboard yet. \nStart annotattong or uploading now!"
                 return
             }
-            self.campaingLabel?.text = campaign.name
+            self.campaingLabel?.text = ""
             self.leaderboard = leaderboard
             self.leaderboardTable.reloadData()
         })

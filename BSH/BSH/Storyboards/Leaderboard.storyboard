@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,11 +25,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="leaderboardCell" id="CTS-Aa-a6t" customClass="LeaderboardCellController" customModule="BSH" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="leaderboardCell" id="CTS-Aa-a6t" customClass="LeaderboardCellController" customModule="BSH" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CTS-Aa-a6t" id="Y5q-bh-saT">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1001st" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnB-HP-Lq8">
@@ -42,13 +42,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRk-Mx-Tu8">
-                                            <rect key="frame" x="110" y="11.5" width="208" height="21"/>
+                                            <rect key="frame" x="110" y="11.5" width="246" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG2-AW-YK7">
-                                            <rect key="frame" x="333" y="11.5" width="43" height="21"/>
+                                            <rect key="frame" x="351" y="10" width="43" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -57,12 +57,12 @@
                                     <constraints>
                                         <constraint firstItem="GnB-HP-Lq8" firstAttribute="bottom" secondItem="Y5q-bh-saT" secondAttribute="bottomMargin" id="Fkl-TI-xpU"/>
                                         <constraint firstItem="dRk-Mx-Tu8" firstAttribute="leading" secondItem="GnB-HP-Lq8" secondAttribute="trailing" constant="15" id="KoV-g5-zrW"/>
-                                        <constraint firstItem="uG2-AW-YK7" firstAttribute="leading" secondItem="dRk-Mx-Tu8" secondAttribute="trailing" constant="15" id="Xkt-1W-YgR"/>
+                                        <constraint firstItem="uG2-AW-YK7" firstAttribute="leading" secondItem="dRk-Mx-Tu8" secondAttribute="trailing" constant="-5" id="Xkt-1W-YgR"/>
                                         <constraint firstItem="GnB-HP-Lq8" firstAttribute="top" secondItem="Y5q-bh-saT" secondAttribute="topMargin" id="d7T-LK-SHi"/>
                                         <constraint firstItem="dRk-Mx-Tu8" firstAttribute="centerY" secondItem="GnB-HP-Lq8" secondAttribute="centerY" id="mpR-Fn-ZIK"/>
-                                        <constraint firstAttribute="trailing" secondItem="uG2-AW-YK7" secondAttribute="trailing" id="uba-53-VOE"/>
-                                        <constraint firstItem="uG2-AW-YK7" firstAttribute="leading" secondItem="dRk-Mx-Tu8" secondAttribute="trailing" constant="15" id="xkX-hY-IRw"/>
-                                        <constraint firstItem="uG2-AW-YK7" firstAttribute="centerY" secondItem="GnB-HP-Lq8" secondAttribute="centerY" id="zae-wg-Wne"/>
+                                        <constraint firstAttribute="trailing" secondItem="uG2-AW-YK7" secondAttribute="trailing" constant="20" id="uba-53-VOE"/>
+                                        <constraint firstItem="uG2-AW-YK7" firstAttribute="leading" secondItem="dRk-Mx-Tu8" secondAttribute="trailing" constant="-5" id="xkX-hY-IRw"/>
+                                        <constraint firstItem="uG2-AW-YK7" firstAttribute="centerY" secondItem="GnB-HP-Lq8" secondAttribute="centerY" constant="-1.5" id="zae-wg-Wne"/>
                                         <constraint firstItem="GnB-HP-Lq8" firstAttribute="leading" secondItem="Y5q-bh-saT" secondAttribute="leadingMargin" id="zcq-Mn-4Ir"/>
                                     </constraints>
                                 </tableViewCellContentView>

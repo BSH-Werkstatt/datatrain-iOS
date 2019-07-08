@@ -13,7 +13,6 @@
 		2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */; };
 		2D3AA64E22BBD8AD00B94193 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64D22BBD8AD00B94193 /* Annotation.swift */; };
 		2E2E7889F3B19B91D4EB2436 /* Pods_BSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */; };
-		3C21828822BB097C006373F5 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C21828722BB097C006373F5 /* ProfileController.swift */; };
 		3C22772222BA909C00EB677B /* Playground.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22771F22BA909B00EB677B /* Playground.storyboard */; };
 		3C22772322BA909C00EB677B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22772022BA909B00EB677B /* Profile.storyboard */; };
 		3C22772422BA909C00EB677B /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C22772122BA909B00EB677B /* Leaderboard.storyboard */; };
@@ -52,6 +51,7 @@
 		50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */; };
 		C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */ = {isa = PBXBuildFile; fileRef = C52E36C6228EB6F0005EDB93 /* CUU.plist */; };
 		C58045F5229ED9B400AE4775 /* Campaign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58045F4229ED9B400AE4775 /* Campaign.storyboard */; };
+		C5BF3A5722D3933D00B22A9C /* ProfileNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF3A5622D3933D00B22A9C /* ProfileNewController.swift */; };
 		C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */; };
 		C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,6 @@
 		2D39966622C4FAE8007F38E8 /* MagnifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyView.swift; sourceTree = "<group>"; };
 		2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		2D3AA64D22BBD8AD00B94193 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
-		3C21828722BB097C006373F5 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		3C22771F22BA909B00EB677B /* Playground.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Playground.storyboard; sourceTree = "<group>"; };
 		3C22772022BA909B00EB677B /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3C22772122BA909B00EB677B /* Leaderboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		BA684E17AD61E905706390F9 /* Pods-BSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSH.debug.xcconfig"; path = "Target Support Files/Pods-BSH/Pods-BSH.debug.xcconfig"; sourceTree = "<group>"; };
 		C52E36C6228EB6F0005EDB93 /* CUU.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CUU.plist; sourceTree = "<group>"; };
 		C58045F4229ED9B400AE4775 /* Campaign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Campaign.storyboard; sourceTree = "<group>"; };
+		C5BF3A5622D3933D00B22A9C /* ProfileNewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNewController.swift; sourceTree = "<group>"; };
 		C5F1FA20229EC4A4000F3FAC /* CampaignInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignInfoViewController.swift; sourceTree = "<group>"; };
 		C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,7 +240,7 @@
 				C5F1FA25229ED0DD000F3FAC /* LeaderboardViewController.swift */,
 				50C5CA0622A0129500A72DB8 /* UploadImageViewController.swift */,
 				50AB753E22A4026C00BEB84B /* AnnotateImageViewController.swift */,
-				3C21828722BB097C006373F5 /* ProfileController.swift */,
+				C5BF3A5622D3933D00B22A9C /* ProfileNewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
 				3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */,
 				C5F1FA21229EC4A4000F3FAC /* CampaignInfoViewController.swift in Sources */,
-				3C21828822BB097C006373F5 /* ProfileController.swift in Sources */,
+				C5BF3A5722D3933D00B22A9C /* ProfileNewController.swift in Sources */,
 				2D39966322C4EFD7007F38E8 /* AlwaysShowPopup.swift in Sources */,
 				50BEC79222A69952000107DF /* CampaignTableViewController.swift in Sources */,
 				2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */,
