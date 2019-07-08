@@ -24,10 +24,17 @@ class CampaignInfoViewController: CUUViewController {
     @IBAction func startCampaignButton() {
         // what to do when Campaign starts
         // select which campaign + and Segue!
+       
+        //CUU Seed Annotate Button clicked
+         CUU.seed(name: "Start Annotate")
     }
 
     @IBAction func selectImageAction(_ sender: Any) {
         showImageAlert()
+        
+        //CUU Seed Upload Button clicked
+        CUU.seed(name: "Start Upload")
+        
     }
     
     // MARK: Overriden Methods
@@ -108,6 +115,9 @@ extension CampaignInfoViewController: UIImagePickerControllerDelegate, UINavigat
         var pickerMode: UIImagePickerController.SourceType = .photoLibrary
         if UIImagePickerController.isSourceTypeAvailable(.camera) && !showLibrary {
             pickerMode = .camera
+            
+            //CUU Seed for tracking photo taking
+            CUU.seed(name: "Upload: Take Photo")
         }
 
         let imagePicker = UIImagePickerController()
@@ -115,5 +125,8 @@ extension CampaignInfoViewController: UIImagePickerControllerDelegate, UINavigat
         imagePicker.sourceType = pickerMode;
         imagePicker.allowsEditing = false
         self.present(imagePicker, animated: true, completion: nil)
+        
+        //CUU Seed for tracking choosing photo from library
+        CUU.seed(name: "Upload: Choose Photo")
     }
 }

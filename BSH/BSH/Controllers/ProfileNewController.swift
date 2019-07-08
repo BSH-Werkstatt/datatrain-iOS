@@ -26,6 +26,9 @@ class ProfileNewController: CUUViewController {
         super.viewDidLoad()
     //configureRefreshControl () not possible in UIView
         getProfile()
+        
+        //CUU Seed for checking Profil
+        CUU.seed(name: "Profile viewed")
     }
     
     func getProfile() {
@@ -71,6 +74,9 @@ class ProfileNewController: CUUViewController {
     @IBAction func logout(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
         Switcher.updateRootVC()
+        
+        //CUU Seed for tracking logout
+        CUU.seed(name: "Logged out")
     }
     
 }

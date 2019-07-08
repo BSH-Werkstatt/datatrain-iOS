@@ -49,7 +49,7 @@ class UploadImageViewController: CUUViewController {
         
         if let image = uploadedImageView.image {
             // TODO: increase upload size limit at the server
-            if let data = image.jpegData(compressionQuality: 0.1) {
+            if let data = image.rotatedCopy?.jpegData(compressionQuality: 0.1) {
                 let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                 try? data.write(to: filename)
                 
@@ -67,6 +67,10 @@ class UploadImageViewController: CUUViewController {
                     // Show notification for succesful upload
                     let banner = NotificationBanner(title: "Success", subtitle: "The image is successfully uploaded. Please annotate the image.", style: .success)
                     banner.show()
+                    
+                    //CUU Seed for tracking successful uploading
+                    CUU.seed(name: "Uploaded picture sucessfully")
+                    
                     self.performSegue(withIdentifier: "uploadToAnnotateSegue", sender: nil)
                 })
             }
@@ -83,3 +87,15 @@ class UploadImageViewController: CUUViewController {
     }
 }
 
+extension UIImage {
+    var rotatedCopy: UIImage? {
+        if (imageOrientation == UIImage.Orientation.up) {
+            return self
+        }
+        UIGraphicsBeginImageContext(size)
+        draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let copy = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return copy
+    }
+}

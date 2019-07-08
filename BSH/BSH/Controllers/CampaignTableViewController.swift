@@ -96,6 +96,7 @@ class CampaignTableViewController: CUUTableViewController {
         cell.descriptionLabel?.text = campaign._description
         cell.campaignId = campaign._id;
         
+        // get campaign image
         if let imageURL = campaign.image,
             let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url) {
@@ -116,6 +117,9 @@ class CampaignTableViewController: CUUTableViewController {
             else { return }
         MainTabBarController.setImage(image: image)
         performSegue(withIdentifier: "showCampaign", sender: nil)
+       
+        //CUU Seeds 
+        CUU.seed(name: "Campaign List clicked")
     }
 
 

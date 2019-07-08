@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import SwaggerClient
+import CUU
 
-class LoginController: UIViewController {
+class LoginController: CUUViewController {
 
     @IBOutlet weak var emailField: UITextField!
 
@@ -25,10 +26,12 @@ class LoginController: UIViewController {
 
     @IBAction func loginPrimaryAction(_ sender: Any) {
         self.login()
+        CUU.seed(name: "Login: Enter Email")
     }
 
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.login()
+        CUU.seed(name: "Login: Login Button pressed")
     }
 
     private func login(){
