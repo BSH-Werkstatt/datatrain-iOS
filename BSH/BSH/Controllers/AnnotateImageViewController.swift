@@ -121,7 +121,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             
             if let lastPoint = currentAnnotationView?.annotation?.points.last {
                 if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
-                    (point.y - lastPoint.y) * (point.y - lastPoint.y) > 100) {
+                    (point.y - lastPoint.y) * (point.y - lastPoint.y) > 50) {
                     currentAnnotationView?.annotation?.addPoint(point: point)
                     if magnifyView == nil {
                         magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
