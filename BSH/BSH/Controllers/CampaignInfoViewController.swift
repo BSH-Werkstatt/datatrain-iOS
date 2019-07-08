@@ -33,16 +33,26 @@ class CampaignInfoViewController: CUUViewController {
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Campaign Description Text View Layout
+        campaignInfoText.layer.cornerRadius = 10
+        campaignInfoText.layer.masksToBounds = false
+        campaignInfoText.layer.shadowColor = UIColor.lightGray.cgColor
+        campaignInfoText.layer.shadowOffset = CGSize(width: 1, height: 1)
+        campaignInfoText.layer.shadowRadius = 10
+        campaignInfoText.layer.shadowOpacity = 0.4
+        
+        
         if let campaign = MainTabBarController.getCampaign() {
-//            campaignName.text = campaign.name
+            //campaignName.text = campaign.name
             campaignInfoText.text = campaign._description
         }
-
+        
         if let image = MainTabBarController.getImage() {
             self.campaignImageView.image = image
         }
     }
-
+    
 
 
     
