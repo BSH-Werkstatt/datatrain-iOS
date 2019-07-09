@@ -44,7 +44,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     private(set) var drawingEnabled: Bool = false
     private var selectedAnnotationView: AnnotationView?
     private var imageView: UIImageView!
-    private var activeCampaign: Campaign?
+    var activeCampaign: Campaign?
     var imageData: ImageData?
     private var originalImage: UIImage?
     private var mainViewInitialY: CGFloat!
@@ -608,7 +608,7 @@ extension AnnotateImageViewController {
             return
         }
         
-        let controller = ArrayChoiceTableViewController(activeCampaign.taxonomy.sorted()) { (labelText) in
+        let controller = ArrayChoiceTableViewController(delegateViewController: self, activeCampaign.taxonomy.sorted()) { (labelText) in
             if let selectedAnnotationView = self.selectedAnnotationView {
                 if selectedAnnotationView.labelView == nil {
                     let labelView = UILabel()

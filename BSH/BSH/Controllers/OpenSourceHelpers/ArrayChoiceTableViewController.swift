@@ -10,16 +10,19 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
     typealias SelectionHandler = (Element) -> Void
     typealias LabelProvider = (Element) -> String
     
-    private let values: [Element]
+    private var values: [Element]
     private var filtered: [Element] = []
     private let labels: LabelProvider
     private let onSelect: SelectionHandler?
-    var searchActive: Bool = false
+    private var searchActive: Bool = false
+    private var searchText: String = ""
+    private let delegateViewController: AnnotateImageViewController
     
-    init(_ values: [Element], labels: @escaping LabelProvider = String.init(describing:), onSelect : SelectionHandler? = nil) {
+    init(delegateViewController: AnnotateImageViewController, _ values: [Element], labels: @escaping LabelProvider = String.init(describing:), onSelect : SelectionHandler? = nil) {
         self.values = values
         self.onSelect = onSelect
         self.labels = labels
+        self.delegateViewController = delegateViewController
         super.init(style: .plain)
     }
     
@@ -33,7 +36,7 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
         // First cell in the table view is a search field
         let searchBar:UISearchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = " Search or add new..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -43,7 +46,7 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
-            return filtered.count + 1
+            return filtered.count + 2
         }
         return values.count + 1
     }
@@ -54,7 +57,12 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
             cell.textLabel?.text = ""
         } else {
             if searchActive {
-                cell.textLabel?.text = labels(filtered[indexPath.row - 1])
+                // Last item should be add <search word> to taxonomy button
+                if indexPath.row == filtered.count + 1 {
+                    cell.textLabel?.text = "Add \"\(searchText)\" to the dictionary... "
+                } else {
+                    cell.textLabel?.text = labels(filtered[indexPath.row - 1])
+                }
             } else {
                 cell.textLabel?.text = labels(values[indexPath.row - 1])
             }
@@ -65,13 +73,22 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.dismiss(animated: true)
         if searchActive {
-            onSelect?(filtered[indexPath.row - 1])
+            if indexPath.row == filtered.count + 1 {
+                // We should add the new word to the dictionary
+                if !values.contains(where: { (element) in element as! String == searchText}) {
+                    delegateViewController.activeCampaign?.taxonomy.append(searchText)
+                }
+                onSelect?(searchText as! Element)
+            } else {
+                onSelect?(filtered[indexPath.row - 1])
+            }
         } else {
             onSelect?(values[indexPath.row - 1])
         }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
         if searchText == "" {
             searchActive = false
             self.tableView.reloadData()
