@@ -47,9 +47,9 @@ platform :ios do
                         podfile: PODFILE,
                         repo_update: true
                 )
-
-                #increment_build_number
-                fastlane run increment_build_number
+                
+                increment_build_number
+                increment_version_number
 
                 # Write Prototyper BuildString to Info.plist
                 set_info_plist_value(
