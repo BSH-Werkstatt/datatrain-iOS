@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="90H-4L-dYP">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -83,10 +83,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="11" indentationWidth="10" reuseIdentifier="campaignCell" textLabel="RUP-IH-LKV" detailTextLabel="JGy-Qs-Oap" style="IBUITableViewCellStyleSubtitle" id="l3w-h9-K5j" customClass="CampaignTableViewCell" customModule="BSH" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l3w-h9-K5j" id="G3Z-lQ-fgq">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-KL-fdz">
@@ -94,14 +94,14 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" id="RUP-IH-LKV">
-                                            <rect key="frame" x="130" y="25" width="35.5" height="20.5"/>
+                                            <rect key="frame" x="130" y="25" width="35.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JGy-Qs-Oap">
-                                            <rect key="frame" x="130" y="48.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="130" y="48.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,6 +174,10 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="188" width="250" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="Z6e-CA-DBL"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="yYi-u6-SNa"/>
+                                        </constraints>
                                         <color key="textColor" red="0.92549019610000005" green="0.63529411759999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES" textContentType="email"/>
@@ -210,7 +214,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH9-ed-EHW">
-                                        <rect key="frame" x="0.0" y="108" width="250" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="108" width="250" height="39.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -291,7 +295,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loginBackground" width="310.5" height="672"/>
-        <image name="profile.png" width="102.85713958740234" height="102.85713958740234"/>
+        <image name="loginBackground" width="310.33334350585938" height="672"/>
+        <image name="profile.png" width="103.84615325927734" height="103.84615325927734"/>
     </resources>
 </document>
