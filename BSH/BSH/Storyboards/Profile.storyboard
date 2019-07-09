@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilface" translatesAutoresizingMaskIntoConstraints="NO" id="A81-0L-dNf">
-                                <rect key="frame" x="110.5" y="162" width="193" height="193"/>
+                                <rect key="frame" x="110.5" y="162" width="193.00000000000011" height="193.00000000000011"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="193" id="ple-uR-8qf"/>
                                     <constraint firstAttribute="width" constant="193" id="z9E-ig-IGs"/>
@@ -56,8 +56,8 @@
                                     <action selector="logout:" destination="lGo-SE-T7y" eventType="touchUpInside" id="eVw-Vi-et2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Build Version:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-DN-jmV">
-                                <rect key="frame" x="182" y="773" width="121" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Version:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-DN-jmV">
+                                <rect key="frame" x="236" y="773" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                             <constraint firstItem="8Rj-hw-P8L" firstAttribute="leading" secondItem="wMk-rs-8jM" secondAttribute="leading" id="a6M-Rb-vN3"/>
                             <constraint firstItem="ZZf-mE-37U" firstAttribute="leading" secondItem="Mn0-I9-UPn" secondAttribute="leading" constant="20" id="c24-50-Ws1"/>
                             <constraint firstItem="Mn0-I9-UPn" firstAttribute="trailing" secondItem="ZZf-mE-37U" secondAttribute="trailing" constant="20" id="gEZ-Wf-djd"/>
-                            <constraint firstItem="QDI-DN-jmV" firstAttribute="leading" secondItem="Mn0-I9-UPn" secondAttribute="leading" constant="182" id="nXn-Rb-Kog"/>
+                            <constraint firstItem="QDI-DN-jmV" firstAttribute="leading" secondItem="Mn0-I9-UPn" secondAttribute="leading" constant="236" id="nXn-Rb-Kog"/>
                             <constraint firstItem="A81-0L-dNf" firstAttribute="top" secondItem="wMk-rs-8jM" secondAttribute="top" constant="162" id="t0j-xf-ITr"/>
                             <constraint firstItem="8Rj-hw-P8L" firstAttribute="top" secondItem="wMk-rs-8jM" secondAttribute="top" constant="88" id="uBg-nP-Uvi"/>
                             <constraint firstItem="8Rj-hw-P8L" firstAttribute="trailing" secondItem="Mn0-I9-UPn" secondAttribute="trailing" id="xi0-vu-sJK"/>
@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Zc-D7-QZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="2101"/>
+            <point key="canvasLocation" x="2024.6376811594205" y="2100.6696428571427"/>
         </scene>
         <!--Campaigns-->
         <scene sceneID="mlT-YI-yOa">

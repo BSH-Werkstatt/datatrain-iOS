@@ -44,7 +44,7 @@ class ProfileNewController: CUUViewController {
             self.user = user
             self.emailLabel.text = user.email
             self.nameLabel.text = user.name
-            self.buildVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "No build number found"
+            self.buildVersionLabel.text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "No version number found"
         })
     }
     
