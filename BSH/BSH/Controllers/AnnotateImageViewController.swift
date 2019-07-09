@@ -21,7 +21,13 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var labelButton: UIButton!
     @IBOutlet weak var removeButton: UIBarButtonItem!
-
+    @IBAction func undoButtonClick(_ sender: Any) {
+        undoManager?.undo()
+    }
+    
+    @IBAction func redoButtonClick(_ sender: Any) {
+        undoManager?.redo()
+    }
     private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
@@ -61,12 +67,26 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         selectedAnnotationView = nil
     }
     
+    private func undoInitializeAnnotationView(annotationView: AnnotationView) {
+        undoManager?.registerUndo(withTarget: self, handler: { (target) in
+            target.imageLayerContainer.addSubview(annotationView)
+            target.annotationViews.append(annotationView)
+            target.currentAnnotationView = annotationView
+            target.currentAnnotationView?.setNeedsDisplay()
+            target.selectedAnnotationView?.selected = false
+            target.selectedAnnotationView?.setNeedsDisplay()
+            target.selectedAnnotationView = nil
+        })
+        annotationView.removeFromSuperview()
+        currentAnnotationView = nil
+    }
+    
     private func addPointToAnnotationView(point: CGPoint, magnifierPoint: CGPoint) {
         let point = bringPointInsideImageBounds(point: point)
         if let lastPoint = currentAnnotationView?.annotation?.points.last {
             if ((point.x - lastPoint.x) * (point.x - lastPoint.x) +
                 (point.y - lastPoint.y) * (point.y - lastPoint.y) > 50) {
-                currentAnnotationView?.annotation?.addPoint(point: point)
+                addPoint(point: point)
                 if magnifyView == nil {
                     magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
                     magnifyView!.viewToMagnify = self.view.superview
@@ -81,28 +101,72 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         currentAnnotationView?.setNeedsDisplay()
     }
     
-    private func completeAnnotationPath() {
-        currentAnnotationView?.annotation?.completed = true
+    private func addPoint(point: CGPoint) {
+        currentAnnotationView?.annotation?.addPoint(point: point)
+        currentAnnotationView?.annotation?.temporaryPoint = point
         currentAnnotationView?.setNeedsDisplay()
-        labelButton.setTitle("Select Label", for: .normal)
-        selectedAnnotationView?.selected = false
-        selectedAnnotationView?.setNeedsDisplay()
-        selectedAnnotationView = currentAnnotationView
-        currentAnnotationView?.selected = true
-        currentAnnotationView = nil
-        removeButton.isEnabled = true
-        drawingEnabled = false
+        undoManager?.registerUndo(withTarget: self, handler: { (target) in
+            target.undoAddPoint()
+        })
     }
     
-    private func removeLastAnnotataion() {
+    private func undoAddPoint() {
+        if let removedPoint = currentAnnotationView?.annotation?.points.popLast() {
+            currentAnnotationView?.annotation?.temporaryPoint = nil
+            currentAnnotationView?.annotation?.temporaryPoint = currentAnnotationView?.annotation?.endPoint
+            drawingEnabled = false
+            currentAnnotationView?.setNeedsDisplay()
+            if let currentAnnotationView = currentAnnotationView, currentAnnotationView.annotation?.points.count ?? 1 == 1 {
+                undoInitializeAnnotationView(annotationView: currentAnnotationView)
+            }
+            undoManager?.registerUndo(withTarget: self, handler: { (target) in
+                target.addPoint(point: removedPoint)
+            })
+        }
+    }
+    
+    private func completeAnnotationPath() {
+        if let currentAnnotationView = currentAnnotationView {
+            undoManager?.registerUndo(withTarget: self, handler: { (target) in
+                target.undoCompleteAnnotationPath(annotationView: currentAnnotationView)
+            })
+            currentAnnotationView.annotation?.completed = true
+            currentAnnotationView.setNeedsDisplay()
+            labelButton.setTitle("Select Label", for: .normal)
+            selectedAnnotationView?.selected = false
+            selectedAnnotationView?.setNeedsDisplay()
+            selectedAnnotationView = currentAnnotationView
+            currentAnnotationView.selected = true
+            self.currentAnnotationView = nil
+            removeButton.isEnabled = true
+            drawingEnabled = false
+        }
+    }
+    
+    private func undoCompleteAnnotationPath(annotationView: AnnotationView) {
+        drawingEnabled = true
+        annotationView.annotation?.completed = false
+        annotationView.selected = false
+        annotationView.setNeedsDisplay()
+        selectedAnnotationView = nil
+        currentAnnotationView = annotationView
+        removeButton.isEnabled = true
+        undoManager?.registerUndo(withTarget: self, handler: { (target) in
+            target.completeAnnotationPath()
+        })
+    }
+    
+    private func removeLastAnnotatation() {
         if let selectedAnnotationView = selectedAnnotationView {
-            selectedAnnotationView.annotation = nil
-            selectedAnnotationView.selected = false
+            undoManager?.registerUndo(withTarget: self, handler: { (target) in
+                target.undoRemoveLastAnnotatation(annotationView: selectedAnnotationView)
+            })
             selectedAnnotationView.removeFromSuperview()
             self.selectedAnnotationView = nil
         } else if let currentAnnotationView = currentAnnotationView {
-            currentAnnotationView.annotation = nil
-            currentAnnotationView.selected = false
+            undoManager?.registerUndo(withTarget: self, handler: { (target) in
+                target.undoRemoveLastAnnotatation(annotationView: currentAnnotationView)
+            })
             currentAnnotationView.removeFromSuperview()
             self.currentAnnotationView = nil
         }
@@ -110,14 +174,40 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         removeButton.isEnabled = false
     }
     
+    private func undoRemoveLastAnnotatation(annotationView: AnnotationView) {
+        if annotationView.annotation?.completed ?? false {
+            selectedAnnotationView = annotationView
+        } else {
+            currentAnnotationView = annotationView
+        }
+        imageLayerContainer.addSubview(annotationView)
+        annotationView.setNeedsDisplay()
+        if let label = annotationView.annotation?.label, label != "" {
+            labelButton.setTitle(label, for: .normal)
+        } else {
+            labelButton.setTitle("Set Label", for: .normal)
+        }
+        removeButton.isEnabled = true
+        undoManager?.registerUndo(withTarget: self, handler: { (target) in
+            target.removeLastAnnotatation()
+        })
+    }
+    
     private func changeAnnotationLabel(labelView: UILabel, labelText: String, selectedAnnotationView: AnnotationView) {
-        selectedAnnotationView.annotation?.label = labelText
+        guard let annotation = selectedAnnotationView.annotation else {
+            return
+        }
+        let oldLabelText = annotation.label
+        annotation.label = labelText
         labelView.text = labelText
         labelView.frame = CGRect(x: selectedAnnotationView.surroundingRect.bounds.minX,
                              y: selectedAnnotationView.surroundingRect.bounds.maxY,
                              width: labelView.intrinsicContentSize.width + 15, height: labelView.intrinsicContentSize.height + 3)
         labelView.setNeedsDisplay()
         self.labelButton.setTitle(labelText, for: .normal)
+        undoManager?.registerUndo(withTarget: self, handler: { (target) in
+            target.changeAnnotationLabel(labelView: labelView, labelText: oldLabelText, selectedAnnotationView: selectedAnnotationView)
+        })
     }
     
     private func selectAnnotation(subview: AnnotationView) {
@@ -132,7 +222,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     
     // TODO: This should be refactored as deleteButtonClick
     @IBAction func deleteButtonClick(_ sender: Any) {
-        removeLastAnnotataion()
+        removeLastAnnotatation()
     }
     
     @IBAction func handlePanGesturesWithOneFinger(panGestureRecognizer: UIPanGestureRecognizer) {

@@ -187,7 +187,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="22f-zW-lvT">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IFT-Jx-rPT" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
-                                            <rect key="frame" x="116" y="37.5" width="273" height="30"/>
+                                            <rect key="frame" x="41" y="37.5" width="109" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Select Label">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -201,6 +201,30 @@
                                         <connections>
                                             <action selector="submitButtonClick:" destination="Hgt-na-wWW" id="UHF-gN-2cd"/>
                                         </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="jea-14-Iu6">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vnD-c3-2uH">
+                                            <rect key="frame" x="176" y="37.5" width="65" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Undo">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="undoButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="3XZ-oG-qmK"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="89t-e5-P9b">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lvz-gG-x4H">
+                                            <rect key="frame" x="241" y="37.5" width="65" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Redo">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="redoButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="pd2-il-8td"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -267,7 +291,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2801.25" y="-201.25"/>
+            <point key="canvasLocation" x="2798.5507246376815" y="-201.5625"/>
         </scene>
         <!--Upload Image View-->
         <scene sceneID="62n-9l-fz6">
