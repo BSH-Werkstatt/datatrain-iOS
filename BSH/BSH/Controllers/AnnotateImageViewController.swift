@@ -118,7 +118,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             target.undoAddPoint()
         })
         undoButton.isEnabled = true
-        redoButton.isEnabled = false
     }
     
     private func undoAddPoint() {
@@ -142,7 +141,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                 target.undoCompleteAnnotationPath(annotationView: currentAnnotationView)
             })
             undoButton.isEnabled = true
-            redoButton.isEnabled = false
             currentAnnotationView.annotation?.completed = true
             currentAnnotationView.setNeedsDisplay()
             labelButton.setTitle("Select Label", for: .normal)
@@ -184,7 +182,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             self.currentAnnotationView = nil
         }
         undoButton.isEnabled = true
-        redoButton.isEnabled = false
         labelButton.setTitle("Select Label", for: .normal)
         removeButton.isEnabled = false
     }
@@ -224,7 +221,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             target.changeAnnotationLabel(labelView: labelView, labelText: oldLabelText, selectedAnnotationView: selectedAnnotationView)
         })
         undoButton.isEnabled = true
-        redoButton.isEnabled = false
     }
     
     private func selectAnnotation(subview: AnnotationView) {
