@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="zBt-GO-mR9">
-                                <rect key="frame" x="0.0" y="44" width="414" height="664.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="620.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -187,7 +187,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="22f-zW-lvT">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IFT-Jx-rPT" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
-                                            <rect key="frame" x="41" y="37.5" width="109" height="30"/>
+                                            <rect key="frame" x="41" y="37.5" width="281" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Select Label">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -201,30 +201,6 @@
                                         <connections>
                                             <action selector="submitButtonClick:" destination="Hgt-na-wWW" id="UHF-gN-2cd"/>
                                         </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="jea-14-Iu6">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vnD-c3-2uH">
-                                            <rect key="frame" x="176" y="37.5" width="65" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Undo">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="undoButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="3XZ-oG-qmK"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="89t-e5-P9b">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lvz-gG-x4H">
-                                            <rect key="frame" x="241" y="37.5" width="65" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Redo">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="redoButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="pd2-il-8td"/>
-                                            </connections>
-                                        </button>
                                     </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -242,15 +218,31 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Annotate Image" id="rSy-2x-ocX"/>
+                    <navigationItem key="navigationItem" title="Annotate Image" id="rSy-2x-ocX">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="redo" id="oRc-Rd-GTc">
+                                <connections>
+                                    <action selector="redoButtonClick:" destination="Hgt-na-wWW" id="Lp8-lA-TCx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="undo" id="5OV-9W-AEv">
+                                <connections>
+                                    <action selector="undoButtonClick:" destination="Hgt-na-wWW" id="ZPK-UU-UBb"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="annotateRectangleButton" destination="22f-zW-lvT" id="rZJ-1e-7vd"/>
                         <outlet property="imageLayerContainer" destination="zBt-GO-mR9" id="YrT-eg-DbU"/>
                         <outlet property="labelButton" destination="IFT-Jx-rPT" id="OdY-SW-yGm"/>
                         <outlet property="mainView" destination="8oh-dQ-NR4" id="oIz-V9-Iv2"/>
+                        <outlet property="redoButton" destination="oRc-Rd-GTc" id="luJ-r3-Zty"/>
                         <outlet property="removeButton" destination="5hj-DQ-jjB" id="7od-kP-ETz"/>
                         <outlet property="submitButton" destination="Gxb-13-gBS" id="YMf-9c-MhS"/>
+                        <outlet property="undoButton" destination="5OV-9W-AEv" id="dKY-uD-6FS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coa-oF-60R" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,12 +21,22 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var labelButton: UIButton!
     @IBOutlet weak var removeButton: UIBarButtonItem!
+    @IBOutlet private weak var undoButton: UIBarButtonItem!
+    @IBOutlet private weak var redoButton: UIBarButtonItem!
     @IBAction func undoButtonClick(_ sender: Any) {
         undoManager?.undo()
+        redoButton.isEnabled = true
+        if !(undoManager?.canUndo ?? false) {
+            undoButton.isEnabled = false
+        }
     }
     
     @IBAction func redoButtonClick(_ sender: Any) {
         undoManager?.redo()
+        undoButton.isEnabled = true
+        if !(undoManager?.canRedo ?? false) {
+            redoButton.isEnabled = false
+        }
     }
     private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
@@ -108,6 +118,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         undoManager?.registerUndo(withTarget: self, handler: { (target) in
             target.undoAddPoint()
         })
+        undoButton.isEnabled = true
+        redoButton.isEnabled = false
     }
     
     private func undoAddPoint() {
@@ -130,6 +142,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             undoManager?.registerUndo(withTarget: self, handler: { (target) in
                 target.undoCompleteAnnotationPath(annotationView: currentAnnotationView)
             })
+            undoButton.isEnabled = true
+            redoButton.isEnabled = false
             currentAnnotationView.annotation?.completed = true
             currentAnnotationView.setNeedsDisplay()
             labelButton.setTitle("Select Label", for: .normal)
@@ -170,6 +184,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             currentAnnotationView.removeFromSuperview()
             self.currentAnnotationView = nil
         }
+        undoButton.isEnabled = true
+        redoButton.isEnabled = false
         labelButton.setTitle("Select Label", for: .normal)
         removeButton.isEnabled = false
     }
@@ -208,6 +224,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         undoManager?.registerUndo(withTarget: self, handler: { (target) in
             target.changeAnnotationLabel(labelView: labelView, labelText: oldLabelText, selectedAnnotationView: selectedAnnotationView)
         })
+        undoButton.isEnabled = true
+        redoButton.isEnabled = false
     }
     
     private func selectAnnotation(subview: AnnotationView) {
@@ -394,6 +412,11 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        undoButton.isEnabled = false
+        redoButton.isEnabled = false
     }
     
     // MARK: - Overriden Methods
@@ -711,4 +734,3 @@ extension AnnotateImageViewController {
         getImage()
     }
 }
-
