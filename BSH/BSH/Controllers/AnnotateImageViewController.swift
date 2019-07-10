@@ -493,8 +493,11 @@ extension AnnotateImageViewController {
         imageView.frame = imageLayerContainer.bounds
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.image = UIImage(data: data)
-        imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
+        imageView.center = CGPoint(x: -imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+            self.imageView.center = CGPoint(x: self.imageLayerContainer.frame.size.width / 2, y: self.imageLayerContainer.frame.size.height / 2)
+        }, completion: nil)
         imageLoaded = true
         
         let (offsetX, offsetY, imageSizeX, imageSizeY, imageScale) = calculateImageLayoutParameters()
