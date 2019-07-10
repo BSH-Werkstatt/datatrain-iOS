@@ -47,18 +47,19 @@ class UploadImageViewController: CUUViewController {
             return
         }
         
-        if let image = uploadedImageView.image {
+        if let image = uploadedImageView.image?.rotatedCopy {
             // TODO: increase upload size limit at the server
-            if let data = image.rotatedCopy?.jpegData(compressionQuality: 1.0) {
+            if let data = image.jpegData(compressionQuality: 0.1) {
                 let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                 try? data.write(to: filename)
                 
                 DefaultAPI.postImage(imageFile: filename, userToken: userId, campaignId: campaign._id, completion: { (image, error) in
                     
                     // TODO: finish handling
-                    guard error == nil, let image = image else {
+                    guard error == nil, image = image else {
                         let alertController = UIAlertController(title: "Upload failed", message: "Image couldn't be sent to the campaign database. Please make sure you have an internet connection.", preferredStyle: UIAlertController.Style.alert)
                         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        print(error)
                         self.present(alertController, animated: true, completion: nil)
                         return
                     }
