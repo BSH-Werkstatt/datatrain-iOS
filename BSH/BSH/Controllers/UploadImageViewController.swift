@@ -56,7 +56,7 @@ class UploadImageViewController: CUUViewController {
                 DefaultAPI.postImage(imageFile: filename, userToken: userId, campaignId: campaign._id, completion: { (image, error) in
                     
                     // TODO: finish handling
-                    guard error == nil, image = image else {
+                    guard error == nil, image == image else {
                         let alertController = UIAlertController(title: "Upload failed", message: "Image couldn't be sent to the campaign database. Please make sure you have an internet connection.", preferredStyle: UIAlertController.Style.alert)
                         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         print(error)
