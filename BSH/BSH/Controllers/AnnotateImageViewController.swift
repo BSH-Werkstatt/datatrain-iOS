@@ -99,8 +99,9 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
                 if magnifyView == nil {
                     magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
                     magnifyView!.viewToMagnify = self.view.superview
-                    magnifyView!.setTouchPoint(pt: magnifierPoint)
+                    magnifyView!.minY = imageLayerContainer.bounds.minY
                     self.view.superview?.addSubview(magnifyView!)
+                    magnifyView!.setTouchPoint(pt: magnifierPoint)
                 }
             }
         }
@@ -380,8 +381,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             if magnifyView == nil {
                 magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
                 magnifyView!.viewToMagnify = self.view.superview
-                magnifyView!.setTouchPoint(pt: longPressGestureRecognizer.location(in: self.view.superview))
                 self.view.superview?.addSubview(magnifyView!)
+                magnifyView!.setTouchPoint(pt: longPressGestureRecognizer.location(in: self.view.superview))
             }
         }
     }

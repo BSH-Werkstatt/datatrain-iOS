@@ -12,7 +12,7 @@ target 'BSH' do
 pod 'Prototyper'
 pod 'CUU'
 pod 'SwaggerClient', :path => './SwaggerClient'
-pod "TouchVisualizer"
+pod 'TouchVisualizer'
 pod 'Firebase/Core'
 pod 'NotificationBannerSwift'
 
