@@ -413,6 +413,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         undoButton.isEnabled = false
         redoButton.isEnabled = false
+        undoManager?.levelsOfUndo = 200
     }
     
     // MARK: - Overriden Methods
