@@ -16,14 +16,17 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
     private let onSelect: SelectionHandler?
     private var searchActive: Bool = false
     private var searchText: String = ""
+    private let selectable: Bool
     private let delegateViewController: AnnotateImageViewController
     
-    init(delegateViewController: AnnotateImageViewController, _ values: [Element], labels: @escaping LabelProvider = String.init(describing:), onSelect : SelectionHandler? = nil) {
+    init(delegateViewController: AnnotateImageViewController, _ values: [Element], labels: @escaping LabelProvider = String.init(describing:), selectable: Bool, onSelect : SelectionHandler? = nil) {
         self.values = values
         self.onSelect = onSelect
         self.labels = labels
         self.delegateViewController = delegateViewController
+        self.selectable = selectable
         super.init(style: .plain)
+        tableView.allowsSelection = selectable
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,7 +49,11 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
-            return filtered.count + 2
+            if selectable {
+                return filtered.count + 2
+            } else {
+                return filtered.count + 1
+            }
         }
         return values.count + 1
     }

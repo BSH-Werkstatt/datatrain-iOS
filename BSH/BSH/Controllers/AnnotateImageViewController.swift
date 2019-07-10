@@ -16,11 +16,11 @@ import NotificationBannerSwift
 class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     // MARK: - Overriden IBOutlets
     @IBOutlet private weak var imageLayerContainer: UIView!
-    @IBOutlet private weak var annotateRectangleButton: UIBarButtonItem!
-    @IBOutlet private weak var submitButton: UIBarButtonItem!
+    @IBOutlet private weak var annotateRectangleButton: UIButton!
+    @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var labelButton: UIButton!
-    @IBOutlet weak var removeButton: UIBarButtonItem!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet private weak var undoButton: UIBarButtonItem!
     @IBOutlet private weak var redoButton: UIBarButtonItem!
     @IBAction func undoButtonClick(_ sender: Any) {
@@ -184,7 +184,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             self.currentAnnotationView = nil
         }
         undoButton.isEnabled = true
-        labelButton.setTitle("Select Label", for: .normal)
+        labelButton.setTitle("Show Labels", for: .normal)
         removeButton.isEnabled = false
     }
     
@@ -607,15 +607,8 @@ extension AnnotateImageViewController {
         guard let activeCampaign = activeCampaign else {
             return
         }
-        
-        if selectedAnnotationView == nil {
-            let alertController = UIAlertController(title: "Select an annotation", message: "Please select an annotation for to label.", preferredStyle: UIAlertController.Style.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-            return
-        }
-        
-        let controller = ArrayChoiceTableViewController(delegateViewController: self, activeCampaign.taxonomy.sorted()) { (labelText) in
+        var labelsWillBeSelectable = labelButton.titleLabel?.text == "Show Labels" ? false : true
+        let controller = ArrayChoiceTableViewController(delegateViewController: self, activeCampaign.taxonomy.sorted(), selectable: labelsWillBeSelectable) { (labelText) in
             if let selectedAnnotationView = self.selectedAnnotationView {
                 if selectedAnnotationView.labelView == nil {
                     let labelView = UILabel()
