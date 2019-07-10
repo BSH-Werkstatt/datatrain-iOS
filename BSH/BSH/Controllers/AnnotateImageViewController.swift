@@ -418,6 +418,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         undoButton.isEnabled = false
         redoButton.isEnabled = false
         undoManager?.levelsOfUndo = 200
+        labelButton.disclosureButton(baseColor: #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1))
     }
     
     // MARK: - Overriden Methods
