@@ -42,6 +42,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
     private(set) var drawingEnabled: Bool = false
+    private var imageLoaded = false
     private var selectedAnnotationView: AnnotationView?
     private var imageView: UIImageView!
     var activeCampaign: Campaign?
@@ -242,7 +243,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     @IBAction func handlePanGesturesWithOneFinger(panGestureRecognizer: UIPanGestureRecognizer) {
         switch panGestureRecognizer.state {
         case .began:
-            if !isPointInsideImage(point: panGestureRecognizer.location(in: imageView)) {
+            if !imageLoaded || !isPointInsideImage(point: panGestureRecognizer.location(in: imageView)) {
                 return
             }
             guard let imageData = imageData, let activeCampaign = activeCampaign else {
@@ -494,6 +495,7 @@ extension AnnotateImageViewController {
         imageView.image = UIImage(data: data)
         imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
         self.imageLayerContainer.addSubview(imageView)
+        imageLoaded = true
         
         let (offsetX, offsetY, imageSizeX, imageSizeY, imageScale) = calculateImageLayoutParameters()
         AnnotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
@@ -730,6 +732,7 @@ extension AnnotateImageViewController {
         self.sizeImageY = -1.0
         undoManager?.removeAllActions()
         undoButton.isEnabled = false
+        imageLoaded = false
         getImage()
     }
 }
