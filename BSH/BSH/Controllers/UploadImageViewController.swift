@@ -49,7 +49,7 @@ class UploadImageViewController: CUUViewController {
         
         if let image = uploadedImageView.image {
             // TODO: increase upload size limit at the server
-            if let data = image.rotatedCopy?.jpegData(compressionQuality: 0.1) {
+            if let data = image.rotatedCopy?.jpegData(compressionQuality: 1.0) {
                 let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                 try? data.write(to: filename)
                 
