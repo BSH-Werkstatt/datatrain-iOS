@@ -55,6 +55,9 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     private var sizeImageX: CGFloat = -1.0
     private var sizeImageY: CGFloat = -1.0
 
+    private var nextImage: Data?
+    private var nextImageData: ImageData?
+
     private func initializeAnnotationView(userId: String, campaignId: String, imageId: String, point: CGPoint) {
         drawingEnabled = true
         let annotationView = AnnotationView()
@@ -452,39 +455,22 @@ extension AnnotateImageViewController {
             self.returnToCampaignInfo()
             return
         }
-        
-        if self.imageData == nil {
-            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadAndDisplayImage)
+        if imageData == nil {
+            if let nextImage = nextImage {
+                imageData = nextImageData
+                displayImage(data: nextImage)
+                nextImageData = nil
+                self.nextImage = nil
+                loadNextImage()
+            } else {
+                DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadAndDisplayImage)
+            }
         } else {
             downloadAndDisplayImage(self.imageData, nil)
         }
     }
-
-    private func downloadAndDisplayImage(_ iData: ImageData?, _ error: Error?) {
-        if let error = error {
-            // TODO: show an alert that an error has occured
-            print(error)
-            self.returnToCampaignInfo()
-            return
-        }
-
-        guard let iData = iData else {
-            // TODO: show an alert that no data was received
-            self.returnToCampaignInfo()
-            return
-        }
-        
-        self.imageData = iData
-        print(self.imageData!._id)
-
-        // Proceed with getting the image
-        let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
-        guard let url = URL(string: imageURL),
-            let data = try? Data(contentsOf: url) else {
-                // TODO: show an alert that url does not exist
-                self.returnToCampaignInfo()
-                return
-        }
+    
+    private func displayImage(data: Data) {
         imageView = UIImageView()
         guard let imageView = imageView else {
             print("Cannot initialize image view.")
@@ -508,6 +494,53 @@ extension AnnotateImageViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGestures(tapGestureRecognizer:)))
         imageLayerContainer.isUserInteractionEnabled = true
         imageLayerContainer.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func loadNextImage() {
+        DispatchQueue.background(background: {
+            guard let activeCampaign = self.activeCampaign, self.nextImage != nil else {
+                return
+            }
+            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: { (idata, error) in
+                guard let idata = idata else {
+                    return
+                }
+                // Proceed with getting the image
+                self.nextImageData = idata
+                let imageURL = "\(SwaggerClientAPI.basePath)/images/\(idata.campaignId)/\(idata._id).jpg"
+                guard let url = URL(string: imageURL), let data = try? Data(contentsOf: url) else {
+                    return
+                }
+                self.nextImage = data
+            })
+        })
+    }
+
+    private func downloadAndDisplayImage(_ iData: ImageData?, _ error: Error?) {
+        if let error = error {
+            // TODO: show an alert that an error has occured
+            print(error)
+            self.returnToCampaignInfo()
+            return
+        }
+
+        guard let iData = iData else {
+            // TODO: show an alert that no data was received
+            self.returnToCampaignInfo()
+            return
+        }
+        
+        self.imageData = iData
+        // Proceed with getting the image
+        let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
+        guard let url = URL(string: imageURL),
+            let data = try? Data(contentsOf: url) else {
+                // TODO: show an alert that url does not exist
+                self.returnToCampaignInfo()
+                return
+        }
+        displayImage(data: data)
+        loadNextImage()
     }
 }
 
