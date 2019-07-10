@@ -38,8 +38,9 @@ class AnnotationView: UIView {
     static var strokeColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
     static var selectedStrokeColor = #colorLiteral(red: 1, green: 0, blue: 0.6634275317, alpha: 1)
     static var selectedFillColor = #colorLiteral(red: 1, green: 0, blue: 0.6600222588, alpha: 0.5981271404)
-    static var firstPointColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
-    static var lastPointColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+    static var firstPointColor = #colorLiteral(red: 0.5611889983, green: 0, blue: 0.4505312241, alpha: 1)
+    static var pointStrokeColor = #colorLiteral(red: 1, green: 0.6837275257, blue: 0.4505312241, alpha: 1)
+
     
     static var viewScale: CGFloat = 1.0
     
@@ -104,10 +105,10 @@ class AnnotationView: UIView {
                     let temporaryPointPath = UIBezierPath(ovalIn: CGRect(x: annotation.endPoint!.x - scale(10), y: annotation.endPoint!.y - scale(10), width: scale(20.0), height: scale(20.0)))
                     if let drawingEnabled = delegate?.drawingEnabled, !drawingEnabled {
                         temporaryPointPath.lineWidth = scale(8)
-                        AnnotationView.selectedStrokeColor.setStroke()
+                        AnnotationView.pointStrokeColor.setStroke()
                         temporaryPointPath.stroke()
                     }
-                    AnnotationView.lastPointColor.setFill()
+                    AnnotationView.firstPointColor.setFill()
                     temporaryPointPath.fill()
                 }
             }
