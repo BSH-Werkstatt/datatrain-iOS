@@ -616,7 +616,7 @@ extension AnnotateImageViewController {
             if let selectedAnnotationView = self.selectedAnnotationView {
                 if selectedAnnotationView.labelView == nil {
                     let labelView = UILabel()
-                    labelView.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 0.7964201627)
+                    labelView.backgroundColor = AnnotationView.selectedFillColor
                     labelView.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                     labelView.textAlignment = .center
                     labelView.font = UIFont.systemFont(ofSize: 14)
