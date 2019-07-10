@@ -12,6 +12,8 @@ class MagnifyView: UIView {
 
     var viewToMagnify: UIView!
     var touchPoint: CGPoint!
+    var minY: CGFloat?
+    var isOverTheFinger: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +35,26 @@ class MagnifyView: UIView {
     
     func setTouchPoint(pt: CGPoint) {
         touchPoint = pt
-        self.center = CGPoint(x: pt.x, y: pt.y - 150)
+        var x = touchPoint.x
+        if x + bounds.width / 2 > superview!.bounds.maxX {
+            x = superview!.bounds.maxX - (bounds.width / 2)
+        }
+        if x - (bounds.width / 2) < superview!.bounds.minX {
+            x = superview!.bounds.minX + (bounds.width / 2)
+        }
+        var y = touchPoint.y + (isOverTheFinger ?  -150 : 150)
+        if isOverTheFinger {
+            if let minY = minY, y - bounds.height < minY {
+                y = touchPoint.y + 150
+                isOverTheFinger = false
+            }
+        } else {
+            if y + (bounds.height / 2) > superview!.bounds.maxY {
+                y = touchPoint.y - 150
+                isOverTheFinger = true
+            }
+        }
+        self.center = CGPoint(x: x, y: y)
     }
     
     override func draw(_ rect: CGRect) {
