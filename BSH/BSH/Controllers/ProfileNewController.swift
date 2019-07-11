@@ -26,7 +26,7 @@ class ProfileNewController: CUUViewController {
         super.viewDidLoad()
     //configureRefreshControl () not possible in UIView
         getProfile()
-        
+        self.buildVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "No version number found"
         //CUU Seed for checking Profil
         CUU.seed(name: "Profile viewed")
     }
@@ -44,7 +44,6 @@ class ProfileNewController: CUUViewController {
             self.user = user
             self.emailLabel.text = user.email
             self.nameLabel.text = user.name
-            self.buildVersionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "No build number found"
         })
     }
     
