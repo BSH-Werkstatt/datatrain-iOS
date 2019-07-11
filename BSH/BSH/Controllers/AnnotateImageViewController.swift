@@ -16,11 +16,11 @@ import NotificationBannerSwift
 class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     // MARK: - Overriden IBOutlets
     @IBOutlet private weak var imageLayerContainer: UIView!
-    @IBOutlet private weak var annotateRectangleButton: UIBarButtonItem!
-    @IBOutlet private weak var submitButton: UIBarButtonItem!
+    @IBOutlet private weak var annotateRectangleButton: UIButton!
+    @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var labelButton: UIButton!
-    @IBOutlet weak var removeButton: UIBarButtonItem!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet private weak var undoButton: UIBarButtonItem!
     @IBOutlet private weak var redoButton: UIBarButtonItem!
     @IBAction func undoButtonClick(_ sender: Any) {
@@ -56,6 +56,9 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     private var offsetY: CGFloat = -1.0
     private var sizeImageX: CGFloat = -1.0
     private var sizeImageY: CGFloat = -1.0
+
+    private var nextImage: Data?
+    private var nextImageData: ImageData?
 
     private func initializeAnnotationView(userId: String, campaignId: String, imageId: String, point: CGPoint) {
         drawingEnabled = true
@@ -186,7 +189,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             self.currentAnnotationView = nil
         }
         undoButton.isEnabled = true
-        labelButton.setTitle("Select Label", for: .normal)
+        labelButton.setTitle("Show Labels", for: .normal)
         removeButton.isEnabled = false
     }
     
@@ -424,6 +427,11 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         activityIndicator.style = UIActivityIndicatorView.Style.gray
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        labelButton.disclosureButton(baseColor: #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        imageLayerContainer.setNeedsUpdateConstraints()
     }
     
     // MARK: - Overriden Methods
@@ -464,12 +472,65 @@ extension AnnotateImageViewController {
             self.returnToCampaignInfo()
             return
         }
-        
-        if self.imageData == nil {
-            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadAndDisplayImage)
+        if imageData == nil {
+            if let nextImage = nextImage {
+                imageData = nextImageData
+                displayImage(data: nextImage)
+                nextImageData = nil
+                self.nextImage = nil
+                loadNextImage()
+            } else {
+                DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: downloadAndDisplayImage)
+            }
         } else {
             downloadAndDisplayImage(self.imageData, nil)
         }
+    }
+    
+    private func displayImage(data: Data) {
+        imageView = UIImageView()
+        guard let imageView = imageView else {
+            print("Cannot initialize image view.")
+            return
+        }
+        imageView.frame = imageLayerContainer.bounds
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        imageView.image = UIImage(data: data)
+        imageView.center = CGPoint(x: -imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
+        self.imageLayerContainer.addSubview(imageView)
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+            self.imageView.center = CGPoint(x: self.imageLayerContainer.frame.size.width / 2, y: self.imageLayerContainer.frame.size.height / 2)
+        }, completion: nil)
+        imageLoaded = true
+        
+        let (offsetX, offsetY, imageSizeX, imageSizeY, imageScale) = calculateImageLayoutParameters()
+        AnnotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
+        AnnotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
+        AnnotationView.setImageScale(imageScale: imageScale)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGestures(tapGestureRecognizer:)))
+        imageLayerContainer.isUserInteractionEnabled = true
+        imageLayerContainer.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func loadNextImage() {
+        DispatchQueue.background(background: {
+            guard let activeCampaign = self.activeCampaign, self.nextImage != nil else {
+                return
+            }
+            DefaultAPI.getRandomImage(campaignId: activeCampaign._id, completion: { (idata, error) in
+                guard let idata = idata else {
+                    return
+                }
+                // Proceed with getting the image
+                self.nextImageData = idata
+                let imageURL = "\(SwaggerClientAPI.basePath)/images/\(idata.campaignId)/\(idata._id).jpg"
+                guard let url = URL(string: imageURL), let data = try? Data(contentsOf: url) else {
+                    return
+                }
+                self.nextImage = data
+            })
+        })
     }
 
     private func downloadAndDisplayImage(_ iData: ImageData?, _ error: Error?) {
@@ -487,8 +548,6 @@ extension AnnotateImageViewController {
         }
         
         self.imageData = iData
-        print(self.imageData!._id)
-
         // Proceed with getting the image
         let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
         guard let url = URL(string: imageURL),
@@ -497,26 +556,8 @@ extension AnnotateImageViewController {
                 self.returnToCampaignInfo()
                 return
         }
-        imageView = UIImageView()
-        guard let imageView = imageView else {
-            print("Cannot initialize image view.")
-            return
-        }
-        imageView.frame = imageLayerContainer.bounds
-        imageView.contentMode = UIView.ContentMode.scaleAspectFit
-        imageView.image = UIImage(data: data)
-        imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
-        self.imageLayerContainer.addSubview(imageView)
-        imageLoaded = true
-        
-        let (offsetX, offsetY, imageSizeX, imageSizeY, imageScale) = calculateImageLayoutParameters()
-        AnnotationView.setOffsetVariables(offsetX: offsetX, offsetY: offsetY)
-        AnnotationView.setImageSize(imageSizeX: imageSizeX, imageSizeY: imageSizeY)
-        AnnotationView.setImageScale(imageScale: imageScale)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGestures(tapGestureRecognizer:)))
-        imageLayerContainer.isUserInteractionEnabled = true
-        imageLayerContainer.addGestureRecognizer(tapGestureRecognizer)
+        displayImage(data: data)
+        loadNextImage()
     }
 }
 
@@ -616,19 +657,12 @@ extension AnnotateImageViewController {
         guard let activeCampaign = activeCampaign else {
             return
         }
-        
-        if selectedAnnotationView == nil {
-            let alertController = UIAlertController(title: "Select an annotation", message: "Please select an annotation for to label.", preferredStyle: UIAlertController.Style.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-            return
-        }
-        
-        let controller = ArrayChoiceTableViewController(delegateViewController: self, activeCampaign.taxonomy.sorted()) { (labelText) in
+        var labelsWillBeSelectable = labelButton.titleLabel?.text == "Show Labels" ? false : true
+        let controller = ArrayChoiceTableViewController(delegateViewController: self, activeCampaign.taxonomy.sorted(), selectable: labelsWillBeSelectable) { (labelText) in
             if let selectedAnnotationView = self.selectedAnnotationView {
                 if selectedAnnotationView.labelView == nil {
                     let labelView = UILabel()
-                    labelView.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 0.7964201627)
+                    labelView.backgroundColor = AnnotationView.selectedFillColor
                     labelView.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                     labelView.textAlignment = .center
                     labelView.font = UIFont.systemFont(ofSize: 14)
@@ -745,6 +779,8 @@ extension AnnotateImageViewController {
         undoManager?.removeAllActions()
         undoButton.isEnabled = false
         imageLoaded = false
+        imageLayerContainer.transform = .identity
+        imageLayerContainer.setNeedsUpdateConstraints()
         getImage()
     }
 }
