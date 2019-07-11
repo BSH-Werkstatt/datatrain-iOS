@@ -65,6 +65,8 @@ class CampaignTableViewController: CUUTableViewController {
             
             self.campaigns = campaigns
             self.fillCampaignTable()
+            
+            //activityIndicator hidden, when data is loaded
             self.activityIndicator.stopAnimating()
         })
     }
