@@ -18,6 +18,7 @@ class CampaignTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var campaignImage: UIImageView!
     var campaignId: String?
+    
 }
 
 // MARK: - CampaignViewTableControll
@@ -29,6 +30,8 @@ class CampaignTableViewController: CUUTableViewController {
 
     private static var user: User?
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,15 @@ class CampaignTableViewController: CUUTableViewController {
         self.campaignTable.refreshControl?.beginRefreshing()
         loadCampaigns()
         self.campaignTable.refreshControl?.endRefreshing()
+        
+        //activityIndicator shown
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(activityIndicator)
+        campaignTable.backgroundView = activityIndicator
+        activityIndicator.startAnimating()
+        
     }
     
     /// Loads all existing campaigns from the database and stores them in the campaigns property
@@ -53,6 +65,9 @@ class CampaignTableViewController: CUUTableViewController {
             
             self.campaigns = campaigns
             self.fillCampaignTable()
+            
+            //activityIndicator hidden, when data is loaded
+            self.activityIndicator.stopAnimating()
         })
     }
 

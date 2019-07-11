@@ -38,6 +38,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             redoButton.isEnabled = false
         }
     }
+    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     private var magnifyView: MagnifyView?
     private var annotationViews: [AnnotationView] = []
     private var currentAnnotationView: AnnotationView?
@@ -418,6 +420,14 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         undoButton.isEnabled = false
         redoButton.isEnabled = false
         undoManager?.levelsOfUndo = 200
+        
+        //activityIndicator shown
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         labelButton.disclosureButton(baseColor: #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1))
     }
     
@@ -438,6 +448,9 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         getImage()
         addKeyboardShiftListner()
         AnnotationView.viewScale = 1.0
+        
+        //activityIndicator hidden when image is loaded
+        activityIndicator.stopAnimating()
     }
 }
 
@@ -765,6 +778,7 @@ extension AnnotateImageViewController {
         undoManager?.removeAllActions()
         undoButton.isEnabled = false
         imageLoaded = false
+        AnnotationView.viewScale = 1.0
         imageLayerContainer.transform = .identity
         imageLayerContainer.setNeedsUpdateConstraints()
         getImage()

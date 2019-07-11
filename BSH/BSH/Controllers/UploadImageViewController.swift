@@ -16,6 +16,8 @@ import NotificationBannerSwift
 class UploadImageViewController: CUUViewController {
     private static var image: UIImage?
     private var imageData: ImageData?;
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    private var activityIndicatorBackground: UIView?
     
     // MARK: IBOutlets
     @IBOutlet private weak var uploadedImageView: UIImageView!
@@ -38,6 +40,18 @@ class UploadImageViewController: CUUViewController {
     }
     
     @IBAction func uploadButtonClick(_ sender: Any) {
+        
+        //activityIndicator background goes milky white
+        activityIndicatorBackground = UIView(frame: self.view.bounds)
+        activityIndicatorBackground?.backgroundColor = UIColor.init(white: 1.0, alpha: 0.7)
+        //activityIndicator shown
+        activityIndicator.center = activityIndicatorBackground!.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        activityIndicatorBackground?.addSubview(activityIndicator)
+        self.view.addSubview(activityIndicatorBackground!)
+        activityIndicator.startAnimating()
+        
         guard let campaign = MainTabBarController.getCampaign() else {
             return
         }
@@ -72,6 +86,9 @@ class UploadImageViewController: CUUViewController {
                     //CUU Seed for tracking successful uploading
                     CUU.seed(name: "Uploaded picture sucessfully")
                     
+                    //activityIndicator and background hide
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicatorBackground?.backgroundColor = UIColor.init(white: 0.0, alpha: 0.0)
                     self.performSegue(withIdentifier: "uploadToAnnotateSegue", sender: nil)
                 })
             }
