@@ -15,12 +15,14 @@ public struct ImageData: Codable {
     public var campaignId: String
     public var userId: String
     public var annotations: [Annotation]
+    public var url: String
 
-    public init(_id: String, campaignId: String, userId: String, annotations: [Annotation]) {
+    public init(_id: String, campaignId: String, userId: String, annotations: [Annotation], url: String) {
         self._id = _id
         self.campaignId = campaignId
         self.userId = userId
         self.annotations = annotations
+        self.url = url
     }
 
     public enum CodingKeys: String, CodingKey { 
@@ -28,6 +30,7 @@ public struct ImageData: Codable {
         case campaignId
         case userId
         case annotations
+        case url
     }
 
 
