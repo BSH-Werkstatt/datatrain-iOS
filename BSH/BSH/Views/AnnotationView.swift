@@ -34,12 +34,13 @@ class AnnotationView: UIView {
     private static var imageSizeY: CGFloat?
     private static var imageScale: CGFloat?
     
-    private static var fillColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 0.5)
-    private static var strokeColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
-    private static var selectedStrokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-    private static var selectedFillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 0.5)
-    private static var firstPointColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
-    private static var lastPointColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+    static var fillColor = #colorLiteral(red: 0.5, green: 0.4328446062, blue: 0.6674604024, alpha: 0.6042166096)
+    static var strokeColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+    static var selectedStrokeColor = #colorLiteral(red: 1, green: 0, blue: 0.6634275317, alpha: 1)
+    static var selectedFillColor = #colorLiteral(red: 1, green: 0, blue: 0.6600222588, alpha: 0.5981271404)
+    static var firstPointColor = #colorLiteral(red: 0.5611889983, green: 0, blue: 0.4505312241, alpha: 1)
+    static var pointStrokeColor = #colorLiteral(red: 1, green: 0.6837275257, blue: 0.4505312241, alpha: 1)
+
     
     static var viewScale: CGFloat = 1.0
     
@@ -81,7 +82,7 @@ class AnnotationView: UIView {
                 if let temporaryPoint = annotation.temporaryPoint {
                     path.addLine(to: temporaryPoint)
                 }
-                AnnotationView.strokeColor.setStroke()
+                AnnotationView.selectedStrokeColor.setStroke()
                 path.stroke()
             }
             if annotation.points.count > 1 {
@@ -92,7 +93,7 @@ class AnnotationView: UIView {
                         AnnotationView.firstPointColor.setFill()
                     } else {
                         path = UIBezierPath(ovalIn: CGRect(x: x.x - scale(2.5), y: x.y - scale(2.5), width: scale(5.0), height: scale(5.0)))
-                        if selected {
+                        if selected || !annotation.completed {
                             AnnotationView.selectedStrokeColor.setFill()
                         } else {
                             AnnotationView.strokeColor.setFill()
@@ -104,19 +105,26 @@ class AnnotationView: UIView {
                     let temporaryPointPath = UIBezierPath(ovalIn: CGRect(x: annotation.endPoint!.x - scale(10), y: annotation.endPoint!.y - scale(10), width: scale(20.0), height: scale(20.0)))
                     if let drawingEnabled = delegate?.drawingEnabled, !drawingEnabled {
                         temporaryPointPath.lineWidth = scale(8)
-                        AnnotationView.selectedStrokeColor.setStroke()
+                        AnnotationView.pointStrokeColor.setStroke()
                         temporaryPointPath.stroke()
                     }
-                    AnnotationView.lastPointColor.setFill()
+                    AnnotationView.firstPointColor.setFill()
                     temporaryPointPath.fill()
                 }
             }
             if annotation.completed {
                 let surroundingRect = UIBezierPath(rect: path.bounds)
                 surroundingRect.setLineDash([32.0, 16.0], count: 2, phase: 0.0)
-                surroundingRect.lineWidth = scale(3)
-                #colorLiteral(red: 0.05728202313, green: 0, blue: 0.1899692416, alpha: 0.7460402397).setStroke()
+                surroundingRect.lineWidth = scale(2)
+                if selected {
+                    AnnotationView.selectedStrokeColor.setStroke()
+                } else {
+                    AnnotationView.strokeColor.setStroke()
+                }
                 surroundingRect.stroke()
+            }
+            if let labelView = labelView {
+                labelView.backgroundColor = selected || !annotation.completed ? AnnotationView.selectedFillColor : AnnotationView.fillColor
             }
         }
     }

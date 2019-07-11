@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="zBt-GO-mR9">
-                                <rect key="frame" x="0.0" y="88" width="414" height="620.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="615"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -177,47 +177,100 @@
                                     <outletCollection property="gestureRecognizers" destination="wf9-9z-uoy" appends="YES" id="TZe-qI-vnE"/>
                                 </connections>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USA-e1-nHq">
-                                <rect key="frame" x="0.0" y="708.5" width="414" height="104.5"/>
-                                <items>
-                                    <barButtonItem title="Item" image="delete.png" id="5hj-DQ-jjB">
-                                        <connections>
-                                            <action selector="deleteButtonClick:" destination="Hgt-na-wWW" id="BaS-fq-rec"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="22f-zW-lvT">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IFT-Jx-rPT" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
-                                            <rect key="frame" x="41" y="37.5" width="281" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Select Label">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="showLabelPopup:" destination="Hgt-na-wWW" eventType="touchUpInside" id="icg-ck-XqC"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem title="Item" image="upload.png" id="Gxb-13-gBS">
-                                        <connections>
-                                            <action selector="submitButtonClick:" destination="Hgt-na-wWW" id="UHF-gN-2cd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </toolbar>
+                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et8-mp-9mz" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
+                                <rect key="frame" x="93" y="711" width="301" height="45"/>
+                                <color key="tintColor" red="0.188893795" green="0.13656625150000001" blue="0.51064318419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Show Labels">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.18889379501342773" green="0.13656625151634216" blue="0.51064318418502808" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showLabelPopup:" destination="Hgt-na-wWW" eventType="touchUpInside" id="hpl-05-gdC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCL-8x-NaD">
+                                <rect key="frame" x="20" y="764" width="374" height="41"/>
+                                <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="jaE-zv-mYa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Submit Annotation">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="3Ty-sP-JCK"/>
+                                    <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="4Ls-3E-VcJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsH-XR-JPv">
+                                <rect key="frame" x="20" y="711" width="65" height="45"/>
+                                <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="eg4-jN-4LO"/>
+                                    <constraint firstAttribute="width" constant="65" id="mid-13-jkx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="yVN-w0-46t"/>
+                                    <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="KoV-jM-AN2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zBt-GO-mR9" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="01K-6S-fhQ"/>
-                            <constraint firstItem="USA-e1-nHq" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="0AO-EX-546"/>
-                            <constraint firstItem="USA-e1-nHq" firstAttribute="bottom" secondItem="spO-dt-YnY" secondAttribute="bottom" id="JqD-L0-MdA"/>
+                            <constraint firstItem="HsH-XR-JPv" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" constant="20" id="AIu-Tu-3Ew"/>
+                            <constraint firstItem="et8-mp-9mz" firstAttribute="top" secondItem="zBt-GO-mR9" secondAttribute="bottom" constant="8" id="HLh-lH-fJD"/>
                             <constraint firstItem="zBt-GO-mR9" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="OWC-0n-CMb"/>
-                            <constraint firstItem="USA-e1-nHq" firstAttribute="top" secondItem="zBt-GO-mR9" secondAttribute="bottom" id="a3D-eO-nsh"/>
-                            <constraint firstItem="USA-e1-nHq" firstAttribute="trailing" secondItem="spO-dt-YnY" secondAttribute="trailing" id="ezb-7N-Z1t"/>
+                            <constraint firstItem="gCL-8x-NaD" firstAttribute="top" secondItem="et8-mp-9mz" secondAttribute="bottom" constant="8" id="XZC-1x-6om"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="trailing" secondItem="gCL-8x-NaD" secondAttribute="trailing" constant="20" id="dHZ-FS-q96"/>
+                            <constraint firstItem="gCL-8x-NaD" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" constant="20" id="eDt-cL-DAq"/>
+                            <constraint firstItem="et8-mp-9mz" firstAttribute="leading" secondItem="HsH-XR-JPv" secondAttribute="trailing" constant="8" id="ebw-vD-9ne"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="bottom" secondItem="gCL-8x-NaD" secondAttribute="bottom" constant="8" id="ewy-y8-OWK"/>
                             <constraint firstItem="zBt-GO-mR9" firstAttribute="top" secondItem="spO-dt-YnY" secondAttribute="top" id="kTR-pj-MBa"/>
+                            <constraint firstItem="HsH-XR-JPv" firstAttribute="top" secondItem="zBt-GO-mR9" secondAttribute="bottom" constant="8" id="mNd-Wx-WGU"/>
+                            <constraint firstItem="gCL-8x-NaD" firstAttribute="top" secondItem="HsH-XR-JPv" secondAttribute="bottom" constant="8" id="rze-M5-bgv"/>
+                            <constraint firstItem="spO-dt-YnY" firstAttribute="trailing" secondItem="et8-mp-9mz" secondAttribute="trailing" constant="20" id="zWd-V9-3lZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Annotate Image" id="rSy-2x-ocX">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="redo" id="oRc-Rd-GTc">
@@ -233,15 +286,14 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="annotateRectangleButton" destination="22f-zW-lvT" id="rZJ-1e-7vd"/>
                         <outlet property="imageLayerContainer" destination="zBt-GO-mR9" id="YrT-eg-DbU"/>
-                        <outlet property="labelButton" destination="IFT-Jx-rPT" id="OdY-SW-yGm"/>
+                        <outlet property="labelButton" destination="et8-mp-9mz" id="u67-Z7-tUm"/>
                         <outlet property="mainView" destination="8oh-dQ-NR4" id="oIz-V9-Iv2"/>
                         <outlet property="redoButton" destination="oRc-Rd-GTc" id="luJ-r3-Zty"/>
-                        <outlet property="removeButton" destination="5hj-DQ-jjB" id="7od-kP-ETz"/>
-                        <outlet property="submitButton" destination="Gxb-13-gBS" id="YMf-9c-MhS"/>
+                        <outlet property="removeButton" destination="HsH-XR-JPv" id="rsT-A1-7Rz"/>
+                        <outlet property="submitButton" destination="gCL-8x-NaD" id="GWo-7Z-QnZ"/>
                         <outlet property="undoButton" destination="5OV-9W-AEv" id="dKY-uD-6FS"/>
                     </connections>
                 </viewController>
@@ -333,11 +385,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delete.png" width="104.72727203369141" height="104.72727203369141"/>
         <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
-        <image name="upload.png" width="104.72727203369141" height="104.72727203369141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OCg-Ul-LPq"/>
+        <segue reference="hUj-4z-hbZ"/>
     </inferredMetricsTieBreakers>
 </document>

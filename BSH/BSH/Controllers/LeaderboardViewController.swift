@@ -33,12 +33,13 @@ class LeaderboardViewController: CUUTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureRefreshControl()
-        getLeaderboard()
         //refreshing controls
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getLeaderboard()
         //CUU Seed for tracking leaderboard checks
         CUU.seed(name: "Leaderboard checked")
-
     }
 
     func configureRefreshControl() {
