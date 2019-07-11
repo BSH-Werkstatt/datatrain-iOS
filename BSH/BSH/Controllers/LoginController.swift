@@ -11,16 +11,18 @@ import UIKit
 import SwaggerClient
 import CUU
 
-class LoginController: CUUViewController {
+class LoginController: CUUViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let email = UserDefaults.standard.string(forKey: "user-email") else {
             return
         }
         emailField.text = email
+        
+        self.hideKeyboard()
     }
 
 
@@ -116,3 +118,17 @@ class Switcher {
     }
 
 }
+
+extension LoginController {
+  
+    func hideKeyboard() {
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
