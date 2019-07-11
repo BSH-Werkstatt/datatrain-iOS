@@ -57,7 +57,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
 
     private var nextImage: Data?
     private var nextImageData: ImageData?
-    private var imageLayerContainerCenter: CGPoint?
 
     private func initializeAnnotationView(userId: String, campaignId: String, imageId: String, point: CGPoint) {
         drawingEnabled = true
@@ -420,7 +419,10 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         redoButton.isEnabled = false
         undoManager?.levelsOfUndo = 200
         labelButton.disclosureButton(baseColor: #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1))
-        imageLayerContainerCenter = imageLayerContainer.center
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        imageLayerContainer.setNeedsUpdateConstraints()
     }
     
     // MARK: - Overriden Methods
@@ -433,9 +435,6 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         loadActiveCampaign()
         removeButton.isEnabled = false
-        if let imageLayerContainerCenter = imageLayerContainerCenter {
-            imageLayerContainer.center = imageLayerContainerCenter
-        }
         getImage()
         addKeyboardShiftListner()
         AnnotationView.viewScale = 1.0
@@ -769,9 +768,7 @@ extension AnnotateImageViewController {
         undoButton.isEnabled = false
         imageLoaded = false
         imageLayerContainer.transform = .identity
-        if let imageLayerContainerCenter = imageLayerContainerCenter {
-            imageLayerContainer.center = imageLayerContainerCenter
-        }
+        imageLayerContainer.setNeedsUpdateConstraints()
         getImage()
     }
 }
