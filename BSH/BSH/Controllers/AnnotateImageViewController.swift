@@ -512,8 +512,7 @@ extension AnnotateImageViewController {
                 }
                 // Proceed with getting the image
                 self.nextImageData = idata
-                let imageURL = "\(SwaggerClientAPI.basePath)/images/\(idata.campaignId)/\(idata._id).jpg"
-                guard let url = URL(string: imageURL), let data = try? Data(contentsOf: url) else {
+                guard let url = URL(string: idata.url), let data = try? Data(contentsOf: url) else {
                     return
                 }
                 self.nextImage = data
@@ -537,8 +536,7 @@ extension AnnotateImageViewController {
         
         self.imageData = iData
         // Proceed with getting the image
-        let imageURL = "\(SwaggerClientAPI.basePath)/images/\(iData.campaignId)/\(iData._id).jpg"
-        guard let url = URL(string: imageURL),
+        guard let url = URL(string: iData.url),
             let data = try? Data(contentsOf: url) else {
                 // TODO: show an alert that url does not exist
                 self.returnToCampaignInfo()
