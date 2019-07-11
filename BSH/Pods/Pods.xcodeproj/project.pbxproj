@@ -18,6 +18,7 @@
 				CB67FB062DE8CAF07E20E144CB621739 /* PBXTargetDependency */,
 			);
 			name = Firebase;
+			productName = Firebase;
 		};
 		B53D977A951AFC38B21751B706C1DF83 /* GoogleAppMeasurement */ = {
 			isa = PBXAggregateTarget;
@@ -30,6 +31,7 @@
 				3BDD26DF1C76A2717767412BFEFD633E /* PBXTargetDependency */,
 			);
 			name = GoogleAppMeasurement;
+			productName = GoogleAppMeasurement;
 		};
 		C49E7A4D59E5C8BE8DE9FB1EFB150185 /* FirebaseAnalytics */ = {
 			isa = PBXAggregateTarget;
@@ -45,6 +47,7 @@
 				A545116FEA98CB2DC602ECFE976A5146 /* PBXTargetDependency */,
 			);
 			name = FirebaseAnalytics;
+			productName = FirebaseAnalytics;
 		};
 /* End PBXAggregateTarget section */
 
@@ -886,7 +889,7 @@
 		053BBD37D803E7440CCF85D32A3E4EC9 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		0635905AADF9A9A82DAC3B36603CD4F9 /* FIRApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRApp.m; path = Firebase/Core/FIRApp.m; sourceTree = "<group>"; };
 		06A17F3B43A9A35894A7AE3DD8EBB45D /* CUUCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUCollectionViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUCollectionViewController.swift; sourceTree = "<group>"; };
-		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0720A1498E854FAB71B1303EED836C1F /* MarqueeLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-prefix.pch"; sourceTree = "<group>"; };
 		0753A7FC7729A56C541D183697E77B78 /* BKGenderFeatureGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKGenderFeatureGenerator.swift; path = CUU/Classes/BehaviorKit/Models/BKGenderPredictor/BKGenderFeatureGenerator.swift; sourceTree = "<group>"; };
 		07630046A088FB427E6B88D5CA417B50 /* BKSmartphoneExperienceFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKSmartphoneExperienceFactory.swift; path = CUU/Classes/BehaviorKit/Models/BKSmartphoneExperiencePredictor/BKSmartphoneExperienceFactory.swift; sourceTree = "<group>"; };
@@ -898,7 +901,7 @@
 		098F49F72A217E78E4DA6369ACD9E37C /* FIRInstanceIDUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDUtilities.m; path = Firebase/InstanceID/FIRInstanceIDUtilities.m; sourceTree = "<group>"; };
 		0A258C68DA18251B385F11ACE6B31201 /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
 		0A2BC0D92EAF323AA5D93FC8FD04D035 /* CampaignType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CampaignType.swift; sourceTree = "<group>"; };
-		0AB91F46DDDA5588520D012E6F4FB918 /* NotificationBannerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NotificationBannerSwift.framework; path = NotificationBannerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AB91F46DDDA5588520D012E6F4FB918 /* NotificationBannerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NotificationBannerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC1828FB0B5389840B90FCE823D9930 /* FIRInstanceIDLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDLogger.h; path = Firebase/InstanceID/FIRInstanceIDLogger.h; sourceTree = "<group>"; };
 		0B953106B21C09734C8036D38527E67E /* GULReachabilityMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityMessageCode.h; path = GoogleUtilities/Reachability/Private/GULReachabilityMessageCode.h; sourceTree = "<group>"; };
 		0C0AD30D350AC6E66EACC5DD99743BF9 /* CUUReferenceLibraryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUReferenceLibraryViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUReferenceLibraryViewController.swift; sourceTree = "<group>"; };
@@ -991,7 +994,7 @@
 		279FCBBEF91A08BAA18C4E20F31B14C7 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		27CB87358CF10028EF11913B071E6987 /* GrowingNotificationBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrowingNotificationBanner.swift; path = NotificationBanner/Classes/GrowingNotificationBanner.swift; sourceTree = "<group>"; };
 		27CD5B859F440B360AD33C09930BFB5F /* GULNetworkConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkConstants.m; path = GoogleUtilities/Network/GULNetworkConstants.m; sourceTree = "<group>"; };
-		28A479B85964E082853366B3C9B233AE /* UXInconsistencyContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = UXInconsistencyContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKUXInconsistencyPredictor/UXInconsistencyContext.mlmodel; sourceTree = "<group>"; };
+		28A479B85964E082853366B3C9B233AE /* UXInconsistencyContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = UXInconsistencyContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKUXInconsistencyPredictor/UXInconsistencyContext.mlmodel; sourceTree = "<group>"; };
 		29084FC85C369398710D9712F8783421 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		29928D4FE5443D31AABAE9B71B7B4FF6 /* TouchVisualizer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TouchVisualizer.xcconfig; sourceTree = "<group>"; };
 		29B98E047F1320D564F37AEFC6790106 /* MarkupViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkupViewController.swift; path = Prototyper/Classes/Feedback/MarkupViewController.swift; sourceTree = "<group>"; };
@@ -1000,8 +1003,8 @@
 		2B4134AF6FBC77957E8876A2F670E948 /* CUUDocumentPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUDocumentPickerViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUDocumentPickerViewController.swift; sourceTree = "<group>"; };
 		2C05341879F45C4AFED365CA600AADB1 /* BKTemplateSituation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKTemplateSituation.swift; path = CUU/Classes/BehaviorKit/Models/BKTemplateSituation.swift; sourceTree = "<group>"; };
 		2C3919813BAD8104E4E61A5DAD9E0B39 /* FIRInstanceIDStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDStore.h; path = Firebase/InstanceID/FIRInstanceIDStore.h; sourceTree = "<group>"; };
-		2C57D5CFBA489B25C16BAF543E932925 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_decode.c; sourceTree = "<group>"; };
-		2DA0D814DFCB860D31D7BCD63D795858 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseInstanceID.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C57D5CFBA489B25C16BAF543E932925 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_decode.c; sourceTree = "<group>"; };
+		2DA0D814DFCB860D31D7BCD63D795858 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E0BF3E5FEBC08B8277F1A2B50BE6A0A /* FIRInstanceIDAuthService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDAuthService.m; path = Firebase/InstanceID/FIRInstanceIDAuthService.m; sourceTree = "<group>"; };
 		2E4F9DE5E2CB6143E436D0AA2D1971F1 /* Pods-BSH.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BSH.modulemap"; sourceTree = "<group>"; };
 		2E8F6D8A6719431554881FFC68487F38 /* IKDefaultInterceptorConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKDefaultInterceptorConfiguration.swift; path = CUU/Classes/InteractionKit/Utils/IKDefaultInterceptorConfiguration.swift; sourceTree = "<group>"; };
@@ -1025,7 +1028,7 @@
 		371C85C7BD5A5BE37C44FE2330585630 /* CUUActivityViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUActivityViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUActivityViewController.swift; sourceTree = "<group>"; };
 		37602C5DED52B46C27FD974612F05B2D /* IKViewEventCharacteristics+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IKViewEventCharacteristics+CoreDataProperties.swift"; path = "CUU/Classes/InteractionKit/Core/CoreData/IKViewEventCharacteristics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		376DF9F401B5BE08BF236056983371ED /* BKMissingInteractionElementContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKMissingInteractionElementContext.swift; path = CUU/Classes/BehaviorKit/Models/BKMissingInteractionElementPredictor/BKMissingInteractionElementContext.swift; sourceTree = "<group>"; };
-		37FF4CA2C30170E823E19B0670934516 /* SwaggerClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SwaggerClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		37FF4CA2C30170E823E19B0670934516 /* SwaggerClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SwaggerClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		38055EB22A9076E714096FD6C8233219 /* ThinkingAloudStartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThinkingAloudStartView.swift; path = CUU/Classes/ThinkingAloudKit/ThinkingAloudStartView.swift; sourceTree = "<group>"; };
 		38BF9FEC505C6463AE481D58DFEB8156 /* IKDefaultEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKDefaultEvent.swift; path = CUU/Classes/InteractionKit/IKEvent/IKDefaultEvent.swift; sourceTree = "<group>"; };
 		38DD0B4902E8E2A747A3A770BA1825D7 /* Prototype.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Prototype.modulemap; sourceTree = "<group>"; };
@@ -1045,17 +1048,17 @@
 		3B02B2D61A152554CF385B47D696AB3E /* UIViewController+EventTracking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+EventTracking.swift"; path = "CUU/Classes/InteractionKit/IKViewEvent/UIViewController+EventTracking.swift"; sourceTree = "<group>"; };
 		3B79AF893920CDA9B420934544A1182D /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = SwaggerClient/Classes/Swaggers/Configuration.swift; sourceTree = "<group>"; };
 		3BBE2461FA968CC191C33143E3EF3ED3 /* nanopb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = nanopb.xcconfig; sourceTree = "<group>"; };
-		3C483396066173F24B3B1606C32D3FF8 /* GenderContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = GenderContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKGenderPredictor/GenderContext.mlmodel; sourceTree = "<group>"; };
+		3C483396066173F24B3B1606C32D3FF8 /* GenderContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = GenderContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKGenderPredictor/GenderContext.mlmodel; sourceTree = "<group>"; };
 		3CAD61F0FF00F83C121B60FCAD37E1D3 /* IKViewEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKViewEvent.swift; path = CUU/Classes/InteractionKit/IKViewEvent/IKViewEvent.swift; sourceTree = "<group>"; };
 		3CDCDAA14D600BC7ED72BB9741619DF5 /* Pods-BSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BSH.debug.xcconfig"; sourceTree = "<group>"; };
-		3CEAA7B015806DD2B1F863CCADBFC17E /* SwaggerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwaggerClient.framework; path = SwaggerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEAA7B015806DD2B1F863CCADBFC17E /* SwaggerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwaggerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0235F918E96428B90A7F37D7416334 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		3D0D37238C6380A8AB5AA68F025A0E52 /* FirebaseInstanceID-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseInstanceID-umbrella.h"; sourceTree = "<group>"; };
 		3D87F685A8EA092B77CBD708A64BFAFA /* KeychainSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainSwift.swift; path = Sources/KeychainSwift.swift; sourceTree = "<group>"; };
 		3DAD77E8282BD7D2C7770EAC57865F18 /* RecognitionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecognitionManager.swift; path = CUU/Classes/ThinkingAloudKit/RecognitionManager.swift; sourceTree = "<group>"; };
 		3E06DD898589D667492B413A7022D2DE /* EKFear.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKFear.swift; path = CUU/Classes/EmotionKit/Models/Emotions/EKFear.swift; sourceTree = "<group>"; };
 		3E30C9FD9420BF64179A7F116F0EE41F /* pb_encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_encode.h; sourceTree = "<group>"; };
-		3E5911E1C60F168F685644FA9E406BD9 /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_encode.c; sourceTree = "<group>"; };
+		3E5911E1C60F168F685644FA9E406BD9 /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_encode.c; sourceTree = "<group>"; };
 		3EE7AC39815ACE52FEE9A22B9A352955 /* FIRConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRConfiguration.h; path = Firebase/Core/Public/FIRConfiguration.h; sourceTree = "<group>"; };
 		3F0867FEA80288ED80369A923DDA1857 /* BKSituation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKSituation.swift; path = CUU/Classes/BehaviorKit/Models/BKSituation.swift; sourceTree = "<group>"; };
 		402650A058C725BDBD3625A498DACFC9 /* EKAnyEmotion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKAnyEmotion.swift; path = CUU/Classes/EmotionKit/Models/EKAnyEmotion.swift; sourceTree = "<group>"; };
@@ -1123,7 +1126,7 @@
 		58038ECDA1389DB70D6C92ED978A7222 /* GULNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULNSData+zlib.h"; path = "GoogleUtilities/NSData+zlib/GULNSData+zlib.h"; sourceTree = "<group>"; };
 		5838A05DC0F410B0E7CF9D9B9AD4C2F7 /* BKDefaultConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKDefaultConfiguration.swift; path = CUU/Classes/BehaviorKit/Helper/BKDefaultConfiguration.swift; sourceTree = "<group>"; };
 		5843E9FB4D77E94A5AC1F3481EBD8020 /* EKSharpLipPuller.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKSharpLipPuller.swift; path = CUU/Classes/EmotionKit/Models/ActionUnits/EKSharpLipPuller.swift; sourceTree = "<group>"; };
-		594A874A8567AD39D7F1FC3F45DB5A2A /* AgeGroupContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = AgeGroupContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKAgeGroupPredictor/AgeGroupContext.mlmodel; sourceTree = "<group>"; };
+		594A874A8567AD39D7F1FC3F45DB5A2A /* AgeGroupContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = AgeGroupContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKAgeGroupPredictor/AgeGroupContext.mlmodel; sourceTree = "<group>"; };
 		598859625FFBED3BC9AF7D01DA7F957C /* IKViewEventFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKViewEventFactory.swift; path = CUU/Classes/InteractionKit/IKViewEvent/IKViewEventFactory.swift; sourceTree = "<group>"; };
 		59BA3596134BA50F1BBFCD51572B884C /* BKUXInconsistencyFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKUXInconsistencyFactory.swift; path = CUU/Classes/BehaviorKit/Models/BKUXInconsistencyPredictor/BKUXInconsistencyFactory.swift; sourceTree = "<group>"; };
 		59DEBA77BB3CF9940B4A3C93707BBA2B /* icons8-trash-can-100.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "icons8-trash-can-100.png"; path = "CUU/Assets/icons8-trash-can-100.png"; sourceTree = "<group>"; };
@@ -1136,11 +1139,11 @@
 		5CB233504F8BB8836E68F6B929F18817 /* EKCrumbObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKCrumbObserver.swift; path = CUU/Classes/EmotionKit/EKCrumbObserver.swift; sourceTree = "<group>"; };
 		5D1E6EF8E5BEF57E2CB4D167C38C253D /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		5D6EBCE55480AB1005A44BE6FB13CBC7 /* BaseNotificationBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseNotificationBanner.swift; path = NotificationBanner/Classes/BaseNotificationBanner.swift; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC0139749DCAE9945D3DF1E4F210853 /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
 		5EAEE1134E7B748219B01D9D837B3E01 /* PersonaKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PersonaKit.swift; path = CUU/Classes/PersonaKit/PersonaKit.swift; sourceTree = "<group>"; };
 		5ED68628EC3BE23ECBC6D06B38E0BAB2 /* NotificationBannerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NotificationBannerSwift-prefix.pch"; sourceTree = "<group>"; };
-		5F4EA61A9CDE446FE4A1F8B6831732EE /* SentenceClassifier_TA_1.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = SentenceClassifier_TA_1.mlmodel; path = CUU/Classes/ThinkingAloudKit/SentenceClassifier_TA_1.mlmodel; sourceTree = "<group>"; };
+		5F4EA61A9CDE446FE4A1F8B6831732EE /* SentenceClassifier_TA_1.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = SentenceClassifier_TA_1.mlmodel; path = CUU/Classes/ThinkingAloudKit/SentenceClassifier_TA_1.mlmodel; sourceTree = "<group>"; };
 		5F739DF62B86E4F8B138E834DE733872 /* PKDefaultStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKDefaultStorage.swift; path = CUU/Classes/PersonaKit/Storage/PKDefaultStorage.swift; sourceTree = "<group>"; };
 		5F81C1B03204802E106E3EF6A21CE88C /* GULMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULMutableDictionary.h; path = GoogleUtilities/Network/Private/GULMutableDictionary.h; sourceTree = "<group>"; };
 		5F85C432B497EBE832242302ECCDB13B /* GULReachabilityChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityChecker.h; path = GoogleUtilities/Reachability/Private/GULReachabilityChecker.h; sourceTree = "<group>"; };
@@ -1167,7 +1170,7 @@
 		6BB402109FBD13A7F235355251ABBAB8 /* BKData.xcdatamodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcdatamodel; path = BKData.xcdatamodel; sourceTree = "<group>"; };
 		6BBD81074D337EE6FC25458E114495ED /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		6C3A418C5F0D1CC877C209E0F390C5B4 /* IKCoreDataStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKCoreDataStorage.swift; path = CUU/Classes/InteractionKit/Utils/IKCoreDataStorage.swift; sourceTree = "<group>"; };
-		6C5BA3C2E3A5358E31899A5A71E3F2FC /* CUU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CUU.framework; path = CUU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C5BA3C2E3A5358E31899A5A71E3F2FC /* CUU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CUU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D2DDAC98C9785345F5074534E5C8F10 /* FirebaseCore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FirebaseCore-dummy.m"; sourceTree = "<group>"; };
 		6D6AB30004EF335074F9CDCC8CFE3D38 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
 		6DD75183F65DD866B2C62E38B4E0E3AB /* GULAppDelegateSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppDelegateSwizzler.m; path = GoogleUtilities/AppDelegateSwizzler/GULAppDelegateSwizzler.m; sourceTree = "<group>"; };
@@ -1186,7 +1189,7 @@
 		746BE63C8B9FEC567787E8970A34DDA7 /* Share.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Share.storyboard; path = Prototyper/Assets/Share.storyboard; sourceTree = "<group>"; };
 		74862214C876BEFAB0AA8DC255CBA1D8 /* KeychainSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "KeychainSwift-Info.plist"; sourceTree = "<group>"; };
 		74BDF8B9B13AD9204A8B144695F40542 /* ShareViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShareViewController.swift; path = Prototyper/Classes/Share/ShareViewController.swift; sourceTree = "<group>"; };
-		75068B2903FA39B5F7EC08DC56C606CC /* Pods_BSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BSH.framework; path = "Pods-BSH.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75068B2903FA39B5F7EC08DC56C606CC /* Pods_BSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7508F97349EA096346803276AAA7A137 /* NotificationBannerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NotificationBannerSwift.modulemap; sourceTree = "<group>"; };
 		75EC27809561E2D0DF89EA3D4A55E005 /* FIRInstanceID+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FIRInstanceID+Private.m"; path = "Firebase/InstanceID/FIRInstanceID+Private.m"; sourceTree = "<group>"; };
 		76415B60608BE98CC4955B87BCE053D2 /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
@@ -1216,7 +1219,7 @@
 		7F6A16F22C158FBC22EEAE55D740A645 /* FIRBundleUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRBundleUtil.h; path = Firebase/Core/Private/FIRBundleUtil.h; sourceTree = "<group>"; };
 		7F706C352AA85738F8DC9B5F9CEC1C3F /* GULSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSwizzler.h; path = GoogleUtilities/MethodSwizzler/Private/GULSwizzler.h; sourceTree = "<group>"; };
 		7FF9658C729A04ED1D7406340C15D2AF /* FIRInstanceIDCheckinStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDCheckinStore.m; path = Firebase/InstanceID/FIRInstanceIDCheckinStore.m; sourceTree = "<group>"; };
-		8104E060CFD16EB527DFC9C6169FFC52 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_common.c; sourceTree = "<group>"; };
+		8104E060CFD16EB527DFC9C6169FFC52 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_common.c; sourceTree = "<group>"; };
 		82303C0E929C269A763E2A8A3052FE6A /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		82910310F0D9FBB9FF9899D3335B79B1 /* IKInterceptionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKInterceptionDelegate.swift; path = CUU/Classes/InteractionKit/Core/IKInterceptionDelegate.swift; sourceTree = "<group>"; };
 		829F238D36F9268AA57B4FA078A1560F /* pb_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_common.h; sourceTree = "<group>"; };
@@ -1238,7 +1241,7 @@
 		88D57AAE88E3951AAC36D489B14CA827 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = TouchVisualizer/Configuration.swift; sourceTree = "<group>"; };
 		89AFC211911539205C22AE10777266F2 /* FIRInstanceID_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID_Private.h; path = Firebase/InstanceID/Private/FIRInstanceID_Private.h; sourceTree = "<group>"; };
 		89F81FCC2CB8D7A529493D2FB7E8AB3C /* SwaggerClient-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwaggerClient-Info.plist"; sourceTree = "<group>"; };
-		8A37E2587439714D0F4B246C441B660E /* TouchVisualizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TouchVisualizer.framework; path = TouchVisualizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A37E2587439714D0F4B246C441B660E /* TouchVisualizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TouchVisualizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A77B7958541475F0CF08BA0F1695BA5 /* FeedbackViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeedbackViewController.swift; path = Prototyper/Classes/Feedback/FeedbackViewController.swift; sourceTree = "<group>"; };
 		8B193966B2E1B55CBCEF62B2B53C28C5 /* FIRInstanceIDTokenOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDTokenOperation.h; path = Firebase/InstanceID/FIRInstanceIDTokenOperation.h; sourceTree = "<group>"; };
 		8B75619D7014CC51E9C19C0D81DDF713 /* TouchVisualizer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TouchVisualizer-dummy.m"; sourceTree = "<group>"; };
@@ -1274,7 +1277,7 @@
 		967770FAD92BAEB3C6E3672C535BBF50 /* PKDefaultConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKDefaultConfiguration.swift; path = CUU/Classes/PersonaKit/PKDefaultConfiguration.swift; sourceTree = "<group>"; };
 		9681AA345433A6F8491824C6C0214AC2 /* IKViewControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKViewControllers.swift; path = CUU/Classes/InteractionKit/IKViewEvent/IKViewControllers.swift; sourceTree = "<group>"; };
 		96EDD66AEEB51DD3C0775C90B97C1373 /* FIRInstanceIDCombinedHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDCombinedHandler.m; path = Firebase/InstanceID/FIRInstanceIDCombinedHandler.m; sourceTree = "<group>"; };
-		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9857D921C83AA89EBD3B2C1CEC86EBD2 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
 		9871BAE03EC708D5EC8BC31701EBDB98 /* UISwipeGestureRecognizerDirection+IKUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISwipeGestureRecognizerDirection+IKUtils.swift"; path = "CUU/Classes/InteractionKit/Helper/UISwipeGestureRecognizerDirection+IKUtils.swift"; sourceTree = "<group>"; };
 		98BB45C8BB24F4D31A574E18C301016A /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
@@ -1294,10 +1297,10 @@
 		9C647F4CE83A49E889B9987636780A50 /* FIRInstanceIDTokenOperation+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FIRInstanceIDTokenOperation+Private.h"; path = "Firebase/InstanceID/FIRInstanceIDTokenOperation+Private.h"; sourceTree = "<group>"; };
 		9CADCAD11AD7941F97A33B013FE92B28 /* GULMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULMutableDictionary.m; path = GoogleUtilities/Network/GULMutableDictionary.m; sourceTree = "<group>"; };
 		9CF6CE2EC742963546A4F6250DB94363 /* IKEventCharacteristics+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IKEventCharacteristics+CoreDataProperties.swift"; path = "CUU/Classes/InteractionKit/Core/CoreData/IKEventCharacteristics+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DA9F8F92B0BE90C1B8896B23B126FDD /* FIRInstanceIDTokenFetchOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDTokenFetchOperation.h; path = Firebase/InstanceID/FIRInstanceIDTokenFetchOperation.h; sourceTree = "<group>"; };
 		9DF1967C92FA2D55BA5B412FDCA0F555 /* FIRComponentContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentContainer.h; path = Firebase/Core/Private/FIRComponentContainer.h; sourceTree = "<group>"; };
-		9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainSwift.framework; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E563CC1B535273469C71223E2761E4A /* FIRComponentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentType.h; path = Firebase/Core/Private/FIRComponentType.h; sourceTree = "<group>"; };
 		9E7C8554C56BCD5B9D9130210F1BC76D /* EKLipPressor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKLipPressor.swift; path = CUU/Classes/EmotionKit/Models/ActionUnits/EKLipPressor.swift; sourceTree = "<group>"; };
 		9F0CD3E7135AD9C773A530A7C0D2259B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1315,7 +1318,7 @@
 		A5E6FE6C12862722576CB48FFE8ED7C3 /* NotificationBannerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NotificationBannerSwift.xcconfig; sourceTree = "<group>"; };
 		A689D2D8CB3527D076F09E290629D9FB /* PKLocationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKLocationType.swift; path = "CUU/Classes/PersonaKit/Location Detection/PKLocationType.swift"; sourceTree = "<group>"; };
 		A72E8C1096B71CAB92EE40CC384225B0 /* IKAppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKAppDelegate.swift; path = CUU/Classes/InteractionKit/Utils/IKAppDelegate.swift; sourceTree = "<group>"; };
-		A74E84AE91A4C3B72C313644AD928E91 /* MissingInteractionElementContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = MissingInteractionElementContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKMissingInteractionElementPredictor/MissingInteractionElementContext.mlmodel; sourceTree = "<group>"; };
+		A74E84AE91A4C3B72C313644AD928E91 /* MissingInteractionElementContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = MissingInteractionElementContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKMissingInteractionElementPredictor/MissingInteractionElementContext.mlmodel; sourceTree = "<group>"; };
 		A80FB934D8637A90132A64B18FD6CC9B /* CUUCrumbObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUCrumbObserver.swift; path = CUU/Classes/CUUCore/CUUCrumbObserver.swift; sourceTree = "<group>"; };
 		A88DC07D178FA5DAD0EE104DCDB0A405 /* delete_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "delete_icon@3x.png"; path = "Prototyper/Assets/delete_icon@3x.png"; sourceTree = "<group>"; };
 		A8CE849A3AEAB205B9DE2D7FB37E46B5 /* ThinkingAloudKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThinkingAloudKit.swift; path = CUU/Classes/ThinkingAloudKit/ThinkingAloudKit.swift; sourceTree = "<group>"; };
@@ -1350,9 +1353,9 @@
 		B2CA145AE44218B00A9FC8251C12C9E5 /* ShareRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShareRequest.swift; path = Prototyper/Classes/Model/ShareRequest.swift; sourceTree = "<group>"; };
 		B3225C2620980279AE4E0C6B56A2ADEB /* BKEncodedData+CoreDataClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "BKEncodedData+CoreDataClass.swift"; path = "CUU/Classes/BehaviorKit/Models/CoreData/BKEncodedData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B3D8498B594347F9C40DCBDB88ACB598 /* CUUDocumentBrowserViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUDocumentBrowserViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUDocumentBrowserViewController.swift; sourceTree = "<group>"; };
-		B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleUtilities.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B489871CECAA7D95C1AF5DB4F252E937 /* EKJawDrop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKJawDrop.swift; path = CUU/Classes/EmotionKit/Models/ActionUnits/EKJawDrop.swift; sourceTree = "<group>"; };
-		B52034A2E34366B4A412632E26FADFFE /* ProdutivenessContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = ProdutivenessContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKProductivenessPredictor/ProdutivenessContext.mlmodel; sourceTree = "<group>"; };
+		B52034A2E34366B4A412632E26FADFFE /* ProdutivenessContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = ProdutivenessContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKProductivenessPredictor/ProdutivenessContext.mlmodel; sourceTree = "<group>"; };
 		B530AEDE02EC607BD4E9F708EB7C41E1 /* IKEventCharacteristics+CoreDataClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IKEventCharacteristics+CoreDataClass.swift"; path = "CUU/Classes/InteractionKit/Core/CoreData/IKEventCharacteristics+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B536AB94C6E96B0348F09617B727C567 /* BKUXInconsistencyContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKUXInconsistencyContext.swift; path = CUU/Classes/BehaviorKit/Models/BKUXInconsistencyPredictor/BKUXInconsistencyContext.swift; sourceTree = "<group>"; };
 		B5D13BCC2F1DA78241441BCEAF571B46 /* SigmaDistrib.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SigmaDistrib.swift; path = CUU/Classes/BehaviorKit/Helper/SigmaDistrib.swift; sourceTree = "<group>"; };
@@ -1405,19 +1408,19 @@
 		CAB892DB853FAA7013DAF95DED19B7CB /* FIRVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRVersion.h; path = Firebase/Core/Private/FIRVersion.h; sourceTree = "<group>"; };
 		CAE75CB4C1AD664AEC5882195F7248B0 /* PrototyperController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrototyperController.swift; path = Prototyper/Classes/PrototyperController.swift; sourceTree = "<group>"; };
 		CB3B3760E2AD4194582FFD421F3BF4CB /* Prototype.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Prototype.xcconfig; sourceTree = "<group>"; };
-		CB86ACB5DA18FE755410E14DADA01CFE /* Prototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Prototype.framework; path = Prototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB86ACB5DA18FE755410E14DADA01CFE /* Prototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Prototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE6405962D9099A2EE0B71DC8CDA7E4 /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CEB8A0A6FB6CEAF3F8613C344E18DFA3 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		CECFBF51781C4CDCEF766393B62C9484 /* cancel.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = cancel.png; path = CUU/Assets/cancel.png; sourceTree = "<group>"; };
 		CEE6E399A8D2E3E202B92808273B6718 /* BKDefaultSituation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKDefaultSituation.swift; path = CUU/Classes/BehaviorKit/Models/BKDefaultSituation.swift; sourceTree = "<group>"; };
 		CEEAA6625AC4763C74CCF6CC5A4E0D66 /* GULAppEnvironmentUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppEnvironmentUtil.m; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.m; sourceTree = "<group>"; };
-		CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarqueeLabel.framework; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF0AA9FBFBDB70858C030769541505ED /* MarqueeLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3B3B53E01D567E7A44C88EDC016974 /* IKGestureCharacteristics+CoreDataProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IKGestureCharacteristics+CoreDataProperties.swift"; path = "CUU/Classes/InteractionKit/Core/CoreData/IKGestureCharacteristics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D059F2D38F4BD8E40F6C868E86BFD6C5 /* IKMotionFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKMotionFactory.swift; path = CUU/Classes/InteractionKit/IKMotion/IKMotionFactory.swift; sourceTree = "<group>"; };
 		D066EECD857370B59EA0E2C07607522E /* Unchecked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Unchecked.png; path = CUU/Assets/Unchecked.png; sourceTree = "<group>"; };
 		D1CE8E7634B4308320A3F3CAE53E8528 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		D214D641470C1FAE3D179425960E230C /* CUUTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUTableViewController.swift; path = CUU/Classes/CUUCore/ViewControllers/CUUTableViewController.swift; sourceTree = "<group>"; };
-		D21FD4C3A4246268DF6CC2C50028BA07 /* OrientationContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = OrientationContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKOrientationPredictor/OrientationContext.mlmodel; sourceTree = "<group>"; };
+		D21FD4C3A4246268DF6CC2C50028BA07 /* OrientationContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = OrientationContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKOrientationPredictor/OrientationContext.mlmodel; sourceTree = "<group>"; };
 		D2B0ED3485A7FA482323A20E5D9DA45A /* EKSurprise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKSurprise.swift; path = CUU/Classes/EmotionKit/Models/Emotions/EKSurprise.swift; sourceTree = "<group>"; };
 		D2BE59FA42C0AF977E1C465F3234BBD4 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
 		D2DA616D7BA4A0B85C7AFC4EEFA12F21 /* FIRInstanceIDBackupExcludedPlist.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDBackupExcludedPlist.h; path = Firebase/InstanceID/FIRInstanceIDBackupExcludedPlist.h; sourceTree = "<group>"; };
@@ -1466,11 +1469,11 @@
 		E1A7361A5763BA844800B56991117DCA /* FIRInstanceIDKeyPairUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDKeyPairUtilities.m; path = Firebase/InstanceID/FIRInstanceIDKeyPairUtilities.m; sourceTree = "<group>"; };
 		E1C56553097C94CD053C42EF2100E6EE /* Point.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		E22EA712F5222B612EB3977E95A74D15 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
-		E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseCore.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3511EF9FC4ADD0A2A5F01504A075FC3 /* FirebaseCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseCore.xcconfig; sourceTree = "<group>"; };
 		E499D18F4DA4D67C7E907C8EE00CA357 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		E5DC1F369F57D0085249799E9F1A5E0C /* FIRInstanceIDVersionUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDVersionUtilities.m; path = Firebase/InstanceID/FIRInstanceIDVersionUtilities.m; sourceTree = "<group>"; };
-		E5EE62B6E7AE82339D3E82D01540AAAB /* Prototyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Prototyper.framework; path = Prototyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5EE62B6E7AE82339D3E82D01540AAAB /* Prototyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Prototyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FEB4C8680E73B6830216E91D020390 /* SwaggerClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwaggerClient-dummy.m"; sourceTree = "<group>"; };
 		E60F936E990F8C337B074AA0F2EF6529 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Firebase/InstanceID/Public/FIRInstanceID.h; sourceTree = "<group>"; };
 		E75B83436AD01BFF4847BE164C47A176 /* IKMotionCharacteristics+CoreDataClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IKMotionCharacteristics+CoreDataClass.swift"; path = "CUU/Classes/InteractionKit/Core/CoreData/IKMotionCharacteristics+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -1522,7 +1525,7 @@
 		FC4C33DF2A590AC4B2B3538F6720D5E2 /* FirebaseCore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseCore-umbrella.h"; sourceTree = "<group>"; };
 		FCEEC63A533D02A7261D319B1EB2973F /* PrototypeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrototypeView.swift; path = Prototype/PrototypeView.swift; sourceTree = "<group>"; };
 		FD2CCC1FC6D1C44B79630A9628DC1461 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
-		FD5C832FEF4E3C10ADA92C48BC3F4655 /* SmartphoneExperienceContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; name = SmartphoneExperienceContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKSmartphoneExperiencePredictor/SmartphoneExperienceContext.mlmodel; sourceTree = "<group>"; };
+		FD5C832FEF4E3C10ADA92C48BC3F4655 /* SmartphoneExperienceContext.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; name = SmartphoneExperienceContext.mlmodel; path = CUU/Classes/BehaviorKit/Models/BKSmartphoneExperiencePredictor/SmartphoneExperienceContext.mlmodel; sourceTree = "<group>"; };
 		FD628C597920FA2E5FAFC905159EDB91 /* IKDefaultConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKDefaultConfiguration.swift; path = CUU/Classes/InteractionKit/Utils/IKDefaultConfiguration.swift; sourceTree = "<group>"; };
 		FD7B933C2536590A8F42CB0148D5486A /* FIRErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRErrors.m; path = Firebase/Core/FIRErrors.m; sourceTree = "<group>"; };
 		FDAAA4B83907BF52612BCDEA628B972A /* EKLipPucker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKLipPucker.swift; path = CUU/Classes/EmotionKit/Models/ActionUnits/EKLipPucker.swift; sourceTree = "<group>"; };
@@ -1710,7 +1713,6 @@
 				026177C7CD8222E2A8974D3B065D428A /* CoreOnly */,
 				3328A4C2FC12C32880E64422E9E1B7A3 /* Support Files */,
 			);
-			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -1733,7 +1735,6 @@
 				838A5AD2BC3641BF60BF56C005D1D5DB /* MarqueeLabel.swift */,
 				811A79B66C899264AA98F622BE1A4CA3 /* Support Files */,
 			);
-			name = MarqueeLabel;
 			path = MarqueeLabel;
 			sourceTree = "<group>";
 		};
@@ -2091,7 +2092,6 @@
 				AD3F1416C025FB01F45A347D4F2016D2 /* Resources */,
 				83FE2F91482397771C10F4B207C01C8F /* Support Files */,
 			);
-			name = CUU;
 			path = CUU;
 			sourceTree = "<group>";
 		};
@@ -2109,7 +2109,6 @@
 				521659BB00BAD860E0AC04C3F96E1DCD /* encode */,
 				4B0D929610FE5CAB082A8C6AEBFC6738 /* Support Files */,
 			);
-			name = nanopb;
 			path = nanopb;
 			sourceTree = "<group>";
 		};
@@ -2235,7 +2234,6 @@
 				C8EBB921ADF29329FF0725685F54A14C /* FIRVersion.m */,
 				BEA735575794BF98C82832AB9C8635B7 /* Support Files */,
 			);
-			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -2336,7 +2334,6 @@
 				52DA15F28564DDD5549001A7D0354929 /* UILayoutSupport+Extensions.swift */,
 				F1D5B5363FBE190DA33C3CE7E955D0E5 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -2372,7 +2369,6 @@
 				71574ABB35A31CC7B2B25E3117045F5E /* TegKeychainConstants.swift */,
 				30E0F839831A1BD9B6D603BED3013FF3 /* Support Files */,
 			);
-			name = KeychainSwift;
 			path = KeychainSwift;
 			sourceTree = "<group>";
 		};
@@ -2382,7 +2378,6 @@
 				2FCD8EA113B0872384D1E924732631EA /* Frameworks */,
 				61A459A8F83509A83C2694FE67135200 /* Support Files */,
 			);
-			name = GoogleAppMeasurement;
 			path = GoogleAppMeasurement;
 			sourceTree = "<group>";
 		};
@@ -2503,7 +2498,6 @@
 				A8FD44EBD3361E79307BF3FD2F3E7A80 /* Support Files */,
 				864E330A050C78C117A56F9121B306FC /* UserDefaults */,
 			);
-			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -2559,7 +2553,6 @@
 				41E9FF7311D4BE20994548E7F12D3AD7 /* Frameworks */,
 				A8D69A52BF53E7F861665E00298C6FC8 /* Support Files */,
 			);
-			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -2613,7 +2606,6 @@
 				A75A14D7664EAB978620EDEB9AA3561A /* Resources */,
 				9ECEBE2D207A2010CCA0F0F4D82ABBB0 /* Support Files */,
 			);
-			name = Prototyper;
 			path = Prototyper;
 			sourceTree = "<group>";
 		};
@@ -2638,7 +2630,6 @@
 				F3F7A852492E3AC88966F00F72B66C8F /* Visualizer.swift */,
 				43A288A9EC49B252DC1388EE53B820F6 /* Support Files */,
 			);
-			name = TouchVisualizer;
 			path = TouchVisualizer;
 			sourceTree = "<group>";
 		};
@@ -2722,7 +2713,6 @@
 				C196B68B6AE28E2D884597F9932B83E2 /* NSError+FIRInstanceID.m */,
 				C5C9EE4BFBD667CC6B5006A7DD491DDE /* Support Files */,
 			);
-			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -2743,7 +2733,6 @@
 				DCF0E10B5064D5EB4F06F1FAB0CD23DD /* String+heightForConstrainedWidth.swift */,
 				67D6148BE7BE74B4C4C8480B70BB747E /* Support Files */,
 			);
-			name = NotificationBannerSwift;
 			path = NotificationBannerSwift;
 			sourceTree = "<group>";
 		};
@@ -2809,7 +2798,6 @@
 				FCEEC63A533D02A7261D319B1EB2973F /* PrototypeView.swift */,
 				AF2601995AABACFB28738B41FEC41D43 /* Support Files */,
 			);
-			name = Prototype;
 			path = Prototype;
 			sourceTree = "<group>";
 		};
@@ -2835,7 +2823,6 @@
 				D5EA48FB8BA7D35E724A34714A47DA68 /* Validation.swift */,
 				C88A32D8D140D3BBEC3622F0F1B81725 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -4605,7 +4592,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4642,7 +4629,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4678,7 +4665,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4715,7 +4702,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4750,7 +4737,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4794,6 +4781,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -4822,6 +4810,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -4833,7 +4822,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4872,7 +4861,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4909,7 +4898,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4943,7 +4932,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4988,6 +4977,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5012,6 +5002,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -5023,7 +5014,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5060,7 +5051,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5098,7 +5089,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5135,7 +5126,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5172,7 +5163,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5209,7 +5200,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5243,7 +5234,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5262,7 +5253,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5299,7 +5290,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5335,7 +5326,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5373,7 +5364,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5409,7 +5400,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5444,7 +5435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5466,7 +5457,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5505,7 +5496,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5541,7 +5532,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5577,7 +5568,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5614,7 +5605,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5651,7 +5642,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5688,7 +5679,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5725,7 +5716,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5763,7 +5754,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5798,7 +5789,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5819,7 +5810,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5853,7 +5844,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5872,7 +5863,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5910,7 +5901,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CONFIGURATION_BUILD_DIR = "$PODS_CONFIGURATION_BUILD_DIR";
+				CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -6120,6 +6111,7 @@
 			children = (
 				300AF3EA709579F919BF59F51AB69ED1 /* IKData.xcdatamodel */,
 			);
+			currentVersion = 300AF3EA709579F919BF59F51AB69ED1 /* IKData.xcdatamodel */;
 			name = IKData.xcdatamodeld;
 			path = CUU/Classes/InteractionKit/Core/CoreData/IKData.xcdatamodeld;
 			sourceTree = "<group>";
@@ -6130,6 +6122,7 @@
 			children = (
 				6BB402109FBD13A7F235355251ABBAB8 /* BKData.xcdatamodel */,
 			);
+			currentVersion = 6BB402109FBD13A7F235355251ABBAB8 /* BKData.xcdatamodel */;
 			name = BKData.xcdatamodeld;
 			path = CUU/Classes/BehaviorKit/Models/CoreData/BKData.xcdatamodeld;
 			sourceTree = "<group>";

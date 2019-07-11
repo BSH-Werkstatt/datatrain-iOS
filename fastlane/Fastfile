@@ -7,7 +7,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+update_fastlane
 
 #Update Variables for your Project
 
@@ -53,6 +53,10 @@ platform :ios do
                        path: INFO_PLIST,
                        key: "CFBundleVersion",
                        value: "$(PROTOTYPER_BUILDSTRING)"
+                )
+
+                increment_version_number(
+                        xcodeproj: "./BSH/BSH.xcodeproj"  # (optional, you must specify the path to your main Xcode project if it is not in the project root directory)
                 )
 
                 # Unlock the agent key chain to gain access to the necessary certificates
