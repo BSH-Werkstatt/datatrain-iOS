@@ -39,7 +39,11 @@ class ArrayChoiceTableViewController<Element> : UITableViewController, UISearchB
         // First cell in the table view is a search field
         let searchBar:UISearchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search or add new..."
+        if selectable {
+            searchBar.placeholder = " Search or add new..."
+        } else {
+            searchBar.placeholder = " Search..."
+        }
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
