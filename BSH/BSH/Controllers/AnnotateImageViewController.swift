@@ -779,6 +779,7 @@ extension AnnotateImageViewController {
         undoManager?.removeAllActions()
         undoButton.isEnabled = false
         imageLoaded = false
+        AnnotationView.setImageScale(imageScale: 1.0)
         imageLayerContainer.transform = .identity
         imageLayerContainer.setNeedsUpdateConstraints()
         getImage()
