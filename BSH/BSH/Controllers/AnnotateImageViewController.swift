@@ -427,6 +427,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         activityIndicator.style = UIActivityIndicatorView.Style.gray
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        
         labelButton.disclosureButton(baseColor: #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1))
     }
     
