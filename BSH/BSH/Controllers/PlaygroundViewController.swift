@@ -42,14 +42,14 @@ class PlaygroundViewController: CUUViewController {
             return
         case 1:
             //activityIndicator background goes milky white
-            activityIndicatorBackground = UIView(frame: self.view.bounds)
+            activityIndicatorBackground = UIView(frame: uploadedImageView.bounds)
             activityIndicatorBackground?.backgroundColor = UIColor.init(white: 1.0, alpha: 0.7)
             //activityIndicator shown
             activityIndicator.center = activityIndicatorBackground!.center
             activityIndicator.hidesWhenStopped = true
             activityIndicator.style = UIActivityIndicatorView.Style.gray
             activityIndicatorBackground?.addSubview(activityIndicator)
-            self.view.addSubview(activityIndicatorBackground!)
+            uploadedImageView.addSubview(activityIndicatorBackground!)
             activityIndicator.startAnimating()
             
             guard let campaign = MainTabBarController.getCampaign() else {
@@ -78,7 +78,7 @@ class PlaygroundViewController: CUUViewController {
                             return
                         }
                         // Show notification for succesful upload
-                        let banner = NotificationBanner(title: "Success", subtitle: "The image is successfully uploaded. Here is the result", style: .success)
+                        let banner = NotificationBanner(title: "Success", subtitle: "The image is successfully uploaded. Here is the result.", style: .success)
                         banner.show()
                         
                         //CUU Seed for tracking successful uploading
@@ -91,23 +91,16 @@ class PlaygroundViewController: CUUViewController {
                         guard let url = URL(string: image.url), let data = try? Data(contentsOf: url) else {
                             return
                         }
-                        self.displayImage(data: data)
-                        self.state = 0
-                        self.uploadButton.setTitle("Upload Another Image", for: .normal)
+                        self.uploadedImageView.contentMode = UIView.ContentMode.scaleAspectFit
+                        self.uploadedImageView.image = UIImage(data: data)
                     })
+                    self.state = 0
+                    self.uploadButton.setTitle("Upload Another Image", for: .normal)
                 }
             }
-            print("Done")
-            return
         default:
             print("Unknown state")
-            return
         }
-    }
-    
-    private func displayImage(data: Data) {
-        uploadedImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        uploadedImageView.image = UIImage(data: data)
     }
 }
 
@@ -141,6 +134,7 @@ extension PlaygroundViewController: UIImagePickerControllerDelegate, UINavigatio
         state = 1
         uploadButton.setTitle("Submit Image", for: .normal)
         self.dismiss(animated: true, completion: {
+            
         })
     }
     
