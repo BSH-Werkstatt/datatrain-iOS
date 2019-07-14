@@ -22,7 +22,6 @@ class LeaderboardCellController: UITableViewCell {
 class LeaderboardViewController: CUUTableViewController {
 
     var leaderboard: Leaderboard?
-    var scoresSorted: [LeaderboardScore] = []
     var campaign:Campaign?
     
     // MARK: IBOutlets
@@ -73,13 +72,8 @@ class LeaderboardViewController: CUUTableViewController {
             }
             self.campaingLabel?.text = ""
             self.leaderboard = leaderboard
-            self.scoresSorted = leaderboard.scores.sorted(by: { $0.score > $1.score })
             self.leaderboardTable.reloadData()
         })
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
     }
 
     // MARK: Table View Data Source methods
