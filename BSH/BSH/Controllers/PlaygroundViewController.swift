@@ -21,10 +21,13 @@ class PlaygroundViewController: CUUViewController {
     // MARK: IBOutlets
     @IBOutlet private weak var uploadedImageView: UIImageView!
     @IBOutlet private weak var uploadButton: UIButton!
+    @IBOutlet private weak var exportButton: UIButton!
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        exportButton.isEnabled = false
+        exportButton.backgroundColor = .gray
     }
     
     private func getDocumentsDirectory() -> URL {
@@ -32,11 +35,62 @@ class PlaygroundViewController: CUUViewController {
         return paths[0]
     }
     
+    @IBAction func exportButtonClick(_ sender: Any) {
+        print("Clicked export button")
+        // 1
+        guard let image = uploadedImageView.image,
+            let url = exportToURL(image: image) else {
+                print("Cannot create URL")
+                return
+        }
+        
+        // 2
+        let activity = UIActivityViewController(
+            activityItems: ["Export image...", url],
+            applicationActivities: nil
+        )
+//        activity.popoverPresentationController?.barButtonItem = (sender as! UIButton)
+        
+        // 3
+        present(activity, animated: true, completion: nil)
+    }
+    
+    func exportToURL(image: UIImage) -> URL? {
+        // 1
+        guard let encoded = image.jpegData(compressionQuality: 1.0) else {
+            print("Cannot encode image")
+            return nil
+        }
+        
+        // 2
+        let documents = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+            ).first
+        
+        guard let path = documents?.appendingPathComponent("prediction\(image.hashValue).jpeg") else {
+            print("Cannot get path")
+            return nil
+        }
+        
+        // 3
+        do {
+            try encoded.write(to: path, options: .atomicWrite)
+            return path
+        } catch {
+            print("Cannot write to path")
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
     @IBAction func uploadButtonClick(_ sender: Any) {
         print("Clicked: \(state)")
         switch state {
         case 0:
             showImageAlert()
+            exportButton.isEnabled = false
+            exportButton.backgroundColor = .gray
             //CUU Seed Upload Button clicked
             CUU.seed(name: "Start Upload")
             return
@@ -95,6 +149,8 @@ class PlaygroundViewController: CUUViewController {
                         self.uploadedImageView.image = UIImage(data: data)
                     })
                     self.state = 0
+                    exportButton.isEnabled = true
+                    exportButton.backgroundColor = #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1)
                     self.uploadButton.setTitle("Upload Another Image", for: .normal)
                 }
             }
