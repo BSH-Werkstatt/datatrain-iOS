@@ -175,7 +175,7 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
                                         <rect key="frame" x="20" y="91" width="250" height="42"/>
                                         <color key="textColor" red="0.92549019610000005" green="0.63529411759999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -202,7 +202,7 @@
                                             <action selector="loginPrimaryAction:" destination="90H-4L-dYP" eventType="primaryActionTriggered" id="LPU-v8-LWc"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5op-zv-cpa" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5op-zv-cpa" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
                                         <rect key="frame" x="170" y="141" width="100" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -220,10 +220,10 @@
                                     <constraint firstItem="nH9-ed-EHW" firstAttribute="leading" secondItem="fPr-rg-BSI" secondAttribute="leading" constant="20" id="bAJ-1o-ORX"/>
                                     <constraint firstAttribute="height" constant="191" id="o0g-T6-Yc6"/>
                                     <constraint firstAttribute="width" constant="290" id="oeQ-18-PU0"/>
-                                    <constraint firstItem="5op-zv-cpa" firstAttribute="top" secondItem="gJb-x2-YYO" secondAttribute="bottom" constant="8" id="q73-8e-WTd"/>
                                     <constraint firstItem="5op-zv-cpa" firstAttribute="leading" secondItem="fPr-rg-BSI" secondAttribute="leading" constant="170" id="qQN-EY-XTC"/>
                                     <constraint firstAttribute="trailing" secondItem="nH9-ed-EHW" secondAttribute="trailing" constant="20" id="r0W-vG-1f7"/>
                                     <constraint firstItem="gJb-x2-YYO" firstAttribute="top" secondItem="nH9-ed-EHW" secondAttribute="bottom" constant="31" id="uRw-0b-ULd"/>
+                                    <constraint firstItem="5op-zv-cpa" firstAttribute="top" secondItem="gJb-x2-YYO" secondAttribute="bottom" constant="8" id="xNx-JE-KPu"/>
                                 </constraints>
                             </view>
                         </subviews>
