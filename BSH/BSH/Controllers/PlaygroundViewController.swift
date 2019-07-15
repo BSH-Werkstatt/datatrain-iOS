@@ -143,7 +143,7 @@ class PlaygroundViewController: CUUViewController {
                         self.activityIndicator.stopAnimating()
                         self.activityIndicatorBackground?.backgroundColor = UIColor.init(white: 0.0, alpha: 0.0)
                         print(image.predictionURL)
-                        guard let iurl = URL(string: image.predictionURL), let idata = try? Data(contentsOf: iurl) else {
+                        guard let iurl = URL(string: image.predictionURL.replacingOccurrences(of: "http://datatrain-api-736295320.eu-central-1.elb.amazonaws.com", with: "https://api.datatrain.rocks")), let idata = try? Data(contentsOf: iurl) else {
                             print("Cannot get new image")
                             return
                         }
