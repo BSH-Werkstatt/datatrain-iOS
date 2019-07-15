@@ -429,6 +429,19 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         activityIndicator.startAnimating()
         
         labelButton.disclosureButton(baseColor: #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1))
+        let customBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .plain, target: self, action: #selector(backAction))
+        customBackButton.imageInsets = UIEdgeInsets(top: 2, left: -8, bottom: 0, right: 0)
+        navigationItem.leftBarButtonItem = customBackButton
+    }
+    
+    @objc func backAction() {
+        print("Clicked")
+        for viewcontroller in self.navigationController!.viewControllers as Array {
+            if viewcontroller is MainTabBarController {
+                self.navigationController?.popToViewController(viewcontroller, animated: true)
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

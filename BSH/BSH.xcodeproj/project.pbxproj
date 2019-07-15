@@ -12,6 +12,9 @@
 		2D39966722C4FAE8007F38E8 /* MagnifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966622C4FAE8007F38E8 /* MagnifyView.swift */; };
 		2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */; };
 		2D3AA64E22BBD8AD00B94193 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3AA64D22BBD8AD00B94193 /* Annotation.swift */; };
+		2D48868F22DB9720000251D2 /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D48868E22DB9720000251D2 /* backArrow.png */; };
+		2D48869122DB9732000251D2 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D48869022DB9732000251D2 /* backArrow@2x.png */; };
+		2D48869322DB9738000251D2 /* backArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D48869222DB9738000251D2 /* backArrow@3x.png */; };
 		2D579DB422D63A1B00483C68 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D579DB322D63A1B00483C68 /* UIButtonExtension.swift */; };
 		2D579DBE22D6422900483C68 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D579DBD22D6422900483C68 /* upArrow.png */; };
 		2E2E7889F3B19B91D4EB2436 /* Pods_BSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415BDFBDC3D8056DA4056687 /* Pods_BSH.framework */; };
@@ -64,6 +67,9 @@
 		2D39966622C4FAE8007F38E8 /* MagnifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyView.swift; sourceTree = "<group>"; };
 		2D3AA64B22BBAEC400B94193 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		2D3AA64D22BBD8AD00B94193 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		2D48868E22DB9720000251D2 /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		2D48869022DB9732000251D2 /* backArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@2x.png"; sourceTree = "<group>"; };
+		2D48869222DB9738000251D2 /* backArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@3x.png"; sourceTree = "<group>"; };
 		2D579DB322D63A1B00483C68 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2D579DBD22D6422900483C68 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
 		3C22771F22BA909B00EB677B /* Playground.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Playground.storyboard; sourceTree = "<group>"; };
@@ -215,6 +221,9 @@
 				3CF77F1A22C259CB000A9C8C /* leaderboard.png */,
 				3CF77F2322C259CE000A9C8C /* leaderboard@2x.png */,
 				3CF77F1F22C259CD000A9C8C /* leaderboard@3x.png */,
+				2D48868E22DB9720000251D2 /* backArrow.png */,
+				2D48869022DB9732000251D2 /* backArrow@2x.png */,
+				2D48869222DB9738000251D2 /* backArrow@3x.png */,
 				3CF77F2222C259CE000A9C8C /* profile.png */,
 				3CF77F1822C259CA000A9C8C /* profile@2x.png */,
 				3CF77F1D22C259CC000A9C8C /* profile@3x.png */,
@@ -325,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D48869122DB9732000251D2 /* backArrow@2x.png in Resources */,
 				3CF77F3022C259D1000A9C8C /* stack@3x.png in Resources */,
 				3CF77F2B22C259D1000A9C8C /* hand.draw.png in Resources */,
 				3CF77F2D22C259D1000A9C8C /* hand.draw@2x.png in Resources */,
@@ -342,6 +352,7 @@
 				3C22772422BA909C00EB677B /* Leaderboard.storyboard in Resources */,
 				C52E36C7228EB6F0005EDB93 /* CUU.plist in Resources */,
 				3C22772222BA909C00EB677B /* Playground.storyboard in Resources */,
+				2D48869322DB9738000251D2 /* backArrow@3x.png in Resources */,
 				C58045F5229ED9B400AE4775 /* Campaign.storyboard in Resources */,
 				3CF77F3622C259D1000A9C8C /* camera@2x.png in Resources */,
 				3C70673522CA25C000850CF4 /* delete.png in Resources */,
@@ -353,6 +364,7 @@
 				3C709CCB2282236700823586 /* Assets.xcassets in Resources */,
 				3C70673422CA25C000850CF4 /* delete@2x.png in Resources */,
 				3C22772322BA909C00EB677B /* Profile.storyboard in Resources */,
+				2D48868F22DB9720000251D2 /* backArrow.png in Resources */,
 				3CF77F3322C259D1000A9C8C /* camera.png in Resources */,
 				3C709CC92282236400823586 /* Main.storyboard in Resources */,
 				3CF77F2C22C259D1000A9C8C /* leaderboard.png in Resources */,
