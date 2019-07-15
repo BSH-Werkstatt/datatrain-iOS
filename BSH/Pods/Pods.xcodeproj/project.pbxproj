@@ -155,6 +155,7 @@
 		2D5C8E1419E3DCF259A42E81A1EA56F1 /* FIRInstanceIDKeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B2B09192B700CC5BF23FA6D9B52E3B /* FIRInstanceIDKeyPair.m */; };
 		2D71403C85618284EC72ACE2C024CD6F /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F184A1CF36595904C5912DBAFEE2A7 /* ConstraintMakerEditable.swift */; };
 		2D8897C19438F87C8995C4D202AE7F68 /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2011911E069793CEFE219F750A00C1 /* CodableHelper.swift */; };
+		2D958FE022DCA33F0034F01A /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D958FDF22DCA33F0034F01A /* AlamofireImplementations.swift */; };
 		2DA9E6BC22DBA61A004A25AB /* DefaultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E6A722DBA619004A25AB /* DefaultAPI.swift */; };
 		2DA9E6BD22DBA61A004A25AB /* PredictionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E6A922DBA619004A25AB /* PredictionResult.swift */; };
 		2DA9E6BE22DBA61A004A25AB /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E6AA22DBA619004A25AB /* Leaderboard.swift */; };
@@ -600,7 +601,6 @@
 		EDBEEAA3F27738FC3D83889AE3250422 /* PKSessionCrumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ECC9649F8BF30970A85283066648E /* PKSessionCrumb.swift */; };
 		EDD3E29CB5820D1C7CD544E17F09D1D5 /* BaseNotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EBCE55480AB1005A44BE6FB13CBC7 /* BaseNotificationBanner.swift */; };
 		EDD4A0A279E9A88D5394B523E4D57DBE /* FIRInstanceID.h in Headers */ = {isa = PBXBuildFile; fileRef = E60F936E990F8C337B074AA0F2EF6529 /* FIRInstanceID.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDDF7522303CCA0521260C40C8F15200 /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A927DF3029649F9DD5CEC55F1B678AC /* AlamofireImplementations.swift */; };
 		EE54D49E4C129AD811FAF9BFE65C3EF8 /* FIRInstanceIDKeyPairUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 460A8245E5D412251FCC37A39B397803 /* FIRInstanceIDKeyPairUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EE6FACADB86A16254884D382CA9A9876 /* IKDefaultTouchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828C44FF36F5C37CFDF7C5A15147364 /* IKDefaultTouchFactory.swift */; };
 		EE9B3FB4E40394966D3415FF078EA4BF /* CUUStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B22E7322B63D58D54EC2671644EAAB8 /* CUUStartView.swift */; };
@@ -1007,6 +1007,7 @@
 		2C05341879F45C4AFED365CA600AADB1 /* BKTemplateSituation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BKTemplateSituation.swift; path = CUU/Classes/BehaviorKit/Models/BKTemplateSituation.swift; sourceTree = "<group>"; };
 		2C3919813BAD8104E4E61A5DAD9E0B39 /* FIRInstanceIDStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDStore.h; path = Firebase/InstanceID/FIRInstanceIDStore.h; sourceTree = "<group>"; };
 		2C57D5CFBA489B25C16BAF543E932925 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_decode.c; sourceTree = "<group>"; };
+		2D958FDF22DCA33F0034F01A /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireImplementations.swift; path = SwaggerClient/Classes/Swaggers/AlamofireImplementations.swift; sourceTree = "<group>"; };
 		2DA0D814DFCB860D31D7BCD63D795858 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA9E6A722DBA619004A25AB /* DefaultAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAPI.swift; sourceTree = "<group>"; };
 		2DA9E6A922DBA619004A25AB /* PredictionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionResult.swift; sourceTree = "<group>"; };
@@ -1103,7 +1104,6 @@
 		49248F94D7ED04D4E0F3D21C1ACDE2AA /* IKMotion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKMotion.swift; path = CUU/Classes/InteractionKit/IKMotion/IKMotion.swift; sourceTree = "<group>"; };
 		49F24D0FBC37D8CD4745C307C0885D10 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = CUU/Classes/PersonaKit/Reachability/Reachability.swift; sourceTree = "<group>"; };
 		4A61F22948923442CE497A53E54458D4 /* CUUStartOptionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CUUStartOptionView.swift; path = CUU/Classes/CUUCore/CUUStartOptionView.swift; sourceTree = "<group>"; };
-		4A927DF3029649F9DD5CEC55F1B678AC /* AlamofireImplementations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
 		4AD2FB87B5FFA9EECF6D95CD975592B1 /* EKLipTightener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EKLipTightener.swift; path = CUU/Classes/EmotionKit/Models/ActionUnits/EKLipTightener.swift; sourceTree = "<group>"; };
 		4C2011911E069793CEFE219F750A00C1 /* CodableHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CodableHelper.swift; path = SwaggerClient/Classes/Swaggers/CodableHelper.swift; sourceTree = "<group>"; };
 		4C349BC1A7BB5A4642CF3BF64CFCA15F /* IKGesture.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IKGesture.swift; path = CUU/Classes/InteractionKit/IKGesture/IKGesture.swift; sourceTree = "<group>"; };
@@ -2298,7 +2298,7 @@
 		862E20F8C8A885A6164846AE7AE409FE /* SwaggerClient */ = {
 			isa = PBXGroup;
 			children = (
-				4A927DF3029649F9DD5CEC55F1B678AC /* AlamofireImplementations.swift */,
+				2D958FDF22DCA33F0034F01A /* AlamofireImplementations.swift */,
 				AAC743499496E837C83815C282CBE0C3 /* APIHelper.swift */,
 				C5E3C22DE4E2C64E0F928815D361100E /* APIs.swift */,
 				4C2011911E069793CEFE219F750A00C1 /* CodableHelper.swift */,
@@ -3950,7 +3950,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDDF7522303CCA0521260C40C8F15200 /* AlamofireImplementations.swift in Sources */,
 				2DA9E6C022DBA61A004A25AB /* CampaignCreationRequest.swift in Sources */,
 				2DA9E6CE22DBA61A004A25AB /* ImageData.swift in Sources */,
 				2DA9E6C122DBA61A004A25AB /* CampaignUpdateRequest.swift in Sources */,
@@ -3975,6 +3974,7 @@
 				0E2C88638E1936072856E39280585A51 /* Models.swift in Sources */,
 				2DA9E6BE22DBA61A004A25AB /* Leaderboard.swift in Sources */,
 				2DA9E6CC22DBA61A004A25AB /* LeaderboardScore.swift in Sources */,
+				2D958FE022DCA33F0034F01A /* AlamofireImplementations.swift in Sources */,
 				2DA9E6CA22DBA61A004A25AB /* AnnotationCreationRequestItem.swift in Sources */,
 				8B1D86A715D098795C7FE3BADFBEA738 /* SwaggerClient-dummy.m in Sources */,
 				2DA9E6C622DBA61A004A25AB /* CreateUserRequest.swift in Sources */,
