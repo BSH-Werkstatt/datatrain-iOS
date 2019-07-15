@@ -37,6 +37,8 @@
 	<string>Allow the user to capture annotate and upload pictures.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save photo in your photo library</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

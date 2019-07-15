@@ -121,9 +121,10 @@ class PlaygroundViewController: CUUViewController {
                     let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
                     try? data.write(to: filename)
                     
-                    DefaultAPI.postImage(imageFile: filename, userToken: userId, campaignId: campaign._id, completion: { (image, error) in
+                    DefaultAPI.requestPrediction(imageFile: filename, campaignId: campaign._id, completion: { (image, error) in
                         
                         // TODO: finish handling
+                        print(image)
                         guard error == nil, let image = image else {
                             let alertController = UIAlertController(title: "Upload failed", message: "Image couldn't be sent to the campaign database. Please make sure you have an internet connection.", preferredStyle: UIAlertController.Style.alert)
                             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -141,17 +142,19 @@ class PlaygroundViewController: CUUViewController {
                         //activityIndicator and background hide
                         self.activityIndicator.stopAnimating()
                         self.activityIndicatorBackground?.backgroundColor = UIColor.init(white: 0.0, alpha: 0.0)
-                        
-                        guard let url = URL(string: image.url), let data = try? Data(contentsOf: url) else {
+                        print(image.predictionURL)
+                        guard let iurl = URL(string: image.predictionURL), let idata = try? Data(contentsOf: iurl) else {
+                            print("Cannot get new image")
                             return
                         }
                         self.uploadedImageView.contentMode = UIView.ContentMode.scaleAspectFit
-                        self.uploadedImageView.image = UIImage(data: data)
+                        self.uploadedImageView.image = UIImage(data: idata)
+                        self.state = 0
+                        self.exportButton.isEnabled = true
+                        self.exportButton.backgroundColor = #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1)
+                        self.uploadButton.setTitle("Upload Another Image", for: .normal)
+                        self.uploadedImageView.setNeedsDisplay()
                     })
-                    self.state = 0
-                    exportButton.isEnabled = true
-                    exportButton.backgroundColor = #colorLiteral(red: 0.1986669898, green: 0.1339524984, blue: 0.5312184095, alpha: 1)
-                    self.uploadButton.setTitle("Upload Another Image", for: .normal)
                 }
             }
         default:
