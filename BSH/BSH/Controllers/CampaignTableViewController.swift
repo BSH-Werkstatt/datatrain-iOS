@@ -112,8 +112,7 @@ class CampaignTableViewController: CUUTableViewController {
         cell.campaignId = campaign._id;
         
         // get campaign image
-        if let imageURL = campaign.image,
-            let url = URL(string: imageURL),
+        if let url = URL(string: campaign.image),
             let data = try? Data(contentsOf: url) {
             cell.campaignImage?.image = UIImage(data: data)
         }

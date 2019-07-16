@@ -14,17 +14,20 @@ public struct User: Codable {
     public var _id: String
     public var email: String
     public var name: String
+    public var userType: String?
 
-    public init(_id: String, email: String, name: String) {
+    public init(_id: String, email: String, name: String, userType: String?) {
         self._id = _id
         self.email = email
         self.name = name
+        self.userType = userType
     }
 
     public enum CodingKeys: String, CodingKey { 
         case _id = "id"
         case email
         case name
+        case userType
     }
 
 

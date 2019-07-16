@@ -26,7 +26,9 @@ open class DefaultAPI {
     /**
      - POST /users
      - examples: [{contentType=application/json, example={
+  "name" : "name",
   "id" : "id",
+  "userType" : "userType",
   "email" : "email"
 }}]
      
@@ -48,6 +50,51 @@ open class DefaultAPI {
 
     /**
 
+     - parameter campaignId: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getActive(campaignId: String, completion: @escaping ((_ data: Training?,_ error: Error?) -> Void)) {
+        getActiveWithRequestBuilder(campaignId: campaignId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - GET /train/active/{campaignId}
+     - examples: [{contentType=application/json, example={
+  "currentStep" : 1.4658129805029452,
+  "timeStart" : "timeStart",
+  "campaignId" : "campaignId",
+  "finished" : true,
+  "id" : "id",
+  "metrics" : [ "metrics", "metrics" ],
+  "currentEpoch" : 0.8008281904610115,
+  "epochs" : 6.027456183070403,
+  "steps" : 5.962133916683182
+}}]
+     
+     - parameter campaignId: (path)  
+
+     - returns: RequestBuilder<Training> 
+     */
+    open class func getActiveWithRequestBuilder(campaignId: String) -> RequestBuilder<Training> {
+        var path = "/train/active/{campaignId}"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Training>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func getAllCampaigns(completion: @escaping ((_ data: [Campaign]?,_ error: Error?) -> Void)) {
@@ -61,6 +108,9 @@ open class DefaultAPI {
      - GET /campaigns
      - examples: [{contentType=application/json, example=[ {
   "image" : "image",
+  "currentTrainingId" : "currentTrainingId",
+  "urlName" : "urlName",
+  "trainingInProgress" : true,
   "name" : "name",
   "description" : "description",
   "id" : "id",
@@ -69,6 +119,9 @@ open class DefaultAPI {
   "type" : { }
 }, {
   "image" : "image",
+  "currentTrainingId" : "currentTrainingId",
+  "urlName" : "urlName",
+  "trainingInProgress" : true,
   "name" : "name",
   "description" : "description",
   "id" : "id",
@@ -120,7 +173,8 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   }, {
     "imageId" : "imageId",
     "campaignId" : "campaignId",
@@ -134,10 +188,13 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   } ],
   "id" : "id",
-  "userId" : "userId"
+  "userId" : "userId",
+  "url" : "url",
+  "timestamp" : "timestamp"
 }, {
   "campaignId" : "campaignId",
   "annotations" : [ {
@@ -153,7 +210,8 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   }, {
     "imageId" : "imageId",
     "campaignId" : "campaignId",
@@ -167,10 +225,13 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   } ],
   "id" : "id",
-  "userId" : "userId"
+  "userId" : "userId",
+  "url" : "url",
+  "timestamp" : "timestamp"
 } ]}]
      
      - parameter campaignId: (path)  
@@ -208,6 +269,9 @@ open class DefaultAPI {
      - GET /campaigns/{campaignId}
      - examples: [{contentType=application/json, example={
   "image" : "image",
+  "currentTrainingId" : "currentTrainingId",
+  "urlName" : "urlName",
+  "trainingInProgress" : true,
   "name" : "name",
   "description" : "description",
   "id" : "id",
@@ -231,6 +295,87 @@ open class DefaultAPI {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Campaign>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+
+     - parameter campaignName: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCampaignByURLName(campaignName: String, completion: @escaping ((_ data: Campaign?,_ error: Error?) -> Void)) {
+        getCampaignByURLNameWithRequestBuilder(campaignName: campaignName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - GET /campaigns/byURLName/{campaignName}
+     - examples: [{contentType=application/json, example={
+  "image" : "image",
+  "currentTrainingId" : "currentTrainingId",
+  "urlName" : "urlName",
+  "trainingInProgress" : true,
+  "name" : "name",
+  "description" : "description",
+  "id" : "id",
+  "taxonomy" : [ "taxonomy", "taxonomy" ],
+  "ownerId" : "ownerId",
+  "type" : { }
+}}]
+     
+     - parameter campaignName: (path)  
+
+     - returns: RequestBuilder<Campaign> 
+     */
+    open class func getCampaignByURLNameWithRequestBuilder(campaignName: String) -> RequestBuilder<Campaign> {
+        var path = "/campaigns/byURLName/{campaignName}"
+        let campaignNamePreEscape = "\(campaignName)"
+        let campaignNamePostEscape = campaignNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignName}", with: campaignNamePostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Campaign>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+
+     - parameter campaignId: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCampaignImage(campaignId: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        getCampaignImageWithRequestBuilder(campaignId: campaignId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - GET /campaigns/{campaignId}/campaignImage
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter campaignId: (path)  
+
+     - returns: RequestBuilder<String> 
+     */
+    open class func getCampaignImageWithRequestBuilder(campaignId: String) -> RequestBuilder<String> {
+        var path = "/campaigns/{campaignId}/campaignImage"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<String>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -313,7 +458,8 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   }, {
     "imageId" : "imageId",
     "campaignId" : "campaignId",
@@ -327,10 +473,13 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   } ],
   "id" : "id",
-  "userId" : "userId"
+  "userId" : "userId",
+  "url" : "url",
+  "timestamp" : "timestamp"
 }}]
      
      - parameter campaignId: (path)  
@@ -367,7 +516,9 @@ open class DefaultAPI {
     /**
      - GET /users/byEmail/{email}
      - examples: [{contentType=application/json, example={
+  "name" : "name",
   "id" : "id",
+  "userType" : "userType",
   "email" : "email"
 }}]
      
@@ -386,6 +537,75 @@ open class DefaultAPI {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<User>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+
+     - parameter userId: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getUserById(userId: String, completion: @escaping ((_ data: User?,_ error: Error?) -> Void)) {
+        getUserByIdWithRequestBuilder(userId: userId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - GET /users/{userId}
+     - examples: [{contentType=application/json, example={
+  "name" : "name",
+  "id" : "id",
+  "userType" : "userType",
+  "email" : "email"
+}}]
+     
+     - parameter userId: (path)  
+
+     - returns: RequestBuilder<User> 
+     */
+    open class func getUserByIdWithRequestBuilder(userId: String) -> RequestBuilder<User> {
+        var path = "/users/{userId}"
+        let userIdPreEscape = "\(userId)"
+        let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{userId}", with: userIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<User>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func healthcheck(completion: @escaping ((_ data: Bool?,_ error: Error?) -> Void)) {
+        healthcheckWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - GET /healthcheck
+     - examples: [{contentType=application/json, example=true}]
+
+     - returns: RequestBuilder<Bool> 
+     */
+    open class func healthcheckWithRequestBuilder() -> RequestBuilder<Bool> {
+        let path = "/healthcheck"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Bool>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -421,6 +641,143 @@ open class DefaultAPI {
 
     /**
 
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postActive(campaignId: String, request: TrainingCreationRequest, completion: @escaping ((_ data: Training?,_ error: Error?) -> Void)) {
+        postActiveWithRequestBuilder(campaignId: campaignId, request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - POST /train/{campaignId}
+     - examples: [{contentType=application/json, example={
+  "currentStep" : 1.4658129805029452,
+  "timeStart" : "timeStart",
+  "campaignId" : "campaignId",
+  "finished" : true,
+  "id" : "id",
+  "metrics" : [ "metrics", "metrics" ],
+  "currentEpoch" : 0.8008281904610115,
+  "epochs" : 6.027456183070403,
+  "steps" : 5.962133916683182
+}}]
+     
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+
+     - returns: RequestBuilder<Training> 
+     */
+    open class func postActiveWithRequestBuilder(campaignId: String, request: TrainingCreationRequest) -> RequestBuilder<Training> {
+        var path = "/train/{campaignId}"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Training>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+
+     - parameter request: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postCampaign(request: CampaignCreationRequest, completion: @escaping ((_ data: Campaign?,_ error: Error?) -> Void)) {
+        postCampaignWithRequestBuilder(request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - POST /campaigns
+     - examples: [{contentType=application/json, example={
+  "image" : "image",
+  "currentTrainingId" : "currentTrainingId",
+  "urlName" : "urlName",
+  "trainingInProgress" : true,
+  "name" : "name",
+  "description" : "description",
+  "id" : "id",
+  "taxonomy" : [ "taxonomy", "taxonomy" ],
+  "ownerId" : "ownerId",
+  "type" : { }
+}}]
+     
+     - parameter request: (body)  
+
+     - returns: RequestBuilder<Campaign> 
+     */
+    open class func postCampaignWithRequestBuilder(request: CampaignCreationRequest) -> RequestBuilder<Campaign> {
+        let path = "/campaigns"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Campaign>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+
+     - parameter imageFile: (form)  
+     - parameter userToken: (query)  
+     - parameter campaignId: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postCampaignImage(imageFile: URL, userToken: String, campaignId: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        postCampaignImageWithRequestBuilder(imageFile: imageFile, userToken: userToken, campaignId: campaignId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - POST /campaigns/{campaignId}/campaignImage
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter imageFile: (form)  
+     - parameter userToken: (query)  
+     - parameter campaignId: (path)  
+
+     - returns: RequestBuilder<String> 
+     */
+    open class func postCampaignImageWithRequestBuilder(imageFile: URL, userToken: String, campaignId: String) -> RequestBuilder<String> {
+        var path = "/campaigns/{campaignId}/campaignImage"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "imageFile": imageFile
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "userToken": userToken
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+
      - parameter imageFile: (form)  
      - parameter userToken: (query)  
      - parameter campaignId: (path)  
@@ -450,7 +807,8 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   }, {
     "imageId" : "imageId",
     "campaignId" : "campaignId",
@@ -464,10 +822,13 @@ open class DefaultAPI {
     }, {
       "x" : 0.8008281904610115,
       "y" : 6.027456183070403
-    } ]
+    } ],
+    "timestamp" : "timestamp"
   } ],
   "id" : "id",
-  "userId" : "userId"
+  "userId" : "userId",
+  "url" : "url",
+  "timestamp" : "timestamp"
 }}]
      
      - parameter imageFile: (form)  
@@ -528,7 +889,8 @@ open class DefaultAPI {
   }, {
     "x" : 0.8008281904610115,
     "y" : 6.027456183070403
-  } ]
+  } ],
+  "timestamp" : "timestamp"
 }, {
   "imageId" : "imageId",
   "campaignId" : "campaignId",
@@ -542,7 +904,8 @@ open class DefaultAPI {
   }, {
     "x" : 0.8008281904610115,
     "y" : 6.027456183070403
-  } ]
+  } ],
+  "timestamp" : "timestamp"
 } ]}]
      
      - parameter campaignId: (path)  
@@ -572,10 +935,208 @@ open class DefaultAPI {
     /**
 
      - parameter campaignId: (path)  
+     - parameter request: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func requestPrediction(campaignId: String, completion: @escaping ((_ data: PredictionResult?,_ error: Error?) -> Void)) {
-        requestPredictionWithRequestBuilder(campaignId: campaignId).execute { (response, error) -> Void in
+    open class func postLeaderboard(campaignId: String, request: LeaderboardCreationRequest, completion: @escaping ((_ data: Leaderboard?,_ error: Error?) -> Void)) {
+        postLeaderboardWithRequestBuilder(campaignId: campaignId, request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - POST /campaigns/{campaignId}/leaderboard
+     - examples: [{contentType=application/json, example={
+  "scores" : [ {
+    "score" : 0.8008281904610115,
+    "name" : "name",
+    "userId" : "userId",
+    "email" : "email"
+  }, {
+    "score" : 0.8008281904610115,
+    "name" : "name",
+    "userId" : "userId",
+    "email" : "email"
+  } ],
+  "campaignId" : "campaignId",
+  "id" : "id"
+}}]
+     
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+
+     - returns: RequestBuilder<Leaderboard> 
+     */
+    open class func postLeaderboardWithRequestBuilder(campaignId: String, request: LeaderboardCreationRequest) -> RequestBuilder<Leaderboard> {
+        var path = "/campaigns/{campaignId}/leaderboard"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Leaderboard>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putActive(campaignId: String, request: TrainingUpdateRequest, completion: @escaping ((_ data: Training?,_ error: Error?) -> Void)) {
+        putActiveWithRequestBuilder(campaignId: campaignId, request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - PUT /train/active/{campaignId}
+     - examples: [{contentType=application/json, example={
+  "currentStep" : 1.4658129805029452,
+  "timeStart" : "timeStart",
+  "campaignId" : "campaignId",
+  "finished" : true,
+  "id" : "id",
+  "metrics" : [ "metrics", "metrics" ],
+  "currentEpoch" : 0.8008281904610115,
+  "epochs" : 6.027456183070403,
+  "steps" : 5.962133916683182
+}}]
+     
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+
+     - returns: RequestBuilder<Training> 
+     */
+    open class func putActiveWithRequestBuilder(campaignId: String, request: TrainingUpdateRequest) -> RequestBuilder<Training> {
+        var path = "/train/active/{campaignId}"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Training>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putCampaign(campaignId: String, request: CampaignUpdateRequest, completion: @escaping ((_ data: Campaign?,_ error: Error?) -> Void)) {
+        putCampaignWithRequestBuilder(campaignId: campaignId, request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - PUT /campaigns/{campaignId}
+     - examples: [{contentType=application/json, example={
+  "image" : "image",
+  "currentTrainingId" : "currentTrainingId",
+  "urlName" : "urlName",
+  "trainingInProgress" : true,
+  "name" : "name",
+  "description" : "description",
+  "id" : "id",
+  "taxonomy" : [ "taxonomy", "taxonomy" ],
+  "ownerId" : "ownerId",
+  "type" : { }
+}}]
+     
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+
+     - returns: RequestBuilder<Campaign> 
+     */
+    open class func putCampaignWithRequestBuilder(campaignId: String, request: CampaignUpdateRequest) -> RequestBuilder<Campaign> {
+        var path = "/campaigns/{campaignId}"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Campaign>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putLeaderboard(campaignId: String, request: LeaderboardUpdateRequest, completion: @escaping ((_ data: Leaderboard?,_ error: Error?) -> Void)) {
+        putLeaderboardWithRequestBuilder(campaignId: campaignId, request: request).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - PUT /campaigns/{campaignId}/leaderboard
+     - examples: [{contentType=application/json, example={
+  "scores" : [ {
+    "score" : 0.8008281904610115,
+    "name" : "name",
+    "userId" : "userId",
+    "email" : "email"
+  }, {
+    "score" : 0.8008281904610115,
+    "name" : "name",
+    "userId" : "userId",
+    "email" : "email"
+  } ],
+  "campaignId" : "campaignId",
+  "id" : "id"
+}}]
+     
+     - parameter campaignId: (path)  
+     - parameter request: (body)  
+
+     - returns: RequestBuilder<Leaderboard> 
+     */
+    open class func putLeaderboardWithRequestBuilder(campaignId: String, request: LeaderboardUpdateRequest) -> RequestBuilder<Leaderboard> {
+        var path = "/campaigns/{campaignId}/leaderboard"
+        let campaignIdPreEscape = "\(campaignId)"
+        let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: request)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Leaderboard>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+
+     - parameter imageFile: (form)  
+     - parameter campaignId: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func requestPrediction(imageFile: URL, campaignId: String, completion: @escaping ((_ data: PredictionResult?,_ error: Error?) -> Void)) {
+        requestPredictionWithRequestBuilder(imageFile: imageFile, campaignId: campaignId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -587,17 +1148,23 @@ open class DefaultAPI {
   "predictionURL" : "predictionURL"
 }}]
      
+     - parameter imageFile: (form)  
      - parameter campaignId: (path)  
 
      - returns: RequestBuilder<PredictionResult> 
      */
-    open class func requestPredictionWithRequestBuilder(campaignId: String) -> RequestBuilder<PredictionResult> {
+    open class func requestPredictionWithRequestBuilder(imageFile: URL, campaignId: String) -> RequestBuilder<PredictionResult> {
         var path = "/campaigns/{campaignId}/predictions"
         let campaignIdPreEscape = "\(campaignId)"
         let campaignIdPostEscape = campaignIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{campaignId}", with: campaignIdPostEscape, options: .literal, range: nil)
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let formParams: [String:Any?] = [
+            "imageFile": imageFile
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
         
         let url = URLComponents(string: URLString)
 
