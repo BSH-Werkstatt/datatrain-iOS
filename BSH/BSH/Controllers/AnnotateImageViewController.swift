@@ -60,6 +60,8 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
 
     private var nextImage: Data?
     private var nextImageData: ImageData?
+    
+    private var center: CGPoint?
 
     private func initializeAnnotationView(userId: String, campaignId: String, imageId: String, point: CGPoint) {
         drawingEnabled = true
@@ -330,6 +332,7 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         if let view = panGestureRecognizer.view {
             view.center = CGPoint(x:view.center.x + translation.x,
                                   y:view.center.y + translation.y)
+            center = view.center
         }
         panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
         
@@ -465,6 +468,12 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         
         //activityIndicator hidden when image is loaded
         activityIndicator.stopAnimating()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if let center = center {
+            imageLayerContainer.center = center
+        }
     }
 }
 
@@ -791,6 +800,7 @@ extension AnnotateImageViewController {
         self.offsetY = -1.0
         self.sizeImageX = -1.0
         self.sizeImageY = -1.0
+        self.center = nil
         undoManager?.removeAllActions()
         undoButton.isEnabled = false
         imageLoaded = false
