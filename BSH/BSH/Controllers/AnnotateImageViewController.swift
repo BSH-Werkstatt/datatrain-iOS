@@ -520,11 +520,8 @@ extension AnnotateImageViewController {
         imageView.frame = imageLayerContainer.bounds
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.image = UIImage(data: data)
-        imageView.center = CGPoint(x: -imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
-        self.imageLayerContainer.addSubview(imageView)
-        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
-            self.imageView.center = CGPoint(x: self.imageLayerContainer.frame.size.width / 2, y: self.imageLayerContainer.frame.size.height / 2)
-        }, completion: nil)
+        imageView.center = CGPoint(x: imageLayerContainer.frame.size.width / 2, y: imageLayerContainer.frame.size.height / 2)
+        imageLayerContainer.addSubview(imageView)
         imageLoaded = true
         
         let (offsetX, offsetY, imageSizeX, imageSizeY, imageScale) = calculateImageLayoutParameters()
@@ -784,29 +781,29 @@ extension AnnotateImageViewController {
                 banner.show()
                 // Analytics for successful upload
                 Analytics.logEvent(AnalyticsEventEarnVirtualCurrency, parameters: ["logged-in": true])
+                for view in self.imageLayerContainer.subviews {
+                    view.removeFromSuperview()
+                }
+                self.selectedAnnotationView = nil
+                self.magnifyView = nil
+                self.annotationViews = []
+                self.imageView = nil
+                self.imageData = nil
+                self.originalImage = nil
+                self.drawingEnabled = false
+                self.offsetX = -1.0
+                self.offsetY = -1.0
+                self.sizeImageX = -1.0
+                self.sizeImageY = -1.0
+                self.center = nil
+                self.undoManager?.removeAllActions()
+                self.undoButton.isEnabled = false
+                self.imageLoaded = false
+                AnnotationView.viewScale = 1.0
+                self.imageLayerContainer.transform = .identity
+                self.imageLayerContainer.setNeedsUpdateConstraints()
+                self.getImage()
             }
         })
-        for view in imageLayerContainer.subviews {
-            view.removeFromSuperview()
-        }
-        selectedAnnotationView = nil
-        self.magnifyView = nil
-        self.annotationViews = []
-        self.imageView = nil
-        self.imageData = nil
-        self.originalImage = nil
-        self.drawingEnabled = false
-        self.offsetX = -1.0
-        self.offsetY = -1.0
-        self.sizeImageX = -1.0
-        self.sizeImageY = -1.0
-        self.center = nil
-        undoManager?.removeAllActions()
-        undoButton.isEnabled = false
-        imageLoaded = false
-        AnnotationView.viewScale = 1.0
-        imageLayerContainer.transform = .identity
-        imageLayerContainer.setNeedsUpdateConstraints()
-        getImage()
     }
 }
