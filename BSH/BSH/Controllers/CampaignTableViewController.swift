@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 import CUU
 import SwaggerClient
+import OnboardKit
 
 class CampaignTableViewCell: UITableViewCell {
 
@@ -32,9 +33,39 @@ class CampaignTableViewController: CUUTableViewController {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
+    let launchedBeforeKey = "launchedBefore"
+    
+    //Onboarding Screen
+    let pageOne = OnboardPage(title: "Welcome to the DataTr/ai/n",
+                              imageName: "party",
+                              description: "We will help you with how to annotate.")
+    let pageTwo = OnboardPage(title: "Pick a campaign",
+                              imageName: "pickCampaign",
+                              description: "First choose a campaign you were invited to participate in.")
+    let pageThree = OnboardPage(title: "Campaign info",
+                                imageName: "Buttons",
+                                description: "After you read the description, you can upload your own image or use random images from the campaign.")
+    let pageFour = OnboardPage(title: "How to annotate",
+                               imageName: "Buttons",
+                               description: "Draw a line around  the item you want to annotate. Remember to complete a circle!")
+    let pageFive = OnboardPage(title: "Select a label",
+                               imageName: "Buttons",
+                               description: "Pick a label from the list. If you can't find the suitable label, you can create a new one")
+    let pageSix = OnboardPage(title: "Repeat or Submit",
+                              imageName: "submit",
+                              description: "Either start drawing a new line or submit your annotations.",
+                              advanceButtonTitle: "Done")
+    
+    let appearance = OnboardViewController.AppearanceConfiguration(imageContentMode: .scaleAspectFit)
+    
+    
+    lazy var onboardingViewController = OnboardViewController(pageItems: [pageOne, pageTwo,pageThree, pageFour, pageFive, pageSix], appearanceConfiguration: appearance)
+    
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onboardingViewController.presentFrom(self, animated: true)
 
         // Do any additional setup after loading the view.
         configureRefreshControl ()
@@ -49,6 +80,17 @@ class CampaignTableViewController: CUUTableViewController {
         self.view.addSubview(activityIndicator)
         campaignTable.backgroundView = activityIndicator
         activityIndicator.startAnimating()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let launchedBefore = UserDefaults.standard.bool(forKey: launchedBeforeKey)
+        
+        if !launchedBefore {
+            // First launch 
+            onboardingViewController.presentFrom(self, animated: true)
+            UserDefaults.standard.set(true, forKey: launchedBeforeKey)
+        }
         
     }
     
