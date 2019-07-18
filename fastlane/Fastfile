@@ -41,7 +41,7 @@ platform :ios do
                 commit_version_bump(
                         message: "Auto-Commit: Version Increment by Fastlane",
                         xcodeproj: "./BSH/BSH.xcodeproj", # optional, if you have multiple Xcode project files, you must specify your main project here
-                        ignore: "./BSH/BSH/CUU.plist"
+                        force: true
                 )
                 
                 # Setup ENV variables
