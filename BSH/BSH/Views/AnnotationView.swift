@@ -114,8 +114,8 @@ class AnnotationView: UIView {
             }
             if annotation.completed {
                 let surroundingRect = UIBezierPath(rect: path.bounds)
-                surroundingRect.setLineDash([32.0, 16.0], count: 2, phase: 0.0)
-                surroundingRect.lineWidth = scale(2)
+                surroundingRect.setLineDash([4.0, 2.0], count: 2, phase: 0.0)
+                surroundingRect.lineWidth = scale(1.0)
                 if selected {
                     AnnotationView.selectedStrokeColor.setStroke()
                 } else {
