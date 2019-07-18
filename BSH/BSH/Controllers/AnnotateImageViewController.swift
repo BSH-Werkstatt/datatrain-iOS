@@ -800,6 +800,7 @@ extension AnnotateImageViewController {
         self.offsetY = -1.0
         self.sizeImageX = -1.0
         self.sizeImageY = -1.0
+        self.center = nil
         undoManager?.removeAllActions()
         undoButton.isEnabled = false
         imageLoaded = false
