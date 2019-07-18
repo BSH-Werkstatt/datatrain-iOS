@@ -11,6 +11,7 @@ import UIKit
 import CUU
 import SwaggerClient
 import NotificationBannerSwift
+import FirebaseAnalytics
 
 // MARK: - AnnotateImageViewController
 class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
@@ -772,6 +773,8 @@ extension AnnotateImageViewController {
                 // Show notification for succesful upload
                 let banner = NotificationBanner(title: "Success", subtitle: "Annotation is successfully submitted.", style: .success)
                 banner.show()
+                // Analytics for successful upload
+                Analytics.logEvent(AnalyticsEventEarnVirtualCurrency, parameters: ["logged-in": true])
             }
         })
         for view in imageLayerContainer.subviews {
