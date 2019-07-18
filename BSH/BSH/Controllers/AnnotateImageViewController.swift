@@ -387,14 +387,23 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleLongPressGestures(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == .began {
+        switch longPressGestureRecognizer.state {
+        case .began:
             if magnifyView == nil {
                 magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
                 magnifyView!.viewToMagnify = self.view.superview
                 self.view.superview?.addSubview(magnifyView!)
                 magnifyView!.setTouchPoint(pt: longPressGestureRecognizer.location(in: self.view.superview))
             }
+        case .ended:
+            if magnifyView != nil {
+                magnifyView!.removeFromSuperview()
+                magnifyView = nil
+            }
+        default:
+            return
         }
+        
     }
     
     @IBAction func handleRotationGestures(rotationGestureRecognizer: UIRotationGestureRecognizer) {
