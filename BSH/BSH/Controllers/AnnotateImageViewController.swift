@@ -106,9 +106,9 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
             if (point.x - lastPoint.x > 7 || point.y - lastPoint.y > 7 || point.x - lastPoint.x < -7 || point.y - lastPoint.y < -7) {
                 addPoint(point: point)
                 if magnifyView == nil {
-                    magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                    magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
                     magnifyView!.viewToMagnify = self.view.superview
-                    magnifyView!.minY = imageLayerContainer.bounds.minY
+                    magnifyView?.maxY = labelButton.frame.minY - 8
                     self.view.superview?.addSubview(magnifyView!)
                     magnifyView!.setTouchPoint(pt: magnifierPoint)
                 }
@@ -390,10 +390,11 @@ class AnnotateImageViewController: CUUViewController, UITextFieldDelegate {
         switch longPressGestureRecognizer.state {
         case .began:
             if magnifyView == nil {
-                magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                magnifyView = MagnifyView.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
                 magnifyView!.viewToMagnify = self.view.superview
                 self.view.superview?.addSubview(magnifyView!)
                 magnifyView!.setTouchPoint(pt: longPressGestureRecognizer.location(in: self.view.superview))
+                magnifyView?.maxY = labelButton.frame.minY - 8
             }
         case .ended:
             if magnifyView != nil {

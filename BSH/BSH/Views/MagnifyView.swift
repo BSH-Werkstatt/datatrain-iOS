@@ -12,8 +12,8 @@ class MagnifyView: UIView {
 
     var viewToMagnify: UIView!
     var touchPoint: CGPoint!
-    var minY: CGFloat?
-    var isOverTheFinger: Bool = true
+    var maxY: CGFloat?
+    var isOnTheRight: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,27 +34,23 @@ class MagnifyView: UIView {
     }
     
     func setTouchPoint(pt: CGPoint) {
+        let left = CGPoint(x: 85, y: (maxY ?? viewToMagnify.bounds.maxY) - 75)
+        let right = CGPoint(x: viewToMagnify.bounds.maxX - 85, y: (maxY ?? viewToMagnify.bounds.maxY) - 75)
+        center = isOnTheRight ? right : left
         touchPoint = pt
-        var x = touchPoint.x
-        if x + bounds.width / 2 > superview!.bounds.maxX {
-            x = superview!.bounds.maxX - (bounds.width / 2)
-        }
-        if x - (bounds.width / 2) < superview!.bounds.minX {
-            x = superview!.bounds.minX + (bounds.width / 2)
-        }
-        var y = touchPoint.y + (isOverTheFinger ?  -150 : 150)
-        if isOverTheFinger {
-            if let minY = minY, y - bounds.height < minY {
-                y = touchPoint.y + 150
-                isOverTheFinger = false
-            }
-        } else {
-            if y + (bounds.height / 2) > superview!.bounds.maxY {
-                y = touchPoint.y - 150
-                isOverTheFinger = true
+        if frame.contains(touchPoint) {
+            if isOnTheRight {
+                isOnTheRight = false
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.center = left
+                }, completion: nil)
+            } else {
+                isOnTheRight = true
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.center = right
+                }, completion: nil)
             }
         }
-        self.center = CGPoint(x: x, y: y)
     }
     
     override func draw(_ rect: CGRect) {
