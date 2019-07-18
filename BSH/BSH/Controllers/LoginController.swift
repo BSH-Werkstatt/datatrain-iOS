@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwaggerClient
 import CUU
+import FirebaseAnalytics
 
 class LoginController: CUUViewController, UITextFieldDelegate {
 
@@ -58,6 +59,7 @@ class LoginController: CUUViewController, UITextFieldDelegate {
             UserDefaults.standard.set(true, forKey: "loggedIn")
             UserDefaults.standard.set(user._id, forKey: "user-id")
             UserDefaults.standard.set(user.email, forKey: "user-email")
+            Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
             Switcher.updateRootVC()
         })
 

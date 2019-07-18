@@ -11,6 +11,7 @@ import UIKit
 import CUU
 import SwaggerClient
 import NotificationBannerSwift
+import FirebaseAnalytics
 
 // MARK: - UploadImageViewController
 class UploadImageViewController: CUUViewController {
@@ -82,7 +83,10 @@ class UploadImageViewController: CUUViewController {
                     // Show notification for succesful upload
                     let banner = NotificationBanner(title: "Success", subtitle: "The image is successfully uploaded. Please annotate the image.", style: .success)
                     banner.show()
-                    
+
+                    // Analytics for successful upload
+                    Analytics.logEvent(AnalyticsEventEarnVirtualCurrency, parameters: ["logged-in": true])
+
                     //CUU Seed for tracking successful uploading
                     CUU.seed(name: "Uploaded picture sucessfully")
                     
