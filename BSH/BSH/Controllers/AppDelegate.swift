@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
         FirebaseApp.configure()
         //PrototyperController.showFeedbackButton = true
         Switcher.updateRootVC()
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         return true
     }
 
