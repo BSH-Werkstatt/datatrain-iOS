@@ -56,6 +56,7 @@ PODS:
   - NotificationBannerSwift (2.3.0):
     - MarqueeLabel (~> 4.0.0)
     - SnapKit (~> 5.0.0)
+  - OnboardKit (1.4.2)
   - Prototype (0.3.3)
   - Prototyper (1.1):
     - KeychainSwift (= 13.0.0)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - CUU
   - Firebase/Core
   - NotificationBannerSwift
+  - OnboardKit
   - Prototyper
   - SwaggerClient (from `./SwaggerClient`)
   - TouchVisualizer
@@ -87,6 +89,7 @@ SPEC REPOS:
     - MarqueeLabel
     - nanopb
     - NotificationBannerSwift
+    - OnboardKit
     - Prototype
     - Prototyper
     - SnapKit
@@ -109,12 +112,13 @@ SPEC CHECKSUMS:
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NotificationBannerSwift: fdc44b934be7a8175f7a7170a75a11c672990e70
+  OnboardKit: 38aedb98149aefe76911d6492a3f1d89cfa41876
   Prototype: 2009eb25fccdcbe5339d1cbe4f116eb6e68466aa
   Prototyper: 09bf1e15d619a7cd6ae358beaa58dc2e0955fa16
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwaggerClient: 98b9a9a4e81b637f266d3961295bbaf76171aec3
   TouchVisualizer: b97b1efb0f25d1408bb4557e6f493eae454425e7
 
-PODFILE CHECKSUM: f6eef65e446b0d580c08cd564574337bb1528c22
+PODFILE CHECKSUM: 4cd6b82e6637db85e3857603c08eb8565bbf3490
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.6.1

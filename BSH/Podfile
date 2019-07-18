@@ -11,6 +11,7 @@ target 'BSH' do
 
 pod 'Prototyper'
 pod 'CUU'
+pod 'OnboardKit'
 pod 'SwaggerClient', :path => './SwaggerClient'
 pod 'TouchVisualizer'
 pod 'Firebase/Core'
