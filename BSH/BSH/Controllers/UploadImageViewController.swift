@@ -22,7 +22,7 @@ class UploadImageViewController: CUUViewController {
     
     // MARK: IBOutlets
     @IBOutlet private weak var uploadedImageView: UIImageView!
-    @IBOutlet private weak var uploadButton: UIBarButtonItem!
+    @IBOutlet private weak var uploadButton: UIButton!
     
     // MARK: Overriden Methods
     override func viewDidLoad() {

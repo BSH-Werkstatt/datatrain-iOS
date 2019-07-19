@@ -332,48 +332,64 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-jF-jcj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="708"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWu-CG-l3C">
-                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
-                                <items>
-                                    <barButtonItem title="Upload" id="zmC-rC-H1x">
-                                        <connections>
-                                            <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" id="noY-bw-8vv"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-Lb-G0S">
+                                <rect key="frame" x="294" y="760" width="100" height="45"/>
+                                <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="skn-2E-le5"/>
+                                    <constraint firstAttribute="width" constant="100" id="ubT-hR-PaA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="0gv-5L-feL"/>
+                                    <action selector="startCampaignButton" destination="5uW-Nq-kUZ" eventType="touchUpInside" id="ECx-OK-7jL"/>
+                                    <action selector="uploadButtonClick:" destination="0fk-Hn-5yq" eventType="touchUpInside" id="ioD-PX-PxD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Gvf-It-Jxl" firstAttribute="bottom" secondItem="276-Lb-G0S" secondAttribute="bottom" constant="8" id="5NV-hE-hVo"/>
                             <constraint firstItem="fgm-jF-jcj" firstAttribute="top" secondItem="Gvf-It-Jxl" secondAttribute="top" id="5w5-I4-Wum"/>
-                            <constraint firstItem="uWu-CG-l3C" firstAttribute="leading" secondItem="Gvf-It-Jxl" secondAttribute="leading" id="QIn-mQ-aeL"/>
+                            <constraint firstItem="Gvf-It-Jxl" firstAttribute="trailing" secondItem="276-Lb-G0S" secondAttribute="trailing" constant="20" id="L4h-d9-tkX"/>
                             <constraint firstItem="fgm-jF-jcj" firstAttribute="trailing" secondItem="Gvf-It-Jxl" secondAttribute="trailing" id="VKk-6x-yO1"/>
-                            <constraint firstItem="uWu-CG-l3C" firstAttribute="top" secondItem="fgm-jF-jcj" secondAttribute="bottom" id="VWG-ul-8sv"/>
-                            <constraint firstItem="uWu-CG-l3C" firstAttribute="bottom" secondItem="Gvf-It-Jxl" secondAttribute="bottom" id="aCO-PJ-kp0"/>
                             <constraint firstItem="fgm-jF-jcj" firstAttribute="leading" secondItem="Gvf-It-Jxl" secondAttribute="leading" id="f8Y-BJ-mp6"/>
-                            <constraint firstItem="uWu-CG-l3C" firstAttribute="trailing" secondItem="Gvf-It-Jxl" secondAttribute="trailing" id="gL6-pR-ekw"/>
+                            <constraint firstItem="276-Lb-G0S" firstAttribute="top" secondItem="fgm-jF-jcj" secondAttribute="bottom" constant="8" id="lCx-4j-cVN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gvf-It-Jxl"/>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="uploadButton" destination="zmC-rC-H1x" id="8KG-lP-8n8"/>
+                        <outlet property="uploadButton" destination="276-Lb-G0S" id="jWG-Je-ewY"/>
                         <outlet property="uploadedImageView" destination="fgm-jF-jcj" id="6aV-iL-Krb"/>
                         <segue destination="Hgt-na-wWW" kind="show" identifier="uploadToAnnotateSegue" id="OCg-Ul-LPq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW7-0x-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1786.875" y="-585"/>
+            <point key="canvasLocation" x="1785.5072463768117" y="-585.26785714285711"/>
         </scene>
     </scenes>
     <resources>
         <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hUj-4z-hbZ"/>
+        <segue reference="OCg-Ul-LPq"/>
     </inferredMetricsTieBreakers>
 </document>

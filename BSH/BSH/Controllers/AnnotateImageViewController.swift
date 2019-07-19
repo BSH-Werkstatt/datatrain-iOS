@@ -787,7 +787,7 @@ extension AnnotateImageViewController {
             print("Annotation result", annotation, error)
             if error == nil {
                 // Show notification for succesful upload
-                let banner = NotificationBanner(title: "Success", subtitle: "Annotation is successfully submitted.", style: .success)
+                let banner = NotificationBanner(title: "Successful", subtitle: "Annotation is submitted.", style: .success)
                 banner.show()
                 // Analytics for successful upload
                 Analytics.logEvent(AnalyticsEventEarnVirtualCurrency, parameters: ["logged-in": true])
