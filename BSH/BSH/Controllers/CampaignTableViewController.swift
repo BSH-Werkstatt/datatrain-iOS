@@ -45,11 +45,15 @@ class CampaignTableViewController: CUUTableViewController {
     let pageThree = OnboardPage(title: "Campaign info",
                                 imageName: "Buttons",
                                 description: "After you read the description, you can upload your own image or use random images from the campaign.")
+    // give should be here
+    //Check GifHelper.swift. The loadGif function returns an image type from a gif
     let pageFour = OnboardPage(title: "How to annotate",
-                               imageName: "Buttons",
+                               imageName: "annotation",
                                description: "Draw a line around  the item you want to annotate. Remember to complete a circle!")
+    // give should be here
+    
     let pageFive = OnboardPage(title: "Select a label",
-                               imageName: "Buttons",
+                               imageName: "labeling",
                                description: "Pick a label from the list. If you can't find the suitable label, you can create a new one")
     let pageSix = OnboardPage(title: "Repeat or Submit",
                               imageName: "submit",
