@@ -14,11 +14,9 @@ import SwaggerClient
 
 // MARK: - CampaignTableControll
 class CampaignInfoViewController: CUUViewController {
-    private static var campaign: Campaign?
     var image: UIImage?
     
     // MARK: IBOutlets
-    @IBOutlet private weak var campaignName: UILabel!
     @IBOutlet private weak var campaignInfoText: UITextView!
     @IBOutlet weak var campaignImageView: UIImageView!
     
@@ -26,43 +24,44 @@ class CampaignInfoViewController: CUUViewController {
     @IBAction func startCampaignButton() {
         // what to do when Campaign starts
         // select which campaign + and Segue!
+       
+        //CUU Seed Annotate Button clicked
+         CUU.seed(name: "Start Annotate")
     }
 
     @IBAction func selectImageAction(_ sender: Any) {
         showImageAlert()
-    }
-
-    @IBAction func toLeaderboardButton() {
-        // Go to Campaign Leaderboard
+        
+        //CUU Seed Upload Button clicked
+        CUU.seed(name: "Start Upload")
+        
     }
     
     // MARK: Overriden Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let campaign = CampaignInfoViewController.campaign {
-            campaignName.text = campaign.name
+        
+        // Campaign Description Text View Layout
+        campaignInfoText.layer.cornerRadius = 10
+        campaignInfoText.layer.masksToBounds = false
+        campaignInfoText.layer.shadowColor = UIColor.lightGray.cgColor
+        campaignInfoText.layer.shadowOffset = CGSize(width: 1, height: 1)
+        campaignInfoText.layer.shadowRadius = 10
+        campaignInfoText.layer.shadowOpacity = 0.4
+        
+        
+        if let campaign = MainTabBarController.getCampaign() {
+            //campaignName.text = campaign.name
             campaignInfoText.text = campaign._description
-            
-            // TODO: do not load image twice, instead pass it from the campaign table view
-            if let imageURL = campaign.image,
-                let url = URL(string: imageURL),
-                let data = try? Data(contentsOf: url) {
-                self.campaignImageView.image = UIImage(data: data)
-            }
         }
-    }
-
-    public static func setCampaign(_ campaign: Campaign) {
-        CampaignInfoViewController.campaign = campaign
-    }
-    
-    public static func getCampaign() -> Campaign? {
-        return CampaignInfoViewController.campaign
+        
+        if let image = MainTabBarController.getImage() {
+            self.campaignImageView.image = image
+        }
     }
     
     @IBAction func unwindToCampainInfoView(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
+        
     }
 }
 
@@ -112,6 +111,9 @@ extension CampaignInfoViewController: UIImagePickerControllerDelegate, UINavigat
         var pickerMode: UIImagePickerController.SourceType = .photoLibrary
         if UIImagePickerController.isSourceTypeAvailable(.camera) && !showLibrary {
             pickerMode = .camera
+            
+            //CUU Seed for tracking photo taking
+            CUU.seed(name: "Upload: Take Photo")
         }
 
         let imagePicker = UIImagePickerController()
@@ -119,5 +121,8 @@ extension CampaignInfoViewController: UIImagePickerControllerDelegate, UINavigat
         imagePicker.sourceType = pickerMode;
         imagePicker.allowsEditing = false
         self.present(imagePicker, animated: true, completion: nil)
+        
+        //CUU Seed for tracking choosing photo from library
+        CUU.seed(name: "Upload: Choose Photo")
     }
 }

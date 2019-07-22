@@ -9,6 +9,8 @@
 import UIKit
 import CUU
 import Prototyper
+import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
@@ -19,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CUU.start()
-        PrototyperController.showFeedbackButton = true
+        FirebaseApp.configure()
+        //PrototyperController.showFeedbackButton = true
+        Switcher.updateRootVC()
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         return true
     }
 
@@ -45,7 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IKAppDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         CUU.stop()
     }
-
-
 }
 
+extension DispatchQueue {
+    static func background(delay: Double = 0.0, background: (()->Void)? = nil, completion: (() -> Void)? = nil) {
+        DispatchQueue.global(qos: .background).async {
+            background?()
+            if let completion = completion {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+                    completion()
+                })
+            }
+        }
+    }
+    
+}

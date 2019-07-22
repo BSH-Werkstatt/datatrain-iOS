@@ -18,8 +18,9 @@ public struct Annotation: Codable {
     public var userId: String
     public var campaignId: String
     public var imageId: String
+    public var timestamp: String?
 
-    public init(_id: String, points: [Point], type: String, label: String, userId: String, campaignId: String, imageId: String) {
+    public init(_id: String, points: [Point], type: String, label: String, userId: String, campaignId: String, imageId: String, timestamp: String?) {
         self._id = _id
         self.points = points
         self.type = type
@@ -27,6 +28,7 @@ public struct Annotation: Codable {
         self.userId = userId
         self.campaignId = campaignId
         self.imageId = imageId
+        self.timestamp = timestamp
     }
 
     public enum CodingKeys: String, CodingKey { 
@@ -37,6 +39,7 @@ public struct Annotation: Codable {
         case userId
         case campaignId
         case imageId
+        case timestamp
     }
 
 

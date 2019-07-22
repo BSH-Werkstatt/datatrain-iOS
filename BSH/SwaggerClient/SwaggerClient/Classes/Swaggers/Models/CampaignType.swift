@@ -10,4 +10,5 @@ import Foundation
 
 public enum CampaignType: Int, Codable {
     case _0 = 0
+
 }

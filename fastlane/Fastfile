@@ -7,7 +7,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+update_fastlane
 
 #Update Variables for your Project
 
@@ -34,7 +34,15 @@ platform :ios do
 
         desc "Default bamboo configuration"
         lane :bamboo do
+                increment_version_number(
+                        xcodeproj: "./BSH/BSH.xcodeproj"  # (optional, you must specify the path to your main Xcode project if it is not in the project root directory)
+                )
 
+                commit_version_bump(
+                        message: "Auto-Commit: Version Increment by Fastlane",
+                        xcodeproj: "./BSH/BSH.xcodeproj", # optional, if you have multiple Xcode project files, you must specify your main project here
+                        force: true
+                )
                 
                 # Setup ENV variables
                 ENV['FASTLANE_PASSWORD'] = ENV['bamboo_FASTLANE_PASSWORD'] # Necessary for unlocking the key chain

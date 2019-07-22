@@ -10,96 +10,166 @@ import UIKit
 
 class AnnotationView: UIView {
     
-    private var pointArrays: [[CGPoint]] = [[]]
-    private var completed: [Bool] = [false]
-    private var offsetX: CGFloat?
-    private var offsetY: CGFloat?
-    private var imageSizeX: CGFloat?
-    private var imageSizeY: CGFloat?
+    var annotation: Annotation?
+    var selected = false
+    var delegate: AnnotateImageViewController?
+    var labelView: UILabel?
     
-    private var fillColor: UIColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(0.5))
+    var surroundingRect: UIBezierPath {
+        let path = UIBezierPath()
+        if let annotation = annotation {
+            path.move(to: annotation.points[0])
+            if annotation.points.count > 1 {
+                for i in 1...annotation.points.count - 1 {
+                    path.addLine(to: annotation.points[i])
+                }
+            }
+        }
+        return UIBezierPath(rect: path.bounds)
+    }
     
-    private var strokeColor: UIColor = UIColor(displayP3Red: CGFloat(248.0/255.0), green: CGFloat(158/255.0), blue: CGFloat(53/255.0), alpha: CGFloat(1.0))
+    private static var offsetX: CGFloat?
+    private static var offsetY: CGFloat?
+    private static var imageSizeX: CGFloat?
+    private static var imageSizeY: CGFloat?
+    private static var imageScale: CGFloat?
+    
+    static var fillColor = #colorLiteral(red: 0.5, green: 0.4328446062, blue: 0.6674604024, alpha: 0.6042166096)
+    static var strokeColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+    static var selectedStrokeColor = #colorLiteral(red: 1, green: 0, blue: 0.6634275317, alpha: 1)
+    static var selectedFillColor = #colorLiteral(red: 1, green: 0, blue: 0.6600222588, alpha: 0.5981271404)
+    static var firstPointColor = #colorLiteral(red: 0.5611889983, green: 0, blue: 0.4505312241, alpha: 1)
+    static var pointStrokeColor = #colorLiteral(red: 1, green: 0.6837275257, blue: 0.4505312241, alpha: 1)
+
+    
+    static var viewScale: CGFloat = 1.0
+    
+    func scale(_ value: CGFloat) -> CGFloat {
+        return value * AnnotationView.viewScale
+    }
 
     override func draw(_ rect: CGRect) {
-        if (pointArrays.count > 0) {
+        if let annotation = annotation {
             let path = UIBezierPath()
-            path.lineWidth = 3.0
-            for index in 0...pointArrays.count - 1 {
-                if pointArrays[index].count == 1 {
-                    // There is only one point to draw
-                    path.move(to: pointArrays[index][0])
-                    strokeColor.setStroke()
-                    path.stroke()
-                } else if pointArrays[index].count >= 1 && completed[index] {
-                    // There is a compeleted path
-                    path.move(to: pointArrays[index][0])
-                    for i in 1...pointArrays[index].count - 1 {
-                        path.addLine(to: pointArrays[index][i])
+            path.lineWidth = scale(3.0)
+            if annotation.points.count >= 1 && annotation.completed {
+                // There is a compeleted path
+                path.move(to: annotation.points[0])
+                if annotation.points.count > 1 {
+                    for i in 1...annotation.points.count - 1 {
+                        path.addLine(to: annotation.points[i])
                     }
-                    path.close()
-                    strokeColor.setStroke()
-                    fillColor.setFill()
-                    path.fill()
-                    path.stroke()
-                } else if pointArrays[index].count >= 1 && !completed[index] {
-                    // There is an uncompleted path
-                    path.move(to: pointArrays[index][0])
-                    for i in 1...pointArrays[index].count - 1 {
-                        path.addLine(to: pointArrays[index][i])
-                    }
-                    strokeColor.setStroke()
-                    path.stroke()
                 }
+                path.close()
+                if selected {
+                    AnnotationView.selectedStrokeColor.setStroke()
+                    AnnotationView.selectedFillColor.setFill()
+
+                } else {
+                    AnnotationView.strokeColor.setStroke()
+                    AnnotationView.fillColor.setFill()
+                }
+                path.fill()
+                path.stroke()
+            } else if annotation.points.count >= 1 && !annotation.completed {
+                // There is an uncompleted path
+                path.move(to: annotation.points[0])
+                if annotation.points.count > 1 {
+                    for i in 1...annotation.points.count - 1 {
+                        path.addLine(to: annotation.points[i])
+                    }
+                }
+                if let temporaryPoint = annotation.temporaryPoint {
+                    path.addLine(to: temporaryPoint)
+                }
+                AnnotationView.selectedStrokeColor.setStroke()
+                path.stroke()
+            }
+            if annotation.points.count > 1 {
+                annotation.points.forEach({ (x: CGPoint) -> Void in
+                    var path: UIBezierPath
+                    if !annotation.completed, annotation.startPoint == x {
+                        path = UIBezierPath(ovalIn: CGRect(x: x.x - scale(10), y: x.y - scale(10), width: scale(20.0), height: scale(20.0)))
+                        AnnotationView.firstPointColor.setFill()
+                    } else {
+                        path = UIBezierPath(ovalIn: CGRect(x: x.x - scale(2.5), y: x.y - scale(2.5), width: scale(5.0), height: scale(5.0)))
+                        if selected || !annotation.completed {
+                            AnnotationView.selectedStrokeColor.setFill()
+                        } else {
+                            AnnotationView.strokeColor.setFill()
+                        }
+                    }
+                    path.fill()
+                })
+                if !annotation.completed {
+                    let temporaryPointPath = UIBezierPath(ovalIn: CGRect(x: annotation.endPoint!.x - scale(10), y: annotation.endPoint!.y - scale(10), width: scale(20.0), height: scale(20.0)))
+                    if let drawingEnabled = delegate?.drawingEnabled, !drawingEnabled {
+                        temporaryPointPath.lineWidth = scale(8)
+                        AnnotationView.pointStrokeColor.setStroke()
+                        temporaryPointPath.stroke()
+                    }
+                    AnnotationView.firstPointColor.setFill()
+                    temporaryPointPath.fill()
+                }
+            }
+            if annotation.completed {
+                let surroundingRect = UIBezierPath(rect: path.bounds)
+                surroundingRect.setLineDash([4.0, 2.0], count: 2, phase: 0.0)
+                surroundingRect.lineWidth = scale(1.0)
+                if selected {
+                    AnnotationView.selectedStrokeColor.setStroke()
+                } else {
+                    AnnotationView.strokeColor.setStroke()
+                }
+                surroundingRect.stroke()
+            }
+            if let labelView = labelView {
+                labelView.backgroundColor = selected || !annotation.completed ? AnnotationView.selectedFillColor : AnnotationView.fillColor
             }
         }
     }
     
-    func setOffsetVariables(offsetX: CGFloat, offsetY: CGFloat) {
-        self.offsetX = offsetX
-        self.offsetY = offsetY
+    static func setOffsetVariables(offsetX: CGFloat, offsetY: CGFloat) {
+        AnnotationView.offsetX = offsetX
+        AnnotationView.offsetY = offsetY
     }
     
-    func setImageSize(imageSizeX: CGFloat, imageSizeY: CGFloat) {
-        self.imageSizeX = imageSizeX
-        self.imageSizeY = imageSizeY
+    static func setImageSize(imageSizeX: CGFloat, imageSizeY: CGFloat) {
+        AnnotationView.imageSizeX = imageSizeX
+        AnnotationView.imageSizeY = imageSizeY
     }
     
-    func add(point: CGPoint, to annotation: Int) {
-        // TODO: Index check
-        guard let offsetX = offsetX, let offsetY = offsetY,
-            let imageSizeX = imageSizeX, let imageSizeY = imageSizeY else {
-            return
-        }
-        
-        if (point.x > offsetX && point.y > offsetY &&
-            point.x < offsetX + imageSizeX && point.y < offsetY + imageSizeY) {
-            pointArrays[annotation].append(point)
-            self.setNeedsDisplay()
-        }
-    }
-    
-    func complete(annotation: Int) {
-        // TODO: Index check
-        completed[annotation] = true
-        self.setNeedsDisplay()
-    }
-    
-    func clearAnnotations() {
-        pointArrays = [[]]
-        completed = [false]
-        self.setNeedsDisplay()
+    static func setImageScale(imageScale: CGFloat) {
+        AnnotationView.imageScale = imageScale
     }
     
     func getPoints() -> [Point] {
-        guard let offsetX = offsetX, let offsetY = offsetY else {
+        guard let offsetX = AnnotationView.offsetX, let offsetY = AnnotationView.offsetY,
+            let imageScale = AnnotationView.imageScale, let annotation = annotation else {
             print("There is no views")
             return []
         }
+
         var points: [Point] = []
-        for point in pointArrays[0] {
-            points.append(Point(x: point.x - offsetX, y: point.y - offsetY))
+        var counter = 0
+        for point in annotation.points {
+            points.append(Point(x: (point.x - offsetX) / imageScale, y: (point.y - offsetY) / imageScale))
         }
+        counter += 1
         return points
     }
+    
+    func isPointInsideAnnotation(point: CGPoint) -> Bool {
+        guard let annotation = annotation, annotation.points.count > 2 else {
+            return false
+        }
+        let path = UIBezierPath()
+        path.move(to: annotation.points[0])
+        for i in 1...annotation.points.count - 1 {
+            path.addLine(to: annotation.points[i])
+        }
+        path.close()
+        return path.contains(point)
+    }
 }
+
