@@ -553,9 +553,15 @@ extension AnnotateImageViewController {
                 guard let idata = idata else {
                     return
                 }
+                guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+                    let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+                    banner.show()
+                    return
+                }
                 // Proceed with getting the image
                 self.nextImageData = idata
-                guard let url = URL(string: idata.url), let data = try? Data(contentsOf: url) else {
+                let imageURL = "https://api.datatrain.rocks/images/\(idata._id).jpg?userToken=\(userId)"
+                guard let url = URL(string: imageURL), let data = try? Data(contentsOf: url) else {
                     return
                 }
                 self.nextImage = data
@@ -576,10 +582,16 @@ extension AnnotateImageViewController {
             self.returnToCampaignInfo()
             return
         }
+        guard let userId = UserDefaults.standard.string(forKey: "user-id") else {
+            let banner = NotificationBanner(title: "Invalid user id", subtitle: "Please check if you are logged in correctly", style: .success)
+            banner.show()
+            return
+        }
         
         self.imageData = iData
         // Proceed with getting the image
-        guard let url = URL(string: iData.url),
+        let imageURL = "https://api.datatrain.rocks/images/\(iData._id).jpg?userToken=\(userId)"
+        guard let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url) else {
                 // TODO: show an alert that url does not exist
                 self.returnToCampaignInfo()
