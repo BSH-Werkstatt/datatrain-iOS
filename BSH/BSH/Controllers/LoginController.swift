@@ -15,7 +15,7 @@ import FirebaseAnalytics
 class LoginController: CUUViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
-    
+    @IBOutlet weak var passwordField: BshCustomTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let email = UserDefaults.standard.string(forKey: "user-email") else {
@@ -42,29 +42,109 @@ class LoginController: CUUViewController, UITextFieldDelegate {
             showLoginError("Please fill in a correct e-mail address.")
             return
         }
-        if isValidEmail(testStr: email) {
-            userLogin(email: email)
-        } else {
-            showLoginError("The e-mail address format is invalid.")
-        }
-    }
-
-
-    public func userLogin(email: String) {
-        DefaultAPI.getUserByEmail(email: email, completion: { (user, error) in
-        guard let user = user else {
-            self.showLoginError("The login failed. Your e-mail address might not be registered." + (error?.localizedDescription ?? "Error"))
+        guard let password = passwordField.text else {
+            showLoginError("Please fill the password")
             return
         }
+         userLogin(email: email,password: password)
+//        if isValidEmail(testStr: email) {
+//            userLogin(email: email,password: password)
+//        } else {
+//            showLoginError("The e-mail address format is invalid.")
+//        }
+    }
+
+
+  /*  public func userLogin(email: String, password : String) {
+        var isAuthenticated = NetworkManager.shared.authenticateUserWithServer(username: email,password: password);
+        
+        /*print(isAuthenticated);
+        print("Inside login controller");
+        if(isAuthenticated) {
             UserDefaults.standard.set(true, forKey: "loggedIn")
-            UserDefaults.standard.set(user._id, forKey: "user-id")
-            UserDefaults.standard.set(user.email, forKey: "user-email")
+            UserDefaults.standard.set(emailField.text, forKey: "user-id")
+//            UserDefaults.standard.set(emailField.text, forKey: "user-email")
             Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
             Switcher.updateRootVC()
-        })
+        } else {
+            self.showLoginError("The login failed. please check your credentials.");
+        }*/
+//        DefaultAPI.getUserByEmail(email: email, completion: { (user, error) in
+//        guard let user = user else {
+//            self.showLoginError("The login failed. Your e-mail address might not be registered." + (error?.localizedDescription ?? "Error"))
+//            return
+//        }
+//            UserDefaults.standard.set(true, forKey: "loggedIn")
+//            UserDefaults.standard.set(user._id, forKey: "user-id")
+//            UserDefaults.standard.set(user.email, forKey: "user-email")
+//            Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
+//            Switcher.updateRootVC()
+//        })
 
 
-    }
+    }*/
+    public func userLogin(email: String, password : String) {
+    //        let isAuthenticated = NetworkManager.shared.authenticateUserWithServer(username: email,password: password);
+    //        print(isAuthenticated);
+    //        print("Inside login controller");
+    //        if(isAuthenticated) {
+    //            UserDefaults.standard.set(true, forKey: "loggedIn")
+    //            UserDefaults.standard.set(emailField.text, forKey: "user-id")
+    ////            UserDefaults.standard.set(emailField.text, forKey: "user-email")
+    //            Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
+    //            Switcher.updateRootVC()
+    //        } else {
+    //            self.showLoginError("The login failed. please check your credentials.");
+    //        }
+    //        DefaultAPI.getUserByEmail(email: email, completion: { (user, error) in
+    //        guard let user = user else {
+    //            self.showLoginError("The login failed. Your e-mail address might not be registered." + (error?.localizedDescription ?? "Error"))
+    //            return
+    //        }
+    //            UserDefaults.standard.set(true, forKey: "loggedIn")
+    //            UserDefaults.standard.set(user._id, forKey: "user-id")
+    //            UserDefaults.standard.set(user.email, forKey: "user-email")
+    //            Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
+    //            Switcher.updateRootVC()
+    //        })
+      NetworkManager.shared.userCredentials = UserCredentials(name: email, password: password)
+             //   NetworkManager.shared.authenticateUserWithServer(username: email,password: password);
+            NetworkManager.shared.authenticateUser(requestName: API_Names.LoginApi, requestType: RequestType.GET, urlParameters: nil, bodyParameters: nil, completion: { (resultDict) in
+                print(resultDict)
+                
+                if(resultDict){
+                     UserDefaults.standard.set(email, forKey: "user-id")
+                    UserDefaults.standard.set(email, forKey: "user-email")
+                    UserDefaults.standard.set(true, forKey: "loggedIn")
+                    Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
+                     Switcher.updateRootVC()
+                }
+                else{
+                    self.showLoginError("The login failed. please check your credentials.");
+                }
+              //  print(resultDict)
+    //            if (resultDict["error"] == nil) && resultDict["errorMessages"] == nil{//success
+    //       UserDefaults.standard.set(true, forKey: "loggedIn")
+    //                           UserDefaults.standard.set(email, forKey: "user-id")
+    //                           UserDefaults.standard.set(email, forKey: "user-email")
+    //                          Analytics.logEvent(AnalyticsEventLogin, parameters: ["logged-in": true])
+    //                            Switcher.updateRootVC()
+    //            }
+    //            else{
+    //                self.showLoginError("The login failed. please check your credentials.");
+    //               // self.loginPresenterDelegate?.failureResultWithError(errorDict: resultDict)
+    //            }
+            }, failure: { (error)  in
+                
+               // self.loginPresenterDelegate?.failureResultWithNetworkError(error: error)
+                self.showLoginError("The login failed. please check your credentials.");
+            })
+
+            
+            
+          
+
+        }
 
 
     public func showLoginError(_ error: String) {

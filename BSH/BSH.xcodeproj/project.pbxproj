@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B23EAAD23952A0700315A66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23EAAC23952A0700315A66 /* Constants.swift */; };
+		1B23EAB023952A1D00315A66 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23EAAF23952A1D00315A66 /* NetworkManager.swift */; };
 		2D39966322C4EFD7007F38E8 /* AlwaysShowPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966122C4EFD7007F38E8 /* AlwaysShowPopup.swift */; };
 		2D39966422C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966222C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift */; };
 		2D39966722C4FAE8007F38E8 /* MagnifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39966622C4FAE8007F38E8 /* MagnifyView.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B23EAAC23952A0700315A66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1B23EAAF23952A1D00315A66 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2D39966122C4EFD7007F38E8 /* AlwaysShowPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysShowPopup.swift; sourceTree = "<group>"; };
 		2D39966222C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayChoiceTableViewController.swift; sourceTree = "<group>"; };
 		2D39966622C4FAE8007F38E8 /* MagnifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyView.swift; sourceTree = "<group>"; };
@@ -136,6 +140,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B23EAAB239529F600315A66 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				1B23EAAC23952A0700315A66 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		1B23EAAE23952A0A00315A66 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				1B23EAAF23952A1D00315A66 /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		2D39966522C4EFEE007F38E8 /* OpenSourceHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +204,8 @@
 		3C709CC22282236400823586 /* BSH */ = {
 			isa = PBXGroup;
 			children = (
+				1B23EAAE23952A0A00315A66 /* NetworkManager */,
+				1B23EAAB239529F600315A66 /* Constants */,
 				2D82D0A222BBAE5A0015F443 /* Views */,
 				50AB754022A40EE300BEB84B /* Models */,
 				50CE499F229FD9EE000E15E8 /* Assets */,
@@ -450,6 +472,7 @@
 				C5BB5BA322E4AD1800827EDF /* GifHelper.swift in Sources */,
 				50AB753F22A4026C00BEB84B /* AnnotateImageViewController.swift in Sources */,
 				2D39966422C4EFD7007F38E8 /* ArrayChoiceTableViewController.swift in Sources */,
+				1B23EAB023952A1D00315A66 /* NetworkManager.swift in Sources */,
 				3C65814F22AD3BA50073E78A /* BshCustomButton.swift in Sources */,
 				50C5CA0722A0129500A72DB8 /* UploadImageViewController.swift in Sources */,
 				3C22772622BA918C00EB677B /* MainTabBarController.swift in Sources */,
@@ -462,6 +485,7 @@
 				2D3AA64C22BBAEC400B94193 /* AnnotationView.swift in Sources */,
 				C5F1FA26229ED0DD000F3FAC /* LeaderboardViewController.swift in Sources */,
 				50AB754622A40FEF00BEB84B /* Point.swift in Sources */,
+				1B23EAAD23952A0700315A66 /* Constants.swift in Sources */,
 				2D39966722C4FAE8007F38E8 /* MagnifyView.swift in Sources */,
 				3C22F26A22BF8DA400305FA0 /* LoginController.swift in Sources */,
 				3C709CC42282236400823586 /* AppDelegate.swift in Sources */,
