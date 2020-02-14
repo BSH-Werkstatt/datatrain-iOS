@@ -117,7 +117,7 @@ DEPENDENCIES:
   - TouchVisualizer
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Crashlytics
     - CUU
@@ -178,4 +178,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b80c0e644b065ca1d8000c6bf1926926b38f8983
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
