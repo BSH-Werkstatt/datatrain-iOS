@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>150699536493-fidef3a5p6k16oo04ho5ckhqapj6veon.apps.googleusercontent.com</string>
+	<string>150699536493-fmngecf21ata66pfn0h2ao33vmi9nl24.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.150699536493-fidef3a5p6k16oo04ho5ckhqapj6veon</string>
+	<string>com.googleusercontent.apps.150699536493-fmngecf21ata66pfn0h2ao33vmi9nl24</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBhrb8JL7fc5k5cmPl3En20HqyqiXyyjlI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>de.tum.in.www1.ios19.bsh</string>
+	<string>com.bshg.dev.DataTrain</string>
 	<key>PROJECT_ID</key>
 	<string>datatrain-503a4</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:150699536493:ios:3b91b3cd6dd6407a</string>
+	<string>1:150699536493:ios:551cad0004b54754be4f64</string>
 	<key>DATABASE_URL</key>
 	<string>https://datatrain-503a4.firebaseio.com</string>
 </dict>
