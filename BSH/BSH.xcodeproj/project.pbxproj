@@ -646,7 +646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bshg.dev.DataTrain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "BSH DEV DataTrain Prov Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "BSH Distr Profile DataTrain Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -669,7 +669,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bshg.dev.DataTrain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "BSH DEV DataTrain Prov Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "BSH Distr Profile DataTrain Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
