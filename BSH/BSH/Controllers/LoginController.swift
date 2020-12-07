@@ -18,6 +18,7 @@ class LoginController: CUUViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         guard let email = UserDefaults.standard.string(forKey: "user-email") else {
             return
         }

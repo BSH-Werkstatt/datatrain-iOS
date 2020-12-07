@@ -117,7 +117,7 @@ DEPENDENCIES:
   - TouchVisualizer
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - Crashlytics
     - CUU
@@ -150,9 +150,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
+  Crashlytics: d3e5090419ddee1003192c98ac0e6dfdb1dba266
   CUU: 7d73213ce50811817612f7079a23274d037e4fc4
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
   FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
@@ -178,4 +178,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b80c0e644b065ca1d8000c6bf1926926b38f8983
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.10.0
