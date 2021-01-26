@@ -28,9 +28,7 @@ class CampaignTableViewController: CUUTableViewController {
     @IBOutlet private weak var campaignTable: UITableView!
     
     private var campaigns: [Campaign] = []
-
     private static var user: User?
-    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     let launchedBeforeKey = "launchedBefore"
@@ -106,6 +104,7 @@ class CampaignTableViewController: CUUTableViewController {
             guard let campaigns = campaigns else {
                 // TODO: display alert when error occurs
                 print(error ?? "Unspecified Error")
+                self.activityIndicator.stopAnimating()
                 return
             }
             

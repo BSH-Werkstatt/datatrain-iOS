@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="90H-4L-dYP">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="90H-4L-dYP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,16 +78,16 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="mDX-Sm-TiE" userLabel="Campaign Table View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="11" indentationWidth="10" reuseIdentifier="campaignCell" textLabel="RUP-IH-LKV" detailTextLabel="JGy-Qs-Oap" style="IBUITableViewCellStyleSubtitle" id="l3w-h9-K5j" customClass="CampaignTableViewCell" customModule="BSH" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l3w-h9-K5j" id="G3Z-lQ-fgq">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-KL-fdz">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-KL-fdz">
                                             <rect key="frame" x="11" y="11" width="92" height="68"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -169,13 +167,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPr-rg-BSI">
                                 <rect key="frame" x="62" y="352.5" width="290" height="191"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH9-ed-EHW">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH9-ed-EHW">
                                         <rect key="frame" x="20" y="20" width="250" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-x2-YYO" userLabel="E-Mail" customClass="BshCustomTextField" customModule="BSH" customModuleProvider="target">
                                         <rect key="frame" x="20" y="91" width="250" height="42"/>
                                         <color key="textColor" red="0.92549019610000005" green="0.63529411759999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -202,7 +200,7 @@
                                             <action selector="loginPrimaryAction:" destination="90H-4L-dYP" eventType="primaryActionTriggered" id="LPU-v8-LWc"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5op-zv-cpa" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5op-zv-cpa" customClass="BshCustomButton" customModule="BSH" customModuleProvider="target">
                                         <rect key="frame" x="170" y="141" width="100" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -227,6 +225,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bu8-nb-wZQ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="fvl-pr-8Nn" secondAttribute="bottom" id="4Cg-jB-p2R"/>
@@ -236,7 +235,6 @@
                             <constraint firstItem="fvl-pr-8Nn" firstAttribute="leading" secondItem="Bu8-nb-wZQ" secondAttribute="leading" id="dP2-DM-431"/>
                             <constraint firstItem="fvl-pr-8Nn" firstAttribute="top" secondItem="jYX-P2-xO1" secondAttribute="top" id="wOi-zR-M0b"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Bu8-nb-wZQ"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="gJb-x2-YYO" id="il6-bx-bnm"/>
@@ -275,8 +273,8 @@
                     <view key="view" contentMode="scaleToFill" id="MhT-D5-7bx">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="n5i-pE-GO3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPf-YV-7Jq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,6 +282,11 @@
             <point key="canvasLocation" x="138" y="221"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="gJb-x2-YYO">
+            <size key="intrinsicContentSize" width="128" height="43.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="loginBackground" width="310.5" height="672"/>
         <image name="profile.png" width="102.85713958740234" height="102.85713958740234"/>

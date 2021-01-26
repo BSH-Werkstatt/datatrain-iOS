@@ -560,7 +560,7 @@ extension AnnotateImageViewController {
                 }
                 // Proceed with getting the image
                 self.nextImageData = idata
-                let imageURL = "https://api.datatrain.rocks/images/\(idata._id).jpg?userToken=\(userId)"
+                let imageURL = SwaggerClientAPI.basePath + "/images/\(idata._id).jpg?userToken=\(userId)"
                 guard let url = URL(string: imageURL), let data = try? Data(contentsOf: url) else {
                     return
                 }
@@ -590,7 +590,7 @@ extension AnnotateImageViewController {
         
         self.imageData = iData
         // Proceed with getting the image
-        let imageURL = "https://api.datatrain.rocks/images/\(iData._id).jpg?userToken=\(userId)"
+        let imageURL = SwaggerClientAPI.basePath + "/images/\(iData._id).jpg?userToken=\(userId)"
         guard let url = URL(string: imageURL),
             let data = try? Data(contentsOf: url) else {
                 // TODO: show an alert that url does not exist

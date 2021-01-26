@@ -88,7 +88,7 @@ class LoginController: CUUViewController, UITextFieldDelegate {
 //Switches views, depending if user is logged in or not.
 class Switcher {
 
-    static func updateRootVC(){
+    static func updateRootVC() {
 
         let status = UserDefaults.standard.bool(forKey: "loggedIn")
         var rootVC : UIViewController?
@@ -96,9 +96,9 @@ class Switcher {
         print(status)
 
 
-        if(status == true){
+        if(status == true) {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainvc") as! UINavigationController
-        }else{
+        } else {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginvc") as! LoginController
         }
 

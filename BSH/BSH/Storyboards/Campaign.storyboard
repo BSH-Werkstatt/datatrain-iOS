@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5uW-Nq-kUZ">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5uW-Nq-kUZ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +62,7 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6f-Kc-6kv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6f-Kc-6kv">
                                 <rect key="frame" x="90" y="433" width="234" height="42"/>
                                 <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -84,7 +83,7 @@
                                     <segue destination="Hgt-na-wWW" kind="show" id="hUj-4z-hbZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ix-Yo-hYf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ix-Yo-hYf">
                                 <rect key="frame" x="90" y="497" width="234" height="42"/>
                                 <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -105,7 +104,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="zcm-Mi-vQb"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PSt-bR-YeI" firstAttribute="top" secondItem="zcm-Mi-vQb" secondAttribute="top" constant="8" id="0fN-9Y-hWB"/>
                             <constraint firstItem="5Ix-Yo-hYf" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="90" id="3Hs-Gw-pI9"/>
@@ -124,11 +124,12 @@
                             <constraint firstItem="t6f-Kc-6kv" firstAttribute="leading" secondItem="zcm-Mi-vQb" secondAttribute="leading" constant="90" id="xac-jm-OcC"/>
                             <constraint firstItem="zcm-Mi-vQb" firstAttribute="trailing" secondItem="5Ix-Yo-hYf" secondAttribute="trailing" constant="90" id="yw6-Xy-FW6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zcm-Mi-vQb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Campaign" image="stack.png" id="Mn2-qK-AtD"/>
                     <navigationItem key="navigationItem" title="Campaign Info" leftItemsSupplementBackButton="YES" id="kmo-fv-mgM">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="kof-eK-tcj"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="kof-eK-tcj">
+                            <color key="tintColor" systemColor="labelColor"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -146,11 +147,11 @@
             <objects>
                 <viewController id="Hgt-na-wWW" customClass="AnnotateImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8oh-dQ-NR4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="zBt-GO-mR9">
-                                <rect key="frame" x="0.0" y="88" width="414" height="615"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -162,8 +163,8 @@
                                     <outletCollection property="gestureRecognizers" destination="wf9-9z-uoy" appends="YES" id="TZe-qI-vnE"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et8-mp-9mz" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
-                                <rect key="frame" x="93" y="711" width="301" height="45"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et8-mp-9mz" customClass="BshCustomLabelButton" customModule="BSH" customModuleProvider="target">
+                                <rect key="frame" x="93" y="657" width="301" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.188893795" green="0.13656625150000001" blue="0.51064318419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Show Labels">
@@ -184,8 +185,8 @@
                                     <action selector="showLabelPopup:" destination="Hgt-na-wWW" eventType="touchUpInside" id="hpl-05-gdC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCL-8x-NaD">
-                                <rect key="frame" x="20" y="764" width="374" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCL-8x-NaD">
+                                <rect key="frame" x="20" y="710" width="374" height="41"/>
                                 <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="jaE-zv-mYa"/>
@@ -210,8 +211,8 @@
                                     <action selector="submitButtonClick:" destination="Hgt-na-wWW" eventType="touchUpInside" id="4Ls-3E-VcJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsH-XR-JPv">
-                                <rect key="frame" x="20" y="711" width="65" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsH-XR-JPv">
+                                <rect key="frame" x="20" y="657" width="65" height="45"/>
                                 <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="eg4-jN-4LO"/>
@@ -238,7 +239,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zBt-GO-mR9" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" id="01K-6S-fhQ"/>
                             <constraint firstItem="HsH-XR-JPv" firstAttribute="leading" secondItem="spO-dt-YnY" secondAttribute="leading" constant="20" id="AIu-Tu-3Ew"/>
@@ -254,7 +256,6 @@
                             <constraint firstItem="gCL-8x-NaD" firstAttribute="top" secondItem="HsH-XR-JPv" secondAttribute="bottom" constant="8" id="rze-M5-bgv"/>
                             <constraint firstItem="spO-dt-YnY" firstAttribute="trailing" secondItem="et8-mp-9mz" secondAttribute="trailing" constant="20" id="zWd-V9-3lZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="spO-dt-YnY"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Annotate Image" id="rSy-2x-ocX">
@@ -328,14 +329,14 @@
             <objects>
                 <viewController id="0fk-Hn-5yq" userLabel="Upload Image View" customClass="UploadImageViewController" customModule="BSH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="muF-69-rtv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-jF-jcj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="708"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="698"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-Lb-G0S">
-                                <rect key="frame" x="294" y="760" width="100" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-Lb-G0S">
+                                <rect key="frame" x="294" y="706" width="100" height="45"/>
                                 <color key="backgroundColor" red="0.18927231429999999" green="0.1349374652" blue="0.51375555989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="skn-2E-le5"/>
@@ -363,7 +364,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Gvf-It-Jxl"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Gvf-It-Jxl" firstAttribute="bottom" secondItem="276-Lb-G0S" secondAttribute="bottom" constant="8" id="5NV-hE-hVo"/>
                             <constraint firstItem="fgm-jF-jcj" firstAttribute="top" secondItem="Gvf-It-Jxl" secondAttribute="top" id="5w5-I4-Wum"/>
@@ -372,7 +374,6 @@
                             <constraint firstItem="fgm-jF-jcj" firstAttribute="leading" secondItem="Gvf-It-Jxl" secondAttribute="leading" id="f8Y-BJ-mp6"/>
                             <constraint firstItem="276-Lb-G0S" firstAttribute="top" secondItem="fgm-jF-jcj" secondAttribute="bottom" constant="8" id="lCx-4j-cVN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Gvf-It-Jxl"/>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -386,10 +387,13 @@
             <point key="canvasLocation" x="1785.5072463768117" y="-585.26785714285711"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OCg-Ul-LPq"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="stack.png" width="102.85713958740234" height="102.85713958740234"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

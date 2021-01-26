@@ -20,6 +20,7 @@ class MainTabBarController: CUUTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = MainTabBarController.campaign?.name
         selectedIndex = defaultIndex
     }
