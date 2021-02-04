@@ -1,4 +1,4 @@
-# BSH iOS Client
+# Datatrain iOS Client
 
 ## Install All Dependencies
 
